@@ -1,0 +1,188 @@
+|=============================|
+|         PYTANIE 1:          |
+|=============================|
+Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+ukos
+ |\ katalog
+ |   |\ katalog2
+ |    \ katalog3
+  \ klamka
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do utworzenia podanego drzewa wykonałem z uzyciem komend cd oraz mkdir w nastepujacy sposob:
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~
+$ mkdir ukos
+natan@DESKTOP-OP762KV MINGW64 ~
+$ cd ukos/
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ mkdir katalog
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ mkdir klamka
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ cd katalog/
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/katalog
+$ mkdir katalog2
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/katalog
+$ mkdir katalog3
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/katalog
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 2:          |
+|=============================|
+W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do stworzenia podanych plikow uzyłem komendy touch (mogłbym zrobic to po kolei touch zajęcia2.txt nastepnie touch zajęcia2.log itd, ale nie ma w tym przypadku za bardzo na to sensu) w jednym poleceniu, touch i wymienione pliki oddzielone spacjami:
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+$ touch zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+$ ll
+total 0
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 inny.txt
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 nowy.txt
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 zajęcia2.log
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 zajęcia2.txt
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+$ pwd
+/c/Users/natan/ukos/klamka
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 3:          |
+|=============================|
+Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do stowrzenia katalogow uzyłem polecenia mkdir -p to/jest/dluga/nazwa
+gdzie -p jest flaga w poleceniu mkdir umozliwiajaca nam utworzyc katalogi wlacznie z wszystkimi brakujacymi katalogami
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ mkdir -p to/jest/dluga/nazwa
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ cd to/jest/dluga/nazwa
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/to/jest/dluga/nazwa
+$ pwd
+/c/Users/natan/ukos/to/jest/dluga/nazwa
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 4:          |
+|=============================|
+następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+mozemy to wykonania tego punktu przejsc do katalogu w ktorym ma zostac utworzyony plik a nastepnie go tam utworzyc lub mozemy z miejsca w ktorym sie znajdujemy podajac wczesniej sciezke i wyglada to nastepujaco:
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ touch to/jest/dluga/nazwa/dane.txt
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ cd to/jest/dluga/nazwa/
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/to/jest/dluga/nazwa
+$ ll
+total 0
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:31 dane.txt 
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 5:          |
+|=============================|
+Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do usuniecia wszystkich plikow z rozszerzeniem txt uzulem polecienia  rm *.txt gdzie * oznacza dowolny ciag znakow (wiec wyglada to tak: usun wszystko z zakonczeniem .txt)
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+$ ll
+total 0
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 inny.txt
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 nowy.txt
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 zajęcia2.log
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 zajęcia2.txt
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+$ rm *.txt
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+$ ll
+total 0
+-rw-r--r-- 1 natan 197121 0 Oct  5 00:19 zajęcia2.log
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/klamka
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 6:          |
+|=============================|
+Usuń katalog ukos/katalog/katalog2
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do susuniecia katalogu ukos/katalog/katalog2 uzułem pelecenia rmdir katalog/katalog2 wiedzac ze katalog jest pusty, gdybym miał watpliwosci mogłbym uzyc polecenia rm -rf katalog/katalog2 gdzie -r oznacza rekurencyjnie i usuwa katalogi i ich zawartosc a flaga -f force powoduje to ze polecenie rm nie prosi o potwierdzenie czy napewno usunac plik lub katalog:
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ rmdir katalog/katalog2
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ cd katalog/
+natan@DESKTOP-OP762KV MINGW64 ~/ukos/katalog
+$ ll
+total 0
+drwxr-xr-x 1 natan 197121 0 Oct  5 00:16 katalog3/
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 7:          |
+|=============================|
+Usuń cały katalog klamka za pomocą jednego polecenia
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do usuniecia uzyje wyzej wymienionego polecenia rm z plagami rf ktore pozwola mi usunac katalogi i pliki wraz z ich zawartoscia oraz bez koniecznosci potwierdzania wykonania polecenia:
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ rm -rf klamka/
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
+$ ll
+total 0
+drwxr-xr-x 1 natan 197121 0 Oct  5 00:46 katalog/
+drwxr-xr-x 1 natan 197121 0 Oct  5 00:27 to/
+natan@DESKTOP-OP762KV MINGW64 ~/ukos
