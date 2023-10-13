@@ -1,0 +1,16 @@
+2023.09.30
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*jak zalicze UKOS
+*jak bedzie wygladac wspolna praca
+*logowania do szuflandii za pomoca windowsa i putty (zrozumialem)
+*jakie katalogi znajduja sie w systemie linuxowym (ciemnoniebieskie katalogi a jasnoniebieskie skrót do innego miejsca na dysku)
+(opis poszczegolnych katalogow bede musial jeszcze raz przerobic)
+*dlaczego na komupterze liczymy od 0 (wiedziałem)
+*jak poruszac sie po terminalu (intuicyjne)
+*uzyskiwanie pomocy w terminalu (bardzo przydatne a poruszanie sie po stronie pomocy do opanowania)
+*pisać polecenia w systemach linuxowych (zrozumialem)
+*jakie sa sciezki do katalogow (nie zrozumialem, musze poglebic temat)
+*jak poruszac po katalogach (zrozumiale)
+*jak wykonywac zadania
+*jak zalozyc konto na githubie (bardzo proste)
+

@@ -1,0 +1,76 @@
+1.Uruchom terminal.
+* Uruchamiam wirtualna maszyne ubuntu
+* Kilkam ikonke terminalu
+Zostal uruchomiony terminal.
+
+2.Wyswietl zawartosc aktualnego katalogu.
+* ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+Wyswietlona zostala zawartosc katalogu w ktorym sie znajduje.
+
+3.Sprawdz gdzie aktualnie sie znajdujesz.
+* pwd
+/home/osboxes
+Znajduje sie w katalogu osboxes.
+
+4.Przejdz do katalogu Pulpit za pomoca sciezki wzglednej.
+* cd Desktop
+Przeszedlem do katalogu Pulpit z wykorzystaniem sciezki wzglednej, czyli z miejsca, w ktorym znajdowalem sie.
+
+5.Sprawdz gdzie jestes.
+* pwd
+/home/osboxes/Desktop
+Znajduje sie w katalogu Pulpit.
+
+6.Wyswietl zawartos biezacego katalogu.
+* ls
+computer.desktop    network.desktop   userfiles.desktop
+helpmanual.desktop  settings.desktop
+Wyswietlona zostala zawartosc katalogu w ktorym sie znajduje.
+
+7.Wyswietl zawartosc swojego katalogu domowego bez przechdozenia do niego (ls z odpowiednim parametrem).
+* ls ~
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+Wyswietlona zostala zawartosc katalogu domowego.
+
+8.Przejdz do katalogu Obrazy (lub innego katalogu, ktory jest dostepny - podaj wprost, ze zmieniasz katalog na inny bo np. Obrazy
+nie sa u Ciebie dostepne) w twoim katalogu domowym za pomoca sciezki wzglednej.
+* cd ../Pictures
+Przeszedlem do katalogu Obrazy z wykorzystaniem sciezki wzglednej, czyli z polozenia, w ktorym znajdowalem sie.
+
+9.Sprawdz gdzie jestes.
+* pwd
+/home/osboxes/Pictures
+Znajduje sie w katalogu Obrazy.
+
+10.Zobacz do jakiego katalogu przejdziesz za pomoca sciezki ././././././
+W opisie rozwiazania prosze umiescic rowniez to jak rozumiesz co sie wlasciwie stalo.
+Dlaczego znalazla/es sie w tym miejscu do ktorego przeniosla Cie ta sciezka?
+Czy dodanie kilku ./././././ na poczatku/srodku/koncu powoduje, że sciezka sie zmieni?
+Co ta sciezka oznacza/soba reprezentuje?
+* cd ././././././
+Znajduje sie dalej w tym samym katologu.
+Znalazlem sie w tym miejscu, poniewaz ta sciezka oznacza to samo co 'cd .', czyli przejscie do bierzacego katalogu.
+Dodanie kilku './././././' bez roznicy w ktorym miejscu sciezki nic nie zmienia, poniewaz kazdy './' oznacza katalog,
+w ktorym sie znajduje obecnie.
+
+11.Przejdz do swojego katalogu domowego za pomoca sciezki bezwzglednej.
+* cd /home/osboxes
+Przeszedlem do katalogu domowego z wykorzystniem sciezki bezwglednej, czyli od korzenia drzewa katalogow.
+
+12.Zobacz co sie stanie jak wpiszesz komende 'cd/root'. Jak juz to zrobisz, zastanow sie co sie stalo. Poszukaj w Internecie.
+* cd /root
+bash: cd: /root: Permission denied
+Zostalem poinformowany, ze nie mam dostepu do tego katalogu.
+Jako zwykly uzytkownik nie mam uprawnien do dostepu do tego katalogu.
+
+13.Zobacz, co sie stanie, jesli wcisniesz kombinacje klawiszy: Ctrl+Alt+F3
+Sprawdz w Internecie co sie dzieje kiedy uzywa sie takiej kombinacji. W Internecie moga pojawic sie wersje z F1-F6. 
+To de facto to samo. Odpowiedz "wylogowało mnie" jest bledna. Nie. Nie wylogowalo. Szukaj dalej.
+* W maszynie wirtualnej wciskam kombinacje klawiszy: Ctrl+Alt+F3
+Przy pomocy tej kombinacji klawiszy przechodzimy do terminala tekstowego.
+
+14.A teraz co sie stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+* Wciskam po kolei kombinacje klawiszy
+Przelaczam sie pomiedzy terminalami tekstowymi i graficznymi.
+
