@@ -1,0 +1,11 @@
+2023-09-30
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- nauczylem sie czym jest github i jak wyglada praca z zesplem w jednym repozytorium
+	- gdzis slyszalem/czytalem o programie puTTY ale na zajeciach dowiedzialem sie wiecej o programie czym jest i do czego sluzy, jak uzywac
+	- dowiedzialem sie czym i do czego sa rozne katalogi bin, boot, opt, tmp itd
+	- dowiedziałem czym jest proces
+	- liczymy od zera - to akurat wiedzialem :)
+	- dowiedzialem sie wiecej o uprawnieniach do katalogow/plikow
+	- poznalem nowe polecenia linuxowe, niektore znalem
+	- spodobala mi sie ilustracja z wytlumaczeniem czym jest sciezka wzgledna a czym jest sciazka bezwzgledna
+	- dowiedziałem sie ze nie ma pytan bez odpowiedzi :D

@@ -1,0 +1,217 @@
+|=============================|
+|         PYTANIE 1:          |
+|=============================|
+Uruchom terminal.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+uruchomiony terminal
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 2:          |
+|=============================|
+Wyswietl zawartosc aktualnego katalogu.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+wpisalem komende ll i otrzymalem:
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ll
+total 12
+-rw-r--r-- 1 natan 197121 3264 Oct  4 22:22 README.md
+drwxr-xr-x 1 natan 197121    0 Oct  4 22:29 s30576-pj-NatanBrzozowski/
+drwxr-xr-x 1 natan 197121    0 Oct  4 22:24 t0meck-pj-TomaszIdzikowski/
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 3:          |
+|=============================|
+Sprawdz gdzie aktualnie się znajdujesz.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+wpisalem komende pwd i otrzymalem:
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ pwd
+/c/Users/natan/repo/s30576-NatanBrzozowski
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 4:          |
+|=============================|
+Przejdz do katalogu Pulpit za pomocą sciezki wzglednej
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+do przejscia do katalogu Pulpit za pomoca sciezki wzglednej uzylem komendy cd ../../Desktop/ ktora pozwala mi na przejscie dwa razy w gore a nastepnie wejsc w katalog pulpit:
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cd ../../Desktop/
+natan@DESKTOP-OP762KV MINGW64 ~/Desktop
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 5:          |
+|=============================|
+Sprawdz gdzie jestes.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+uzywam do tego komendy pwd ktora wyswietli mi sciezke do bierzacego katalogu:
+natan@DESKTOP-OP762KV MINGW64 ~/Desktop
+$ pwd
+/c/Users/natan/Desktop
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 6:          |
+|=============================|
+Wyswietl zawartosc biezacego katalogu.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+uzywam do tego polecenia ll lub ls:
+natan@DESKTOP-OP762KV MINGW64 ~/Desktop
+$ ll
+total 1
+-rw-r--r-- 1 natan 197121 282 Oct  3 07:54 desktop.ini
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 7:          |
+|=============================|
+Wyswietl zawartosc swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+uzywam do tego polecenia ls ~ lub moge tez uzyc polecenia ll ~
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 8:          |
+|=============================|
+Przejdz do katalogu Obrazy (lub innego katalogu, ktory jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+uzywam to tego polecenia cd ../Pictures/
+natan@DESKTOP-OP762KV MINGW64 ~/Desktop
+$ cd ../Pictures/
+natan@DESKTOP-OP762KV MINGW64 ~/Pictures
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 9:          |
+|=============================|
+Sprawdz gdzie jestes.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+sprawdzam to komenda pwd:
+natan@DESKTOP-OP762KV MINGW64 ~/Pictures
+$ pwd
+/c/Users/natan/Pictures
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 10:         |
+|=============================|
+Zobacz do jakiego katalogu przejdziesz za pomoca sciezki ././././././
+W opisie rozwiazania prosze umiescic rowniez to jak rozumiesz co się wlasciwie stalo.
+Dlaczego znalazla/es się w tym miejscu do którego przeniosla Cie ta sciezka?
+Czy dodanie kilku ./././././ na poczatku/srodku/koncu powoduje, że sciezka sie zmieni?
+Co ta sciezka oznacza/soba reprezentuje?
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+wykonujac polecenie przejscia/zmiany katalogu przy uzyciu nastepujacej sciezki cd ././././././ dostaniemy:
+natan@DESKTOP-OP762KV MINGW64 ~/Pictures
+$ cd ././././././
+
+natan@DESKTOP-OP762KV MINGW64 ~/Pictures
+tak wlasciwie nic sie nie stało, jestesmy w tym samym katalogu z ktorego wykonywalismy polecenie
+znalazlem sie w tym samym miejscu poniewaz kropka do ktorej probujemy przejsc oznacza akualny katalog, a to ze mamy ich po / jeszcze troche nic nie zmienia poniewaz cały czas a dokladnie szesc razy przechodzimy do katalogu w ktorym juz sie znajdujemy
+nie, dodanie gdziekolwiek ./ nic nie zmieni poniewaz ./ jest oznaczeniem akualnego katalogu i dodanie/usuniecie ich nie bedzie miało wplywu na zmiane sciezki
+sciezka ta ././././././ czy jakiekolwiek wykonywanie na niej polecenia ls,ll czy cd nie zmieni lokalizacji katalogu, zostanie wykonanie polecenie na biezacym katalogu
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 11:         |
+|=============================|
+Przejdz do swojego katalogu domowego za pomoca sciezki bezwzglednej.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+uzyje do tego polecenia cd /c/Users/natan/ moge rowniez uzyc polecenia cd lub cd ~
+natan@DESKTOP-OP762KV MINGW64 ~/Pictures
+$ cd /c/Users/natan/
+natan@DESKTOP-OP762KV MINGW64 ~
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 12:         |
+|=============================|
+Zobacz co się stanie jak wpiszesz komende 'cd /root'. Jak juz to zrobisz, zastanow sie co się stalo. Poszukaj w Internecie.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+zeby przejsc do katalogu /root warto pamietac ze trzeba byc zalogowanym jako root inaczej gdy bedziemy zalogowani jako zwykły uzytkownik (np. natan) nie bedziemy mieli dostepu i tym samym nie uda nam sie przejsc do tego katalogu
+jesli bedziemy zalogowani jako root uda nam sie przejsc do katalogu /root za poloca polecenia cd /root i bedzimey wtedy w katalogu zwanym domowym (katalog domowy superuzytkownika root)
+
+----------------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 13:         |
+|=============================|
+Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie mozna go zrobic zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wcisniesz kombinacje klawiszy: Ctrl+Alt+F3
+Sprawdz w Internecie co sie dzieje kiedy uzywa się takiej kombinacji. W Internecie mogą pojawic się wersje z F1-F6. To de facto to samo.
+Odpowiedz "wylogowało mnie" jest bledna. Nie. Nie wylogowało. Szukaj dalej.
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+po wcisniesiu kombinacji klawiszy: Ctrl+Alt+F3 spowoduje przejscie z srodowiska pulpitu graficznego do konsoli teskstowej lub terminala wirtualnego (bedziemy musieli zalogowac sie za pomoca uzytkownika i hasla) 
+
+
+|=============================|
+|         PYTANIE 14:         |
+|=============================|
+A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+|-----------------------------|
+|      ODPOWIEDŹ/KOMENTARZ:   |
+|-----------------------------|
+po wcisniesiu Alt+F1 lub ALT+F2 lub ALT+F7 przelacza nas miedzy roznymi terminalami wirtualnymi lub konsolami takstowymi
+Alt+F1 przelacza nas to pierwszego terminala wirtualnego
+ALT+F2 przelacza nas to drugiego terminala wirtualnego
+itd
+ALT+F7 przelacza nas to srodowiska graficznego
+jest to zalezne od konfiguracji systemu
