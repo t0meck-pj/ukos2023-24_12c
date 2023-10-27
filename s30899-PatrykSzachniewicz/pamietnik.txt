@@ -14,3 +14,18 @@ Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
 *jak wykonywac zadania
 *jak zalozyc konto na githubie (bardzo proste)
 
+2023.10.14
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*czym roznia sie prawa a uprawnienia (terminologia Windows)
+*dlaczego Linux jest lepszy w pracy niz Windows (fajnie wiedziec)
+*jak zmieniac uprawnienia (wyjasnione bardzo zrozumiale)
+*jak korzystac z cyfr oktalnych i przeliczac sytem binarny na osemkowy (po czesci wiedzialem jak to robic, ale po zajecia juz
+opanowalem to)
+*jak sprawdzic uprawnienia w linuxie (bylo na poprzednich cwiczeniach, ale dobrze jest sobie przypomniec)
+*polecenie 'man' to nasz dobry kumpel ktory zawsze nam pomoze
+*jak odczytywac uprawnienia dostepu (musialem w domu przypomniec sobie)
+*ustawianie uprawnien dostepu dla wszystkich to zly pomysl (logiczne)
+*wielkosc liter w nazwach katalogow ma znaczenie
+*jak zmiana uprawnien dostepu wplywa na przemieszanie sie po strukturze katalogow (zrozumiale)
+*na czym polega rekurencja (logiczne ale na poczatku nie zrozumialem)
+

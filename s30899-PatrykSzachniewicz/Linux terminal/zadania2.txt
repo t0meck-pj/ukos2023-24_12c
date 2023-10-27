@@ -1,0 +1,144 @@
+1.Korzystajac z komend cd oraz mkdir stworz nastepujace drzewo katalogow w swoim katalogu domowym (w dowolnym podkatalogu,
+albo bezposrednio w ~):
+
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+*osboxes  ~  mkdir zadanie
+ osboxes  ~  cd zadanie/
+ osboxes  ~  zadanie  mkdir ukos
+ osboxes  ~  zadanie  cd ukos/
+ osboxes  ~  zadanie  ukos  mkdir klamka
+ osboxes  ~  zadanie  ukos  mkdir katalog
+ osboxes  ~  zadanie  ukos  cd katalog
+ osboxes  ~  zadanie  ukos  katalog  mkdir katalog2
+ osboxes  ~  zadanie  ukos  katalog  cd katalog2/
+ osboxes  …  ukos  katalog  katalog2  mkdir katalog
+ osboxes  …  ukos  katalog  katalog2  cd ../../../.
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    │   └── katalog2
+    │       └── katalog3
+    └── klamka
+
+5 directories, 0 files
+Stworzyłem przy pomocy komend 'cd' oraz 'mkdir' drzewo katalogow o żadanej strukturze w podkatalogu swojego katalogu domowego.
+
+2. W katalogu ukos/klamka stworz pliki zajecia2.txt zajecia2.log inny.txt nowy.txt
+*osboxes  ~  zadanie  touch ukos/klamka/zajecia2.txt ukos/klamka/zajecia2.log ukos/klamka/inny.txt
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    │   └── katalog2
+    │       └── katalog3
+    └── klamka
+        ├── inny.txt
+        ├── zajecia2.log
+        └── zajecia2.txt
+
+5 directories, 3 files
+Utworzyłem 3 pliki przy pomocy komendy touch we wskazanym katalogu.
+
+3.Za pomoca jednego polecenia mkdir stworz w katalogu ukos nastepujacy katalog: ukos/to/jest/dluga/nazwa
+*osboxes  ~  zadanie  mkdir -p ukos/to/jest/dluga/nazwa
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    │   └── katalog2
+    │       └── katalog3
+    ├── klamka
+    │   ├── inny.txt
+    │   ├── zajecia2.log
+    │   └── zajecia2.txt
+    └── to
+        └── jest
+            └── dluga
+                └── nazwa
+
+9 directories, 3 files
+Przy pomocy jednego polecenia 'mkdir' z flaga '-p', ktore powoduje, ze zostana rowniez stworzone wszystkie brakujace
+katalogi nadrzedne, utworzylem zadany katalog.
+
+4.Nastepnie umiesc w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+*osboxes  ~  zadanie  touch ukos/to/jest/dluga/nazwa/dane.txt
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    │   └── katalog2
+    │       └── katalog3
+    ├── klamka
+    │   ├── inny.txt
+    │   ├── zajecia2.log
+    │   └── zajecia2.txt
+    └── to
+        └── jest
+            └── dluga
+                └── nazwa
+                    └── dane.txt
+
+9 directories, 4 files
+Przy pomocy komendy touch utworzyłem pilk w wyznaczonym miejscu.
+
+5.Usun z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+*osboxes  ~  zadanie  rm ukos/klamka/*.txt
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    │   └── katalog2
+    │       └── katalog3
+    ├── klamka
+    │   └── zajecia2.log
+    └── to
+        └── jest
+            └── dluga
+                └── nazwa
+                    └── dane.txt
+
+9 directories, 2 files
+Usunalem wszystkie pliki z roszerzeniem ".txt" z wyznaczonego katalogu przy pomocy komendy 'rm'.
+
+6.Usun katalog ukos/katalog/katalog2
+*osboxes  ~  zadanie  rm -r ukos/katalog/katalog2
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    ├── klamka
+    │   └── zajecia2.log
+    └── to
+        └── jest
+            └── dluga
+                └── nazwa
+                    └── dane.txt
+
+7 directories, 2 files
+Usunałem wskazany katalog przy pomocy polecenia 'rm' z flaga '-r', ktora umozliwia usuniecie katalogu z cala jego zawartoscia.
+
+7.Usun cały katalog klamka za pomoca jednego polecenia
+*osboxes  ~  zadanie  rm -r ukos/klamka
+ osboxes  ~  zadanie  tree
+.
+└── ukos
+    ├── katalog
+    └── to
+        └── jest
+            └── dluga
+                └── nazwa
+                    └── dane.txt
+
+6 directories, 1 file
+Usunałem wskazany katalog przy pomocy polecenia 'rm' z flaga '-r', ktora umozliwia usuniecie katalogu z cala jego zawartoscia.
+
