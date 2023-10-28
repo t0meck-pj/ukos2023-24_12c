@@ -1,0 +1,211 @@
+1.Utworzyc we wlasnym katalogu domowym nieduza strukture podkatalogow i plikow tekstowych. Przydzielic rozne uprawnienia dostepu, nastepnie sprobowac wejsc do katalogow domowych innych
+uczestnikow zajec i sprawdzic, ktore z obiektow sa tam dla nas dostepne (i w jakim sensie). Sprobowac utworzyc wlasny plik w cudzym katalogu ("kukulcze jajko") oraz sprobowac usunac cudzy
+plik we wlasnym katalogu (co mozna zaobserwowac ?). Wyprobowac powyzsze operacje:
+
+-w trybie tekstowym;
+
+-przy uzyciu programu Midnight Commander (mc);
+
+*s30899@szuflandia22:~$ tree
+.
+└── ukos
+    └── lab02
+        ├── inny.txt
+        ├── praca
+        │   └── grupowa
+        └── zadanie.txt
+
+*s30899@szuflandia22:~/ukos/lab02$ chmod g-x praca/
+*s30899@szuflandia22:~/ukos/lab02$ chmod g-r zadanie.txt
+*s30899@szuflandia22:~/ukos/lab02$ chmod g-w inny.txt
+*s30899@szuflandia22:~/ukos/lab02$ chmod g+w praca/
+*s30899@szuflandia22:~/ukos$ chmod g+w lab02/
+*s30899@szuflandia22:~/ukos/lab02$ ls-l
+drwxrwxr-x 3 s30899 domain users 4096 10-27 00:50 lab02
+-rw-r--r-- 1 s30899 domain users    0 10-14 12:54 inny.txt
+drwxrw-r-x 3 s30899 domain users 4096 10-27 00:55 praca
+-rw----r-- 1 s30899 domain users    0 10-14 12:54 zadanie.txt
+
+*s30899@szuflandia22:/home/PJWSTK/s30397/Goha$
+*s30899@szuflandia22:/home/PJWSTK/s30397/Goha$ tree
+.
+├── Daniel
+│   └── daniel
+├── Magical
+└── Nikita
+
+Moge wejsc i zapoznac sie z zawartosc katalogu Daniel, natomiast
+plik tekstowy daniel moge tylko odczytac, a nie moge nadpisac ani dopisac nic.
+Moge wejsc i zapoznac sie z zawartosc katalogu Magical, ale nie moge zmienic jego zawartosci.
+Nie moge wejsc do katalogu Nikita z powodu braku dostepu ani zmienic jego zawartosci.
+
+*s30899@szuflandia22:/home/PJWSTK/s30397/Goha$ touch Daniel/'kukulcze jajko'
+.
+├── Daniel
+│   ├── daniel
+│   └── kukulcze jajko
+├── Magical
+└── Nikita
+
+Udalo sie utworzyc plik w cudzym katalogu, poniewaz mialem uprawnienia do zmiany zawartosci danego katalogu.
+
+*s30899@szuflandia22:~$ tree
+.
+└── ukos
+    └── lab02
+        ├── inny.txt
+        ├── jajo
+        ├── praca
+        │   └── grupowa
+        └── zadanie.txt
+
+*s30899@szuflandia22:~/ukos/lab02$ rm -r jajo
+*s30899@szuflandia22:~$ tree
+.
+└── ukos
+    └── lab02
+        ├── inny.txt
+        ├── praca
+        │   └── grupowa
+        └── zadanie.txt
+
+Udalo sie usunac cudzy plik w moim katalogu, poniewaz mialem do tego uprawnienia.
+
+Program Midnight Commander ulatwia nawigowanie po plikach i mozna przeprowadzic w nim te same operacje, co w trybie tekstowym tylko w latwiejszy sposob.
+
+2.W utworzonej na swoim koncie strukturze podkatalogow przeprowadzic eksperymenty:
+
+-usuwajac wszelkie uprawnienia dostepu do katalogu biezacego
+
+-usuwajac wszelkie uprawnienia dostepu do katalogu nadrzednego (nadkatalogu).
+
+	-W jakich przypadkach mozemy wykonac wtedy polecenie cd ? 
+
+	-W jakich przypadkach mozemy wykonac polecenie chmod ? 
+
+	-Czy mozemy bezposrednio przeskoczyc do katalogu ABC/XYZ, jesli nie mamy uprawnienia wstepu do ABC, ale mamy do XYZ ?
+
+	-Czy mozemy takze wrocic korzystajac z polecnia cd - ?
+
+*s30899@szuflandia22:~/ukos/lab02$ chmod 000 ./
+Usunalem wszelkie uprawnienia do katalogu biezacego.
+
+*s30899@szuflandia22:~/ukos/lab02$ cd praca
+-bash: cd: praca: Brak dostępu
+Przy pomocy 'cd' nie moge przejsc do katalogu podrzednego.
+*s30899@szuflandia22:~/ukos/lab02$ cd ..
+s30899@szuflandia22:~/ukos$
+Moge za to przejsc do katalogu nadrzednego.
+*s30899@szuflandia22:~/ukos$ cd lab02/
+-bash: cd: lab02/: Brak dostępu
+*s30899@szuflandia22:~/ukos$ cd ~/ukos/lab02/
+-bash: cd: /home/PJWSTK/s30899/ukos/lab02/: Brak dostępu
+Nie moge przejsc do katalogu lab02 sciezka wzgledna ani sciezka bezwzgledna, a takze przy pomocy polecenia 'cd -', 
+poniewaz nie mam zadnych uprawnien do tego katalogu.
+
+*s30899@szuflandia22:~$ chmod 754 ukos/lab02/
+s30899@szuflandia22:~$
+Polecenie 'chmod' moge wykonac znajdujac sie w miejscu do ktorego mam uprawnienia np. katalogu domowym.
+
+*s30899@szuflandia22:~/ukos/lab02$ chmod 000 ../
+Usunalem wszelkie uprawnienia do katalogu nadrzednego.
+
+*s30899@szuflandia22:~/ukos/lab02$ cd ..
+-bash: cd: ..: Brak dostępu
+Przy pomocy 'cd' nie moge przejsc do katalogu nadrzednego z powodu braku uprawnien.
+*s30899@szuflandia22:~/ukos/lab02$ cd praca/
+s30899@szuflandia22:~/ukos/lab02/praca$
+Moge za to przejsc do katalogu podrzednego, poniewaz mam tam domyslne ustawienia dostepu.
+*s30899@szuflandia22:~/ukos/lab02$ cd ~
+s30899@szuflandia22:~$
+Oczywiscie moge tez przejsc do katalogu domowego przy pomocy sciezki bezwzglednej.
+Nie moge wrocic do katalogu lab02 za pomoca sciezki bezglednej ani polecenie 'cd -', poniewaz nie mam dostepu do zawartosci
+katalogu lab02.
+
+Polecenie 'chmod' moge wykonac znajdujac sie w katalogu, do ktorego mam uprawnienia np. katalog domowy.
+
+*s30899@szuflandia22:~$ chmod u-x,g-x,a-x ukos/
+s30899@szuflandia22:~$
+Odebralem uprawnienia wejscia dla wszystkich grup do katalogu ukos.
+
+*s30899@szuflandia22:~$ cd ukos/lab02
+-bash: cd: ukos/lab02: Brak dostępu
+Nie moge przeskoczyc bezposrednio do katalogu lab02, jesli nie mam uprawnienia wstepu do ukos, ale mam do lab02.
+
+*s30899@szuflandia22:~/ukos/lab02$ cd -
+/home/PJWSTK/s30899
+s30899@szuflandia22:~$
+Przy pomocy polecenia 'cd -' moge wrocic do katalogu domowego, wczeniej znajdujac sie w lab02, ale nie majac uprawnien dostepu do
+katalogu ukos.
+Natomiast wrocic przy pomocy polecenia 'cd -' do katalogu lab02 już nie moge bo nie mam uprawnien wstepu do ukos.
+
+3.W zespolach 2- lub 3-osobowych (w opisie zadania na githubie prosze umiescic login osob z zespolu) wyprobowac mozliwosc komunikacji przez wspoldzielony
+plik: na jednym z kont w zespole utworzyc pusty plik i przydzielic odpowiednie uprawnienia dostepu (do pliku i do katalogu domowego). Wpisywac i odczytywac komunikaty przy uzyciu polecen:
+
+echo tresc_komunikatu > plik
+
+cat plik
+
+Sprawdzic, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu echo. Uruchom takze drugi terminal i wykonaj w nim komende tail -f plik i powtorz powyzsze cwiczenie w pierwszym terminalu (komunikacja za pomoca pliku).
+
+(Zadanie wykonywane z s30397)
+
+*s30899@szuflandia22:~/ukos/lab02$ touch komunikacja
+*s30899@szuflandia22:~/ukos/lab02$ chmod g+w komunikacja
+*s30899@szuflandia22:~/ukos/lab02$ ls -l
+-rw-rw-r-- 1 s30899 domain users    0 10-27 02:07 komunikacja
+
+*s30899@szuflandia22:~/ukos/lab02$ echo siema > komunikacja
+*s30899@szuflandia22:~/ukos/lab02$ cat komunikacja
+siema
+
+Po uzyciu komedy echo przez kolege:
+*s30899@szuflandia22:~/ukos/lab02$ cat komunikacja
+jajuszko
+
+Uzywajac komendy 'cat' i 'echo' na zmiane z kolega mozemy komunikować sie przy uzyciu pliku.
+
+*s30899@szuflandia22:~/ukos/lab02$ echo zielone >> komunikacja
+*s30899@szuflandia22:~/ukos/lab02$ cat komunikacja
+jajuszko
+zielone
+
+Zmiana operatora '>' na operator '>>' w poleceniu 'echo' spowodowala, ze nowa tresc zostala dolaczona
+do istniejacej tresci w pliku zamiast ja nadpisywac.
+
+*s30899@szuflandia22:~/ukos/lab02$ tail -f plik
+
+Uruchomienie tej komendy w drugim terminalu pozwolilo na sledzenie zmian w pliku na zywo, gdy uzywalismy komend 'echo' i 'cat'.
+
+4.Znalezc w swoim katalogu domowym podkatalog public_html (jesli go nie ma, to utworzyc; musi sie on nazywac DOKLADNIE tak jak
+podano, pisane malymi literami z podkresleniem zamiast spacji pomiedzy slowami). Umiescic w nim plik o nazwie strona.html o
+nastepujacej zawartosci:
+
+<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>
+
+Sprawdzic, jakie sa minimalne uprawnienia dostepu, ktore trzeba przydzielic do:
+
+-katalogu domowego;
+
+-katalogu public_html;
+
+-pliku strona.html, aby zawartosc pliku byla widoczna w przegladarce internetowej
+pod adresem http://szuflandia.pjwstk.edu.pl/~twoj_login/strona.html
+
+*s30899@szuflandia22:~/public_html$ chmod 701 ~
+Minimalne uprawnienia dostepu dla katalogu domowego aby wyswietlic zawartosc pliku w przegladarce internetowej to uprawnienia do
+wejscia dla wszystkich, poniewaz zabierajac uprawnienina dostepu dla wlasciciela do katalogu domowego pewnie tez zadziala, ale nie
+chce tego probowac.
+
+*s30899@szuflandia22:~$ chmod 001 public_html/
+Minimalne uprawnienia dostepu dla katalogu public_html aby wyswietlic zawartosc pliku w przegladarce internetowej to tylko
+uprawnienia do wejscia dla wszystkich.
+
+*s30899@szuflandia22:~/public_html$ chmod 004 strona.html
+Minimalne uprawnienia dostepu dla pliku strona.html aby wyswietlic zawartosc pliku w przegladarce internetowej to tylko
+uprawnienia do odczytu dla wszystkich.
+
