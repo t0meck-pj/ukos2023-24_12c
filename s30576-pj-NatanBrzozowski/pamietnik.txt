@@ -1,11 +1,34 @@
-2023-09-30
+30-09-2023
 Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
-	- nauczylem sie czym jest github i jak wyglada praca z zesplem w jednym repozytorium
-	- gdzis slyszalem/czytalem o programie puTTY ale na zajeciach dowiedzialem sie wiecej o programie czym jest i do czego sluzy, jak uzywac
+	- nauczylem sie czym jest github i jak wyglada praca z zesplem w jednym
+	repozytorium
+	- gdzis slyszalem/czytalem o programie puTTY ale na zajeciach dowiedzialem
+	sie wiecej o programie czym jest i do czego sluzy, jak uzywac
 	- dowiedzialem sie czym i do czego sa rozne katalogi bin, boot, opt, tmp itd
 	- dowiedziałem czym jest proces
 	- liczymy od zera - to akurat wiedzialem :)
 	- dowiedzialem sie wiecej o uprawnieniach do katalogow/plikow
 	- poznalem nowe polecenia linuxowe, niektore znalem
-	- spodobala mi sie ilustracja z wytlumaczeniem czym jest sciezka wzgledna a czym jest sciazka bezwzgledna
+	- spodobala mi sie ilustracja z wytlumaczeniem czym jest sciezka wzgledna 
+	a czym jest sciazka bezwzgledna
 	- dowiedziałem sie ze nie ma pytan bez odpowiedzi :D
+
+--------------------------------------------------------------------------------
+
+14-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- dowiedziałem sie duzo fajnych zastosowan dotyczacych uprawnien 
+	do plikow/katalogow - super sprawa gdy sie zastanowi do czego mozna uzyc 
+	i w jakim celu :D
+	- dowiedziałem sie czo oznaczaja pierwsze znaki w pierwszej kolumnie
+	po wykonaniu ls -l
+	- zrozumiałem ze uprawnienia mozna zmieniaz gdzy plik/katalog jest 
+	juz utworzony nie koniecznie podczas tworzenia
+	- wielkosc znakow ma znaczenie!
+
+--------------------------------------------------------------------------------
+
+28-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- dowiedziałem sie jakie i jak działaja rozne przekierowania 
+	- np. przy "ps aux" kolejnosc podawania parametrow nie ma znaczenia
