@@ -72,7 +72,7 @@ przez co mozna dalej korzystac z terminala.
 Kolejna komenda to jobs. Sluzy ona do wyswietlania listy zadan (jobow; nie mylic z procesami)
 przeniesionych do tla.
 
-Przywroc program gedit (lub gimp, w kazdym razie nie uruchomiony jako ostatni program)
+1.Przywroc program gedit (lub gimp, w kazdym razie nie uruchomiony jako ostatni program)
 z tla na pierwszy plan. Skorzystaj z jobs aby dowiedziec sie jakie maja numery poszczegolne
 zadania dzialajace w tle.
 skladnia: fg %(numer jobu)
