@@ -1,0 +1,90 @@
+Zobacz co sie stanie:
+Uruchomiłem maszyne wirtualna ubuntu, a nastepnie otworzylem terminal.
+
+1.Wpisz komende gimp (lub np. edytor tekstowy gedit)
+* osboxes  ~  gimp
+
+Uruchomilem gimpa za pomoca terminala.
+
+2.W terminalu w ktorym sie to uruchomilo wcisnij CTRL+Z
+*CTRL+Z
+^Z
+[1]+  Stopped                 gimp
+Program zostal zatrzymany.
+
+3.Sprobuj cos wyklikac w gimpie / gedicie
+Program po zatrzymaniu nie reaguje na zadne klikniecia.
+
+4.Otworz dowolne inne okno i przesun je tak by czesciowo nachodzilo na okno 
+gimpa / gedita i potem je odsun by odslonic w pelni okno gimpa / gedita
+Otworzylem 'User Files' i przesunalem je aby czesciowo zaslonic okno gimpa, 
+a nastepnie odsunalem by odslonic w pelni okno gimpa. Nic sie nie wydarzylo,
+gimp nie zareagowal.
+
+Co sie stalo?
+Po użyciu kombinacji CTRL+Z program zostal wstrzymany i przeniesiony w tlo. Program przestal
+odpowiadac na cokolwiek, ale mozemy dalej korzystac z terminala, a takze otwierac nowe procesy.
+
+Komenda bg sluzy do wznowienia w tle wstrzymanego programu. Zobacz:
+
+1.Wpisz komende: bg
+* osboxes  ~  1  148  bg
+[1]+ gimp &
+Gimp zaczal regowac ale wciaz jest przeniesiony do tla.
+
+Komenda fg sluzy do wznowienia na pierwszym planie wstrzymanego wczesniej procesu. 
+Zobacz co sie stanie:
+
+1.Wpisz komende: fg
+* osboxes  ~  1  fg
+gimp
+
+Proces powrocil na pierwszy plan i nie da sie nic wpisac w terminal.
+
+Jak widac proces wrocil i mozna wcisnac na przyklad CTRL+C aby go zakonczyc.
+*CTRL+C
+^C/usr/lib/gimp/2.0/plug-ins/script-fu/script-fu terminated: Interrupt
+gimp: terminated: Interrupt
+Program po nacisnieciu CTRL+C zakonczyl swoje dzialanie.
+
+Zobacz:
+INFO: Jesli jakiegos programu nie ma to zastap go innym, ktory znasz.
+1.Wykonaj komende gimp &
+* osboxes  ~  gimp &
+[1] 4088
+Uruchomiony zostal gimp, ale dalej mozna korzystac z terminala.
+
+2.Wykonaj komende firefox &
+* osboxes  ~  1  firefox &
+[2] 4109
+Uruchomiony zostal firefox, ale dalej mozna korzystac z terminala.
+
+3.Wykonaj komende vlc &
+* osboxes  ~  2  vlc &
+[3] 4333
+Uruchomiony zostal vlc media player, ale dalej mozna korzystac z terminala.
+
+Zobacz co sie stalo (domyslam sie, ze uruchomily sie 3 programy, 
+a na terminalu ciagle mozna cos pisac).
+Wszystkie 3 programy uruchomily sie w tle, gdyz na koncu instrukcji zostal uzyty znak '&', 
+przez co mozna dalej korzystac z terminala.
+
+Kolejna komenda to jobs. Sluzy ona do wyswietlania listy zadan (jobow; nie mylic z procesami)
+przeniesionych do tla.
+
+Przywroc program gedit (lub gimp, w kazdym razie nie uruchomiony jako ostatni program)
+z tla na pierwszy plan. Skorzystaj z jobs aby dowiedziec sie jakie maja numery poszczegolne
+zadania dzialajace w tle.
+skladnia: fg %(numer jobu)
+* osboxes  ~  3  jobs
+[1]   Running                 gimp &
+[2]-  Running                 firefox &
+[3]+  Running                 vlc &
+Skorzystalem z komendy jobs do wyswietlenia listy zadan przeniesionych do tla.
+Stad wiem, ze numer joba firefox to 2.
+*osboxes  ~  3  fg %2
+firefox
+
+Korzystajac z komendy "fg %2" przywrocilem program firefox z tla na pierwszy plan, 
+a reszta programow dalej dziala w tle.
+

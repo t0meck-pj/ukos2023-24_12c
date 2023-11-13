@@ -1,0 +1,69 @@
+1.Przejdz do swojego katalogu domowego.
+*s30899@szuflandia22:~$ cd ~
+s30899@szuflandia22:~$
+Przeszedłem do swojego katalogu domowego.
+
+2.Wydaj komende: ls -a
+*s30899@szuflandia22:~$ ls -a
+.   .bash_history  .bashrc  .config  .minttyrc  public_html       ukos
+..  .bash_logout   .cache   .local   .profile   .selected_editor  .viminfo
+Komenda wypisala zawartosc biezacego katalogu, wlacznie z ukrytymi plikami i katalogami.
+
+3.Zobacz ile plików wypisalo.
+Wypisalo 14 plikow.
+
+4.Teraz wydaj komende: ls -a | grep D
+HINT: Jesli nie masz zadnego pliku czy katalogu z literka D to wybierz inna literke, 
+ktora juz bedzie w nazwie jakiegos pliku czy katalogu.
+*s30899@szuflandia22:~$ ls -a | grep p
+.profile
+public_html
+Wypisane zostaly pliki i katalogi zawierajace litere 'p'.
+
+5.Zobacz ile teraz jest wynikow. Co sie stalo?
+HINT: Otoz program grep sluzy do wyszukiwania wierszy w pliku lub strumieniu wejsciowym, 
+ktore pasuja do wzorca. Tu podano wzorzec jako "D".
+Teraz sa tylko 2 wyniki. Komenda uzyla programu grep do filtrowania wynikow polecenia 'ls -a' i zwrocila
+te, ktora pasuja do podanego wzorca, czyli "p".
+
+6.A teraz wykonaj komende: ls -a | grep D > lista_plikow_z_literka_d.txt
+*s30899@szuflandia22:~$ ls -a | grep p > lista_plikow_z_literka_p.txt
+Na pierwszy rzut oka nic sie nie stalo.
+
+7.Zobacz czy utworzyl sie jakis plik?
+Jaka jest jego tresc?
+Co znaczy | oraz co znaczy > ?
+*s30899@szuflandia22:~$ ls
+lista_plikow_z_literka_p.txt  public_html  ukos
+*s30899@szuflandia22:~$ cat lista_plikow_z_literka_p.txt
+lista_plikow_z_literka_p.txt
+.profile
+public_html
+Zostal utworzy plik lista_plikow_z_literka_p.txt. Znajduje sie w nim lista plikow i katalogow zawierajacych litere 'p',
+wlacznie z tym utworzonym, poniewaz w nazwie zawiera literke 'p'.
+Operator '|' oznacza przekierowanie wyniku jednej koomendy jako wejscie do drugiej. Natomiast operator '>' sluzy
+do przekierowania standarowego wyjscia do pliku, nadpisujac istniejacy plik lub tworzac nowy.
+
+8.A teraz wykonaj komende: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+*s30899@szuflandia22:~$ ls -a | grep p | tee lista_plikow_z_literka_p_2.txt
+lista_plikow_z_literka_p_2.txt
+lista_plikow_z_literka_p.txt
+.profile
+public_html
+Zostaly wypisane pliki i katalogi zawierajace litere 'p'.
+
+9.Zobacz czy plik sie utworzyl?
+Jaka jest tresc wzgledem poprzedniej proby bez programu tee?
+Co robi program tee?
+*s30899@szuflandia22:~$ ls
+lista_plikow_z_literka_p_2.txt  lista_plikow_z_literka_p.txt  public_html  ukos
+*s30899@szuflandia22:~$ cat lista_plikow_z_literka_p_2.txt
+lista_plikow_z_literka_p_2.txt
+lista_plikow_z_literka_p.txt
+.profile
+public_html
+Utworzyl sie plik lista_plikow_z_literka_p_2.txt. Zawartosc pliku jest identyczna z poprzednim plikiem i rowniez zostal uwzgledniony 
+plik, ktory powstal podczas wykonywania komendy, poniewaz zawiera w sobie literke 'p'. 
+Program 'tee' odczytuje wyniki ze standarowego wejscia jednoczesnie przekierowuje je do wskazanego pliku i wypisuje je 
+na standardowym wyjsciu.
+
