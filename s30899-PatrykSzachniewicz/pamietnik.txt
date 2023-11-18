@@ -29,3 +29,23 @@ opanowalem to)
 *jak zmiana uprawnien dostepu wplywa na przemieszanie sie po strukturze katalogow (zrozumiale)
 *na czym polega rekurencja (logiczne ale na poczatku nie zrozumialem)
 
+2023.10.28
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*sa 3 strumienie: wejscia- klawiatura, wyjscia- ekran, wyjscia bledow- ekran (zrozumiale i logiczne)
+*jak poprawnie robic pull requesta (na szczescie juz wczesniej nauczylem sie tego)
+*najpierw zawsze korzystamy z manuala, zeby dowiedziec sie co robi nowe polecenie (logiczne)
+*filtrowanie wierszy pasujacych do wzorca (na poczatku nie zorientowalem sie, ze sa to nie tylko
+te, ktore zaczynaja sie od podanego wzorca, tylko te ktore zawieraja w sobie podany wzorzec)
+*przekierowanie do pliku (proste)
+*jak wyswietlac liste procesow (troche nie zrozumialem na poczatku)
+*jak szybciej wyszukiwac w manualu (przydatne)
+*przewaznie uzywamy notacji UNIX (zakodowane w glowie)
+*szerokie wyjscie do 'ps', ktore moze byc przydatne (zrozumiale)
+*zestaw 2 zadan nie trzeba robic w terminalu graficznym
+*joby a procesy to nie to samo, kazdy job jest procesem, ale nie kazdy proces 
+jest jobem (do zapamietania)
+*'kill' sluzy do wysylania sygnalu (zakodowane w glowie)
+*jak korzystac z kombinacji klawiszy do przerywania programu, nie zawsze dziala, ale przewaznie tak
+*roznica pomiedzy 'CTRL+C' a 'CTRL+D' (proste)
+*na nastepne cwiczenia przygotowac pytania, na temat niezrozumialych przez nas zagadnien
+

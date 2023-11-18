@@ -1,0 +1,63 @@
+1.Uruchom komende cat be parametrow
+*s30899@szuflandia22:~$ cat
+
+Program oczekuje na dane wejsciowe z klawiatury.
+
+2.Wcisnij CTRL+C i zobacz co sie stanie
+*CTRL+C
+s30899@szuflandia22:~$
+Program 'cat' zakonczyl swoje dzialanie.
+
+Zobacz co się stanie:
+
+1.Wydaj komendę cat > wynik3_1.txt
+*s30899@szuflandia22:~$ cat > wynik3_1.txt
+
+Program czeka na wprowadzenie danych wejsciowych z klawiatury.
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+*witaj
+Wpisalem tekst bez zatwierdzenia go enterem.
+
+3.Wciśnij CTRL+C
+*CTRL+C
+s30899@szuflandia22:~$
+Program 'cat' zakonczyl swoje dzialanie.
+
+4.Zobacz co się znalazło w pliku wynik3_1.txt
+*s30899@szuflandia22:~$ cat wynik3_1.txt
+s30899@szuflandia22:~$
+Plik zostal stworzony ale jest pusty. Dane nie zostaly zapisane, bo program zostal zakonczony bez mozliwosci przetworzenia
+danych w buforze.
+
+1.Wydaj komendę cat > wynik3_2.txt
+*s30899@szuflandia22:~$ cat > wynik3_2.txt
+
+Program czeka na wprowadzenie danych wejsciowych z klawiatury.
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+*witaj
+Wpisalem tekst bez zatwierdzenia go enterem.
+
+3.Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+*CTRL+D x2
+witajs30899@szuflandia22:~$
+Program 'cat' zakonczyl swoje dzialanie.
+
+4.Zobacz co się znalazło w pliku wynik3_2.txt
+*s30899@szuflandia22:~$ cat wynik3_2.txt
+witajs30899@szuflandia22:~$
+Plik zostal stworzony, a w nim znajduje sie wpisane slowo. Program zostal zakonczony, ale mogl przetworzyc dane, ktore byly
+w buforze.
+
+W opisie rozwiązania zadania umieść:
+
+jak rozumiesz co się stało?
+czym oba te przykłady się różnią?
+DLACZEGO się różnią?
+
+W przypadku uzycia CTRL+C proces jest natychmiast zatrzymywany, a wprowadzone dane do tego momentu zostaja utracone.
+Natomiast w drugim przypadku CTRL+D sygnalizuje koniec pliku, co powoduje, ze program zamyka strumien wejsciowy, a nastepnie
+przetwarza to co zostalo wprowadzone przed zamknieciem strumienia wejsciowego.
+Roznica pomiedzy nimi jest taka, ze CTRL+C przerywa aktywny proces, natomiast CTRL+D sygnalizuje koniec pliku.
+

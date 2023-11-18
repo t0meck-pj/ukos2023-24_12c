@@ -1,0 +1,46 @@
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+Otworzylem dwa terminale putty.
+*s30899@szuflandia22:~$ vim test
+Uruchomilem na jednym z nich vim.
+
+2.Zobacz jaki ma on PID - przyda sie do tego komenda ps
+*s30899@szuflandia22:~$ ps aux | grep vim
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+s30899   2634592  0.0  0.2  14388  9128 pts/15   S+   22:22   0:00 vim test
+s30899   2634666  0.0  0.0   6256   708 pts/14   S+   22:23   0:00 grep vim
+Na drugim terminalu uzylem komendy do wypisania procesow zawierajacych w sobie slowo vim.
+Stad moge odczytac, ze PID dla vim to 2634592.
+
+3.Wydaj komende kill w taki sposob, aby ten edytor sie wylaczyl. Zobacz czy to dziala.
+UWAGA: Niektore programy przechwytuja sygnaly i moga je czesciowo blokowac.
+	Jesli program nie wylacza sie, to zobacz jaka jest jego reakcja.
+	Zobacz czy mozesz wyslac do niego SIGKILL (gdzie sprawdzisz jak to zrobic?)
+*s30899@szuflandia22:~$ kill 2634592
+Po wydaniu komendy, vim w pierwszym terminalu wylaczyl sie.
+
+4.Zobacz dzialanie komendy killall bash
+*s30899@szuflandia22:~$ killall bash
+Nic sie nie stalo, poniewaz 'killall' domyslnie wysyla sygnal TERM, a 'bash' dziala w takim spodob, ze jak dostanie taki sygnal,
+a jest biezaca powloka, ktora jest uzywana to ten sygnal zostaje zignorowany.
+
+5.Zobacz czy kill zadziala dla dowolnego procesu.
+*s30899@szuflandia22:~$ sleep 300 &
+[1] 2637280
+*s30899@szuflandia22:~$ ps aux | grep sleep
+t0meck    637965  0.0  0.0   5364    68 ?        Ss   sie28   0:00 sleep inf
+s32160   2219592  0.0  0.0   5364   368 ?        S    paź28   0:00 sleep inf
+s29869   2219598  0.0  0.0   5364   412 ?        S    paź28   0:00 sleep inf
+s30899   2637280  0.0  0.0   5364   560 pts/14   S    23:11   0:00 sleep 300
+s30899   2637282  0.0  0.0   6256   704 pts/14   S+   23:11   0:00 grep sleep
+*s30899@szuflandia22:~$ kill 2219592
+-bash: kill: (2219592) - Operacja niedozwolona
+*s30899@szuflandia22:~$ kill 2637280
+*s30899@szuflandia22:~$ ps aux | grep sleep
+t0meck    637965  0.0  0.0   5364    68 ?        Ss   sie28   0:00 sleep inf
+s32160   2219592  0.0  0.0   5364   368 ?        S    paź28   0:00 sleep inf
+s29869   2219598  0.0  0.0   5364   412 ?        S    paź28   0:00 sleep inf
+s30899   2637305  0.0  0.0   6256   704 pts/14   S+   23:13   0:00 grep sleep
+[1]+  Zakończony             sleep 300
+Polecenie 'kill' zadziala dla dowolnego procesu, jezeli mam do niego odpowiednie uprawnienia, ale efekt zalezy takze od tego czy 
+dany proces reaguje na sygnal TERM, ktory domyslnie jest wysylany przez komende 'kill'.
+
