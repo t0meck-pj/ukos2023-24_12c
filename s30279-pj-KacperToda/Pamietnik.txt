@@ -1,0 +1,43 @@
+30-09-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+
+	- działania i znaczenia githuba
+	- jak zalogować się do szuflandii za pomocą putty i ssh
+	- komend do linuxa
+	- różnicy między ścieżka bezwzględną i względną
+	- zasady zaliczenia
+	- komenda man (instrukcja do komend)
+	- zalozenie konta na github
+
+--------------------------------------------------------------------------------
+
+14-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+
+	- jak wykonywac zadania
+	- jak ustawić uprawnienia dla plików za pomocą polecenia chmod 
+	- dlaczego małe i duże litery mają znaczenie
+	- żeby nie dawać wszystkich uprawnień ludziom (zakładanie zamtuzu)
+	- fajnie ujęte na lekcji została anegdota z zbudowaniem domu w czyimś domu (wolonoć tomku w swoim domku)
+
+--------------------------------------------------------------------------------
+
+28-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+
+	- czym są i jak działają przekierowania | oraz >> 
+	- komendy ps oraz kilku parametrów które można z nią stosować
+	- szukania plików i procesów za pomocą grep
+	- szukajac informacji na temat znajdowania procesow bash natknalem sie na inne uzycie grepa na znajdowanie plików/procesów
+	- jak wyswietlac liste procesow
+
+--------------------------------------------------------------------------------
+
+18-11-2023
+Moj kochany na dzisiejszych zajeciach nauczylem sie:
+	
+	- co to jest quota (przydzial przestrzeni dyskowej na danego uzytkownika)
+	- oraz przypomniałem sobie wszystkie informacje do kolokwium
+	- w domu musze zrobić zadania oraz utrwalić wiedzę
+
+--------------------------------------------------------------------------------

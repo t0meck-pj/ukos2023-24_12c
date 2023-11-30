@@ -1,0 +1,41 @@
+Zadanie
+W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając, a następnie zmieniając swoją maskę trybu pliku
+i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik),
+a później sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l). 
+Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski jest wykonywana ? 
+
+s30279@szuflandia22:~$ man umask
+s30279@szuflandia22:~$ touch test.txt
+s30279@szuflandia22:~$ ls -l
+-rw-r--r-- 1 s30279 domain users    0 2023-11-30  test.txt
+
+s30279@szuflandia22:~$ umask 077
+s30279@szuflandia22:~$ touch test2.txt
+s30279@szuflandia22:~$ ls -l
+-rw------- 1 s30279 domain users    0 11-30 22:11 test2.txt
+
+s30279@szuflandia22:~$ touch test3.txt
+s30279@szuflandia22:~$ ls -l
+---------- 1 s30279 domain users    0 2023-11-30  test3.txt
+
+s30279@szuflandia22:~$ umask -S
+u=rwx,g=,o=
+
+s30279@szuflandia22:~$ umask 000
+s30279@szuflandia22:~$ umask -S
+u=rwx,g=rwx,o=rwx
+
+s30279@szuflandia22:~$ umask 000
+s30279@szuflandia22:~$ umask -S
+u=rwx,g=rwx,o=rwx
+s30279@szuflandia22:~$ umask 222
+s30279@szuflandia22:~$ umask -S
+u=rx,g=rx,o=rx
+s30279@szuflandia22:~$ touch test5.txt
+s30279@szuflandia22:~$ ls -l
+-r--r--r-- 1 s30279 domain users    0 2023-11-30  test5.txt
+
+
+Umask jest narzędziem służącym do kontrolowania domyślnych uprawnień nadawanych nowo tworzonym plikom w systemie Unix/Linux.
+Poprzez użycie komendy umask 222, odejmujemy drugi bit, który odpowiada za możliwość zapisu pliku dla wszystkich użytkowników.
+Natomiast poprzez umask 444, pozbawiamy możliwości odczytu dla każdego nowego pliku przez wszystkich użytkowników.
