@@ -1,0 +1,52 @@
+1.Uruchom komendę cat be parametrów
+
+*Program pozwala na wpisanie danych
+
+2.Wciśnij CTRL+C i zobacz co się stanie
+
+*Program cat zatrzymał się
+
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
+
+Zobacz co się stanie:
+
+1.Wydaj komendę cat > wynik3_1.txt
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+
+3.Wciśnij CTRL+C
+
+4.Zobacz co się znalazło w pliku wynik3_1.txt
+
+s30404@szuflandia22:~$ cat > wynik3_1.txt
+witaj^C
+s30404@szuflandia22:~$ cat wynik3_1.txt
+
+*plik jest pusty
+
+Wydaj komendę cat > wynik3_2.txt
+
+1.Wpisz tekst witaj bez wciskania klawisza Enter
+
+2.Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+3.Zobacz co się znalazło w pliku wynik3_2.txt
+
+s30404@szuflandia22:~$ cat > wynik3_2.txt
+witaj
+s30404@szuflandia22:~$ cat wynik3_2.txt
+witaj
+s30404@szuflandia22:~$
+
+*plik wynik3_2.txt ma w sobie witaj
+
+4.W opisie rozwiązania zadania umieść:
+
+jak rozumiesz co się stało?
+
+czym oba te przykłady się różnią?
+
+DLACZEGO się różnią?
+
+Gdy użyliśmy CTRL i C proces został natychmiast zatrzymywany czego skutkiem było utracenie wprowadzonych danych
+CTRL i D natomiast zapisał wprowadzone przez nas dane i zakończył swoje działanie

@@ -1,0 +1,54 @@
+30-09-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+
+	- działania i znaczenia githuba
+	- jak zalogować się do szuflandi za pomocą putty i ssh
+	- do czego mniej więcej służa katalogi boot, bin, opt, tmp itd
+	- nowe komendy takie jak cd, mkdir, rm
+	- różnicy między ścieżka bezwzględną i względną
+
+--------------------------------------------------------------------------------
+
+14-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+
+	- znaczenia ustawiania odpowiednich uprawnień dla zapewnienia bezpieczeństwa moim plikom
+	- jak ustawić uprawnienia dla plików za pomocą polecenia chmod 
+	- dlaczego małe i duże litery mają znaczenie
+
+--------------------------------------------------------------------------------
+
+28-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+
+	- czym są i jak działają przekierowania | oraz >> 
+	- komendy ps oraz kilku parametrów które można z nią stosować
+
+--------------------------------------------------------------------------------
+
+26-11-2023
+Moj kochany pamietniczku wykonując zadania z Linux - Wstęp do konsoli nauczylem sie:
+
+	-różnicy pomiędzy ścieżkami relatywnymi i bezględnymi
+	-poruszania się po katalogach
+	-usuwania poszczególnej grupy plików
+
+--------------------------------------------------------------------------------
+
+27-11-2023
+Moj kochany pamietniczku wykonując zadania z Uprawnienia dostępu nauczylem sie:
+
+	-Działania uprawnień i tworzenia "kukułczego jaja"
+	-Działania podkatalogu public_html i uprawnień potrzebnych do otworzeniu jego zawartości
+	-Działania polecenia unmask
+
+--------------------------------------------------------------------------------
+
+28-11-2023
+Moj kochany pamietniczku wykonując zadania z Procesy i Strumienie nauczylem sie:
+
+	-Działania komendy ps oraz zastosowania jej parametrów a, u, x
+	-Działania komendy kill oraz znaczenia indentyfikatora PId każdego procesu
+	-Różnicę między CTRL + C a CTRL + D
+
+--------------------------------------------------------------------------------

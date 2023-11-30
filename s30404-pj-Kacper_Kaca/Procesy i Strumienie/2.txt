@@ -1,0 +1,51 @@
+INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+
+PID jest to indentyfikator procesu ([P]rocess [ID]entificator). Za jego pomocą możesz odwołać się do danego procesu za pomocą różnych mechanizmów systemu. Jednym z takich mechanizmów jest wysłanie sygnału (na przykład zakończenia) do procesu. Do tego można użyć komendy kill (może brzmi ona dość brutalnie, ale cóż, informatyka nie jest dla mięczaków). Komenda ta domyślnie wysyła sygnał zakończenia procesu do zadanego procesu.
+
+Zadanie:
+
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+*Uruchomiłem vim
+
+2.Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+s30404@szuflandia22:~$ ps aux | grep vim
+s30404   3557123  0.0  0.2  14088  8752 pts/26   S+   19:56   0:00 vim
+
+*Pid mojego procesu to 3557123
+
+3.Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+
+s30404@szuflandia22:~$ kill 3557123
+
+*Widzę że vim wyłączył się na drugim terminalu
+
+4.Zobacz działanie komendy killall bash
+
+s30404@szuflandia22:~$ killall bash
+bash(3555361): Operacja niedozwolona
+bash(3556566): Operacja niedozwolona
+bash(3557039): Operacja niedozwolona
+
+*Wynikiem komendy jest Operacja niedozwolona ponieważ komenda kill wysyła sygnał TERM który jest ignorowany przez bash
+
+5.Zobacz czy kill zadziała dla dowolnego procesu.
+
+s30404@szuflandia22:~$ sleep 1000
+s30404@szuflandia22:~$ ps aux | grep sleep
+t0meck    637965  0.0  0.0   5364    68 ?        Ss   sie28   0:00 sleep inf
+s32160   2219592  0.0  0.0   5364   348 ?        S    paź28   0:00 sleep inf
+s29869   2219598  0.0  0.0   5364   392 ?        S    paź28   0:00 sleep inf
+s30404   3558351  0.0  0.0   5364   556 pts/17   T    20:10   0:00 sleep 1000
+s30404   3558361  0.0  0.0   6256   644 pts/17   S+   20:11   0:00 grep sleep
+s30404@szuflandia22:~$ kill 3558351
+s30404@szuflandia22:~$ ps aux | grep sleep
+t0meck    637965  0.0  0.0   5364    68 ?        Ss   sie28   0:00 sleep inf
+s32160   2219592  0.0  0.0   5364   348 ?        S    paź28   0:00 sleep inf
+s29869   2219598  0.0  0.0   5364   392 ?        S    paź28   0:00 sleep inf
+s30404   3558351  0.0  0.0   5364   556 pts/17   T    20:10   0:00 sleep 1000
+s30404   3558367  0.0  0.0   6256   640 pts/17   S+   20:12   0:00 grep sleep
+
+*Komenda kill nie wstanie zakończyć każdego procesu ponieważ nie do każdego procesu będziemy mieli odpowiednie uprawnienia oraz nie każdy
+ proces odpowiada na sygnał TERM wysyłany przez kill
