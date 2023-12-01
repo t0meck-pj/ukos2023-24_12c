@@ -39,10 +39,10 @@ sciezki bezwzglednej (absolutnej)
 |      ODPOWIEDZ/KOMENTARZ:   |
 |-----------------------------|
 sciezka wzgledna (relatywna): 
-    cd ../../ala/ma/ale
+    cd ../../
 
 sciezka bezwzgledna (absolutna):
-    cd /tmp/ukos/ala/ma/ale
+    cd /tmp/ukos/ala
 
 --------------------------------------------------------------------------------
 
@@ -57,10 +57,10 @@ Podaj rozwiazania uzywajac sciezek absolutnych i relatywnych.
 |      ODPOWIEDZ/KOMENTARZ:   |
 |-----------------------------|
 Utworzenie poddrzewa katalogow z wykorzystaniem sciezki wzglednej (relatywnej):
-    mkdir -p ../../ala/ma/ale/jan/kowalski
+    mkdir -p ../../../kot/ma/ale/jan/kowalski
 
 Utworzenie poddrzewa katalogow z wykorzystaniem sciezki bezwzglednej (absolutnej):
-    mkdir -p /tmp/ukos/ala/ma/ale/jan/kowalski
+    mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
 
 --------------------------------------------------------------------------------
 
@@ -76,10 +76,10 @@ zrodlo (sciezka absolutna), miejsce docelowe (sciezka wzgledna)
 |      ODPOWIEDZ/KOMENTARZ:   |
 |-----------------------------|
 Przenoszenie z uzyciem sciezki wzglednej (relatywnej):
-    mv ../../ala ../../i
+    mv ../../../kot/ma/ale ../../i
 
 Przenoszenie z uzyciem sciezki bezwzglednej (absolutnej):
-    mv /tmp/ukos/ala /tmp/ukos/ala/i
+    mv /tmp/ukos/kot/ma/ale /tmp/ukos/ala/i
 
 --------------------------------------------------------------------------------
 
@@ -93,10 +93,7 @@ Jak zamknac program, ktory nie reaguje na ctrl+c ?
 |-----------------------------|
 Uzyc kombinacji klawiszy Ctrl+Z, która zatrzymuje biezacy proces. Nastepnie uzyc 
 komendy kill, aby zakończyć proces.
-Ctrl+Z
-kill %1
 
-lub
 ps aux | grep nazwa_programu
 kill -9 PID
 
@@ -111,8 +108,8 @@ Jak wypisac wszystkie pliki w biezacym katalogu, ktorych nazwa zaczyna się od a
 |-----------------------------|
 |      ODPOWIEDZ/KOMENTARZ:   |
 |-----------------------------|
-ls -l al*
-ls -l | grep '^al'
+ls -l al* | grep -v /
+ls -l | grep '^-' | grep 'al'
 find . -type f -name al*
 
 --------------------------------------------------------------------------------
@@ -138,13 +135,13 @@ Wszystkie wersje powinny byc zapisane w jednym poleceniu (bez uzywania && czy | 
 uprawnienia dla katalogu ala to 755 (rwxr-xr-x)
 
 Notacja osemkowa (oktalna):
-    chmod 711 ala
+    chmod 751 /tmp/ukos/ala
 
 Notacja literowa ze znakiem rownosci:
-    chmod u=rwx,go= ala
+    chmod u=rwx,g=rx,o=x /tmp/ukos/ala
 
 Notacja literowa z plusami i minusami:
-    chmod u+rwx,go= ala
+    chmod ugo+x,ug+r,u+w,go-w,o-r /tmp/ukos/ala
 
 --------------------------------------------------------------------------------
 
