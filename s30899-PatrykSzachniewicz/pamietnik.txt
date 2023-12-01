@@ -51,7 +51,7 @@ jest jobem (do zapamietania)
 
 2023.11.18
 Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
-*jakie moga byc powody braku mozliwosci utworzenia pliku ns swoim koncie uczelnianym (logiczne)
+*jakie moga byc powody braku mozliwosci utworzenia pliku na swoim koncie uczelnianym (logiczne)
 *quota, czyli przydzial przestrzeni dyskowej na danego uzytkownika (zakodowane w glowie)
 *w odpowiedziach na zadania trzeba uwazac na literowki bo moga uniewaznic odpowiedz
 *podczas tworzenia zagniezdzonych katalogow trzeba pamietac o parametrze, ktory umozliwi nam to
