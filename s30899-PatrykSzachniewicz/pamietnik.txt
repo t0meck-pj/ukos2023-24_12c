@@ -49,3 +49,22 @@ jest jobem (do zapamietania)
 *roznica pomiedzy 'CTRL+C' a 'CTRL+D' (proste)
 *na nastepne cwiczenia przygotowac pytania, na temat niezrozumialych przez nas zagadnien
 
+2023.11.18
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*jakie moga byc powody braku mozliwosci utworzenia pliku ns swoim koncie uczelnianym (logiczne)
+*quota, czyli przydzial przestrzeni dyskowej na danego uzytkownika (zakodowane w glowie)
+*w odpowiedziach na zadania trzeba uwazac na literowki bo moga uniewaznic odpowiedz
+*podczas tworzenia zagniezdzonych katalogow trzeba pamietac o parametrze, ktory umozliwi nam to
+*czesto uzywane parametru niektorych polecen trzeba znac na pamiec (zakodowane w glowie)
+*jak przeniesc katalog (do zapamietania)
+*zamykanie programu (przydatne)
+*jak wypisac pliki pasujace do podanego wzorca (trzeba przecwiczyc)
+*wyrazenia regularne (malo zrozumiale)
+*nadawanie uprawnien, jezeli uzywamy wielu uprawnien na raz w jednym poleceniu nie dajemy spacji przed i po przecinku, 
+a literki mozemy ze soba laczyc, pamietamy takze o uprawnieniach poczatkowych, jezli nie ma podanych, a korzystamy
+z plusow i minusow to trzeba jeszcze odjac nie pasujace (dobre przypomnienie)
+*nie mozna ustawic uprawnien przy pomocy samych bitow (warto wiedziec)
+*tworzenie pliku z lista plikow w biezacym katalogu (do przecwiczenia)
+*jak przyspieszyc wpisywanie komend w terminalu (proste)
+*uruchomienie programu aby nie blokowal terminalu (przydatne)
+
