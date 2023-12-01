@@ -77,14 +77,14 @@ Wykonywanie polecenia chmod w przypadku braku uprawnien:
 
 Przeskakiwanie do katalogu XYZ, jesli brak uprawnien do ABC, ale mamy uprawnienia do XYZ:
 	Jesli mamy uprawnienia do katalogu XYZ, ale brak uprawnien do katalogu ABC, 
-	mozemy bezposrednio wejsc do katalogu XYZ za pomoca podania sciezki bezwzgladnej 
-	(cd /sciezka/do/ABC/XYZ)
+	nie możemy bezpośrednio wejść do katalogu XYZ poprzez podanie pełnej ścieżki 
+	(/sciezka/do/ABC/XYZ), jeśli brakuje uprawnień do katalogu ABC. Prawa dostępu 
+	do katalogów są hierarchiczne, więc jeśli nie mamy dostępu do katalogu 
+	nadrzędnego (ABC), to nie będziemy w stanie przejść do katalogu podrzędnego (XYZ) 
+	poprzez podanie pełnej ścieżki.
 
 Powrot korzystajac z polecenia cd -:
-	Polecenie cd - sluzy do powrotu do poprzedniego katalogu. Bez wzgledu 
-	na obecne uprawnienia, jesli wczesniej bylismy w innym katalogu, mozemy 
-	wrocic do niego za pomocą polecenia cd -. To polecenie nie wymaga specjalnych 
-	uprawnien dostepu do katalogu.
+	Nie uda sie to poniewaz nie mamy uprawnien do katalogu nadrzednego (ABC)
 
 --------------------------------------------------------------------------------
 
@@ -143,9 +143,9 @@ pod adresem http://szuflandia.pjwstk.edu.pl/~twój_login/strona.html
 |-----------------------------|
 |      ODPOWIEDZ/KOMENTARZ:   |
 |-----------------------------|
-chmod 711 ~  						--> minimalne uprawnienia do katalogu domowego, uzytkownik ma pelne uprawnienia, ale inni tylko dostep do katalogu
-chmod 755 public_html  				--> minimalne uprawnienia do katalogu public_html, uzytkownik ma pełne uprawnienia, a inni tylko do odczytu i wykonania
-chmod 644 public_html/strona.html  	--> minimalne uprawnienia do pliku, uzytkownik ma pelne uprawnienia, a inni tylko do odczytu
+chmod 001 ~  						--> minimalne uprawnienia do katalogu domowego, prawo do wejscia dla innych uzytkownikow
+chmod 001 public_html  				--> minimalne uprawnienia do katalogu public_html, prawo do wejscia dla innych uzytkownikow
+chmod 004 public_html/strona.html  	--> minimalne uprawnienia do pliku, prawo do odczytu dla innych uzytkownikow
 
 --------------------------------------------------------------------------------
 
