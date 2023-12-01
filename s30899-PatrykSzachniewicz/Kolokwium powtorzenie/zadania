@@ -61,8 +61,9 @@ W przypadku kiedy program nie reaguje na ctrl+c a chcemy go zamknąć należy:
 5.Jak wypisac wszystkie pliki w biezacym katalogu, ktorych nazwa zaczyna sie od al?
 
 Mozna zrobic to uzywajac na przyklad:
-* ls al*
-* find . -type f -name al*
+* ls -pd al* | grep -v / 
+* ls -p | grep '^al' | grep -v /
+* find . -type f -name 'al*'
 
 6a.Nadaj uprawnienia do katalogu ala tak aby:
 -kazdy mogl do niego wejsc
@@ -101,6 +102,8 @@ W celu utworzenia pliku z lista plikow w biezacym katalogu, mozna uzyc jedna z p
 * ls | tee plik.txt
 * ls -p | grep -v / | tee plik.txt
 * ls | dd of=plik.txt
+* echo * > lista_plikow.txt
+* find . -maxdepth 1 -type f ! -name ".*" -exec basename {} \; > lista_plikow.txt
 
 8.Jak przyspieszyc wpisywanie komend w terminalu? Jaki klawisz pozwala na uzupelnianie komend?
 
