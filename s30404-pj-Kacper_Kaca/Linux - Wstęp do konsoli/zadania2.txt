@@ -1,0 +1,140 @@
+1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+
+s30404@szuflandia22:~$ mkdir ukos
+s30404@szuflandia22:~$ cd ukos
+s30404@szuflandia22:~/ukos$ mkdir klamka
+s30404@szuflandia22:~/ukos$ mkdir katalog
+s30404@szuflandia22:~/ukos$ cd katalog
+s30404@szuflandia22:~/ukos/katalog$ mkdir katalog2
+s30404@szuflandia22:~/ukos/katalog$ cd katalog2
+s30404@szuflandia22:~/ukos/katalog/katalog2$ mkdir katalog3
+s30404@szuflandia22:~/ukos/katalog/katalog2$ cd ../../../
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+│   └── katalog2
+│       └── katalog3
+└── klamka
+
+*Wiem jak lepiej przemieszczać się po katalogach oraz znaczenie komendy mkdir
+
+2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+s30404@szuflandia22:~$ cd ukos/klamka
+s30404@szuflandia22:~/ukos/klamka$ touch zajęcia2.txt
+s30404@szuflandia22:~/ukos/klamka$ touch zajęcia2.log
+s30404@szuflandia22:~/ukos/klamka$ touch inny.txt
+s30404@szuflandia22:~/ukos/klamka$ touch nowy.txt
+s30404@szuflandia22:~/ukos/klamka$ cd ../../
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+│   └── katalog2
+│       └── katalog3
+└── klamka
+    ├── inny.txt
+    ├── nowy.txt
+    ├── zajęcia2.log
+    └── zajęcia2.txt
+
+*Wiem jak tworzyć pliki przy pomocy komendy touch
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+
+s30404@szuflandia22:~$ mkdir -p ./ukos/to/jest/długa/nazwa
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+│   └── katalog2
+│       └── katalog3
+├── klamka
+│   ├── inny.txt
+│   ├── nowy.txt
+│   ├── zajęcia2.log
+│   └── zajęcia2.txt
+└── to
+    └── jest
+        └── długa
+            └── nazwa
+
+*Wiem jak tworzyć wiele katalogów zagnieżdżonych w somie dzieki komendzie mkdir z parametrem -p
+
+4.następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+s30404@szuflandia22:~$ touch ukos/to/jest/długa/nazwa/dane.txt
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+│   └── katalog2
+│       └── katalog3
+├── klamka
+│   ├── inny.txt
+│   ├── nowy.txt
+│   ├── zajęcia2.log
+│   └── zajęcia2.txt
+└── to
+    └── jest
+        └── długa
+            └── nazwa
+                └── dane.txt
+
+*Wiem jak tworzyć pliki w różnych lokalizacjach
+
+
+4.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+s30404@szuflandia22:~$ rm ukos/klamka/*.txt
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+│   └── katalog2
+│       └── katalog3
+├── klamka
+│   └── zajęcia2.log
+└── to
+    └── jest
+        └── długa
+            └── nazwa
+                └── dane.txt
+
+*Wiem jak wskazać daną grupę plików dzięki użyciu *
+
+5.Usuń katalog ukos/katalog/katalog2
+
+s30404@szuflandia22:~$ rm -r ukos/katalog/katalog2
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+├── klamka
+│   └── zajęcia2.log
+└── to
+    └── jest
+        └── długa
+            └── nazwa
+                └── dane.txt
+
+*Wiem jak usunąć katalog który nie jest pusty
+
+
+6.Usuń cały katalog klamka za pomocą jednego polecenia
+
+s30404@szuflandia22:~$ rm -r ukos/klamka
+s30404@szuflandia22:~$ tree ukos
+ukos
+├── katalog
+└── to
+    └── jest
+        └── długa
+            └── nazwa
+                └── dane.txt

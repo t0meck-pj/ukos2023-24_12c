@@ -1,0 +1,142 @@
+Zadania wykonałem wraz Kacprem Todą
+
+1.Utworzyć we własnym katalogu domowym niedużą strukturę podkatalogów i plików tekstowych. Przydzielić różne uprawnienia dostępu, następnie spróbować wejść do katalogów domowych innych uczestników zajęć i sprawdzić, które z obiektów są tam dla nas dostępne (i w jakim sensie). Spróbować utworzyć własny plik w cudzym katalogu ("kukułcze jajko") oraz spróbować usunąć cudzy plik we własnym katalogu (co można zaobserwować ?). Wypróbować powyższe operacje:
+
+-w trybie tekstowym;
+
+-przy użyciu programu Midnight Commander (mc);
+
+s30404@szuflandia22:~$ mkdir test
+s30404@szuflandia22:~$ cd test
+s30404@szuflandia22:~/test$ mkdir -p ./test2/test3
+s30404@szuflandia22:~/test$ mkdir test4
+s30404@szuflandia22:~/test$ cd ../
+s30404@szuflandia22:~$ touch test/test4/plik1.txt
+s30404@szuflandia22:~$ touch test/test2/test3/plik2.txt
+s30404@szuflandia22:~$ tree test
+test
+├── test2
+│   └── test3
+│       └── plik2.txt
+└── test4
+    └── plik1.txt
+s30404@szuflandia22:~$ chmod 777 ./test
+s30404@szuflandia22:~$ chmod 711 ./test/test2
+s30404@szuflandia22:~$ chmod u=rwx,g=rw,o=- ./test/test2/test3
+s30404@szuflandia22:~$ chmod a=-,u+rwx,g+rx test/test2/test3/plik2.txt
+
+s30404@szuflandia22:~/test$ ls
+kacper_toda  test2  test4
+
+Widok kolegi :
+
+s30279@szuflandia22:/home/PJWSTK/s30404/test$ mkdir kacper_toda
+s30279@szuflandia22:/home/PJWSTK/s30404/test$ chmod 700 kacper_toda
+s30279@szuflandia22:/home/PJWSTK/s30404/test$ ls
+kacper_toda  test2  test4
+
+*kologa stworzył folder w folderze do którego dałem wszystkim wszystkie uprawnienia i następnie udebrał mi do niego wszystkie uprawnienia 
+(wybudował dom w moim domu)
+
+Mój widok :
+
+s30404@szuflandia22:~/test$ cd kacper_toda/
+-bash: cd: kacper_toda/: Brak dostępu
+s30404@szuflandia22:~/test$ mkdir kacper_toda/test8
+mkdir: nie można utworzyć katalogu „kacper_toda/test8”: Brak dostępu
+s30404@szuflandia22:~/test$ rm -r kacper_toda/
+rm: wejść w katalog 'kacper_toda/', zabezpieczony przed zapisem? yes
+rm: usunąć zabezpieczony przed zapisem katalog 'kacper_toda/'? yes
+rm: nie można usunąć 'kacper_toda/': Brak dostępu
+
+*po utracie uprawnień mimo tego mam pełne uprawnienia do folderu test nie jestem w stanie ustawić folderu kacper_toda jako mojej aktualnej lokalizacji
+oraz nie byłem wstanie utworzyć w nim nowego katalogu ani nawet go usunąć ponieważ nie jest on pusty (w wypadku gdy folder byłby pusty mógłbym go usunąć)
+
+Mój widok :
+
+s30404@szuflandia22:~$ chmod 711 ./test/test2/test3
+s30404@szuflandia22:~$ chmod 711 ./test/test2
+s30404@szuflandia22:~/test$ chmod 755 test2/test3/plik2.txt
+
+Widok kolegi :
+
+2.Po próbie zapisu pliku do którego nie ma dostępu wyświetla się komunikat
+Błąd zapisu plik2.txt: Brak dostęp
+
+W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić eksperymenty:
+
+-usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
+
+s30404@szuflandia22:~/test/test2$ chmod 000 ../test2
+
+-usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+
+s30404@szuflandia22:~/test/test2$ chmod 000 ../../test
+
+-W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
+
+w przypadkach gdy mamy uprawnienie  x execute do folderu
+
+-W jakich przypadkach możemy wykonać polecenie chmod ? 
+
+Mogę je wykonać w momencie gdy mam uprawnienia do katalogu w którym znajduje się ten katalog
+
+-Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
+
+Nie możemny bezpośrednio przeskoczyć
+
+-Czy możemy także wrócić korzystając z polecnia cd - ?
+
+Nie moge wrocic do katalogu za pomoca sciezki bezglednej ani polecenie cd - poniewaz nie mam dostepu do zawartosci
+katalogu
+
+3.W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić login osób z zespołu) wypróbować możliwość komunikacji przez współdzielony plik: na jednym z kont w zespole utworzyć pusty plik i przydzielić odpowiednie uprawnienia dostępu (do pliku i do katalogu domowego). Wpisywać i odczytywać komunikaty przy użyciu poleceń:
+
+-echo treść_komunikatu > plik
+
+-cat plik
+Sprawdzić, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu echo. Uruchom także drugi terminal i wykonaj w nim komendę tail -f plik i powtórz powyższe ćwiczenie w pierwszym terminalu (komunikacja za pomocą pliku).
+
+Mój widok :
+
+s30404@szuflandia22:~$ echo kacper_k > test.txt
+s30404@szuflandia22:~$ cat test.txt
+
+*kolega wpisał swoja wiadomość z użyciem >
+
+s30404@szuflandia22:~$ cat test.txt
+s30279 tu byl
+s30404@szuflandia22:~$ echo s30404 tu był >> test.txt
+s30404@szuflandia22:~$ cat test.txt
+s30279 tu byl
+s30404 tu był
+
+> nadpisuje plik a >> dopisuje do pliku
+
+z użyciem tail -f byłem wstanie dynamicznie widzieć informacje dopisywane i nadpisywane przy pomocy echo
+
+4.Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi literami z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim plik o nazwie strona.html o następującej zawartości:
+
+<HTML>
+
+<BODY>
+
+<H1>To jest moja strona domowa</H1>
+
+</BODY>
+
+</HTML>
+
+Sprawdzić, jakie są minimalne uprawnienia dostępu, które trzeba przydzielić do:
+
+-katalogu domowego;
+
+-katalogu public_html;
+
+-pliku strona.html, aby zawartość pliku była widoczna w przeglądarce internetowej pod adresem http://szuflandia.pjwstk.edu.pl/~twój_login/strona.html
+
+*Minimalne uprawnienia jakie są potrzebna do otworzenia strony to tylko możliwość przejścia przez folder public_html execute x dla wszystkich pozostałych użytkowników others o oraz możliwość przeczytania pliku strona.html dla wszystkich pozostałych użytkowników others o
+
+s30404@szuflandia22:~$ chmod 001 public_html
+s30404@szuflandia22:~$ chmod 004 public_html/strona.html
+

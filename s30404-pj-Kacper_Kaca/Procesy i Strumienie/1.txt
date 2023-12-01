@@ -1,0 +1,110 @@
+1
+Program ps służy do wyświetlania listy procesów. 
+
+Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+1.ps
+
+s30404@szuflandia22:~$ ps
+    PID TTY          TIME CMD
+3151007 pts/15   00:00:00 bash
+3151013 pts/15   00:00:00 ps
+s30404@szuflandia22:~$
+
+*Wynikiem są procesy związane z bieżąca sesją terminala
+
+2.ps -a
+
+s30404@szuflandia22:~$ ps -a
+    PID TTY          TIME CMD
+3146774 pts/16   00:00:00 mysql
+3147038 pts/8    00:00:00 mysql
+3147918 pts/31   00:00:00 mysql
+3149469 pts/19   00:00:00 mysql
+3149581 pts/28   00:00:00 mysql
+3149761 pts/29   00:00:00 mysql
+3149886 pts/32   00:00:00 mysql
+3149943 pts/33   00:00:00 mysql
+3149956 pts/14   00:00:00 mysql
+3150035 pts/34   00:00:00 mysql
+3150052 pts/35   00:00:00 mysql
+3150156 pts/36   00:00:00 mysql
+3150501 pts/34   00:00:00 mysql
+3150555 pts/30   00:00:00 mysql
+3150812 pts/26   00:00:00 mysql
+3150967 pts/26   00:00:00 mysql
+3151024 pts/15   00:00:00 ps
+s30404@szuflandia22:~$
+
+*Przy użyciu parametru a zostały wyświetlone wszystkie procesy wszystkich użytkowników poza procesami nie powiązanymi z terminalem.
+
+3.ps x
+
+s30404@szuflandia22:~$ ps x
+    PID TTY      STAT   TIME COMMAND
+3150988 ?        Ss     0:00 /lib/systemd/systemd --user
+3150989 ?        S      0:00 (sd-pam)
+3151006 ?        S      0:00 sshd: s30404@pts/15
+3151007 pts/15   Ss     0:00 -bash
+3151038 pts/15   R+     0:00 ps x
+s30404@szuflandia22:~$
+
+*Przy użuciu parametru x wyświetlamy procesy nie powiązane z terminalem
+4.ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+s30404@szuflandia22:~$ ps axu
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8816 ?        Ss   lut22  10:13 /lib/systemd/
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_ru
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_tr
+root          11  0.0  0.0      0     0 ?        S    lut22   4:32 [ksoftirqd/0]
+
+*u wyświetliło dodatkowe informacje o prosesach jka np. wykorzystanie procesora
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+
+Oznacza brak terminala dla danego procesu
+
+Nie wiesz? A gdzie może być wyjaśnienie?
+
+B: Jak wykonasz poniższe 2 zadania?
+
+1.Wyświetl wszystkie procesy bash
+
+s30404@szuflandia22:~$ ps aux | grep bash | grep -v grep
+s30279   3555361  0.0  0.1   8412  5120 pts/8    Ss   18:22   0:00 -bash
+s30384   3555973  0.0  0.1   8572  5356 pts/14   Ss+  18:59   0:00 -bash
+s30404   3556550  0.0  0.1   8412  5140 pts/17   Ss   19:23   0:00 -bash
+s30384   3556566  0.0  0.1   8412  5208 pts/19   Ss+  19:24   0:00 -bash
+s30279   3556650  0.0  0.1   8412  5132 pts/15   Ss+  19:29   0:00 -bash
+s30404@szuflandia22:~$
+
+*Na początku wyświetlam wszystkie procesy przy pomocy ps z parametrami aux przekierowuje wynik do grep bash który następnie szukam w wyniku 
+wszytkich prosesów ze słowem bash i ostatecznie przekierowuje wynik do grep -v grep który pozwala nam wykluczyć komendę której użyliśmy
+pozostawiając tylko procesy bash
+
+2.Wyświetl wszystkei procesy należące do użytkownika root
+
+s30404@szuflandia22:~$ ps u -u root
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8656 ?        Ss   lut22  10:27 /lib/systemd/
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_ru
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_tr
+root          11  0.0  0.0      0     0 ?        S    lut22   4:48 [ksoftirqd/0]
+
+*Na początku wyświetlam procesy przy pomocy ps precyzuje o procesy którego użytkownikami dzięki u i ostatecznie wykluczam procesy które zostały 
+uruchomione przez roota ale do niego nie należą
+ a

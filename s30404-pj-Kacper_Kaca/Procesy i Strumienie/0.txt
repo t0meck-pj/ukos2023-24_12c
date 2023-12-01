@@ -1,0 +1,78 @@
+0 (rozgrzewkowe)
+1.Przejdź do swojego katalogu domowego
+
+s30404@szuflandia22:~/ukos/katalog$ cd ~
+
+2.Wydaj komendę: ls -a
+
+s30404@szuflandia22:~$ ls -a
+
+3.Zobacz ile plików wypisało.
+
+ .    .bash_history   .bashrc        .lesshst   .profile      strona.html   ukos
+ ..   .bash_logout   'Kacper Kaca'   loop       public_html   .test.swp     .viminfo
+
+*Wypisało 7 plików (reszta wyświetlonych nazw jest katalogami)
+
+4.Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+s30404@szuflandia22:~$ ls -a | grep s
+
+*Wybrałem literkę s do tego i następnych zadań
+
+5.Zobacz ile teraz jest wyników. Co się stało?
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+
+.bash_history
+.bash_logout
+.bashrc
+.lesshst
+strona.html
+.test.swp
+ukos
+
+*Wyników jest 7 ponieważ wszystkie wyświetlone obiekty zawierają w sobie literkę s
+
+6.A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+s30404@szuflandia22:~$ ls -a | grep s > lista_plikow_z_literka_s.txt
+
+7.Zobacz czy utworzył sie jakiś plik?
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+
+s30404@szuflandia22:~$ ls
+'Kacper Kaca'   lista_plikow_z_literka_s.txt   loop   public_html   strona.html   ukos
+
+Jego treścią jest wynik polecenia z poprzedniego zadania
+
+" | " przekierowuje wyniku jednej komendy jako wejscie do drugiej
+" > " przekierowuje standarowe wyjscie do pliku nadpisujac istniejacy plik lub tworząc nowy
+
+8.A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+s30404@szuflandia22:~$ ls -a | grep s | tee lista_plikow_z_literka_s_2.txt
+.bash_history
+.bash_logout
+.bashrc
+.lesshst
+lista_plikow_z_literka_s_2.txt
+lista_plikow_z_literka_s.txt
+strona.html
+.test.swp
+ukos
+
+9.Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+
+s30404@szuflandia22:~$ ls
+'Kacper Kaca'   lista_plikow_z_literka_s_2.txt   lista_plikow_z_literka_s.txt   loop   public_html   strona.html   ukos
+s30404@szuflandia22:~$
+
+Utworzył się plik lista_plikow_z_literka_s_2.txt
+
+Zawartością pliku jest lista obiektów w naszym obecnym katalogu oraz plik który utworzyliśmy podczas wykonywania tego polecenia ponieważ on również zawira w sobie literę s
+
+Program tee wypisujące dane wejściowe na standardowe wyjście (nasz terminal) oraz do pliku (w naszym wypadku lista_plikow_z_literka_s_2.txt)

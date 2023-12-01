@@ -1,0 +1,110 @@
+1.Uruchom terminal.
+
+-Po uruchomieniu maszyny wirtualnej klikam ikonę terminalu
+-Terminal uruchamia się
+
+*Nauczyłem się uruchamiać terminal w środowsku graficznym
+
+2.Wyswietl zawartosc aktualnego katalogu.
+
+-Wpisuję komendę "ls"
+-Wynik komendy:
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+*Nauczyłem się wyświetać zawartość katalogu w którym się znajduję
+
+3.Sprawdz gdzie aktualnie sie znajdujesz.
+
+-Wpisuję komendę "pwd"
+-Wynik komendy:
+/home/osboxes
+
+*Wiem jak sprawdzić moją lokalizację
+
+4.Przejdz do katalogu Pulpit za pomoca sciezki wzglednej.
+
+-Wpisuję komendę "cd Desktop"
+
+*Wiem jak przemieszczać się dzięki komendzie cd
+
+5.Sprawdz gdzie jestes.
+
+-Wpisuję komendę "pwd"
+-Wynik komendy:
+/home/osboxes/Desktop
+
+*Wiem jak sprawdzać swoją lokalizację
+
+6.Wyswietl zawartos biezacego katalogu.
+
+-Wpisuję komendę "ls"
+-Wynik komendy:
+computer.desktop    network.desktop   userfiles.desktop
+helpmanual.desktop  settings.desktop
+
+*Wiem jak wyświetlić zawartość katalogu w ktorym sie znajduje
+
+7.Wyswietl zawartosc swojego katalogu domowego bez przechdozenia do niego (ls z odpowiednim parametrem).
+
+-Wpisuję komendę "ls ~"
+-Wynik komendy:
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+*Znam działanie parametru ~ z komendą ls
+
+8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+-Wpisuję komendę "cd ../Pictures"
+
+*Wiem jak lepiej przemieszczać się z użyciem ścieżki względnej oraz znam znaczenie ../
+
+9.Sprawdz gdzie jestes.
+
+-Wpisuję komendę "pwd"
+-Wynik komendy:
+/home/osboxes/Pictures
+
+*Jestem pewny działania poprzedniej komendy
+
+10.Zobacz do jakiego katalogu przejdziesz za pomoca sciezki ././././././
+W opisie rozwiazania prosze umiescic rowniez to jak rozumiesz co sie wlasciwie stalo.
+Dlaczego znalazla/es sie w tym miejscu do ktorego przeniosla Cie ta sciezka?
+Czy dodanie kilku ./././././ na poczatku/srodku/koncu powoduje, że sciezka sie zmieni?
+Co ta sciezka oznacza/soba reprezentuje?
+
+-Wpisuję komendę "pwd"
+
+*Znajduje się cały czas w tym samym katologu
+*Dzieje się tak ponieważ ./ odnosi się do bierzącego katalogu dlatego dopisanie kolejnych ./ nic nie zmienia
+
+11.Przejdz do swojego katalogu domowego za pomoca sciezki bezwzglednej.
+
+-Wpisuję komendę "cd /home/osboxes"
+
+*Wiem jak przemieszczać się za pomocą ścieżki bezwględnej
+
+12.Zobacz co sie stanie jak wpiszesz komende 'cd/root'. Jak juz to zrobisz, zastanow sie co sie stalo. Poszukaj w Internecie.
+
+-Wpisuję komendę "cd/root"
+-Wynik komendy:
+bash: cd: /root: Permission denied
+
+*System poinformował mnie że nie mam dostepu do tego katalogu
+*Będąc zalogowany jako zwykły użytkownik nie mam uprawnien do dostepu do tego katalogu.
+
+13.Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+-Wciskam kombinacje klawiszy: Ctrl+Alt+F3
+-Zostaje przeniesiony do terminala tekstowego
+
+*Znam kombinacje działanie kombinacji Ctrl+Alt+F3
+
+14.A teraz co sie stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+-Wciskam kombinacje klawiszy Alt+F1, ALT+F2, ALT+F7
+-Zostaje przeniesiony między terminalami tekstowymi i graficznymi
+
+*Znam zastosowanie kombinacji Alt+F1, ALT+F2, ALT+F7
