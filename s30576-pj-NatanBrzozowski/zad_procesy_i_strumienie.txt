@@ -74,44 +74,23 @@ wszystkie procesy należące do użytkownika root wyswietle za pomoca: ps -u roo
 |-----------------------------|
 |  FRAGMENT KODU Z TERMINALA: |
 |-----------------------------|
-natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
-$ ps
-      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
-     1887    1886    1887      12184  pty0      197609   Oct 30 /usr/bin/bash
-     2099    1988    2099      13340  pty1      197609 22:59:18 /usr/bin/ps
-     1987       1    1987      16040  ?         197609 22:42:37 /usr/bin/mintty
-     1886       1    1886      11540  ?         197609   Oct 30 /usr/bin/mintty
-     1988    1987    1988       9076  pty1      197609 22:42:37 /usr/bin/bash
+natan@natan-virtual-machine:~$ ps
+    PID TTY          TIME CMD
+   2562 pts/0    00:00:00 bash
+   2570 pts/0    00:00:00 ps
+natan@natan-virtual-machine:~$ ps -a
+    PID TTY          TIME CMD
+   1854 tty2     00:00:00 gnome-session-b
+   2622 pts/0    00:00:00 ps
+natan@natan-virtual-machine:~$ ps x
+    PID TTY          TIME CMD
+   1854 tty2     00:00:00 gnome-session-b
+   2622 pts/0    00:00:00 ps
+natan@natan-virtual-machine:~$ ps aux
+    PID TTY          TIME CMD
+   1854 tty2     00:00:00 gnome-session-b
+   2622 pts/0    00:00:00 ps
 
-natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
-$ ps -a
-      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
-     1887    1886    1887      12184  pty0      197609   Oct 30 /usr/bin/bash
-     2104    1988    2104      16344  pty1      197609 23:00:03 /usr/bin/ps
-     1987       1    1987      16040  ?         197609 22:42:37 /usr/bin/mintty
-     1886       1    1886      11540  ?         197609   Oct 30 /usr/bin/mintty
-     1988    1987    1988       9076  pty1      197609 22:42:37 /usr/bin/bash
-
-natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
-$ ps x
-      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
-     1887    1886    1887      12184  pty0      197609   Oct 30 /usr/bin/bash
-     2109    1988    2109      15744  pty1      197609 23:00:08 /usr/bin/ps
-     1987       1    1987      16040  ?         197609 22:42:37 /usr/bin/mintty
-     1886       1    1886      11540  ?         197609   Oct 30 /usr/bin/mintty
-     1988    1987    1988       9076  pty1      197609 22:42:37 /usr/bin/bash
-
-natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
-$ ps aux
-      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
-     1887    1886    1887      12184  pty0      197609   Oct 30 /usr/bin/bash
-     2114    1988    2114       9624  pty1      197609 23:00:13 /usr/bin/ps
-     1987       1    1987      16040  ?         197609 22:42:37 /usr/bin/mintty
-     1886       1    1886      11540  ?         197609   Oct 30 /usr/bin/mintty
-     1988    1987    1988       9076  pty1      197609 22:42:37 /usr/bin/bash
-
-natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
-$
 
 --------------------------------------------------------------------------------
 |=============================|
@@ -138,6 +117,32 @@ natan@natan-virtual-machine:~$
 |=============================|
 |         ZADANIE 3:          |
 |=============================|
+W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z nich jest 
+CTRL+C lub jak to jest często podawane C-c lub ^C. Niektórzy z Państwa już go 
+mieli okazję przetestować. Jest to sposób na wyłączenie aktywnego programu 
+w terminalu. Proszę go przetestować w taki sposób, że:
+Uruchom komendę cat be parametrów
+Wciśnij CTRL+C i zobacz co się stanie
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on 
+do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie 
+rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła 
+sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, 
+jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego 
+wejścia (stdin), ale w sposób możliwie bezpieczny.
+Zobacz co się stanie:
+Wydaj komendę cat > wynik3_1.txt
+Wpisz tekst witaj bez wciskania klawisza Enter
+Wciśnij CTRL+C
+Zobacz co się znalazło w pliku wynik3_1.txt
+Wydaj komendę cat > wynik3_2.txt
+Wpisz tekst witaj bez wciskania klawisza Enter
+Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+Zobacz co się znalazło w pliku wynik3_2.txt
+W opisie rozwiązania zadania umieść:
+jak rozumiesz co się stało?
+czym oba te przykłady się różnią?
+DLACZEGO się różnią?
+
 rozumiem to tak ze w pierwszym przykladnie po wpisaniu witaj gdzy kliknalem 
 ctrl c skrot klawiszowy przerwał biezacy proces i nie zapisał tego co 
 wpisałem (witaj)
@@ -152,7 +157,6 @@ sluzy do natychmiastowego zakonczenia dzialania procesu
 
 Ctrl+D:
 skrot klawiszowy ctrl d jest uzywany do oznaczenia konca danych wejsciowych 
-lub sesji terminala
 moze sygnalizowac koniec wprowadzania danych lub sluzy do zakonczenia sesji 
 terminala
 
