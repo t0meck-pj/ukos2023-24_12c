@@ -1,0 +1,22 @@
+Yurii Burlakov
+
+Zadanie 
+
+W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając,
+a następnie zmieniając swoją maskę trybu pliku i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik),
+a później sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l).
+Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski jest wykonywana ? 
+
+Rozwiązanie:
+"chmod" i "umask" dość podobne polecenia, różnica polega na tym, że "umask" ustawia domyślne parametry dostępu
+dla wszystkich utworzonych plików i folderów w bieżącej sesji.
+
+Operacją logiczną wykonywaną na domyślnych uprawnieniach dostępu i bitach maski jest bitowa operacja AND.
+Wartość umask jest odejmowana
+od domyślnych uprawnień przy użyciu bitowego NOT wartości umask. Na przykład:
+
+Domyślne uprawnienia: 666 (rw-rw-rw-)
+umask 022: 022 (---w--w--)
+Wynik: 644 (rw-r--r--)
+W tym przypadku uprawnienia do zapisu dla grupy i innych zostaną usunięte ze względu na wartość umask,
+pozostawiając ostateczne uprawnienia jako rw-r--r-- dla nowo utworzonego pliku.
