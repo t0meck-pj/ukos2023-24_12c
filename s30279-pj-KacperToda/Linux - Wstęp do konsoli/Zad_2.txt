@@ -2,13 +2,9 @@
 w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
 
 ukos
-
  |\ katalog
-
  |   |\ katalog2
-
  |    \ katalog3
-
   \ klamka
 
 osboxes ~ mkdir drzewo

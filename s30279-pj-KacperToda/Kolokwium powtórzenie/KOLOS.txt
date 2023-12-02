@@ -6,30 +6,21 @@ Zakładamy, że możesz zalogować się w konsoli i nie masz zaległości w opł
 -uszkodzenie dysku
 1
 Jest dane takie drzewo katalogów:
-
 .
-
 ├── ala
-
 │   ├── i
-
 │   │   └── as
-
 │   └── ma
-
 │       └── kota
-
 └── kot
-
     └── ma
-
         └── ale
 
 Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
 Jak przejść do katalogu ala ale za pomocą:
 
 ścieżki względnej (relatywnej)
-cd../../
+cd ../../
 
 ścieżki bezwzględnej (absolutnej)
 cd /tmp/ukos/ala
@@ -38,18 +29,18 @@ cd /tmp/ukos/ala
 Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
 
 Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
-mkdir -p cd../../kot/ma/ale/jan/kowalski
-mkdir -p cd /tmp/ukos/kot/ma/ale/jan/kowalski
+mkdir -p ../../kot/ma/ale/jan/kowalski
+mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
 3
 Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu i używając:
 
 źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
 
-mv cd../../kot/ma/ale /tmp/ukos/ala/i
+mv ../../kot/ma/ale /tmp/ukos/ala/i
 
 źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
 
-mv cd /tmp/ukos/kot/ma/ale /../../ala/i
+mv /tmp/ukos/kot/ma/ale /../../ala/i
 
 4
 Jak zamknąć program, który nie reaguje na ctrl+c ?
@@ -63,7 +54,8 @@ Materiały:
 http://www.robelle.com/smugbook/regexpr.html
 https://www.regular-expressions.info/
 
-ls al*
+find . -type f -name 'al*'
+ls -p | grep '^al' | grep -v /
 
 Narzędzia do testowania wyrażeń regularnych w przyzwoity sposób:
 https://regex101.com/
@@ -112,8 +104,7 @@ Przycisk TAB
 9
 Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
 
--gimp&
-
+-gimp &
 -gedit
  CTRL+Z
  bg

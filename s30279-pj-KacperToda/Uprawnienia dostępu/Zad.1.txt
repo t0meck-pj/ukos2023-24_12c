@@ -68,16 +68,29 @@ W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić eksperyment
 
 usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
 
+Kolega wpisał:
+s30404@szuflandia22:~/test/test2$ chmod 000 ../test2
+
 usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+
+Kolega wpisał:
+30404@szuflandia22:~/test/test2$ chmod 000 ../../test
 
 W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
 
+Gdy posiadamy uprawnienia x do uruchomienia operacji w folderze.
 
-W jakich przypadkach możemy wykonać polecenie chmod ? 
+W jakich przypadkach możemy wykonać polecenie chmod ?
+
+Gy mam uprawnienia do katalogu w którym się katalog/plik. 
 
 Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
 
+Nie możemy.
+
 Czy możemy także wrócić korzystając z polecnia cd - ?
+
+Bez dostępów do zawartości katalogu ABC nie wrócę do katalogu używając ścieżki bezwzględnej. 
 
 W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić login osób z zespołu) 
 wypróbować możliwość komunikacji przez współdzielony plik: na jednym z kont w zespole utworzyć pusty plik i przydzielić
@@ -88,7 +101,26 @@ echo treść_komunikatu > plik
 cat plik
 Sprawdzić, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu echo.
 Uruchom także drugi terminal i wykonaj w nim komendę tail -f plik i powtórz powyższe ćwiczenie w pierwszym terminalu (komunikacja za pomocą pliku).
-Wpisując komendę tail -f możemy się ze sobą komunikować 
+
+Kolega stworzył plik
+s30404@szuflandia22:~$ echo kacper_k > test.txt
+s30404@szuflandia22:~$ cat test.txt
+
+Ja wpisałem wiadomość z użyciem >
+s30279@szuflandia22:~$ echo s30279 tu byl > test.txt
+Kolega sprawdził i później dopisał z >>
+s30404@szuflandia22:~$ cat test.txt
+s30279 tu byl
+s30404@szuflandia22:~$ echo s30404 tu był >> test.txt
+s30404@szuflandia22:~$ cat test.txt
+s30279 tu byl
+s30404 tu był
+
+> nadpisuje plik
+>> dopisuje do pliku
+
+(nie wiem czy dobrze zrobiłem bo odpaliłem druga konsole gdzie wpisałem tail -f i tam wszystko działało)
+Z użyciem tail -f mogliśmy dynamicznie widzieć informacje dopisywane i nadpisywane przy pomocy echo. Dzięki temu w pewnym sensie mogliśmy się ze sobą komunikować.
 
 Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to utworzyć; musi się on nazywać DOKŁADNIE tak jak podano, pisane małymi literami z podkreśleniem zamiast spacji pomiędzy słowami).
 Umieścić w nim plik o nazwie strona.html o następującej zawartości:
