@@ -1,0 +1,32 @@
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+osboxes ~ sudo apt install gedit
+
+Zainstalowałem na osboxie GEDIT
+
+2.Zobacz jaki ma on PID - przyda się do tego komenda ps
+osboxes ~ ps aux | grep gedit
+osboxes     8736  0.6  0.7 485188 58260 pts/0    Sl+  13:35   0:00 gedit
+osboxes     8783  0.0  0.0   8900   728 pts/1    S+   13:37   0:00 grep gedit
+
+GEDIT posiada PID 8736.
+
+3.Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+Komenda kill zadziałała.
+SIGKILL (kill -9) można wysłać.
+4.Zobacz działanie komendy killall bash
+
+Nic się nie stało, ponieważ domyślnie polecenie 'killall' wysyła sygnał TERM,
+a powłoka 'bash' ignoruje ten sygnał, jeśli jest to bieżąca powłoka używana przez użytkownika.
+
+5.Zobacz czy kill zadziała dla dowolnego procesu.
+
+s30279@szuflandia22:~$ kill 637947
+-bash: kill: (637947) - Operacja niedozwolona
+s30279@szuflandia22:~$ t0meck    637947  0.0  0.0 212732   468 ?        S    sie28   0:00 (sd-pam)
+
+Bez odpowiednich uprawnień nie będę w stanie zakończyć procesu, a także nie mogę zagwarantować,
+czy dany proces zareaguje na sygnał TERM, który jest domyślnie wysyłany przez polecenie 'kill'.

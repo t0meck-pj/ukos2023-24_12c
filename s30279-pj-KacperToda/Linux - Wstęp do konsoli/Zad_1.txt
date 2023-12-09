@@ -1,0 +1,89 @@
+1.Uruchom terminal.
+
+Uruchomiłem Linuxa Lite na VirtualBox
+Uruchomiłem Terminal.
+2.Wyświetl zawartość aktualnego katalogu.
+
+osboxes ~ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+3.Sprawdź gdzie aktualnie się znajdujesz.
+
+osboxes ~ pwd
+/home/osboxes
+
+4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+
+osboxes ~ cd Desktop
+
+Użyłem tej komendy do ścieżki względnej ponieważ podajemy położenie pliku bądź katalogu względem miejsca w którym się aktualnie znajdujemy.
+
+5.Sprawdź gdzie jesteś.
+
+osboxes ~ Desktop pwd
+/home/osboxes/Desktop
+
+6.Wyświetl zawartość bieżącego katalogu.
+
+osboxes ~ Desktop ls
+computer.desktop    network.desktop   userfiles.desktop
+helpmanual.desktop  settings.desktop
+
+7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+
+osboxes ~ Desktop ls ~
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+"~" oznacza katalog domowy
+
+8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+osboxes ~ Desktop cd ../Pictures
+
+9.Sprawdź gdzie jesteś.
+
+osboxes ~ Pictures pwd
+/home/osboxes/Pictures
+
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+
+osboxes ~ Pictures cd ././././././
+osboxes ~ Pictures pwd
+/home/osboxes/Pictures
+
+Probując przejść do katalogu za pomocą ścieżki ././././././ znaleźliśmy się w tym samym miejscu.
+Jest to związane z tym , że próbowaliśmy przenosić się do bieżącego katalogu (znak "." oznacza bieżący katalog).
+Czyli tak naprawdę próbowaliśmy się przenosić do tego samego katalogu.
+Dodanie kilku ./././././ na początku/środku/końcu nie spowoduje, że ścieżka się zmieni, ponieważ ciągle będziemy próbować się przenieść z bieżącego katalogu.
+Ścieżka ta reprezentuje, ciągle znajdujemy się w tej samej lokalizacji.
+
+11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+
+osboxes ~ Pictures cd /home/osboxes
+Użyłem tej komendy do ścieżki bezwzględnej ponieważ podajemy położenie pliku bądź katalogu względem miejsca elementu głównego w naszym przypadku katalogu /home oraz innych podkatalogów.
+
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+
+osboxes ~ Pictures cd /root
+bash: cd: /root: Permission denied
+
+Terminal nie pozwala na przejście do tego katalogu ponieważ jest on dostępny tylko dla admina tzw. "roota".
+Jeśli zalogujemy się na roota np. za pomocą komendy "sudo su" (jeśli oczywiście mamy dostępy) możemy wejść do katalogu /root.
+
+
+13.Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+Po wciśnięciu kombinacji klawiszy: Ctrl+Alt+F3 przełączymy się na pełny tryb Terminala w Linuxie.
+
+14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+Klikając różne kombinacje mamy różne wyniki. Między innymi
+- Ctrl+Alt+F1 - przełącza na tryb tekstowy
+- Ctrl+Alt+F2 - przełącza na tryb pełnego terminala 
+- Ctrl+Alt+F7 - powrót do GUI (tryb graficzny)

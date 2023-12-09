@@ -1,0 +1,76 @@
+1.Przejdź do swojego katalogu domowego
+
+s30279@szuflandia22:~$ cd ~
+
+2.Wydaj komendę: ls -a
+
+s30279@szuflandia22:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .config  .lesshst  .local  .profile  Programowanie  public_html  .viminfo
+
+3.Zobacz ile plików wypisało.
+
+Wypisało 13 plików
+
+4.Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+s30279@szuflandia22:~$ ls -a | grep P
+Programowanie
+
+5.Zobacz ile teraz jest wyników. Co się stało?
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+
+s30279@szuflandia22:~$ ls -a | grep P
+Programowanie
+
+Program wyszukał wszystkich plików w katalogu domowym i wypisał te które zaczynaja sie na litere "P". Wypisało jeden wynik
+
+6.A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+s30279@szuflandia22:~$ ls -a | grep P > lista_plikow_z_litera_p.txt
+s30279@szuflandia22:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .config  .lesshst  lista_plikow_z_litera_p.txt  .local 
+ .profile  Programowanie  public_html  .viminfo
+
+
+7.Zobacz czy utworzył sie jakiś plik?
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+
+s30279@szuflandia22:~$ ls -a | grep P > lista_plikow_z_litera_p.txt
+s30279@szuflandia22:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .config  .lesshst  lista_plikow_z_litera_p.txt  .local 
+ .profile  Programowanie  public_html  .viminfo
+s30279@szuflandia22:~$ nano lista_plikow_z_litera_p.txt 
+
+W pliku wyświetla się nazwa katalogu "Programowanie".
+
+Operator '|' służy do przekierowania wyniku jednej komendy jako wejście do drugiej, natomiast operator
+'>' służy do przekierowania standardowego wyjścia do pliku, nadpisując istniejący plik lub tworząc nowy.
+
+8.A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+s30279@szuflandia22:~$ ls -a | grep P | tee lista_plikow_z_litera_p_2.txt
+Programowanie
+s30279@szuflandia22:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .config  .lesshst  lista_plikow_z_litera_p_2.txt 
+ lista_plikow_z_litera_p.txt  .local  .profile  Programowanie  public_html  .viminfo
+s30279@szuflandia22:~$ nano lista_plikow_z_litera_p_2.txt
+W pliku wyświetla się nazwa katalogu "Programowanie".
+
+9.Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+
+s30279@szuflandia22:~$ ls -a | grep P | tee lista_plikow_z_litera_p_2.txt
+Programowanie
+s30279@szuflandia22:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .config  .lesshst  lista_plikow_z_litera_p_2.txt 
+ lista_plikow_z_litera_p.txt  .local  .profile  Programowanie  public_html  .viminfo
+s30279@szuflandia22:~$ nano lista_plikow_z_litera_p_2.txt
+W pliku wyświetla się nazwa katalogu "Programowanie".
+
+Plik się utworzył.
+W przypadku wersji z tee oprócz tego że tworzy się plik z nazwą szukanego bądź szukanych programów.
+Wyświetlił on również on w terminalu nazwę znalezionego programu.
+Program tee wyświetla na terminalu dane z pliku bądź komendy podanej przez użytkownika oraz zapisuje wyświetlone informacje pliku który podajemy.

@@ -1,0 +1,134 @@
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+1.ps
+
+s30279@szuflandia22:~$ ps
+    PID TTY          TIME CMD
+3618169 pts/16   00:00:00 bash
+3618174 pts/16   00:00:00 ps
+Komenda ps wyświetla opis bieżących procesów.
+2.ps -a
+
+s30279@szuflandia22:~$ ps -a
+    PID TTY          TIME CMD
+3618102 pts/8    00:00:00 vim
+3618179 pts/16   00:00:00 ps
+
+Komenda ps -a to wszystkich procesów poza liderami sesji i procesami nie podłączonymi do żadnego terminala.
+Napisana w stylu BSD zawiera "-".
+3.ps x
+
+s30279@szuflandia22:~$ ps x
+    PID TTY      STAT   TIME COMMAND
+3618149 ?        Ss     0:00 /lib/systemd/systemd --user
+3618151 ?        S      0:00 (sd-pam)
+3618168 ?        S      0:00 sshd: s30279@pts/16
+3618169 pts/16   Ss     0:00 -bash
+3618183 pts/16   R+     0:00 ps x
+
+Komenda ps x powoduje wylistowanie wszystkich procesów, których jestem właścicielem,
+lub wylistowanie wszystkich procesów, jeśli użyta łącznie z opcją a. Napisana w stylu BSD bez "-".
+
+4.ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+
+s30279@szuflandia22:~$ ps axu
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8720 ?        Ss   lut22  10:34 /lib/systemd/
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_ru
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_tr
+root          11  0.0  0.0      0     0 ?        S    lut22   4:50 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    lut22  12:13 [rcu_sched]
+root          13  0.0  0.0      0     0 ?        S    lut22   0:43 [migration/0]
+root          15  0.0  0.0      0     0 ?        S    lut22   0:00 [cpuhp/0]
+root          17  0.0  0.0      0     0 ?        S    lut22   0:00 [kdevtmpfs]
+root          18  0.0  0.0      0     0 ?        I<   lut22   0:00 [netns]
+root          19  0.0  0.0      0     0 ?        S    lut22   0:00 [kauditd]
+root          20  0.0  0.0      0     0 ?        S    lut22   0:18 [khungtaskd]
+root          21  0.0  0.0      0     0 ?        S    lut22   0:00 [oom_reaper]
+root          22  0.0  0.0      0     0 ?        I<   lut22   0:00 [writeback]
+root          23  0.0  0.0      0     0 ?        S    lut22   4:32 [kcompactd0]
+root          24  0.0  0.0      0     0 ?        SN   lut22   0:00 [ksmd]
+root          25  0.0  0.0      0     0 ?        SN   lut22   5:13 [khugepaged]
+root          43  0.0  0.0      0     0 ?        I<   lut22   0:00 [kintegrityd]
+root          44  0.0  0.0      0     0 ?        I<   lut22   0:00 [kblockd]
+root          45  0.0  0.0      0     0 ?        I<   lut22   0:00 [blkcg_punt_b
+root          46  0.0  0.0      0     0 ?        I<   lut22   0:00 [edac-poller]
+root          47  0.0  0.0      0     0 ?        I<   lut22   0:00 [devfreq_wq]
+...
+Komenda ps axu wyświetla wszystkie procesy na systemie w formacie BSD.
+
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+Nie wiesz? A gdzie może być wyjaśnienie?
+
+TTY to nazwa terminala z którego zostało uruchomione polecenie CMD.
+Jeśli proces posiada "?" w kolumnie TTY to oznacza, że nie ma nadanego terminala.
+
+B: Jak wykonasz poniższe 2 zadania?
+
+Wyświetl wszystkie procesy bash
+
+1 sposób
+s30279@szuflandia22:~$ ps axu | grep [b]ash
+s30900   3617033  0.0  0.1   8692  5536 pts/8    Ss+  08:45   0:00 -bash
+s32351   3617202  0.0  0.1   8692  5544 pts/14   Ss+  09:00   0:00 -bash
+s30384   3618000  0.0  0.1   8520  5244 pts/15   Ss+  10:00   0:00 -bash
+s30279   3618169  0.0  0.1   8412  5152 pts/16   Ss+  10:05   0:00 -bash
+s29986   3618638  0.0  0.1   8412  5136 pts/17   Ss+  10:29   0:00 -bash
+s29866   3618659  0.0  0.1   8544  5448 pts/19   Ss+  10:30   0:00 -bash
+s30157   3618714  0.0  0.1   8412  5164 pts/26   Ss+  10:31   0:00 -bash
+s26856   3618737  0.0  0.1   8412  5072 pts/28   Ss+  10:31   0:00 -bash
+s30904   3618802  0.0  0.1   8412  5200 pts/29   Ss+  10:33   0:00 -bash
+s30279   3618812  0.0  0.1   8412  5140 pts/30   Ss   10:34   0:00 -bash
+s32213   3618843  0.3  0.1   8412  5156 pts/31   Ss+  10:34   0:00 -bash
+
+2 sposób
+s30279@szuflandia22:~$ ps axu | grep bash | grep -v grep
+s30900   3617033  0.0  0.1   8692  5536 pts/8    Ss+  08:45   0:00 -bash
+s32351   3617202  0.0  0.1   8692  5544 pts/14   Ss+  09:00   0:00 -bash
+s30384   3618000  0.0  0.1   8520  5244 pts/15   Ss+  10:00   0:00 -bash
+s30279   3618169  0.0  0.1   8412  5152 pts/16   Ss+  10:05   0:00 -bash
+s29986   3618638  0.0  0.1   8412  5136 pts/17   Ss+  10:29   0:00 -bash
+s29866   3618659  0.0  0.1   8544  5448 pts/19   Ss+  10:30   0:00 -bash
+s30157   3618714  0.0  0.1   8412  5164 pts/26   Ss+  10:31   0:00 -bash
+s26856   3618737  0.0  0.1   8412  5072 pts/28   Ss+  10:31   0:00 -bash
+s30904   3618802  0.0  0.1   8412  5200 pts/29   Ss+  10:33   0:00 -bash
+s30279   3618812  0.0  0.1   8412  5140 pts/30   Ss   10:34   0:00 -bash
+s32213   3618843  0.0  0.1   8412  5156 pts/31   Ss+  10:34   0:00 -bash
+
+
+Wyświetl wszystkei procesy należące do użytkownika root
+
+s30279@szuflandia22:~$ ps u -u root -U root
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8684 ?        Ss   lut22  10:34 /lib/systemd/
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_ru
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_tr
+root          11  0.0  0.0      0     0 ?        S    lut22   4:50 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    lut22  12:13 [rcu_sched]
+root          13  0.0  0.0      0     0 ?        S    lut22   0:43 [migration/0]
+root          15  0.0  0.0      0     0 ?        S    lut22   0:00 [cpuhp/0]
+root          17  0.0  0.0      0     0 ?        S    lut22   0:00 [kdevtmpfs]
+root          18  0.0  0.0      0     0 ?        I<   lut22   0:00 [netns]
+root          19  0.0  0.0      0     0 ?        S    lut22   0:00 [kauditd]
+root          20  0.0  0.0      0     0 ?        S    lut22   0:18 [khungtaskd]
+root          21  0.0  0.0      0     0 ?        S    lut22   0:00 [oom_reaper]
+root          22  0.0  0.0      0     0 ?        I<   lut22   0:00 [writeback]
+root          23  0.0  0.0      0     0 ?        S    lut22   4:32 [kcompactd0]
+root          24  0.0  0.0      0     0 ?        SN   lut22   0:00 [ksmd]
+root          25  0.0  0.0      0     0 ?        SN   lut22   5:13 [khugepaged]
+root          43  0.0  0.0      0     0 ?        I<   lut22   0:00 [kintegrityd]
+root          44  0.0  0.0      0     0 ?        I<   lut22   0:00 [kblockd]
+...

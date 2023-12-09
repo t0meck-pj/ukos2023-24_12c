@@ -1,0 +1,62 @@
+1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów
+w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+ |\ katalog
+ |   |\ katalog2
+ |    \ katalog3
+  \ klamka
+
+osboxes ~ mkdir drzewo
+osboxes ~ drzewo cd drzewo
+osboxes ~ drzewo mkdir ukos
+osboxes ~ drzewo cd ukos
+osboxes ~ drzewo > ukos mkdir katalog
+osboxes ~ drzewo > ukos mkdir klamka
+osboxes ~ drzewo > ukos cd katalog
+osboxes ~ drzewo > ukos > katalog > mkdir katalog2
+osboxes ~ drzewo > ukos > katalog > cd katalog2
+osboxes ~ drzewo > ukos > katalog > katalog2 > mkdir katalog3
+osboxes ~ drzewo > ukos > katalog > katalog2 > cd ..
+osboxes ~ drzewo > ukos > katalog > cd ..
+osboxes ~ drzewo > ukos > cd ..
+osboxes ~ drzewo > tree
+.
+└── ukos
+    ├── katalog
+    │   └── katalog2
+    │       └── katalog3
+    └── klamka
+2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+osboxes ~ drzewo touch ukos/klamka/zajecia2.txt
+osboxes ~ drzewo touch ukos/klamka/zajecia2.log
+osboxes ~ drzewo touch ukos/klamka/inny.txt
+osboxes ~ drzewo touch ukos/klamka/nowy.txt
+osboxes ~ drzewo ls ukos/klamka
+inny.txt nowy.txt zajecia2.log zajecia2.txt
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+
+osboxes ~ drzewo cd ukos
+osboxes ~ drzewo > ukos mkdir -p ukos/to/jest/dluga/nazwa
+dzięki "-p" tworzone są katalogi bez errorow oraz komenda "dorabia" potrzebne katalogi do polecenia. 
+
+4.Następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+osboxes ~ drzewo > ukos touch ukos/to/jest/dluga/nazwa/dane.txt
+
+5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+osboxes ~ drzewo > ukos rm -r klamka/*.txt
+
+dzięki zawartemu w komendzie "*" który oznacza dowolny ciag znakow moglem usunac wszystkie pliki z rozszerzeniem .txt 
+
+6.Usuń katalog ukos/katalog/katalog2
+
+osboxes ~ drzewo > rm -r ukos/katalog/katalog2
+
+Zastosowałem polecenie 'rm' z flagą '-r', aby usunąć wskazany katalog wraz z całą jego zawartością.
+
+7.Usuń cały katalog klamka za pomocą jednego polecenia
+
+osboxes ~ drzewo > rm -r ukos/klamka
