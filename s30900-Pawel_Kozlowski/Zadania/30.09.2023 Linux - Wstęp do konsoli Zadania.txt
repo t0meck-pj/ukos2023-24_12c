@@ -1,0 +1,232 @@
+ZADANIA 1
+
+1.Uruchom terminal.
+   Na wirtualnej maszynie z narzędzi systemowych wybrałem terminal i go uruchomiłem 
+   (Wniosek - już umiałem)
+
+2.Wyświetl zawartość aktualnego katalogu.
+   Żeby wyświetlić katalog użyłem polecenia "ls"
+   Otrzymałem - "Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos" 
+   (wynik byl oczekiwany)
+
+3.Sprawdź gdzie aktualnie się znajdujesz.
+   Polecenie "pwd" wyświetliło mi zawartości aktualnego katalogu
+   Otrzymałem "/home/osboxes"
+   (Będę często używał)
+
+4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+   Po wpisaniu "cd Desktop" dostałem się do katalogu pulpit 
+   Otrzymałem  "osboxes  ~  Desktop" 
+   (Niespodziewałem się że to takie proste)
+
+5.Sprawdź gdzie jesteś.
+   Ponownie użyłem polecenia "pwd"
+   Otrzymałem "/home/osboxes/Desktop"
+   (Zaskoczyło mnie ponowne użycie polecenia pwd)
+
+6.Wyświetl zawartość bieżącego katalogu.
+   Ponownie polecenie "ls" wyświetliło zawartość katalogu tym razem Desktop
+   Otrzymałem "computer.desktop    network.desktop   userfiles.desktop
+              helpmanual.desktop  settings.desktop"
+   (Rozumiem)
+
+7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+   Użytłem polecenia "ls ~"
+   Otrzymałem "Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos"
+   (Nie znałem, już znam)
+
+8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo 
+   np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+   Wprowadziłem do terminala "cd ../Pictures"
+   otrzymałem "osboxes ~ Pictures"
+   (Zaskoczył mnie błąd po nie dodaniu po kropkach "/", muszę teraz o nim pamientać)
+
+9.Sprawdź gdzie jesteś.
+  Komenda "pwd"
+  Otrzymałem "/home/osboxes/Pictures"
+  (Zrozumiano)
+
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+   Wpisałem polecenie "cd ./././././" Reprezentuje aktualny katalog w którym się znajdujemy
+   Przeniosło mnie do aktualnego katalogu którym jest katalog Pulpit "osboxes ~ Pictures" (czyli nic się nie zmieniło)
+   (Rozumiem to tak że ilość ścieżek nie ma znaczenia ponieważ "." oznacza katalog bierzący, gdybym wstawił zamiast 
+   jednej kropki dwie, bym się przeniusł do katalogu nadrzędnego i ilość miała by znaczenie)
+
+11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+  Polecenie "cd /home/osboxes"
+  Otrzymałem (osboxes ~) czyli jestem w katalogu domowym
+  (Myślałem że katalogiem domowym jest katalog home, ale już wiem że nie)
+
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+   Administrator systemu ma katalog root
+   Wpisana komenda "cd /root"
+   Otrzymałem "bash: cd: /root: Permission denied" odmowa dostępu
+   (Wystąpił ten błąd, ponieważ użytkownik nie ma uprawnień do otwarcia folderu /root . Musi więc przypisać użytkownikowi    
+   uprawnienia.)
+
+13.Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na  
+   szuflandii.
+   wpisałem kombinacje "Ctrl+Alt+F3" 
+   Otrzymałem - nowy pusty terminal textowy 
+   (dowiedziałem się że można go wyłączyć klawiszem ALT+F7)
+
+14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+   Wcisnąłem po kolei Alt+F1 i ALT+F2 oraz ALT+F7
+   Otrzymałem nowe puste terminale 
+   (dowiedziałem się że mamy wsumie 6 pełno ekranowych terminali i od 7 zaczynają się graficzne)
+   ciekawostka - na starym linux na ALT + F1 jest graficzny
+ 
+ZADANIA 2
+
+1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu,    
+  albo bezpośrednio w ~):
+   polecenie1 - "mkdir ukos"
+   sprawdzenie - "ls"
+   otrzymałem - "Desktop  Documents  Downloads  Music  Pictures  Public  Templates  ukos  Videos" (utworzył się katalog ukos!)
+   polecenie2 - "cd ukos"
+   polecenie3 - "mkdir katalog"
+   polecenie4 - "mkdir klamka"
+   sprawdzenie - "ls"
+   otrzymałem - "katalog  klamka" (w katalogu ukos utworzłem 2 katalogi katalog i klamka)
+   polecenie5 - "cd katalog"
+   polecenie6 - "mkdir katalog2 katalog3"
+   sprawdzenie - "tree"
+   otrzymałem - (otrzymałem drzewo katalogu ukos zgodnie z zadaniem)
+├── ukos
+│   ├── katalog
+│   │   ├── katalog2
+│   │   └── katalog3
+│   └── klamka
+
+2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+   osboxes ~ touch ukos/klamka/zajecia2.txt (w katalogu klamka dodany plik zajecia2.txt)
+   osboxes ~ cd ukos/klamka
+   osboxes ~ ukos klamka touch zajecia2.log inny.txt nowy.txt (w katalogu klamka dodane posostałe pliki)
+   osboxes ~ ukos klamka cd ..
+   osboxes ~ ukos tree
+.
+├── katalog
+│   ├── katalog2
+│   └── katalog3
+└── klamka
+    ├── inny.txt
+    ├── nowy.txt
+    ├── zajecia2.log
+    └── zajecia2.txt
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+   p tworzy katalogi nadrzędne (rodziców)
+   osboxes ~ ukos mkdir -p to/jest/dluga/nazwa
+ukos
+├── katalog
+│   ├── katalog2
+│   └── katalog3
+├── klamka
+│   ├── inny.txt
+│   ├── nowy.txt
+│   ├── zajecia2.log
+│   └── zajecia2.txt
+└── to
+    └── jest
+        └── dluga
+            └── nazwa
+   (Nie znałem parametru "-p" musiałem poczytać w internecie ale już znam)
+
+4.następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+   osboxes ~ ukos touch to/jest/dluga/nazwa/dane.txt
+   Otrzymałem po wspisaniu tree ->
+ukos
+├── katalog
+│   ├── katalog2
+│   └── katalog3
+├── klamka
+│   ├── inny.txt
+│   ├── nowy.txt
+│   ├── zajecia2.log
+│   └── zajecia2.txt
+└── to
+    └── jest
+        └── dluga
+            └── nazwa
+                └── dane.txt
+(Umiem)
+
+5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+   Przypomnienie - znak gwiazdki * oznacza dowolny ciąg znaków, na przykład *.txt - wszystko z rozszerzeniem txt
+   osboxes ~ ukos rm klamka/*.txt
+otrzymałem ->
+ukos
+├── katalog
+│   ├── katalog2
+│   └── katalog3
+├── klamka
+│   └── zajecia2.log
+└── to
+    └── jest
+        └── dluga
+            └── nazwa
+                └── dane.txt
+(Przypomniałem sobie o "*")
+
+6.Usuń katalog ukos/katalog/katalog2
+   -r -> rekurencyjne usunięcie katalogu (wraz z zawartością)
+   osboxes ~ ukos rm -r katalog/katalog2
+otrzymałem ->
+ukos
+├── katalog
+│   └── katalog3
+├── klamka
+│   └── zajecia2.log
+└── to
+    └── jest
+        └── dluga
+            └── nazwa
+                └── dane.txt
+(zaskoczyło mnie to że mogę usunąć katalog używając "rm")
+
+7.Usuń cały katalog klamka za pomocą jednego polecenia
+   osboxes ~ ukos rm -r klamka
+Otrzymałem ->
+ukos
+├── katalog
+│   └── katalog3
+└── to
+    └── jest
+        └── dluga
+            └── nazwa
+                └── dane.txt
+(został usunięty katalog i nauczyłem się używać "-r")
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
