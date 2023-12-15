@@ -1,0 +1,79 @@
+INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+
+CTRL+Z służy do wstrzymania bieżącego procesu i przeniesienia go do tła. To znaczy, że program jest w pamięci, ale nie wykonuje żadnych operacji. Jest wstrzymany.
+
+Zobacz co się stanie:
+
+1. Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+
+-Wpisałem komendę 
+
+2. W terminalu w którym sie to uruchomiło wciśnij CTRL+Z
+
+-Nacisnąłem skrót klawiszowy 
+-Wynik 
+"
+^Z
+[1]+  Stopped                 gimp
+"
+
+3. Spróbuj coś wyklikać w gimpie / gedicie
+
+-Akcja nie przynosi żadnego efektu 
+
+4. Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa / gedita i potem je odsuń by odsłonić w pełni okno gimpa / gedita
+
+Co się stało? Wstrzymaliśmy program gimp/gedit. Program wstrzymany za pomocą kombinacji CTRL+Z jest przenoszony w tło (background). Efekt jest taki, że taki program przestaje odpowiadać na cokolwiek a jego okno nie jest przerysowywane i robi się mozaika.
+
+-Spodziewałem się mozaiki, takiej jak przy zawieszonych programach na windowsie XP (:D), aczkolwiek szczerze mówiac totalnie nic się nie stało, nie powstała żadna mozaika.
+
+Komenda bg służy do wznowienia w tle wstrzymanego programu. Zobacz:
+
+1. Wpisz komendę: bg
+
+Jak widać gimp/gedit ożył (jeśli nie, to zapytaj prowadzącego)
+
+-Gimp zaczął reagować, rezultat w terminalu
+"
+[1]+ gimp &
+"
+
+Komenda fg służy do wznowienia na pierwszym planie wstrzymanego wcześniej procesu. Zobacz co się stanie:
+
+2. Wpisz komendę: fg
+
+-Proces przeszedł na pierwszy plan, w terminalu nie mozna uzywac komend, użyłem skrótu ctrl+c do zamknięcia programu.
+
+Jak widać proces wrócił i można wcisnąć na przykład CTRL+C aby go zakończyć.
+
+W momencie uruchamiania programu, możemy od razu nakazać wykonanie go w tle. Służy do tego znak & umieszczony na końcu instrukcji.
+
+Zobacz:
+INFO: Jeśli jakiegoś programu nie ma to zastąp go innym, który znasz.
+
+1. Wykonaj komendę gimp &
+
+2. Wykonaj komendę gedit &
+
+3. Wykonaj komendę geany &
+
+Zobacz co się stało (domyślam się, że uruchomiły się 3 programy, a na terminalu ciągle można coś pisać.
+
+-Wykonuję komendę "gimp &".
+-Wykonuję komendę "gedit &", nie posiadam programu więc instaluję go komendą "sudo apt install gedit", następnie ponawiam komendę "gedit &".
+-Wykonuję komendę "geany &", nie posiadam programu więc instaluję go komendą "sudo apt install geany", następnie ponawiam komendę "geany &".
+-Uruchomiły się 3 programy, które można swobodnie używać, tak samo jak terminal. 
+
+
+Kolejna komenda to jobs. Służy ona do wyświetlania listy zadań (jobów; nie mylić z procesami) przeniesionych do tła.
+
+1. Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
+składnia: fg %(numer jobu)
+
+-Wpisuję komendę "jobs", wynik:
+"
+[1]   Running                 gimp &
+[3]-  Running                 geany &
+[4]+  Running                 gedit &
+"
+-Wpisuję komendę "fg 3", przywracając tym geany z tła na pierwszy plan.

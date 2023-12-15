@@ -1,0 +1,498 @@
+Program ps służy do wyświetlania listy procesów. 
+
+Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+1. ps
+
+-Wpisuję "ps"
+-Otrzymany wynik 
+"
+   PID TTY          TIME CMD
+4051318 pts/14   00:00:00 bash
+4052401 pts/14   00:00:00 ps
+"
+-Polecenie "ps" wyświetla informację o aktualnych procesach związanych z aktualnym terminalem.
+
+2. ps -a
+
+-Wpisuję "ps -a"
+-Otrzymany wynik
+"
+    PID TTY          TIME CMD
+4052411 pts/14   00:00:00 ps
+"
+-Polecenie "ps -a" wyświetla informację o wszystkich procesach związanych z bieżącym oraz innymi terminalami bez informacji o procesach team liderów. 
+
+3. ps x
+
+-Wpisuję ps x
+-Otrzymany wynik 
+"
+    PID TTY      STAT   TIME COMMAND
+4051299 ?        Ss     0:00 /lib/systemd/systemd --user
+4051300 ?        S      0:00 (sd-pam)
+4051317 ?        S      0:00 sshd: s30278@pts/14
+4051318 pts/14   Ss     0:00 -bash
+4052427 pts/14   R+     0:00 ps x
+"
+
+-Wyświetla informację o procesach zależnych od aktualnego terminala oraz procesach niezależnych od terminala. 
+
+4. ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+-Wpisuję ps axu
+-Otrzymany wynik 
+"
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8700 ?        Ss   lut22  11:16 /lib/systemd/
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_ru
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_tr
+root          11  0.0  0.0      0     0 ?        S    lut22   5:12 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    lut22  12:52 [rcu_sched]
+root          13  0.0  0.0      0     0 ?        S    lut22   0:46 [migration/0]
+root          15  0.0  0.0      0     0 ?        S    lut22   0:00 [cpuhp/0]
+root          17  0.0  0.0      0     0 ?        S    lut22   0:00 [kdevtmpfs]
+root          18  0.0  0.0      0     0 ?        I<   lut22   0:00 [netns]
+root          19  0.0  0.0      0     0 ?        S    lut22   0:00 [kauditd]
+root          20  0.0  0.0      0     0 ?        S    lut22   0:19 [khungtaskd]
+root          21  0.0  0.0      0     0 ?        S    lut22   0:00 [oom_reaper]
+root          22  0.0  0.0      0     0 ?        I<   lut22   0:00 [writeback]
+root          23  0.0  0.0      0     0 ?        S    lut22   4:46 [kcompactd0]
+root          24  0.0  0.0      0     0 ?        SN   lut22   0:00 [ksmd]
+root          25  0.0  0.0      0     0 ?        SN   lut22   5:40 [khugepaged]
+root          43  0.0  0.0      0     0 ?        I<   lut22   0:00 [kintegrityd]
+root          44  0.0  0.0      0     0 ?        I<   lut22   0:00 [kblockd]
+root          45  0.0  0.0      0     0 ?        I<   lut22   0:00 [blkcg_punt_b
+root          46  0.0  0.0      0     0 ?        I<   lut22   0:00 [edac-poller]
+root          47  0.0  0.0      0     0 ?        I<   lut22   0:00 [devfreq_wq]
+root          49  0.0  0.0      0     0 ?        S    lut22   3:40 [kswapd0]
+root          50  0.0  0.0      0     0 ?        I<   lut22   0:00 [kthrotld]
+root          51  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/24-pcieh
+root          52  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/25-pcieh
+root          53  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/26-pcieh
+root          54  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/27-pcieh
+root          55  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/28-pcieh
+root          56  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/29-pcieh
+root          57  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/30-pcieh
+root          58  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/31-pcieh
+root          59  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/32-pcieh
+root          60  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/33-pcieh
+root          61  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/34-pcieh
+root          62  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/35-pcieh
+root          63  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/36-pcieh
+root          64  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/37-pcieh
+root          65  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/38-pcieh
+root          66  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/39-pcieh
+root          67  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/40-pcieh
+root          68  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/41-pcieh
+root          69  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/42-pcieh
+root          70  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/43-pcieh
+root          71  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/44-pcieh
+root          72  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/45-pcieh
+root          73  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/46-pcieh
+root          74  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/47-pcieh
+root          75  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/48-pcieh
+root          76  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/49-pcieh
+root          77  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/50-pcieh
+root          78  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/51-pcieh
+root          79  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/52-pcieh
+root          80  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/53-pcieh
+root          81  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/54-pcieh
+root          82  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/55-pcieh
+root          83  0.0  0.0      0     0 ?        I<   lut22   0:00 [acpi_thermal
+root          84  0.0  0.0      0     0 ?        I<   lut22   0:00 [ipv6_addrcon
+root          95  0.0  0.0      0     0 ?        I<   lut22   0:00 [kstrp]
+root          98  0.0  0.0      0     0 ?        I<   lut22   0:00 [zswap-shrink
+root         141  0.0  0.0      0     0 ?        S    lut22   0:00 [scsi_eh_0]
+root         144  0.0  0.0      0     0 ?        I<   lut22   0:00 [scsi_tmf_0]
+root         146  0.0  0.0      0     0 ?        I<   lut22   0:00 [vmw_pvscsi_w
+root         147  0.0  0.0      0     0 ?        I<   lut22   0:00 [ata_sff]
+root         149  0.0  0.0      0     0 ?        S    lut22   0:00 [scsi_eh_1]
+root         150  0.0  0.0      0     0 ?        I<   lut22   0:00 [scsi_tmf_1]
+root         151  0.0  0.0      0     0 ?        S    lut22   0:00 [scsi_eh_2]
+root         152  0.0  0.0      0     0 ?        I<   lut22   0:00 [scsi_tmf_2]
+root         159  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         161  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         163  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         166  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         169  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         211  0.0  0.0      0     0 ?        S    lut22   0:04 [jbd2/dm-0-8]
+root         212  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-con
+root         277  0.0  0.0      0     0 ?        I<   lut22   0:00 [rpciod]
+root         278  0.0  0.0      0     0 ?        I<   lut22   0:00 [xprtiod]
+root         322  0.0  0.0      0     0 ?        I<   lut22   0:00 [cryptd]
+root         333  0.0  0.0      0     0 ?        S    lut22   8:35 [irq/16-vmwgf
+root         336  0.0  0.0      0     0 ?        I<   lut22   0:00 [ttm_swap]
+root         339  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc0]
+root         341  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc1]
+root         343  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc2]
+root         345  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc3]
+root         347  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc4]
+root         350  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc5]
+root         351  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc6]
+root         359  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc7]
+root         365  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-con
+root         389  0.0  0.0      0     0 ?        S    lut22   0:13 [jbd2/dm-3-8]
+root         390  0.0  0.0      0     0 ?        S    lut22   6:37 [jbd2/dm-1-8]
+root         393  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-con
+root         394  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-con
+root         432  0.0  0.0      0     0 ?        S    lut22   0:00 [jbd2/dm-4-8]
+root         434  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-con
+root         448  0.0  0.0      0     0 ?        I<   lut22   0:00 [nfit]
+root         475  0.0  0.0  99892  1904 ?        Ssl  lut22   0:00 /sbin/dhclien
+_rpc         533  0.0  0.0   7904  1776 ?        Ss   lut22   0:14 /sbin/rpcbind
+root         536  0.0  0.0  48064  1968 ?        Ss   lut22   0:00 /usr/bin/VGAu
+root         537  0.0  0.0 163172  3512 ?        Ssl  lut22 155:05 /usr/bin/vmto
+statd        556  0.0  0.0   4820  1300 ?        Ss   lut22   0:00 /sbin/rpc.sta
+message+     558  0.0  0.0   9296  3392 ?        Ss   lut22   2:48 /usr/bin/dbus
+root         563  0.0  0.1  68468  4528 ?        Ss   lut22   4:52 /usr/sbin/nmb
+root         564  0.0  0.0 220800  1920 ?        Ssl  lut22  10:15 /usr/sbin/rsy
+root         566  0.0  0.0  15656  4020 ?        Ss   lut22   1:46 /lib/systemd/
+root         577  0.0  0.0  13360  2744 ?        Ss   lut22  15:39 sshd: /usr/sb
+root         597  0.0  1.3 132744 54764 ?        SLs  lut22  29:06 /usr/sbin/win
+root         632  0.0  0.3  91172 15536 ?        S    lut22   0:40 winbindd: dom
+root         633  0.0  1.4 139396 58152 ?        S    lut22  43:43 winbindd: dom
+root         636  0.0  0.0      0     0 ?        I<   lut22   0:00 [nfsiod]
+root         642  0.0  0.0      0     0 ?        S    lut22   0:02 [lockd]
+root         644  0.0  0.0   6984  1444 ?        Ss   lut22   0:29 /usr/sbin/cro
+root         647  0.0  0.2  90756 11352 ?        Ss   lut22   0:48 /usr/sbin/smb
+root         669  0.0  0.0  80492  1320 ?        S    lut22   0:12 /usr/sbin/smb
+root         670  0.0  0.0  80508  1192 ?        S    lut22   0:12 /usr/sbin/smb
+root         677  0.0  0.6 106616 28120 ?        S    lut22   8:27 winbindd: idm
+root         764  0.0  0.1  88152  6196 ?        S    lut22   0:13 /usr/sbin/smb
+Debian-+     953  0.0  0.0  18628  1744 ?        Ss   lut22   0:07 /usr/sbin/exi
+root        1024  0.0  0.8 116420 33864 ?        S    lut22   0:28 winbindd: dom
+t0meck    637946  0.0  0.1  15516  5536 ?        Ss   sie28   0:15 /lib/systemd/
+t0meck    637947  0.0  0.0 212732   456 ?        S    sie28   0:00 (sd-pam)
+t0meck    637965  0.0  0.0   5364    68 ?        Ss   sie28   0:00 sleep inf
+root      823270  0.0  0.0   5848   548 tty6     Ss+  mar21   0:00 /sbin/agetty 
+root      823271  0.0  0.0   5848   508 tty1     Ss+  mar21   0:00 /sbin/agetty 
+root     1329868  0.0  0.6 143448 27760 ?        S    paź02   0:05 winbindd: do
+s27281   1444627  0.0  0.1  15620  4452 ?        Ss   kwi16   0:24 /lib/systemd/
+s27281   1444628  0.0  0.0 213284   408 ?        S    kwi16   0:00 (sd-pam)
+s27281   1445511  0.0  0.0   6032   144 ?        Ss   kwi16   0:00 ssh-agent -s
+s27281   1445516  0.0  0.0   6032   192 ?        Ss   kwi16   0:00 ssh-agent -s
+root     1530482  0.0  0.0      0     0 ?        I<   paź05   4:06 [kworker/0:2
+s29606   1721146  0.0  0.0  26100   692 ?        Sl   paź10   0:02 /home/PJWSTK
+s29606   1721289  0.0  0.0  25952   708 ?        Sl   paź10   0:00 /home/PJWSTK
+s29606   1721594  0.0  0.0  26012   716 ?        Sl   paź10   0:00 /home/PJWSTK
+s29866   1837370  0.0  0.1  15496  7984 ?        Ss   paź14   0:11 /lib/systemd
+s29866   1837371  0.0  0.0 214896   416 ?        S    paź14   0:00 (sd-pam)
+s29866   1837709  0.0  0.0   6024   372 ?        Ss   paź15   0:00 ssh-agent -s
+s29606   2160024  0.0  0.0  26336  1644 ?        Sl   paź26   0:05 /home/PJWSTK
+s29869   2216997  0.0  0.1  15512  7904 ?        Ss   paź28   0:09 /lib/systemd
+s29869   2216998  0.0  0.0 214896   368 ?        S    paź28   0:00 (sd-pam)
+s32160   2217771  0.0  0.1  15532  7836 ?        Ss   paź28   0:09 /lib/systemd
+s32160   2217772  0.0  0.0 214896   352 ?        S    paź28   0:00 (sd-pam)
+s32160   2219592  0.0  0.0   5364   320 ?        S    paź28   0:00 sleep inf
+s29869   2219598  0.0  0.0   5364   372 ?        S    paź28   0:00 sleep inf
+s29606   2280289  0.0  0.0  26388  1488 ?        Sl   paź30   0:02 /home/PJWSTK
+s27118   2508128  0.0  0.1  15612  4264 ?        Ss   maj21   0:20 /lib/systemd/
+s27118   2508129  0.0  0.0 213748   500 ?        S    maj21   0:00 (sd-pam)
+s27118   2508604  0.0  0.0   2368    16 ?        S    maj21   1:54 ./zad1
+s27118   2508617  0.0  0.0   2368    16 ?        S    maj21   1:54 ./zad1
+s27118   2508753  0.0  0.0   2236    28 ?        S    maj21   1:54 ./zad11
+s27118   2509155  0.0  0.0   2368    24 ?        S    maj21   1:56 ./S1 default
+s27118   2509172  0.0  0.0   2368    16 ?        S    maj21   1:57 ./S1 ignore
+s27118   2509178  0.0  0.0   2368    40 ?        S    maj21   1:55 ./S1 ignore
+s27118   2509182  0.0  0.0   2368    20 ?        S    maj21   1:58 ./S1 handle
+s27118   2509429  0.0  0.0   2368    20 ?        S    maj21   1:56 ./S1 default
+s27118   2509451  0.0  0.0   2368    36 ?        S    maj21   1:55 ./S1 handle
+s27118   2509457  0.0  0.0   2368    52 ?        S    maj21   1:56 ./S1 ignore
+s27118   2510288  0.0  0.0   2368    44 ?        S    maj21   1:52 ./S1 default
+s27118   2510335  0.0  0.0   2368    24 ?        S    maj21   1:56 ./S11
+s27118   2510351  0.0  0.0   2368    28 ?        S    maj21   1:53 ./S11
+s27118   2510352  0.0  0.0   2368    24 ?        S    maj21   1:52 ./S11
+s27118   2510355  0.0  0.0   2368    24 ?        S    maj21   1:53 ./S11 kill -S
+s27118   2510475  0.0  0.0   2368    48 ?        S    maj21   1:54 ./S1 default
+s21974   2511048  0.0  0.0  15512  3596 ?        Ss   maj21   0:20 /lib/systemd/
+s21974   2511049  0.0  0.0 213748   444 ?        S    maj21   0:00 (sd-pam)
+s21974   2513999  0.0  0.0   2368    68 ?        S    maj21   0:00 ./program1c
+s28615   2517178  0.0  0.0  15516  3608 ?        Ss   maj21   0:20 /lib/systemd/
+s28615   2517180  0.0  0.0 213748   472 ?        S    maj21   0:00 (sd-pam)
+s28615   2520645  0.0  0.0   2368    68 ?        S    maj21   0:00 2 2
+s28615   2521092  0.0  0.0   2368    64 ?        S    maj21   0:00 2 2
+s22775   2620545  0.0  0.1  15608  4308 ?        Ss   maj25   0:19 /lib/systemd/
+s22775   2620546  0.0  0.0 213748   456 ?        S    maj25   0:00 (sd-pam)
+s22775   2623653  0.0  0.0   2368    72 ?        S    maj25   1:53 ./zad 2623643
+s22775   2623654  0.0  0.0   2368    72 ?        S    maj25   1:58 ./zad 2623643
+s30389   2783914  0.0  0.2  15532  8352 ?        Ss   lis17   0:05 /lib/systemd/
+s30389   2783915  0.0  0.0 214896   492 ?        S    lis17   0:00 (sd-pam)
+kzakrze+ 2784009  0.0  0.2  15532  8424 ?        Ss   lis17   0:05 /lib/systemd/
+kzakrze+ 2784010  0.0  0.0 214896   500 ?        S    lis17   0:00 (sd-pam)
+kzakrze+ 2784664  0.0  0.0  10456  3984 ?        S    lis17   0:00 top
+s30389   2784688  0.0  0.0  10456  3912 ?        S    lis17   0:00 top
+s25944   2979485  0.0  0.0  15520  3776 ?        Ss   cze01   0:19 /lib/systemd/
+s25944   2979486  0.0  0.0 213748   472 ?        S    cze01   0:00 (sd-pam)
+s25944   2984323  0.0  0.0   2236    28 ?        S    cze01   0:00 ./driver
+s25944   2984335  0.0  0.0   2236    60 ?        S    cze01   0:00 ./driver
+s25944   2984341  0.0  0.0   2236    52 ?        S    cze01   0:00 ./driver
+s25944   2984353  0.0  0.0   2236    40 ?        S    cze01   0:00 ./driver
+s25944   2984412  0.0  0.0   2368    60 ?        S    cze01   0:00 ./driver
+s25944   2984423  0.0  0.0   2368    64 ?        S    cze01   0:00 ./driver
+s25944   2984432  0.0  0.0   2368    48 ?        S    cze01   0:00 ./driver
+s29606   3044112  0.0  0.1  15524  4276 ?        Ss   cze03   0:18 /lib/systemd/
+s29606   3044113  0.0  0.0 213748   508 ?        S    cze03   0:00 (sd-pam)
+s29606   3053271  0.0  0.0   2368    28 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053272  0.0  0.0   2368    28 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053273  0.0  0.0   2368    32 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053274  0.0  0.0   2368    16 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053275  0.0  0.0   2368    24 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053276  0.0  0.0   2368    28 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053277  0.0  0.0   2368    32 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053278  0.0  0.0   2368    40 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053279  0.0  0.0   2368    24 ?        S    cze03   0:00 zadanieS1 17 
+s29606   3053280  0.0  0.0   2368    44 ?        S    cze03   0:00 zadanieS1 17 
+s29420   3077102  0.0  0.0  15524  3936 ?        Ss   cze04   0:18 /lib/systemd/
+s29420   3077103  0.0  0.0 213748   468 ?        S    cze04   0:00 (sd-pam)
+s29420   3111442  0.0  0.0   2368    64 ?        S    cze04   1:48 ./program 2 2
+s25378   3115654  0.0  0.0  15532  3804 ?        Ss   cze04   0:19 /lib/systemd/
+s25378   3115655  0.0  0.0 213748   456 ?        S    cze04   0:00 (sd-pam)
+s27118   3116032  0.0  0.0   2368    76 ?        S    cze04   0:00 ./koloc
+s27118   3116444  0.0  0.0   2368    76 ?        S    cze04   0:00 ./koloc
+s27144   3116469  0.0  0.0  15532  3852 ?        Ss   cze04   0:18 /lib/systemd/
+s27144   3116470  0.0  0.0 213748   456 ?        S    cze04   0:00 (sd-pam)
+s27144   3116522  0.0  0.0   2368    76 ?        S    cze04   0:00 ./test
+s27118   3116818  0.0  0.0   2368    76 ?        S    cze04   0:00 ./koloc 2323
+s27144   3117323  0.0  0.0   2368    68 ?        S    cze04   0:00 ./koloc_s2714
+s27144   3117345  0.0  0.0   2368    60 ?        S    cze04   0:00 ./koloc_s2714
+s27144   3117468  0.0  0.0   2368    72 ?        S    cze04   0:00 ./koloc_s2714
+s25378   3117500  0.0  0.0   2368    72 ?        S    cze04   0:00 ./koloc_s2537
+s27144   3117533  0.0  0.0   2368    64 ?        S    cze04   0:00 ./koloc_s2714
+s25378   3117593  0.0  0.0   2368    76 ?        S    cze04   0:00 ./koloc_s2537
+s25378   3117654  0.0  0.0   2368    72 ?        S    cze04   0:00 ./koloc_s2537
+s27293   3450699  0.0  0.0  15508  3684 ?        Ss   cze18   0:18 /lib/systemd/
+s27293   3450700  0.0  0.0 213748   588 ?        S    cze18   0:00 (sd-pam)
+s27293   3451162  0.0  0.0   2368    64 ?        S    cze18   0:00 ./koloc_s2729
+s27293   3451171  0.0  0.0   2368    64 ?        S    cze18   0:00 ./koloc_s2729
+s27293   3451184  0.0  0.0   2368    56 ?        S    cze18   0:00 ./koloc_s2729
+s27293   3451189  0.0  0.0   2368    68 ?        S    cze18   0:00 ./koloc_s2729
+s27293   3451194  0.0  0.0   2368    60 ?        S    cze18   0:00 ./koloc_s2729
+s27293   3451199  0.0  0.0   2368    68 ?        S    cze18   0:00 ./koloc_s2729
+root     3716051  0.0  2.3 558948 95888 ?        Ss   cze30  38:30 /lib/systemd/
+root     3728913  0.0  0.0      0     0 ?        I<   cze30   0:00 [xfsalloc]
+root     3728914  0.0  0.0      0     0 ?        I<   cze30   0:00 [xfs_mru_cach
+root     3728917  0.0  0.0      0     0 ?        S    cze30   0:00 [jfsIO]
+root     3728918  0.0  0.0      0     0 ?        S    cze30   0:00 [jfsCommit]
+root     3728919  0.0  0.0      0     0 ?        S    cze30   0:00 [jfsSync]
+systemd+ 3730460  0.0  0.0  88220  2780 ?        Ssl  cze30   0:18 /lib/systemd/
+root     3730492  0.0  0.0  21192  1220 ?        Ss   cze30   0:10 /lib/systemd/
+mysql    3734422  0.0  7.1 1156928 288212 ?      Ssl  cze30  21:33 /usr/sbin/mar
+root     3735819  0.0  0.6 227104 26688 ?        Ss   cze30   5:14 /usr/sbin/apa
+s30302   3928935  0.0  0.2  15428  8308 ?        Ss   gru12   0:00 /lib/systemd/
+s30302   3928936  0.0  0.0 214896  2320 ?        S    gru12   0:00 (sd-pam)
+s30302   3941994  0.0  0.0   7372  2452 ?        S    gru12   0:41 ping -a www.g
+root     3973209  0.0  0.0      0     0 ?        I<   gru13   0:04 [kworker/u3:1
+root     3988767  0.0  0.0      0     0 ?        I<   gru14   0:01 [kworker/u3:2
+s30399   4022133  0.0  0.2  15428  8504 ?        Ss   gru14   0:00 /lib/systemd/
+s30399   4022134  0.0  0.1 214896  4168 ?        S    gru14   0:00 (sd-pam)
+s30399   4022390  0.0  0.0   7372  2500 ?        S    gru14   0:07 ping example.
+www-data 4035209  0.0  0.6 305244 27904 ?        S    00:00   0:00 /usr/sbin/apa
+www-data 4035210  0.0  0.6 302072 25932 ?        S    00:00   0:00 /usr/sbin/apa
+www-data 4035211  0.0  0.5 227724 22232 ?        S    00:00   0:00 /usr/sbin/apa
+www-data 4035212  0.0  0.5 227724 21468 ?        S    00:00   0:00 /usr/sbin/apa
+www-data 4035213  0.0  0.8 236864 32768 ?        S    00:00   0:00 /usr/sbin/apa
+www-data 4035244  0.0  0.6 302080 26216 ?        S    00:08   0:00 /usr/sbin/apa
+www-data 4035412  0.0  0.5 227548 22132 ?        S    00:19   0:00 /usr/sbin/apa
+root     4040803  0.0  0.0      0     0 ?        I    00:29   0:15 [kworker/0:2-
+root     4051296  0.0  0.3  58152 14884 ?        Ss   11:00   0:00 sshd: s30278 
+s30278   4051299  0.0  0.2  15424  8672 ?        Ss   11:00   0:00 /lib/systemd/
+s30278   4051300  0.0  0.1 214896  4168 ?        S    11:00   0:00 (sd-pam)
+s30278   4051317  0.0  0.1  58284  6916 ?        S    11:00   0:00 sshd: s30278@
+s30278   4051318  0.0  0.1   8412  5080 pts/14   Ss   11:00   0:00 -bash
+root     4051365  0.0  0.0      0     0 ?        I    11:05   0:00 [kworker/u2:3
+www-data 4051374  0.0  0.4 227276 16332 ?        S    11:06   0:00 /usr/sbin/apa
+www-data 4051375  0.0  0.4 227276 16344 ?        S    11:06   0:00 /usr/sbin/apa
+www-data 4051376  0.0  0.4 227276 16360 ?        S    11:06   0:00 /usr/sbin/apa
+root     4051483  0.0  0.0      0     0 ?        I    11:17   0:00 [kworker/u2:2
+root     4052056  0.0  0.0      0     0 ?        I    11:38   0:00 [kworker/0:0-
+root     4052243  0.0  0.0      0     0 ?        I    11:43   0:00 [kworker/0:1-
+root     4052306  0.0  0.0      0     0 ?        I    11:46   0:00 [kworker/0:3-
+root     4052379  0.0  0.0      0     0 ?        I    11:47   0:00 [kworker/u2:0
+root     4052430  0.0  0.3  58152 14908 ?        Ss   11:50   0:00 sshd: s32410 
+s32410   4052435  0.3  0.2  15304  8184 ?        Ss   11:50   0:00 /lib/systemd/
+s32410   4052436  0.0  0.1 214896  4168 ?        S    11:50   0:00 (sd-pam)
+s32410   4052455  0.0  0.1  58152  7044 ?        S    11:50   0:00 sshd: s32410@
+s32410   4052456  0.0  0.1   8412  5116 pts/15   Ss+  11:50   0:00 -bash
+s30278   4052465  0.0  0.0  10084  3592 pts/14   R+   11:50   0:00 ps axu
+"
+
+-Polecenie "ps axu" zawiera 3 znaki które punktują konkretne procesy oraz informacje o nich. 
+-Polecenie pokazuje wszystkie procesy zależne oraz niezależne od konsoli, również procesy użytkownika "root", pokazuje równiez dzięki znakowi "u" dodatkowe informacje o każdym wypisanym procesie.
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+Nie wiesz? A gdzie może być wyjaśnienie?
+
+kolumna TTY oznacza terminal do którego dane procesy są przypisane, jeśli występują w tej kolumnie znaki zapytania, oznacza to, że dany proces nie jest przypisany do konkretnej sesji terminala i działa niezależnie od niego. 
+
+B: Jak wykonasz poniższe 2 zadania?
+
+1. Wyświetl wszystkie procesy bash
+
+-"ps axu | grep [b]ash"
+-Wynik 
+"
+s30278   4051318  0.0  0.1   8412  5080 pts/14   Ss   11:00   0:00 -bash
+s32410   4052456  0.0  0.1   8412  5164 pts/15   Ss   11:50   0:00 -bash
+"
+-"grep [b]ash" pozwala na znalezienie wszystkich procesów bash, dzięki użyciu nawiasów kwadratowych [b], polecenie odfiltrowywuje samą siebie, ponieważ zwykłe polecenie "grep bash", pokazuje w wynikach samą siebie.
+
+2. Wyświetl wszystkei procesy należące do użytkownika root
+
+-Polecenie "ps -u root -U root" 
+-Wynik 
+"
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8700 ?        Ss   lut22  11:16 /lib/systemd/sys
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H-ev
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq]
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_rude_
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_trace
+root          11  0.0  0.0      0     0 ?        S    lut22   5:12 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    lut22  12:52 [rcu_sched]
+root          13  0.0  0.0      0     0 ?        S    lut22   0:46 [migration/0]
+root          15  0.0  0.0      0     0 ?        S    lut22   0:00 [cpuhp/0]
+root          17  0.0  0.0      0     0 ?        S    lut22   0:00 [kdevtmpfs]
+root          18  0.0  0.0      0     0 ?        I<   lut22   0:00 [netns]
+root          19  0.0  0.0      0     0 ?        S    lut22   0:00 [kauditd]
+root          20  0.0  0.0      0     0 ?        S    lut22   0:19 [khungtaskd]
+root          21  0.0  0.0      0     0 ?        S    lut22   0:00 [oom_reaper]
+root          22  0.0  0.0      0     0 ?        I<   lut22   0:00 [writeback]
+root          23  0.0  0.0      0     0 ?        S    lut22   4:46 [kcompactd0]
+root          24  0.0  0.0      0     0 ?        SN   lut22   0:00 [ksmd]
+root          25  0.0  0.0      0     0 ?        SN   lut22   5:40 [khugepaged]
+root          43  0.0  0.0      0     0 ?        I<   lut22   0:00 [kintegrityd]
+root          44  0.0  0.0      0     0 ?        I<   lut22   0:00 [kblockd]
+root          45  0.0  0.0      0     0 ?        I<   lut22   0:00 [blkcg_punt_bio]
+root          46  0.0  0.0      0     0 ?        I<   lut22   0:00 [edac-poller]
+root          47  0.0  0.0      0     0 ?        I<   lut22   0:00 [devfreq_wq]
+root          49  0.0  0.0      0     0 ?        S    lut22   3:40 [kswapd0]
+root          50  0.0  0.0      0     0 ?        I<   lut22   0:00 [kthrotld]
+root          51  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/24-pciehp]
+root          52  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/25-pciehp]
+root          53  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/26-pciehp]
+root          54  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/27-pciehp]
+root          55  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/28-pciehp]
+root          56  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/29-pciehp]
+root          57  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/30-pciehp]
+root          58  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/31-pciehp]
+root          59  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/32-pciehp]
+root          60  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/33-pciehp]
+root          61  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/34-pciehp]
+root          62  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/35-pciehp]
+root          63  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/36-pciehp]
+root          64  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/37-pciehp]
+root          65  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/38-pciehp]
+root          66  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/39-pciehp]
+root          67  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/40-pciehp]
+root          68  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/41-pciehp]
+root          69  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/42-pciehp]
+root          70  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/43-pciehp]
+root          71  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/44-pciehp]
+root          72  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/45-pciehp]
+root          73  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/46-pciehp]
+root          74  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/47-pciehp]
+root          75  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/48-pciehp]
+root          76  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/49-pciehp]
+root          77  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/50-pciehp]
+root          78  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/51-pciehp]
+root          79  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/52-pciehp]
+root          80  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/53-pciehp]
+root          81  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/54-pciehp]
+root          82  0.0  0.0      0     0 ?        S    lut22   0:00 [irq/55-pciehp]
+root          83  0.0  0.0      0     0 ?        I<   lut22   0:00 [acpi_thermal_pm
+root          84  0.0  0.0      0     0 ?        I<   lut22   0:00 [ipv6_addrconf]
+root          95  0.0  0.0      0     0 ?        I<   lut22   0:00 [kstrp]
+root          98  0.0  0.0      0     0 ?        I<   lut22   0:00 [zswap-shrink]
+root         141  0.0  0.0      0     0 ?        S    lut22   0:00 [scsi_eh_0]
+root         144  0.0  0.0      0     0 ?        I<   lut22   0:00 [scsi_tmf_0]
+root         146  0.0  0.0      0     0 ?        I<   lut22   0:00 [vmw_pvscsi_wq_0
+root         147  0.0  0.0      0     0 ?        I<   lut22   0:00 [ata_sff]
+root         149  0.0  0.0      0     0 ?        S    lut22   0:00 [scsi_eh_1]
+root         150  0.0  0.0      0     0 ?        I<   lut22   0:00 [scsi_tmf_1]
+root         151  0.0  0.0      0     0 ?        S    lut22   0:00 [scsi_eh_2]
+root         152  0.0  0.0      0     0 ?        I<   lut22   0:00 [scsi_tmf_2]
+root         159  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         161  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         163  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         166  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         169  0.0  0.0      0     0 ?        I<   lut22   0:00 [kdmflush]
+root         211  0.0  0.0      0     0 ?        S    lut22   0:04 [jbd2/dm-0-8]
+root         212  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-conver
+root         277  0.0  0.0      0     0 ?        I<   lut22   0:00 [rpciod]
+root         278  0.0  0.0      0     0 ?        I<   lut22   0:00 [xprtiod]
+root         322  0.0  0.0      0     0 ?        I<   lut22   0:00 [cryptd]
+root         333  0.0  0.0      0     0 ?        S    lut22   8:35 [irq/16-vmwgfx]
+root         336  0.0  0.0      0     0 ?        I<   lut22   0:00 [ttm_swap]
+root         339  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc0]
+root         341  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc1]
+root         343  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc2]
+root         345  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc3]
+root         347  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc4]
+root         350  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc5]
+root         351  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc6]
+root         359  0.0  0.0      0     0 ?        S    lut22   0:00 [card0-crtc7]
+root         365  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-conver
+root         389  0.0  0.0      0     0 ?        S    lut22   0:13 [jbd2/dm-3-8]
+root         390  0.0  0.0      0     0 ?        S    lut22   6:38 [jbd2/dm-1-8]
+root         393  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-conver
+root         394  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-conver
+root         432  0.0  0.0      0     0 ?        S    lut22   0:00 [jbd2/dm-4-8]
+root         434  0.0  0.0      0     0 ?        I<   lut22   0:00 [ext4-rsv-conver
+root         448  0.0  0.0      0     0 ?        I<   lut22   0:00 [nfit]
+root         475  0.0  0.0  99892  1904 ?        Ssl  lut22   0:00 /sbin/dhclient -
+root         536  0.0  0.0  48064  1968 ?        Ss   lut22   0:00 /usr/bin/VGAuthS
+root         537  0.0  0.0 163172  3512 ?        Ssl  lut22 155:05 /usr/bin/vmtools
+root         563  0.0  0.1  68468  4528 ?        Ss   lut22   4:52 /usr/sbin/nmbd -
+root         564  0.0  0.0 220800  1920 ?        Ssl  lut22  10:15 /usr/sbin/rsyslo
+root         566  0.0  0.0  15656  4020 ?        Ss   lut22   1:46 /lib/systemd/sys
+root         577  0.0  0.0  13360  2744 ?        Ss   lut22  15:39 sshd: /usr/sbin/
+root         597  0.0  1.3 132744 54764 ?        SLs  lut22  29:06 /usr/sbin/winbin
+root         632  0.0  0.3  91172 15536 ?        S    lut22   0:40 winbindd: domain
+root         633  0.0  1.4 139396 58152 ?        S    lut22  43:43 winbindd: domain
+root         636  0.0  0.0      0     0 ?        I<   lut22   0:00 [nfsiod]
+root         642  0.0  0.0      0     0 ?        S    lut22   0:02 [lockd]
+root         644  0.0  0.0   6984  1444 ?        Ss   lut22   0:29 /usr/sbin/cron -
+root         647  0.0  0.2  90756 11352 ?        Ss   lut22   0:48 /usr/sbin/smbd -
+root         669  0.0  0.0  80492  1320 ?        S    lut22   0:12 /usr/sbin/smbd -
+root         670  0.0  0.0  80508  1192 ?        S    lut22   0:12 /usr/sbin/smbd -
+root         677  0.0  0.6 106616 28120 ?        S    lut22   8:27 winbindd: idmap 
+root         764  0.0  0.1  88152  6196 ?        S    lut22   0:13 /usr/sbin/smbd -
+root        1024  0.0  0.8 116420 33864 ?        S    lut22   0:28 winbindd: domain
+root      823270  0.0  0.0   5848   548 tty6     Ss+  mar21   0:00 /sbin/agetty -o 
+root      823271  0.0  0.0   5848   508 tty1     Ss+  mar21   0:00 /sbin/agetty -o 
+root     1329868  0.0  0.6 143448 27760 ?        S    paź02   0:05 winbindd: domai
+root     1530482  0.0  0.0      0     0 ?        I<   paź05   4:06 [kworker/0:2H-k
+root     3716051  0.0  2.5 419608 103584 ?       Ss   cze30  38:30 /lib/systemd/sys
+root     3728913  0.0  0.0      0     0 ?        I<   cze30   0:00 [xfsalloc]
+root     3728914  0.0  0.0      0     0 ?        I<   cze30   0:00 [xfs_mru_cache]
+root     3728917  0.0  0.0      0     0 ?        S    cze30   0:00 [jfsIO]
+root     3728918  0.0  0.0      0     0 ?        S    cze30   0:00 [jfsCommit]
+root     3728919  0.0  0.0      0     0 ?        S    cze30   0:00 [jfsSync]
+root     3730492  0.0  0.0  21192  1220 ?        Ss   cze30   0:10 /lib/systemd/sys
+root     3735819  0.0  0.6 227104 26688 ?        Ss   cze30   5:14 /usr/sbin/apache
+root     3973209  0.0  0.0      0     0 ?        I<   gru13   0:04 [kworker/u3:1-xp
+root     3988767  0.0  0.0      0     0 ?        I<   gru14   0:01 [kworker/u3:2-xp
+root     4051296  0.0  0.3  58152 14884 ?        Ss   11:00   0:00 sshd: s30278 [pr
+root     4051483  0.0  0.0      0     0 ?        I    11:17   0:00 [kworker/u2:2-ev
+root     4052306  0.0  0.0      0     0 ?        I    11:46   0:00 [kworker/0:3-eve
+root     4052379  0.0  0.0      0     0 ?        I    11:47   0:00 [kworker/u2:0-fl
+root     4052430  0.0  0.3  58152 14908 ?        Ss   11:50   0:00 sshd: s32410 [pr
+root     4052667  0.0  0.0      0     0 ?        I    11:59   0:00 [kworker/u2:1-fl
+root     4052767  0.0  0.0      0     0 ?        I    12:07   0:00 [kworker/0:0-ata
+root     4052887  0.0  0.0      0     0 ?        I    12:12   0:00 [kworker/0:1-ata
+root     4052906  0.0  0.3  58152 14836 ?        Ss   12:14   0:00 sshd: s31319 [pr
+root     4052982  0.5  0.3  57864 14040 ?        Ss   12:16   0:00 sshd: root [priv
+"
+-Polecenie "-u root" pokazuje procesy należące do użytkownika root, z kolei polecenie "-U root" wyklucza procesy, które zostały zlecone przez tegoże użytkownika, aczkolwiek do niego nie należą. 

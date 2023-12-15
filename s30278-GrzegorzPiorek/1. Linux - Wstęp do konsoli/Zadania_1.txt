@@ -1,0 +1,78 @@
+1. Uruchom terminal.
+
+-Uruchomiłem Linux lite w virtualbox'ie.
+-Uruchomiłem terminal .
+
+1. Wyświetl zawartość aktualnego katalogu.
+
+-Wpisuję komendę 'ls'.
+-Uzyskany wynik 'Desktop Documents Downloads Music Pictures Public Templates Videos'.
+
+3. Sprawdź gdzie aktualnie się znajdujesz.
+
+-Wpisuję komendę 'pwd'.
+-Uzyskany wynik '/home/osboxes'.
+
+4. Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+
+-Wpisuję komendę 'cd Desktop'.
+
+5. Sprawdź gdzie jesteś.
+
+-Wpisuję komendę 'pwd'.
+-Uzyskany wynik '/home/osboxes/Desktop'.
+
+6. Wyświetl zawartość bieżącego katalogu.
+
+-Wpisuję komendę 'ls'.
+-Uzyskany wynik 'computer.desktop  network.desktop  userfiles.desktop helpmanual.desktop  setting.desktop'
+
+7. Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+
+-Wpisuję komendę 'ls ~'.
+-Uzyskany wynik 'Desktop Documents Download Music Pictures Public Templates Videos'.
+
+8. Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np. Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+-Wpisuję komendę 'cd ../Pictures'.
+
+9. Sprawdź gdzie jesteś.
+
+-Wpisuję komendę 'pwd'.
+-Otrzymany wynik '/home/osboxes/Pictures'.
+
+10. Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+
+-Wpisuję 'cd ././././././'.
+-Wpisuję komendę 'pwd'.
+-Otrzymany wynik '/home/osboxes/Pictures'.
+-Nic się nie zmieniło, './' Reprezentuje aktualny katalog, komendą 'cd ././././././' Przenosimy się do aktualnego katalogu. Nie ma to praktycznego zastosowania. Zwielokrotnienie './' absolutnie nic nie zmieni. 
+
+
+11. Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+
+-Wpisuję 'cd /home/osboxes'.
+
+12. Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. Poszukaj w Internecie.
+
+-Wpisuję komendę 'cd /root'.
+-Otrzymuję komunikat o odmowie dostępu.
+-Katalog '/root' jest katalogiem domowym administratora, zwykły użytkownik nie posiada do niego uprawnień.
+
+13. Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+-Przełączyło do konsoli tekstowej, w której trzeba jeszcze raz się zalogować. Do powrotu użyłem ctrl+alt+f7.
+-Skrót służy do szybkiego przełączania między konsolami, może być użyty z poziomu interfejsu graficznego, przydatny w przypadku problemów z tymże interfejsem.
+
+14. A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+-Alt+F1 Przełącza na tryb pierwszego terminala.
+-Alt+F2  Przełącza na tryb drugiego terminala.
+-Alt+F7 Przełącza użytkownika z powrotem na interfejs graficzny. 

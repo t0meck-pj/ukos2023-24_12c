@@ -1,0 +1,100 @@
+1. Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+"
+mkdir ukos
+cd ukos
+mkdir katalog
+mkdir klamka
+cd katalog
+mkdir katalog2
+cd katalog2
+mkdir katalog3
+cd ukos
+tree
+
+
+-Rezultat:
+.
+├── katalog
+│   └── katalog2
+│       └── katalog3
+└── klamka
+"
+
+
+2. W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+cd ukos/klamka
+mkdir zajecia2.txt
+mkdir zajecia2.log
+mkdir inny.txt
+mkdir nowy.txt
+ls 
+"
+inny.txt  nowy.txt  zajecia2.log  zajecia2.txt
+"
+
+3. Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+
+-"mkdir -p ukos/to/jest/dluga/nazwa".
+-Polecenie 'mkdir -p' pozwala na rekurencyjne tworzenie katalogów.
+
+4. Następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+touch ukos/to/jest/dluga/nazwa/dane.txt
+
+5. Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+rm -r ukos/klamka/*.txt
+
+── ukos
+│   ├── katalog
+│   │   └── katalog2
+│   │       └── katalog3
+│   ├── klamka
+│   │   └── zajecia2.log
+│   └── to
+│       └── jest
+│           └── dluga
+│               └── nazwa
+│                   └── dane.txt
+
+"rm -r" usuwa katalog wraz z jego zawartością. 
+
+
+6. Usuń katalog ukos/katalog/katalog2
+
+rm -r ukos/katalog/katalog2
+
+├── ukos
+│   ├── katalog
+│   ├── klamka
+│   │   └── zajecia2.log
+│   └── to
+│       └── jest
+│           └── dluga
+│               └── nazwa
+│                   └── dane.txt
+
+
+7. Usuń cały katalog klamka za pomocą jednego polecenia
+
+rm -r ukos/klamka
+
+├── ukos
+│   ├── katalog
+│   └── to
+│       └── jest
+│           └── dluga
+│               └── nazwa
+│                   └── dane.txt
