@@ -1,0 +1,59 @@
+W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z nich jest CTRL+C lub jak to jest często podawane C-c lub ^C. Niektórzy z Państwa już go mieli okazję przetestować. Jest to sposób na wyłączenie aktywnego programu w terminalu. Proszę go przetestować w taki sposób, że:
+
+1. Uruchom komendę cat be parametrów
+Wciśnij CTRL+C i zobacz co się stanie
+
+TERMINAL
+s31321@szuflandia22:~$ cat
+^C
+s31321@szuflandia22:~$
+KUBA
+Działanie cat zostało przerwane
+
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
+
+Zobacz co się stanie:
+
+3 .Wydaj komendę cat > wynik3_1.txt
+
+Wpisz tekst witaj bez wciskania klawisza Enter
+
+Wciśnij CTRL+C
+
+Zobacz co się znalazło w pliku wynik3_1.txt
+TERMINAL
+s31321@szuflandia22:~$ cat > wynik3_1.txt
+witaj^C
+s31321@szuflandia22:~$ cat wynik3_1.txt
+s31321@szuflandia22:~$
+KUBA
+Plik jest pusty
+
+4. Wydaj komendę cat > wynik3_2.txt
+
+Wpisz tekst witaj bez wciskania klawisza Enter
+
+Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+Zobacz co się znalazło w pliku wynik3_2.txt
+TERMINAL
+s31321@szuflandia22:~$ cat > wynik3_2.txt
+witaj
+s31321@szuflandia22:~$ cat wynik3_2.txt
+witaj
+s31321@szuflandia22:~$
+KUBA
+W pliku znalazł się wcześniej wpisany przeze mnie tekst.
+
+CTRL + C od razu przerwało działanie cat, a CTRL + D zapisało dokonane
+zmiany przed przerwaniem działania polecenia.
+
+
+
+W opisie rozwiązania zadania umieść:
+
+jak rozumiesz co się stało?
+
+czym oba te przykłady się różnią?
+
+DLACZEGO się różnią?

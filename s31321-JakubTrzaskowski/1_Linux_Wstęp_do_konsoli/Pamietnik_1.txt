@@ -1,0 +1,9 @@
+Drogi pamiętniczku dziś jestem w Warszawie na konferencji czyli w końcu mam
+chwilę zająć się ukosem i zrobić zadania.
+Dzięki nim nauczyłem się:
+- Tworzyć, usuwać katalogi i pliki,
+- Tworzyć maszynę wirtualną,
+- Przełączać się pomiędzy środowiskiem graficznym i tesktowym,
+- Wyświetlać zawartość katalogów,
+- Przemieszczać się pomiędzy katalogami za pomocą ścieżki względnej i
+bezwzględnej.

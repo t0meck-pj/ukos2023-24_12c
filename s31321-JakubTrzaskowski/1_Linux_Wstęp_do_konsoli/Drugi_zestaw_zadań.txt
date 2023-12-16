@@ -1,0 +1,48 @@
+1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+TERMINAL
+jtstuden@ukos1:~$ mkdir -p ukos/katalog/katalog2
+jtstuden@ukos1:~$ mkdir -p ukos/katalog/katalog3
+jtstuden@ukos1:~$ mkdir -p ukos/klamka
+
+2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+TERMINAL
+jtstuden@ukos1:~$ touch ukos/klamka/zajęcia2.txt ukos/klamka/zajęcia2.log
+ukos/klamka/inny.txt ukos/klamka/nowy.txt
+KUBA
+W terminalu wpisałem wszystko w jednej linijce
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog:
+ukos/to/jest/dluga/nazwa
+TERMINAL
+jtstuden@ukos1:~$ mkdir -p ukos/to/jest/dluga/nazwa
+
+4.następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+TERMINAL
+jtstuden@ukos1:~$ touch ukos/to/jest/dluga/nazwa/dane.txt
+
+5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+TERMINAL
+jtstuden@ukos1:~$ rm ukos/klamka/*.txt
+
+6.Usuń katalog ukos/katalog/katalog2
+TERMINAL
+jtstuden@ukos1:~$ rm -r ukos/katalog/katalog2
+KUBA
+Tutaj użyłem mocy man ("man rm") ponieważ na początku nie użyłem parametru
+"-r", który powoduje rekruencyjne użycie polecenia, w tym przypadku
+usunie wszystkie pliki z katalogu a następnie kataloh.
+
+7.Usuń cały katalog klamka za pomocą jednego polecenia
+TERMINAL
+jtstuden@ukos1:~$ rm -r ukos/klamka

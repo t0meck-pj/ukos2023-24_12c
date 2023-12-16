@@ -1,0 +1,35 @@
+1. Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+KUBA
+Uruchomiłem vim
+
+2. Zobacz jaki ma on PID - przyda się do tego komenda ps
+TERMINAL
+s31321@szuflandia22:~$ ps aux | grep vim
+s31321   3817618  0.0  0.2  14188  8980 pts/14   S+   21:53   0:00 vimv
+KUBA
+PID to 3817618
+
+3. Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+			Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+			Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+TERMINAL (bez vim)
+s31321@szuflandia22:~$ kill 3817618
+TERMINAL (z vim)
+Vim: Caught deadly signal TERM
+Vim: Finished.
+KUBA
+Wyłączyłem vim
+
+4. Zobacz działanie komendy killall bash
+TERMINAL
+s31321@szuflandia22:~$ killall bash
+bash(3817561): Operacja niedozwolona
+KUBA
+Nie mogę wykonać tego polecenia ponieważ bash ignoruje sygnał
+term
+
+
+5. Zobacz czy kill zadziała dla dowolnego procesu.
+KUBA
+kill nie zadziała dla dowolnego procesu, ponieważ mogę nie mieć uprawnień do wykonania tego polecenia

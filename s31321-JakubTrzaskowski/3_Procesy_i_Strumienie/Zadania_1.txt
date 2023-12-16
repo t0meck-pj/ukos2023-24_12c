@@ -1,0 +1,25 @@
+1. A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+ps
+
+ps -a
+
+ps x
+
+ps axu
+INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. Dowolna kolejność powinna dać ten sam wynik.
+
+2. Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+Nie wiesz? A gdzie może być wyjaśnienie?
+KUBA
+Brak uprawnień do wyświetlenia tej infromacji
+
+B: Jak wykonasz poniższe 2 zadania?
+
+3. Wyświetl wszystkie procesy bash
+KUBA
+Użyję polecenia "ps axu"
+
+4. Wyświetl wszystkei procesy należące do użytkownika root
+KUBA
+Użyłem "ps axu | grep root" 

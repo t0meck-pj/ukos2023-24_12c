@@ -1,0 +1,41 @@
+1. Przejdź do swojego katalogu domowego
+TERMINAL
+jtstuden@ukos1:~$ cd ~
+
+2. Wydaj komendę: ls -a
+Zobacz ile plików wypisało.
+KUBA
+Terminal wypisał mi 21 plików
+
+3. Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz
+inną literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+Zobacz ile teraz jest wyników. Co się stało?
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu
+wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+KUBA
+Faktycznie program wypisał tylko pliki, których nazwa zawiera "D"
+
+4.A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+Zobacz czy utworzył sie jakiś plik?
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+KUBA
+Utworzył się plik o nazwie "lista_plikow_z_literka_d.txt", w którym zapisane
+są wszystkie nazwy plików, które zawierają literkę D (oczytałem plik
+za pomocą polecenia "cat").
+Znak "|" to potok, służy do łączenia poleceń.
+Znak ">" służy do przekierowania wyniku polecenia.
+
+A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+KUBA
+Użyłem komendy, utworzył się plik o nazwie "lista_plikow_z_literka_d_2.txt",
+treścią nie różnił się od poprzedniego natomiast na ekranie od razu wypisała
+mi się jego zawartość. Z tego jak to rozumiem "tee" powoduje jednoczesne 
+wypisanie na ekran i przekazanie wyniku polecenia do pliku.
