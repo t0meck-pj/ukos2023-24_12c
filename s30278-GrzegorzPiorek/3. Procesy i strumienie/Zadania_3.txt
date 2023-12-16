@@ -1,0 +1,67 @@
+W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z nich jest CTRL+C lub jak to jest często podawane C-c lub ^C. Niektórzy z Państwa już go mieli okazję przetestować. Jest to sposób na wyłączenie aktywnego programu w terminalu. Proszę go przetestować w taki sposób, że:
+
+1. Uruchom komendę cat be parametrów
+
+-Wpisuję "cat"
+
+2. Wciśnij CTRL+C i zobacz co się stanie
+
+-Naciskam skrót klawiszowy, otrzymany rezultat: 
+"
+ osboxes  ~  cat 
+^C
+ osboxes  ~  130  
+"
+
+-Polecenie cat służy do podglądu pliku, bez podanych parametrów polecenie dalej się wykona, zwyczajnie pokaże pustą linijkę, skrót klawiszowy ctrl+c przerywa działanie polecenia.
+
+
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego wejścia (stdin), ale w sposób możliwie bezpieczny.
+
+Zobacz co się stanie:
+
+1. Wydaj komendę cat > "wynik3_1.txt"
+
+-Wpisuję komendę "cat > wynik3_1.txt"
+
+2. Wpisz tekst witaj bez wciskania klawisza Enter
+
+-Wpisuję tekst "witaj".
+
+3. Wciśnij CTRL+C
+
+-Wciskam skrót klawiszowy.
+
+4. Zobacz co się znalazło w pliku wynik3_1.txt
+
+-Wpisuję komendę "cat wynik3_1.txt:.
+-Plik jest pusty.
+
+
+1. Wydaj komendę cat > wynik3_2.txt
+
+-Wydaję komendę.
+
+2. Wpisz tekst witaj bez wciskania klawisza Enter
+
+-Wpisuję "witaj".
+
+3. Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+
+-Wciskam skrot klawiszowy(Dwa razy).
+
+4. Zobacz co się znalazło w pliku wynik3_2.txt
+
+-W pliku znalazł się tekst "witaj"
+
+5. W opisie rozwiązania zadania umieść:
+
+*jak rozumiesz co się stało?
+
+*czym oba te przykłady się różnią?
+
+*DLACZEGO się różnią?
+
+--Skrót klawiszowy ctrl+c przerywa działanie progamu, nie zachodzi proces zapisywania
+-Skrót klawiszowy ctrl+d sygnalizuje zakończenie strumienia wejścia (stdin), system rozumie to jako koniec wprowadzania danych. 
+-Różnica między skrótami polega na zakończeniu działania, ctrl+d zapisuje dane, w przeciwienstwie do ctrl+c

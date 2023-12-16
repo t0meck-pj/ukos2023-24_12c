@@ -1,0 +1,85 @@
+0 (rozgrzewkowe)
+1. Przejdź do swojego katalogu domowego
+
+-Wpisuję komendę "cd ~"
+
+2. Wydaj komendę: ls -a
+
+-Wpisuję komendę "ls -a"
+-Wynik
+"
+.               .bash_logout   domowy.txt            'New folder'   .profile
+ ..              .bashrc       'instrukcja bool.png'   New_folder    .viminfo
+ .bash_history   domowy2.txt    .lesshst               pomoc.png     Zadania
+"
+
+3. Zobacz ile plików wypisało.
+
+-Wypisało 15 plików
+
+4. Teraz wydaj komendę: ls -a | grep D
+HINT: Jeśli nie masz żadnego pliku czy katalogu z literką D to wybierz inną literkę, która już będzie w nazwie jakiegoś pliku czy katalogu.
+
+-Wpisuję komendę "ls -a | grep p"
+-Otrzymany wynik:
+"
+instrukcja bool.png
+pomoc.png
+.profile
+"
+
+5. Zobacz ile teraz jest wyników. Co się stało?
+Otóż program grep służy do wyszukiwania wierszy w pliku lub strumieniu wejściowym, które pasują do wzorca. Tu podano wzorzec jako "D".
+
+-Otrzymałem wynik 3 plików.
+
+6. A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+
+-Wpisuję "ls -a | grep p > lista_plików_z_literka_p.txt"
+
+7. Zobacz czy utworzył sie jakiś plik?
+Jaka jest jego treść?
+Co znaczy | oraz co znaczy > ?
+
+-Wpisuję "ls -a" 
+-Otrzymany wynik 
+"
+ .               domowy.txt                     pomoc.png
+ ..             'instrukcja bool.png'           .profile
+ .bash_history   .lesshst                       .viminfo
+ .bash_logout    lista_plików_z_literka_p.txt   Zadania
+ .bashrc        'New folder'
+ domowy2.txt     New_folder
+"
+-Utworzył się plik "lista_plików_z_literka_p.txt"
+-Wpisuję "cat lista_plików_z_literka_p.txt"
+-Otrzymany wynik
+"
+instrukcja bool.png
+lista_plików_z_literka_p.txt
+pomoc.png
+.profile
+"
+- symbol "|"(pipe) służy do przekierowania wyniku jednego polecenia do wejścia drugiego, pozwala to na łączenie ze sobą poleceń.
+- symbol ">" służy do przekierowania wyniku do pliku, tworzy nowy plik, bądź jeśli plik to tej nazwie istnieje to nadpisuje go. 
+
+8. A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+-Wpisuję komendę " ls -a | grep p | tee lista_plikow_z_literka_p_2.txt"
+-Otrzymany wynik
+"
+instrukcja bool.png
+lista_plikow_z_literka_p_2.txt
+lista_plików_z_literka_p.txt
+pomoc.png
+.profile
+"
+
+
+9. Zobacz czy plik się utworzył?
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+
+-Utworzył się plik o nazwie "lista_plikow_z_literka_p_2.txt "
+-Treść względem poprzedniej próby różni się wypisanie w konsoli również treść pliku.
+-Program tee zapisuje plik oraz wypisuje jego treść na ekranie konsoli. 

@@ -1,0 +1,44 @@
+INFO: Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+
+PID jest to indentyfikator procesu ([P]rocess [ID]entificator). Za jego pomocą możesz odwołać się do danego procesu za pomocą różnych mechanizmów systemu. Jednym z takich mechanizmów jest wysłanie sygnału (na przykład zakończenia) do procesu. Do tego można użyć komendy kill (może brzmi ona dość brutalnie, ale cóż, informatyka nie jest dla mięczaków). Komenda ta domyślnie wysyła sygnał zakończenia procesu do zadanego procesu.
+
+Zadanie:
+
+1. Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+
+-Utworzyłem plik o nazwie "Tekstowy" oraz otworzyłem go w edytorze Mousepad
+
+2. Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+-Wpisałem komendę "ps axu | grep [m]ousepad"
+-Otrzymany wynik 
+"
+osboxes     2764  1.2  2.6 550800 54660 ?        Sl   07:31   0:00 mousepad /home/osboxes/Desktop/Tekstowy
+"
+-PID=2764
+
+3. Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+UWAGA: Niektóre programy przechwytują sygnały i mogą je częściowo blokować.
+			Jeśli program nie wyłącza się, to zobacz jaka jest jego reakcja.
+			Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+
+-Wydaje polecenie "kill 2764", edytor zakończył swoje działanie 
+-Sprawdzam komendą "man kill" jak skonstruować i wysłać sygnał SIGKILL
+-Eruchamiam ponownie edytor
+-Wpisuję komendę "ps axu | grep [m]ousepad"
+PID=3291
+-Wpisuję komendę kill -9 3291
+-Program zakończył swoje działanie
+
+4. Zobacz działanie komendy killall bash
+
+-Wpisuję polecenie killall bash
+-Wpisuję polecenie "echo $SHELL"
+-Wynik : "/bin/bash"
+-Rezultat: polecenie nie może zakończyć działania powłoki na której się aktualnie znajdujemy. 
+
+5. Zobacz czy kill zadziała dla dowolnego procesu.
+
+-Wpisuję komendę "ps axu" i wybieram losową PID procesu
+-Wysyłam polecenie "kill 3544" należącą do użytkownika ROOT
+-Rezultat: "bash: kill: (3544) - Operation not permitted"  Bez odpowiednich uprawnień nie mogę zamknąć procesu.
