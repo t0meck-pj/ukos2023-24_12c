@@ -1,0 +1,387 @@
+Zadanie 0
+
+1.Przejdź do swojego katalogu domowego
+   "cd ~" (umiem)
+
+2.Wydaj komendę: ls -a (umiem)
+   Po wpisaniu komendy otrzymałem: (wypisało wszystko wraz z ukrytymi plikami)
+
+   osboxes  ~  ls -a
+   .              .gksu.lock                 Templates
+   ..             .gnome                     test
+   .asoundrc      .gnupg                     .thumbnails
+   .bash_history  .gtk-bookmarks             ukos
+   .bash_logout   .gtkrc-2.0                 .vboxclient-clipboard.pid
+   .bashrc        .ICEauthority              .vboxclient-display-svga-x11.pid
+   .cache         .lesshst                   .vboxclient-draganddrop.pid
+   .config        .local                     .vboxclient-seamless.pid
+   .dbus          .mozilla                   Videos
+   Desktop        Music                      .Xauthority
+   .dmrc          Pictures                   .xsession-errors
+   Documents      .profile                   .xsession-errors.old
+   Downloads      Public
+   .face          .sudo_as_admin_successful
+
+3.Program wypisał 40 plików (rozumiem)
+
+4.Teraz wydaj komendę: ls -a | grep D
+   (Po wpisaniu polecenia, otrzymałem pliki zaczynające się na literę D)
+   osboxes ~  ls -a | grep D
+   Desktop
+   Documents
+   Downloads
+
+5.Zobacz ile teraz jest wyników. Co się stało?(umiem)
+   ls -a - wypisało wszytkie pliki i katalogi i grep D wypisał katalogi i pliki które pasują do wzorca
+   odpowiedź 3 wyniki
+
+6.A teraz wykonaj komendę: ls -a | grep D > lista_plikow_z_literka_d.txt
+   osboxes  ~  ls -a | grep D > lista_plikow_z_literka_d.txt
+   wykonałem polecenie domyślam się że został utworzony nowy plik
+
+7.Zobacz czy utworzył sie jakiś plik?(proste)
+   w katalogu domowym został utworzony plik lista_plikow_z_literka_d.txt
+   osboxes  ~  ls
+   Desktop    Downloads                     Music     Public     test  Videos
+   Documents  lista_plikow_z_literka_d.txt  Pictures  Templates  ukos
+
+   Jaka jest jego treść?
+   w pliku znajdują się pliki które zaczynały się na literę D 
+   osboxes  ~  cat lista_plikow_z_literka_d.txt
+   Desktop
+   Documents
+   Downloads
+
+   Co znaczy | oraz co znaczy > ?
+   "|" - oznacza wykonanie jednego a zaraz po nim kolejnego polecenia(łączy polecenia)
+   ">" - służy do przekierowania do drugiego pliku nadpisując go
+
+8.A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+   (Jednocześnie dodało i wypisało pliki zaczynające się na D)
+   "grep" - filtrowanie wierszy pasujących do wzorca
+   osboxes  ~  ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+   Desktop
+   Documents
+   Downloads
+   osboxes  ~  cat lista_plikow_z_literka_d_2.txt
+   Desktop
+   Documents
+   Downloads
+
+9.Zobacz czy plik się utworzył?
+   (tak stworzył się)
+   Jaka jest treść względem poprzedniej próby bez programu tee?
+   (program tee dodatkowo wypisuje zawartość pliku)
+   Co robi program tee?
+   "tee" odczytuje wyniki ze standarowego wejscia jednoczesnie przekierowuje je do wskazanego pliku i wypisuje je 
+   na standardowym wyjsciu.
+
+Zadanie 1
+
+   "ps" służy do wyświetlania listy procesów. 
+   Zadania:
+   A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+   ps -> 
+   osboxes  ~  ps
+   PID TTY          TIME CMD
+   2486 pts/0    00:00:00 bash
+   3155 pts/0    00:00:00 ps
+   (Polecenia „ps” bez żadnej opcji wyświetla jedynie listy uruchomionych procesów z bieżącej powłoki)
+
+   ps -a ->
+   osboxes  ~  ps -a
+   PID TTY          TIME CMD
+   3209 pts/0    00:00:00 ps
+   (Używając opcji „ps -a” możemy wyświetlić wszystkie procesy z wyjątkiem liderów sesji i procesów, które nie są powiązane z  
+   terminalem.)
+
+   ps x ->
+   osboxes  ~  ps x
+   PID TTY      STAT   TIME COMMAND
+   1985 ?        Ss     0:00 /lib/systemd/systemd --user
+   1992 ?        S      0:00 (sd-pam)
+   1997 ?        Ss     0:00 /usr/bin/python3 /usr/bin/powerline-daemon --foregr
+   1998 ?        S<sl   0:00 /usr/bin/pulseaudio --daemonize=no --log-target=jou
+   1999 ?        Ss     0:00 /bin/bash /usr/local/bin/xfce4-session
+   2011 ?        Ss     0:00 /usr/bin/dbus-daemon --session --address=systemd: -
+   2080 ?        S      0:00 /usr/bin/VBoxClient --clipboard
+   2081 ?        Sl     0:00 /usr/bin/VBoxClient --clipboard
+   (...)
+
+   (Opcja x nakazuje ps wylistowanie procesów bez terminala sterującego. Są to głównie procesy uruchamiane podczas startu 
+   systemu i działające w tle .)
+
+   ps axu ->
+   osboxes  ~  ps aux
+   USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+   root           1  0.0  0.2 102004 11348 ?        Ss   12:41   0:01 /sbin/init sp
+   root           2  0.0  0.0      0     0 ?        S    12:41   0:00 [kthreadd]
+   root           3  0.0  0.0      0     0 ?        I<   12:41   0:00 [rcu_gp]
+   root           4  0.0  0.0      0     0 ?        I<   12:41   0:00 [rcu_par_gp]
+   root           5  0.0  0.0      0     0 ?        I    12:41   0:01 [kworker/0:0-
+   root           6  0.0  0.0      0     0 ?        I<   12:41   0:00 [kworker/0:0H
+   root           9  0.0  0.0      0     0 ?        I<   12:41   0:00 [mm_percpu_wq
+   root          10  0.0  0.0      0     0 ?        S    12:41   0:00 [ksoftirqd/0]
+   root          11  0.0  0.0      0     0 ?        I    12:41   0:00 [rcu_sched]
+   (...)
+   (Opcja "a" anakazuje ps wyświetlenie procesów wszystkich użytkowników. Nie są pokazane tylko procesy 
+   niezwiązane   z terminalem i procesy liderów grup.)
+
+   "u" oznacza format zorientowany na użytkownika, który dostarcza szczegółowych informacji o procesach.
+
+   Opcja "x" nakazuje ps wylistowanie procesów bez terminala sterującego. Są to głównie procesy 
+   uruchamiane  podczas startu systemu i działające w tle .
+
+   Polecenie wyświetla informacje w jedenastu kolumnach oznaczonych USER, PID, %CPU, %MEM, VSZ, , , ,)
+
+   Jak myślisz, co oznacza znak zapytania w kolumnie 2?(wiedziałem)
+   - dany proces nie ma nadanego terminala
+   - różnica z x lub bez niego jest taka że: bez niego to wyuświetla wszystkie które mają terminal
+
+   B: Jak wykonasz poniższe 2 zadania?
+
+   Wyświetl wszystkie procesy bash ->
+   osboxes  ~  ps axu | grep bash
+   osboxes     1999  0.0  0.0   9492  3328 ?        Ss   12:41   0:00 /bin/bash /usr/local/bin/xfce4-session
+   osboxes     3227  0.0  0.1  10628  4920 pts/0    Ss   14:24   0:00 bash
+   osboxes     3331  0.0  0.0   8900   724 pts/0    S+   14:52   0:00 grep bash
+   (Terminal wyświetlił wszystkie procesy bash)
+
+   Wyświetl wszystkei procesy należące do użytkownika root
+   (wyswietla procesy należące do roota)
+
+   osboxes  ~  ps -u root u
+   USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+   root           1  0.0  0.2 102004 11348 ?        Ss   12:41   0:01 /sbin/init sp
+   root           2  0.0  0.0      0     0 ?        S    12:41   0:00 [kthreadd]
+   root           3  0.0  0.0      0     0 ?        I<   12:41   0:00 [rcu_gp]
+   root           4  0.0  0.0      0     0 ?        I<   12:41   0:00 [rcu_par_gp]
+   root           6  0.0  0.0      0     0 ?        I<   12:41   0:00 [kworker/0:0H
+   root           9  0.0  0.0      0     0 ?        I<   12:41   0:00 [mm_percpu_wq
+   root          10  0.0  0.0      0     0 ?        S    12:41   0:00 [ksoftirqd/0]
+   root          11  0.0  0.0      0     0 ?        I    12:41   0:01 [rcu_sched]
+   root          12  0.0  0.0      0     0 ?        S    12:41   0:00 [migration/0]
+   root          13  0.0  0.0      0     0 ?        S    12:41   0:00 [idle_inject/
+   (...)
+
+   "w" - szerokie wyjście(dwa ww - nieograniczone)
+
+Zadanie 2 (wykonane ze zrozumieniem)
+
+   "PID" - jest to indentyfikator procesu ([P]rocess [ID]entificator)
+   "kill" - Komenda ta domyślnie wysyła sygnał zakończenia procesu do zadanego procesu.
+   "sleep" - zatrzymanie procesu
+
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+   (uruchomiłem Libre Office Writer)
+   "pstree" - drzewo
+   top - najwieksze procesy
+
+2.Zobacz jaki ma on PID - przyda się do tego komenda ps
+
+   osboxes  ~  ps aux | grep soffice
+   osboxes     5479  1.0  5.6 859976 226076 ?       Sl   16:21   0:01 /usr/lib/libreoffice/program/soffice.bin --writer
+   osboxes     5505  0.0  0.0   8900   728 pts/0    R+   16:24   0:00 grep soffice
+   (odczytałem że PID to 5479)
+
+3.Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+   po wpisaniu osboxes  ~  kill 5479 -> aplikacja się zamknęła
+
+4.Zobacz działanie komendy killall bash
+   "killall" - wysyła sygnał term
+   jak bash dostanie sygnał termn to sygnał zostanie zignorowany
+   (wyświetla bład spowodowany operacją niedozwoloną)
+5.Zobacz czy kill zadziała dla dowolnego procesu.
+
+   osboxes  ~  sleep inf &
+   [1] 5631
+   osboxes  ~    ps aux | grep sleep
+   osboxes     5631  0.0  0.0   8076   520 pts/0    S    17:16   0:00 sleep inf
+   osboxes     5638  0.0  0.0   8900   732 pts/0    S+   17:17   0:00 grep sleep
+   osboxes  ~      kill 5631
+   [1]+  Terminated              sleep inf
+   osboxes  ~    ps aux | grep sleep
+   osboxes     5656  0.0  0.0   8900   660 pts/0    R+   17:18   0:00 grep sleep
+
+   (uważam że kill zadziała dla dowolnego procesu, tylko wtedy gdy ma do nich uprawnienia, dostęp i czy odrzuca sygnał term)
+
+Zadanie 3 (zadania zrozumiane i wykonane)
+
+1.Uruchom komendę cat be parametrów
+
+   osboxes  ~  cat
+   Program prosi o podanie znaku z klawiatury
+
+2.Wciśnij CTRL+C i zobacz co się stanie
+
+   osboxes  ~  cat
+   l
+   l
+   ^C
+   osboxes  ~  130
+
+   Po wciśnieciu ctrl c program wyświetlił błąd i zakończył działanie programu
+   "CTRL+D" - Służy on do zakończenia strumienia wejściowego
+
+   osboxes  ~  cat
+   d
+   d
+   Bez problemu proces wpisywania liczb się zakończył
+
+1.Wydaj komendę cat > wynik3_1.txt
+   osboxes  ~  cat > wynik3_1.txt
+   oczekuje na wpisanie czegoś z klawiatury
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+   osboxes  ~  cat > wynik3_1.txt
+   witaj^C
+   osboxes  ~  130 
+   Wykonane
+
+3.Wciśnij CTRL+C
+   Wykonanie kombinacji spowodowało wupisanie błędu i zakończenie działania cat
+
+4.Zobacz co się znalazło w pliku wynik3_1.txt
+   plik jest pusty, po wcisnieciu ctrl + c nie doszło do zapisania danych wejściowych
+
+
+1.Wydaj komendę cat > wynik3_2.txt
+   osboxes  ~  cat > wynik3_2.txt
+   oczekuje na wpisanie czegoś z klawiatury
+
+2.Wpisz tekst witaj bez wciskania klawisza Enter
+   osboxes  ~  cat > wynik3_1.txt
+   witaj
+   osboxes  ~      
+   Wykonane
+
+3.Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+   Wykonanie kombinacji spowodowało zakończenie działania cat
+
+4.Zobacz co się znalazło w pliku wynik3_2.txt
+   W pliku jest napis witaj, po wcisnieciu ctrl + c nie doszło do zakończenia cat oraz wpisaniu zawartości do pliku
+
+DLACZEGO się różnią? (ważne, rozumiem)
+   ctrl D -> sygnalisuje zakończenie procesu co jest skutkiem bezpiecznego zakończenia strumienia wyjściowego
+   a ctrl C -> zatrzymuje nagle wprowadzanie danych nie dając zapisać i bezpiecznie zamknąć procesu
+
+Zadanie 4
+
+   "CTRL+Z" służy do wstrzymania bieżącego procesu i przeniesienia go do tła.
+
+1.Wpisz komendę gimp (lub np. edytor tekstowy gedit)
+   Po wpisaniu komendy aplikacja gimp się urochomiła (zaskoczyłem się)
+
+2.W terminalu w którym sie to uruchomiło wciśnij CTRL+Z(rozumiem działanie)
+
+   osboxes  ~  gimp
+   ^Z
+   [1]+  Stopped                 gimp
+   osboxes  ~  1  148 
+
+   Program gimp zatrzymał się nie reaguje na działania
+
+3.Spróbuj coś wyklikać w gimpie / gedicie
+   Aplikacja nie reaguje
+
+4.Otwórz dowolne inne okno i przesuń je tak by częściowo nachodziło na okno gimpa / gedita i potem je odsuń by odsłonić w    
+   pełni okno gimpa / gedita
+   Program wstrzymany za pomocą kombinacji CTRL+Z jest przenoszony w tło (background).
+   (program nie zareagował)
+
+1.Wpisz komendę: bg
+   osboxes  ~   bg
+   [1]+ gimp &
+   osboxes  ~   
+   Widać gimp ożył
+   "fg" - służy do wznowienia na pierwszym planie wstrzymanego wcześniej procesu.
+
+2.Wpisz komendę: fg
+   osboxes  ~   fg
+   gimp
+
+   (aplikacja się odmroziła a terminal jest w trakcie czuwania, nie można korzystać z terminala)
+
+   CTRL+C aby go zakończyć.
+   osboxes  ~  fg
+   gimp
+   ^Cgimp: terminated: Interrupt
+   /usr/lib/gimp/2.0/plug-ins/script-fu/script-fu terminated: Interrupt
+   osboxes  ~ 
+   (program zakończył działanie aplikacji gimp)
+
+   "znak &" - W momencie uruchamiania programu, możemy od razu nakazać wykonanie go w tle
+
+1.Wykonaj komendę gimp & - uruchomiło gimp który działa w tle
+   osboxes  ~  gimp &
+   [1] 6235
+2.Wykonaj komendę firefox & - uruchomiło firefox który działa w tle
+
+3.Wykonaj komendę chrome & - uruchomiło chrome który działa w tle
+
+   dzieki użyciu znaku & można nadal korzystać z terminala
+
+   "jobs" - służy ona do wyświetlania listy zadań
+
+1.Przywróć program gedit (lub gimp, w każdym razie nie uruchomiony jako ostatni program) z tła na pierwszy plan. Skorzystaj z     
+  jobs aby dowiedzieć się jakie mają numery poszczególne zadania działające w tle.
+  składnia: fg %(numer jobu)
+
+   osboxes  ~  gimp &
+   [1] 6688
+   osboxes  ~   jobs
+   [1]+  Running                 gimp &
+   osboxes  ~   fg %1
+   gimp
+
+   Program gimp został przeniesiony z programu który działał w tle na pierwszy plan
+   komenda "jobs" wyświetla procesy i ich numery
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
