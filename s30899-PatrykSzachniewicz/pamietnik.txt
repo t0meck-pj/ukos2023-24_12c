@@ -68,3 +68,21 @@ z plusow i minusow to trzeba jeszcze odjac nie pasujace (dobre przypomnienie)
 *jak przyspieszyc wpisywanie komend w terminalu (proste)
 *uruchomienie programu aby nie blokowal terminalu (przydatne)
 
+2023.12.02
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*kolokwiumm to nie taka straszna rzecz, jezeli odpowiednio przygotujesz sie
+*jezeli czegos nie umiesz zrobic, pytaj
+*jak konwertowac kodowanie znakow w plikach (przydatne)
+
+2023.12.16
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*PowerShell jest o wiele potezniejszy od Basha
+*jaki jest podzial PowerShella (warto wiedziec)
+*co to jest .NET (trzeba poszerzyc wiedze w tym temacie)
+*mozliwosc wykorzystania .NET w PowerShell
+*jak uruchomic PowerShell (dobre przypomnienie)
+*PowerShell posiada aliasy (przydatne po nauce Basha)
+*programowanie obiektowe (calkiem logiczne)
+*jak korzystac ze zmiennej (przydatne)
+*w jezykach skryptowych operujemy na roznego rodzaju listach
+
