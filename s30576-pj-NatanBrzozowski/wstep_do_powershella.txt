@@ -801,9 +801,11 @@ function GiveMePopup {
 #For($i = 1; $i -le 10; $i++) {
 #    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
 #}
+powiadomienia o wykonaniu funkcji
 #
 # Można też wiele wierszy pokazać ale max 4
 #GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+przy wywoływaniu z petli dostawałem powiadomienia o wykonaniu
 #
 #
 #
@@ -815,3 +817,4 @@ function GiveMePopup {
 #
 #
 # I co? Fajne co nie? :-D
+fajne, podobało mi sie :D
