@@ -1,0 +1,110 @@
+Przypuśćmy, że nie możesz utworzyć żadnego pliku na swoim koncie uczelnianym np. na szuflandii.
+Co się mogło stać? (wymień co najmniej 3 opcje)
+Zakładamy, że możesz zalogować się w konsoli i nie masz zaległości w opłatach.
+-Brak miejsca na dysku
+-brak uprawnień
+-uszkodzenie dysku
+1
+Jest dane takie drzewo katalogów:
+.
+├── ala
+│   ├── i
+│   │   └── as
+│   └── ma
+│       └── kota
+└── kot
+    └── ma
+        └── ale
+
+Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
+Jak przejść do katalogu ala ale za pomocą:
+
+ścieżki względnej (relatywnej)
+cd ../../
+
+ścieżki bezwzględnej (absolutnej)
+cd /tmp/ukos/ala
+
+2
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
+
+Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
+mkdir -p ../../kot/ma/ale/jan/kowalski
+mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
+3
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu i używając:
+
+źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
+
+mv ../../kot/ma/ale /tmp/ukos/ala/i
+
+źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
+
+mv /tmp/ukos/kot/ma/ale /../../ala/i
+
+4
+Jak zamknąć program, który nie reaguje na ctrl+c ?
+- uzyc polecenia kill -9, aby wyslac sygnal kill do zamkniecia programu
+- wcisnac ctrl+z w celu wstrzymania programu i przeniesienia go do tla
+
+5
+Jak wypisać wszystkie pliki w bieżącym katalogu, których nazwa zaczyna się od al?
+Tu będzie trochę opisu ode mnie na temat wyrażeń regularnych.
+Materiały:
+http://www.robelle.com/smugbook/regexpr.html
+https://www.regular-expressions.info/
+
+find . -type f -name 'al*'
+ls -p | grep '^al' | grep -v /
+
+Narzędzia do testowania wyrażeń regularnych w przyzwoity sposób:
+https://regex101.com/
+https://regexr.com/
+
+6a
+Nadaj uprawnienia do katalogu ala tak aby:
+
+każdy mógł do niego wejść
+chmod x+u, x+g, x+o ala
+tylko grupa mogła wyświetlić co w nim jest
+chmod 040 ala
+właściciel ma pełne uprawnienia
+chmod u=rwx ala
+HINT: Jakie są uprawnienia początkowe?
+
+Podpowiedź: powyższe 3 punkty opisu to jedno zadanie. Nie 3 osobne.
+Przygotuj 3 wariacje rozwiązania tego zadania używając różnych notacji: 
+
+oktalnej/ósemkowej/cyfrowej
+
+literowej ze znakiem równości
+
+literowej z plusami i minusami
+
+Wszystkie wersje powinny być zapisane w jednym poleceniu (bez używania && czy | )
+
+6b
+Jak korzystając z notacji ze znakiem równości odebrać wszystkie uprawnienia do danego zasobu?
+
+chmod a=- ala
+
+7
+Jak utworzyć plik z listą plików w bieżącym katalogu?
+
+ls | tee  nazwy.txt
+ls > nazwy.txt
+
+Podaj rozwiązania używające różne techniki. Np nie używając dedykowanego polecenia do listowania zawartości katalogów.
+
+8
+Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na uzupełnianie komend?
+
+Przycisk TAB
+
+9
+Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
+
+-gimp &
+-gedit
+ CTRL+Z
+ bg

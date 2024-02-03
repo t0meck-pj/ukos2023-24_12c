@@ -1,0 +1,333 @@
+1.Gdybys potrzebowal pomocy z dowolnym poleceniem by zobaczyc jaka ma skladnie to pomoc uzywa sie tak.
+*PS C:\Users\asus-pro> Get-Help Get-ExecutionPolicy
+NAME
+    Get-ExecutionPolicy
+SYNTAX...
+Otrzymałem okno pomocy do polecenia Get-ExecutionPolicy.
+
+2.A zeby zobaczyc przyklady uzycia.
+*PS C:\Users\asus-pro> Get-Help Get-ExecutionPolicy -Examples
+NAME
+    Get-ExecutionPolicy
+SYNOPSIS
+    Gets the execution policies for the current session.
+
+------------ Example 1: Get all execution policies ------------
+
+    Get-ExecutionPolicy -List
+    ...
+Konsola zwrocila strone pomocy, ale z opisem przykladow uzycia polecenia Get-ExecutionPolicy.
+
+3.Ponizsza linia zwroci Tobie wszystkie dostepne w danej chwili moduly.
+*PS C:\Users\asus-pro> Get-Module -ListAvailable
+Directory: C:\Program Files\WindowsPowerShell\Modules
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     5.1.2      Azure                               {Get-AzureAutomationCertificate, Get-Azu...
+...
+Po uzyciu polecenia otrzymalem liste dostepnych w tej chwili modulow.
+
+4.Ponizsza linia zwroci tylko te moduly, ktorych wersja jest >= 2.0.0.0.
+*PS C:\Users\asus-pro> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+Directory: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Manifest   2.0.1.0    Appx                                {Add-AppxPackage, Get-AppxPackage, Get-A...
+Script     2.0.0.0    BitsTransfer                        {Add-BitsFile, Complete-BitsTransfer, Ge...
+...
+Zostaly wypisane tylko i wylacznie moduly, posiadajace wersje wieksza lub rwona 2.0.0.0.
+
+5.Ponizsza linia wyswietli wszystkie polecenia (cmdlet - "Komandlety") w dostepnych modulach, ktorych wersja >= 2.0.0.0.
+*PS C:\Users\asus-pro> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+ Directory: C:\Program Files\WindowsPowerShell\Modules
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Cmdlet          Add-AppxPackage                                    2.0.1.0    Appx
+Cmdlet          Add-AppxVolume                                     2.0.1.0    Appx
+...
+Otrzymalem pelna liste wszytkich polecen w dostepnych modulach, ktorych wersja jest wieksza lub rowna 2.0.0.0.
+
+6.Teraz bysmy chcieli jeszcze wyswietlic wszystkie te, ktore maja w nazwie "Add-" lub "Get-".
+*PS C:\Users\asus-pro> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Cmdlet          Add-AppSharedPackageContainer                      2.0.1.0    Appx
+Cmdlet          Add-AppxPackage                                    2.0.1.0    Appx
+Cmdlet          Add-AppxVolume                                     2.0.1.0    Appx
+Cmdlet          Get-AppSharedPackageContainer                      2.0.1.0    Appx
+Cmdlet          Get-AppxDefaultVolume                              2.0.1.0    Appx
+...
+W tym wypadku otrzymalem to samo co poprzednio, lecz tylko te polecenia zaczynajace sie od "Add-" lub "Get-".
+
+7.A teraz bysmy chcieli je wypisac w postaci tabelki graficznej otworzonej w nowym okienku.
+*PS C:\Users\asus-pro> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+Otworzylo sie okno z graficzna tabelka.
+Nowe okno posiada ta sama liste polecen, ktora wyswietlil wiersz polecen w poprzednim zadaniu.
+
+8.A teraz bysmy chcieli je wypisac do pliku.
+*PS C:\Users\asus-pro> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\Listapolecen
+PS C:\Users\asus-pro>
+*PS C:\Users\asus-pro> Write-Host $env:TEMP\ListaPolecen
+C:\Users\asus-pro\AppData\Local\Temp\ListaPolecen
+Wszystkie przefiltrowane polecenia w modulach zostaly zapisane do pliku, co potwierdza wyswietlenie nowej linjki wiersza polecen.
+W celu upewnienia sie, skorzystalem z komendy Write-Host z parametrem uzytym w poleceniu, w ktorym stworzylem ten plik. 
+Komenda zwrocila nam sciezke do tego pliku, co oznacza, ze ten plik zostal stworzony. Mozemy go takze otworzyc w notatniku
+przy pomocy polecenia:
+*notepad $env:TEMP\Listapolecen
+
+9.A teraz bysmy chcieli nic z tym nie robic tylko by sie przetworzylo ale nie wypisywalo.
+*PS C:\Users\asus-pro> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+PS C:\Users\asus-pro>
+Polecenie wykonalo sie, czyli zostaly przefiltrowane polecenie modulow wedlug zadanych parametrow, ale nic nie zostalo wyswietlone ani zapisane, tylko i wylacznie dane zostaly przetworzone.
+
+10.Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle).
+*PS C:\Users\asus-pro> Import-Module BitsTransfer
+lub przy pomocy aliasu
+*PS C:\Users\asus-pro> impo BitsTransfer
+PS C:\Users\asus-pro>
+Zaladowany zostal modul do zarzadzania przesylaniem danych w tle.
+
+11.Wylistujmy wszystkie komendy w tym module.
+*PS C:\Users\asus-pro> Get-Command -Module BitsTransfer
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Cmdlet          Add-BitsFile                                       2.0.0.0    BitsTransfer
+...
+Wylistowane zostale wszystkie komendy w module BitsTransfer.
+
+12.To teraz postarajmy sie uzyc tego cuda do pobrania jakiegos duzego pliku by bylo widac proces sciagania.
+*PS C:\Users\asus-pro> Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/30-Lx-Lt/5.8/64bit.7z/download -Destination C:Pobrane
+
+Pojawilo sie pole BITS Transfer, z paskiem pobierania pliku. Konsola zostala zablokowana.
+
+13.Jesli chcesz to uczynic w sposob asynchroniczny (czyli taki, ktory nie blokuje konsoli) to mozna to zrobic tak.
+*PS C:\Users\asus-pro> $job = Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/30-Lx-Lt/5.8/64bit.7z/download -Destination C:Pobrane -Asynchronous -DisplayName "Moj Bits Transfer"
+W ten sposob zostalo uruchomione pobieranie w sposob asynchroniczny, czyli nie blokujacy konsoli. Moge korzystac dalej z konsoli, a
+plik pobiera sie w tle.
+
+14.By zobaczyc jaki jest stan transferu mozna uzyc takiej komendy.
+*PS C:\Users\asus-pro> Get-BitsTransfer
+JobId                                DisplayName       TransferType JobState     OwnerAccount
+-----                                -----------       ------------ --------     ------------
+1eccec63-5dad-4c9b-9c4e-dd77bfd6362d Moj Bits Transfer Download     Transferring DESKTOP-UMC60GQ\P...
+Zostala wyswietlona list pobieranych plikow, gdzie znajduje sie plik, ktory zaczalem pobierac.
+
+15.Zwrocic uwage nalezy na stan w kolumnie JobState. Jesli bedzie tam Transferred to aby ukonczyc calosc i dostac pobierany 
+plik trzeba jeszcze zakonczyc job transferu. Robi sie to tak.
+*PS C:\Users\asus-pro> Complete-BitsTransfer -BitsJob $job
+PS C:\Users\asus-pro>
+Transfer zostal zakonczony, a plik pojawil sie w podanym w poleceniu miejscu docelowym.
+
+16.Do mierzenia czasu sluzy Measure-Command.
+*PS C:\Users\asus-pro> Measure-Command {Get-ChildItem -Path C:\Windows}
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 20
+Ticks             : 201600
+TotalDays         : 2,33333333333333E-07
+TotalHours        : 5,6E-06
+TotalMinutes      : 0,000336
+TotalSeconds      : 0,02016
+TotalMilliseconds : 20,16
+Polecenie zwrocilo obliczony czas dla wykonania komendy wylistowania kadalogu Windows.
+
+17.I tu tez widzisz jak sie listuje zawartosc katalogu. Ale jest to nie wygodne. Moze jest na to alias?
+*PS C:\Users\asus-pro> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           dir -> Get-ChildItem
+Alias           gci -> Get-ChildItem
+Alias           ls -> Get-ChildItem
+Aliasami do Get-ChildItem są 'ls', ktore zostalo zaczerpniete z systemow nix-owych oraz 'gci'.
+
+18.No to wylistujmy sobie wszystkie pliki i katalogi z katalogu glownego ale z odstepem czasowym.
+*PS C:\Users\asus-pro> ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+ Directory: C:\
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        12.11.2021     16:34                DRIVERS
+d-----        03.05.2014     20:43                EC-APPS
+d-----        17.10.2022     14:14                EDIABAS
+d-----        17.10.2022     13:54                Entwicklungsdaten
+d-----        03.05.2014     17:27                fahrzeug.dat
+d-----        12.12.2023     17:49                Games
+d-----        01.03.2020     11:53                Intel
+...
+Zostaly wylistowane wszystkie pliki i katalogi z katalogu domowego, ale kazdy z nich pojawial sie po zadanym odstepie czasowym.
+
+19.No dobra. Ale PS to nie tylko jezyk do pisania skryptow. To przede wszystkim konsola wiec mozna z niej
+uruchamiac inne programy. Do tego sluzy operator wolania "call", ktory ma postac znaku "&"
+*PS C:\Users\asus-pro> & C:\Windows\notepad.exe
+Uruchomil sie notatnik zgodnie z poleceniem.
+
+20.Wylistujmy zainstalowane aplikacje/programy.
+Mozna sie do tego dobrac na 2 sposoby.
+1. W rejestrze poszukac
+2. Odpytac WMI (Windows Management Instrumentation)
+
+	1.Rejestr
+	1.1Sprawdzmy jakie "dyski" sa dostepne w PowerShell-u
+	*PS C:\Users\asus-pro> Get-PSDrive
+	Name           Used (GB)     Free (GB) Provider      Root                                CurrentLocat
+                                                                                                  ion
+	----           ---------     --------- --------      ----                                ------------
+	Alias                                  Alias
+	C                 271,46         20,18 FileSystem    C:\                                 ...\asus-pro
+	Cert                                   Certificate   \
+	D                  96,48         76,32 FileSystem    D:\
+	Env                                    Environment
+	Function                               Function
+	HKCU                                   Registry      HKEY_CURRENT_USER
+	HKLM                                   Registry      HKEY_LOCAL_MACHINE
+	Variable                               Variable
+	WSMan                                  WSMan
+	Wyswietlona zostala lista dyskow, z czego dwa sa odpowiedzialne za rejestr HKCU i HKLM.
+
+	1.2.Zatem by wejsc do rejestru mozna zrobic tak.
+	*PS C:\Users\asus-pro> cd hklm:\
+	PS HKLM:\>
+	Zostalo wykonane wejscie do rejestru, niczym na dysk.
+
+	1.3.I przegladac sobie rejestr jak zwykly system plikow.
+	*PS HKLM:\> cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+	PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall>
+	Mozna go przegladac jak zwykly sytem plikow, wiec mozna przejsc sobie do potrzebnej lokalizacji.
+
+	1.4.Wylistowac sobie jego zawartosc przez ls
+	*PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls
+	Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+	Name                           Property
+	----                           --------
+	AddressBook
+	Connection Manager             SystemComponent : 1
+	CPUID HWMonitor_is1            Inno Setup: Setup Version    : 5.6.1 (a)
+	...
+	Wylistowana zostala cala zawrtosc w danej lokalizacji w malo przejrzystej formie.
+
+	1.5.Mozna to troche zmienic.
+	*PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | Format-Table -AutoSize
+	DisplayName                                                         InstallDate UninstallString
+	-----------                                                         ----------- ---------------
+	
+	CPUID HWMonitor 1.52                                                20231020    "C:\Program Files\...
+	Git                                                                 20231011    "C:\Program Files\...
+	Microsoft Azure Compute Emulator - v2.9.7                           09.10.2023  msiexec /x{04ca054...
+	Microsoft Visual Studio 2010 Tools for Office Runtime (x64)                     "C:\Program Files\...
+	...
+	Wylistowane zostala zawartosc w danej lokalizacji w przejrzysty sposob z najwazniejszymi danymi.
+
+	1.6.Zamiast listowac na ekran, mozna by odinstalowac korzystajac z operatora wolania "&" tak jak wyzej
+	z notatnikiem tylko tutaj bedzie to wygladalo tak.
+	*ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | %{& $_.UninstallString}
+	Nie uzylem tego polecenia, aby nie odinstalowac wszystkich aplikacji.
+
+	2.WMI
+	2.1.WMI sluzy do zarzadzania systemem i mozna z niego wiele ciekawych rzeczy wyciagnac.
+	*PS C:\Users\asus-pro> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+	IdentifyingNumber                      Name
+	-----------------                      ----
+	{66DA3501-823A-4F07-A20D-C64495A59DC8} Paradox Launcher v2
+	{A89CE738-DAE1-4010-ADEC-AD38F1888199} 3CX Desktop App
+	{90160000-008C-0000-1000-0000000FF1CE} Office 16 Click-to-Run Extensibility Component
+	{90160000-008C-0415-1000-0000000FF1CE} Office 16 Click-to-Run Localization Component
+	...
+	Wylistowana zostala lista zainstalowanych aplikacji/programow za pomoca WMI. Troche czasu to trwalo.
+
+	2.2.Te numery z przodu sa brzydkie, bardzo podobne i zajmuja duzo miejsca a nie wnosza nic ciekawego teraz.
+	Wyeliminujmy je.
+	*PS C:\Users\asus-pro> Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+	Name
+	----
+	Paradox Launcher v2
+	3CX Desktop App
+	Office 16 Click-to-Run Extensibility Component
+	Office 16 Click-to-Run Localization Component
+	Office 16 Click-to-Run Licensing Component
+	Microsoft .NET Targeting Pack - 6.0.24 (x86)
+	...
+	Wylistowane zostaly same nazwy zainstalowanych aplikacji/programow bez zbednego numeru identyfikacji.
+
+	2.3.A jakbysmy chcieli znalezc wszystkie pakiety od Microsoftu.
+	*PS C:\Users\asus-pro> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+	Name
+	----
+	Microsoft .NET Targeting Pack - 6.0.24 (x86)
+	Microsoft ASP.NET Core 6.0.24 Shared Framework (x86)
+	...
+	W tym przypadku natomiast zostaly wylistowane tylko te, ktore dostarcza Microsoft.
+
+	2.4.A teraz je odinstalowac.
+	*Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+		$wmiProduct = $_
+	$answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+    	$answer = $answer.ToLower()
+    	switch($answer) {
+        	"y" {
+            	Write-Host -NoNewline -ForegroundColor Red "Removing: "
+            	Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+            	$wmiProduct.Uninstall()
+        	}
+        	"n" {Write-Host "Ok. Skipping."}
+        	default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+		}
+	}
+	Nie uruchomie tego polecenia, aby nie odinstalowac wszystkich pakietow od Microsoftu.
+
+21.Dyski w PS. Mozemy je sobie wylistowac ponizsza komenda.
+*PS C:\Users\asus-pro> Get-PSDrive
+Name           Used (GB)     Free (GB) Provider      Root                                CurrentLocat
+                                                                                                  ion
+----           ---------     --------- --------      ----                                ------------
+Alias                                  Alias
+C                 271,47         20,17 FileSystem    C:\                                 ...\asus-pro
+Cert                                   Certificate   \
+D                  96,48         76,32 FileSystem    D:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE                  ...Uninstall
+Variable                               Variable
+WSMan                                  WSMan
+Wylistowane zostaly wszystkie dyski.
+
+27.Notyfikacje.
+*function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+Stworzona funkcja do notyfikacji.
+*GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+Wywolane zostalo powiadomienie o zadanej tresci. Fajna i ciekawa sprawa do zabawy.
+*For($i = 1; $i -le 10; $i++) {
+    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+}
+Przy pomocy petli powiadomienie pojawia sie wielokrotnie.
+*GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+Do powiadomienie mozemy dodac kolejne wiersze, ale maks 4.
+

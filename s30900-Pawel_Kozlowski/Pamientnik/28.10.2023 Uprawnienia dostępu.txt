@@ -1,0 +1,51 @@
+Moj kochany pamiętniczku, dzisiejszego dnia nauczyłem się tego że:
+
+Na wykładzie było:
+   Prawa vs uprawnienia:(zrozumiano)
+   "Prawo do systemu" - np. prawo zmiany daty, prawo wyłączenia systemu
+   "Uprawnienie do zasobu" - uprawnienie zapisu/odczytu/wykonania pliku
+   "ls z opcją -l" - pozwala na wyświetlenie dodatkowych informacji o plikach
+
+   Pierwszy znak określa typ pliku:(umiem)
+   "-" plik zwykły (ordinary file)
+   "d" katalog (directory)
+   "p" łącze nazwane (named pipe)
+   "l" dowiązanie symboliczne (symbolic link)
+   "b" urządzenie blokowe (block device)
+   "c" urządzenie znakowe (character device)
+   "s" gniazdo (socket)
+
+   Pozostałych 9 znaków tworzy 3 trójki o postaci: rwx rwx rwx:
+   pierwsza trójka odnosi się do "uprawnień właściciela pliku" 
+   druga - do uprawnień grupy właściciela, 
+   trzecia - do wszystkich innych użytkowników danego systemu.
+
+   Pliki uprawnienia oznaczają:(rozumiem)
+   "r" uprawnienie do odczytu (read)
+   "w" uprawnienie do zapisu (write)
+   "x" uprawnienie do wykonywania (execute)
+
+   Katalogi ich uprawnienia oznaczają:(umiem)
+   "r" uprawnienie do zapoznania się z zawartościć katalogu
+   "w" uprawnienie do zmiany zawartości katalogu
+   "x" uprawnienie do "wejścia" do danego katalogu (czyli uczynienia go swoim katalogiem bieżącym).
+
+   "chmod" - Nadaje i odbiera uprawnienia dostępu do pliku lub katalogu (change mode - zmień tryb)
+   "u" właściciel (user) 
+   "g" grupa (group) 
+   "o" inni (other) 
+   "a" wszyscy (all)
+   
+   chmod g+x plik - nadanie członkom grupy właściciela zostaje dodane uprawnienie do wykonywania programu
+   "," - kilka uprawnień 
+   "r" - rekurrencyjnie usuwa pliki i katalogi
+
+   chmod g+x,g-w <zasób_docelowy> - nadanie grupie uprawnienia wykonywania i usuniecie zapisu
+   chmod o-w plik - innym uzytkownikom zpoza grupy zostanie usuniete uprawnienie zapisu
+   chmod u=rw plik - właściciel nadał sobie uprawnienia do odczytu i zapisu do pliku bez możliwosci wykonania
+   chmod o=- plik - uzytkownikoz z poza grupy odebrano wszystkie uprawnienia
+   chmod 705 plik - wlasciciel - wszytskie uprawnienia, członkom grupy - żadnych, innym z poza grupy odczutu i wykonywania
+
+   Można także sumować szybko bity:(umiem)
+   (rw-) 110 = 4+2 = 6
+   (r-x) 101 = 4+1 = 5

@@ -1,0 +1,135 @@
+Yurii Burlakov
+
+Zadania 1.
+
+1.Uruchom terminal.
+
+2.Wyświetl zawartość aktualnego katalogu.
+
+3.Sprawdź gdzie aktualnie się znajdujesz.
+
+4.Przejdź do katalogu Pulpit za pomocą ścieżki względnej
+
+5.Sprawdź gdzie jesteś.
+
+6.Wyświetl zawartość bieżącego katalogu.
+
+7.Wyświetl zawartość swojego katalogu domowego bez przechodzenia do niego (ls z odpowiednim parametrem).
+
+8.Przejdź do katalogu Obrazy (lub innego katalogu, który jest dostępny - podaj wprost, że zmieniasz katalog na inny bo np.
+ Obrazy nie są u Ciebie dostępne) w twoim katalogu domowym za pomocą ścieżki względnej.
+
+9.Sprawdź gdzie jesteś.
+
+10.Zobacz do jakiego katalogu przejdziesz za pomocą ścieżki ././././././
+W opisie rozwiązania proszę umieścić również to jak rozumiesz co się właściwie stało.
+Dlaczego znalazła/eś się w tym miejscu do którego przeniosła Cię ta ścieżka?
+Czy dodanie kilku ./././././ na początku/środku/końcu powoduje, że ścieżka się zmieni?
+Co ta ścieżka oznacza/sobą reprezentuje?
+
+11.Przejdź do swojego katalogu domowego za pomocą ścieżki bezwzględnej.
+
+12.Zobacz co się stanie jak wpiszesz komendę 'cd /root'. Jak już to zrobisz, zastanów się co się stało. 
+Poszukaj w Internecie.
+
+13.Zadanie 13 i 14 trzeba wykonać na maszynie wirtualnej lub na fizycznym komputerze. Nie można go zrobić zdalnie na szuflandii.
+Zobacz, co się stanie, jeśli wciśniesz kombinację klawiszy: Ctrl+Alt+F3
+Sprawdź w Internecie co się dzieje kiedy używa się takiej kombinacji. W Internecie mogą pojawić się wersje z F1-F6. To de facto to samo.
+Odpowiedź "wylogowało mnie" jest błędna. Nie. Nie wylogowało. Szukaj dalej.
+
+14.A teraz co się stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+
+Rozwiązanie:
+
+1. Uruchom terminal:
+   Otwórz terminal, wyszukując go w menu aplikacji lub używając skrótu klawiaturowego, w zależności od systemu operacyjnego.
+
+2. Wyświetl zawartość bieżącego katalogu:
+   Wpisz polecenie „ls” w terminalu i naciśnij Enter. Spowoduje to wyświetlenie listy plików i folderów w bieżącym katalogu
+
+3. Sprawdź, gdzie aktualnie się znajdujesz:
+   Użyj polecenia `pwd` (wydrukuj katalog roboczy) i naciśnij Enter. Spowoduje to wyświetlenie pełnej ścieżki bieżącej lokalizacji w systemie plików
+
+4. Przejdź do katalogu Desktop, korzystając ze ścieżki względnej:
+   Przejdź do katalogu Desktop, wpisując `cd Desktop` i naciskając Enter. Zakłada się, że katalog Desktop znajduje się w bieżącym katalogu
+
+5. Sprawdź, gdzie jesteś:
+   Potwierdź ponownie swoją obecną lokalizację za pomocą polecenia `pwd`. Powinien teraz wyświetlić ścieżkę do katalogu Desktop
+
+6. Wyświetl zawartość bieżącego katalogu:
+   Uruchom ponownie polecenie `ls`, aby wyświetlić zawartość katalogu Desktop
+
+7. Wyświetl zawartość swojego katalogu domowego bez konieczności przechodzenia do niego:
+   Użyj polecenia `ls ~`, aby wyświetlić zawartość katalogu domowego bez zmiany bieżącej lokalizacji.
+
+8. Przejdź do katalogu Obrazy w swoim katalogu domowym, używając ścieżki względnej:
+   Przejdź do katalogu Obrazy za pomocą polecenia `cd ~/Images`, zakładając, że katalog Obrazy znajduje się w twoim katalogu domowym.
+
+9. Sprawdź gdzie jesteś:
+   Użyj polecenia `pwd`, aby sprawdzić, czy jesteś teraz w katalogu Obrazy w swoim katalogu domowym.
+
+10. Nawiguj ścieżką ././././././:
+    Użyj polecenia `cd ././././././`, a następnie sprawdź swoją lokalizację za pomocą `pwd`. Wielokrotne `./` nie zmieniają ścieżki; jest to odpowiednik `cd .`, co oznacza pozostawanie w bieżącym katalogu.
+
+11. Przejdź do swojego katalogu domowego, używając ścieżki bezwzględnej:**
+    Użyj polecenia `cd ~` lub `cd /home/twoja_nazwa_użytkownika`, aby przejść do katalogu domowego, używając ścieżki bezwzględnej
+
+12. Wpisz polecenie „cd /root”:
+    Wpisanie `cd /root` powoduje próbę przejścia do katalogu głównego systemu. W zależności od uprawnień systemu możesz mieć dostęp lub nie. 
+Zazwyczaj zwykli użytkownicy nie mają uprawnień dostępu do katalogu głównego. To polecenie może spowodować błąd lub po prostu brak zmiany bieżącego katalogu. 
+
+Zadania 2.
+
+1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym 
+(w dowolnym podkatalogu, albo bezpośrednio w ~):
+
+ukos
+
+ |\ katalog
+
+ |   |\ katalog2
+
+ |    \ katalog3
+
+  \ klamka
+
+2.W katalogu ukos/klamka stwórz pliki zajęcia2.txt zajęcia2.log inny.txt nowy.txt
+
+3.Za pomocą jednego polecenia mkdir stwórz w katalogu ukos następujący katalog: ukos/to/jest/dluga/nazwa
+
+4.następnie umieść w katalogu ukos/to/jest/dluga/nazwa plik dane.txt
+
+5.Usuń z katalogu ukos/klamka wszystkie pliki z rozszerzeniem txt
+
+6.Usuń katalog ukos/katalog/katalog2
+
+7.Usuń cały katalog klamka za pomocą jednego polecenia
+
+
+Rozwiązanie
+1. Na początek za pomocą polecenia "mkdir" stworzymy katalog "ukos", polecenie "cd" pomoże przejść do samego katalogu "ukos",
+już w nim tak samo za pomocą "mkdir" stworzmy katalogi "katalog" i "klamka", w katalodze "katalog" robimy "katalog2"
+ i "katalog3"
+
+2.W katalodze "ukos/klamka" za pomocą polecenia "cat>" stworzmy pliki "zajęcia2.txt" "zajęcia2.log" "inny.txt" "nowy.txt", żeby 
+wyjszć z redagowania pliku musimy użyć "Ctrl+C".
+
+3.Aby stworzyć drzewo katalogów polecenia "mkdir" nie będzie wystarczalo, dlatego należy użyć parametru "-p". używając
+parametru "-p" możemy stworzyć drzewo katalogów "mkdir -p ukos/to/jest/dluga/nazwa"
+
+4.Aby syworzyć plik "dane.txt" możemy tak samo użyć polecenia "cat>", albo jeżeli już mamy taki plik, to możemy go pzenieść
+do naszego katalogu używając polecenia "mv", to będzie wyglądalo "mv dane.txt ukos/to/jest/dluga/nazwa"
+
+5.Dla usunięcia pliku wykorzystamy polecenie "rm", a dla rozszerzenia txt "*txt" 
+
+6.Za pomocą polecenia "rmdir" usuwamy "katalog2"
+
+7.Polecenie "rm" usuwa tylko pliki, jeżeli usuwać katalogi za pomocą "rmdir" to będzie dojść długo.
+Dlatego żeby usuwać duże łańcuhy katalogów istnie parametr "-r". "rm -r klamka"
+
+Podsumowanie:
+Te zadanie nauczylo mnie, korzystać się ze standartowych komend linuxa, ta operować nimi w różnych sytuacjach.
+
+
+
+

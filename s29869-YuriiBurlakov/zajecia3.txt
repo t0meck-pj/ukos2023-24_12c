@@ -1,0 +1,64 @@
+Burlakov Yurii
+
+Zajęcia 3
+(1)
+Program ps służy do wyświetlania listy procesów. 
+
+Zadania:
+
+A: Zobacz co się stanie jeśli wpiszemy w terminalu:
+
+ 1.ps
+
+ 2.ps -a
+
+ 3.ps x
+
+ 4.ps axu
+  INFO: tu kolejność parametrów a, x, u nie ma znaczenie a jedynie fakt, że są podane. 
+  Dowolna kolejność powinna dać ten sam wynik.
+
+  Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+  Nie wiesz? A gdzie może być wyjaśnienie?
+
+B: Jak wykonasz poniższe 2 zadania?
+
+  1.Wyświetl wszystkie procesy bash
+
+  2.Wyświetl wszystkei procesy należące do użytkownika root
+
+
+Rozwiązanie:
+
+A:
+1.ps
+To polecenie wyświetla migawkę bieżących procesów uruchomionych w bieżącej sesji terminala.
+
+2.ps -a
+To polecenie wyświetla informacje o aktywnych procesach. W niektórych systemach opcja
+ "-a" może wyświetlić listę procesów powiązanych ze wszystkimi użytkownikami.
+
+3.ps x
+To polecenie wyświetla informacje o procesach w formacie odpowiednim dla szerokich terminali,
+zazwyczaj włączając procesy uruchomione w sesji bieżącego użytkownika.
+
+4.ps axu
+To polecenie udostępnia szczegółową listę wszystkich procesów, wyświetlając informacje, takie jak użytkownik, terminal, 
+użycie procesora i inne.
+
+Znak zapytania w kolumnie 2:
+Znak zapytania w drugiej kolumnie wyników zwykle wskazuje, że proces nie jest powiązany z żadnym konkretnym terminalem. 
+Może to być proces jądra lub proces systemowy, który nie ma przypisanego terminala.
+
+B:
+1.Wyświetl wszystkie procesy bash
+
+"ps -ef" do wyświetlenia listy wszystkich procesów i grep bash do
+filtrowania tylko tych związanych z powłoką Bash.
+
+2.Wyświetl wszystkei procesy należące do użytkownika root
+"-u" option to filter processes by user, showing processes belonging to the root user.Albo "ps -ef | grep root" 
+To polecenie wyświetla listę wszystkich procesów i filtrów powiązanych z użytkownikiem root za pomocą "grep".
+
+Polecenia te zapewniają wgląd w procesy uruchomione w systemie. W zależności od specyficznych wymagań
+i charakterystyki używanego systemu operacyjnego mogą być potrzebne dostosowania.

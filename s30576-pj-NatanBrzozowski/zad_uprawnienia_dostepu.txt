@@ -1,0 +1,187 @@
+|=============================|
+|         PYTANIE 1:          |
+|=============================|
+Utworzyc we wlasnym katalogu domowym nieduza strukture podkatalogow i plikow 
+tekstowych. Przydzielic rozne uprawnienia dostepu, nastepnie sprobowac wejsc 
+do katalogow domowych innych uczestnikow zajec i sprawdzic, ktore z obiektow sa 
+tam dla nas dostepne (i w jakim sensie). Sprobowac utworzyc wlasny plik w cudzym 
+katalogu ("kukułcze jajko") oraz sprobowac usunac cudzy plik we wlasnym katalogu 
+(co mozna zaobserwowac ?). Wyprobowac powyzsze operacje:
+- w trybie tekstowym;
+- przy uzyciu programu Midnight Commander (mc);
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+chmod 700 ukos/          				--> pelne uprawnienia dla wlasciciela, brak dla innych
+chmod 744 ukos/pytanie/zadanie_1.txt 	--> pelne uprawnienia dla wlasciciela, odczyt dla innych
+chmod 711 ukos/pytanie/ 				--> pelne uprawnienia dla wlasciciela, wykonanie dla innych
+
+tworzenie pliku kukulcze_jajko w cudzym katalogu jest mozliwe jesli mamy 
+odpowiednie uprawnienia tak samo jest z usuwaniem cudzych rzeczy, jesli 
+wlasciciel nada nam odpowiednie uprawnienia bedziemy mogli taki plik usunac 
+
+Uruchamiamy Midnight Commander (mc w terminalu odpali Midnight Commander) 
+uzywamy klawiszy strzalek i klawisza Enter do nawigacji po katalogach, 
+oraz klawisza F4 do edycji plikow. Operacje usuwania i tworzenia plikow sa rowniez 
+dostepne w interfejsie graficznym Midnight Commander.
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+s30576@szuflandia22:~$ tree
+.
+└── ukos
+    └── pytanie
+        ├── zadanie_1.txt
+        └── zadanie_2.txt
+
+2 directories, 2 files
+s30576@szuflandia22:~$ chmod 700 ukos/
+s30576@szuflandia22:~$ chmod 744 ukos/pytanie/zadanie_1.txt
+s30576@szuflandia22:~$ chmod 711 ukos/pytanie/
+s30576@szuflandia22:~$
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 2:          |
+|=============================|
+W utworzonej na swoim koncie strukturze podkatalogow przeprowadzic eksperymenty:
+usuwajac wszelkie uprawnienia dostepu do katalogu biezacego
+usuwajac wszelkie uprawnienia dostępu do katalogu nadrzednego (nadkatalogu).
+W jakich przypadkach mozemy wykonac wtedy polecenie cd ? 
+W jakich przypadkach możemy wykonac polecenie chmod ? 
+Czy mozemy bezposrednio przeskoczyc do katalogu ABC/XYZ, jeśli nie mamy 
+uprawnienia wstępu do ABC, ale mamy do XYZ ?
+Czy mozemy takze wrocic korzystajac z polecnia cd - ?
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Usuwanie wszelkich uprawnien do katalogu biezacego: 
+	chmod 000 .
+
+Usuwanie wszelkich uprawnien do katalogu nadrzednego: 
+	chmod 000 ..
+
+Wykonywanie polecenia cd w przypadku braku uprawnien: 
+	Jesli stracimy uprawnienia do katalogu biezacego, ale mamy uprawnienia 
+	do katalogu nadrzednego, mozemy uzyc absolutnej sciezki do katalogu, aby się do niego dostac
+	(cd /pelna/sciezka/do/katalogu)
+
+Wykonywanie polecenia chmod w przypadku braku uprawnien:
+	Jesli stracimy uprawnienia do katalogu biezacego, nie bedziemy w stanie wykonac 
+	polecenia chmod w tym katalogu. Bedziemy musieli uzyc sciezki bezwzglednej 
+	do katalogu lub miec uprawnienia do katalogu nadrzednego.
+
+Przeskakiwanie do katalogu XYZ, jesli brak uprawnien do ABC, ale mamy uprawnienia do XYZ:
+	Jesli mamy uprawnienia do katalogu XYZ, ale brak uprawnien do katalogu ABC, 
+	nie możemy bezpośrednio wejść do katalogu XYZ poprzez podanie pełnej ścieżki 
+	(/sciezka/do/ABC/XYZ), jeśli brakuje uprawnień do katalogu ABC. Prawa dostępu 
+	do katalogów są hierarchiczne, więc jeśli nie mamy dostępu do katalogu 
+	nadrzędnego (ABC), to nie będziemy w stanie przejść do katalogu podrzędnego (XYZ) 
+	poprzez podanie pełnej ścieżki.
+
+Powrot korzystajac z polecenia cd -:
+	Nie uda sie to poniewaz nie mamy uprawnien do katalogu nadrzednego (ABC)
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 3:          |
+|=============================|
+W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić 
+login osób z zespołu) wyprobowac mozliwosc komunikacji przez wspoldzielony plik: 
+na jednym z kont w zespole utworzyc pusty plik i przydzielic odpowiednie 
+uprawnienia dostepu (do pliku i do katalogu domowego). Wpisywac i odczytywac 
+komunikaty przy uzyciu polecen:
+echo tresc_komunikatu > plik
+cat plik
+Sprawdzic, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu 
+echo. Uruchom takze drugi terminal i wykonaj w nim komende tail -f plik i powtorz 
+powyzsze cwiczenie w pierwszym terminalu (komunikacja za pomocą pliku).
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+touch wspoldzielony_plik.txt 		--> tworze plik
+chmod 666 wspoldzielony_plik.txt  	--> nadaje uprawnienia dla wszystkich do czytania i zapisywania
+
+echo "Czesc!" > wspoldzielony_plik.txt
+drugi uzytkownik robi: cat wspoldzielony_plik.txt i wyswietla mu sie Czesc!
+
+zmieniajac operator > na >> wiadmosc zostanie dopisana np. 
+echo "Nowa wiadomosc" >> wspoldzielony_plik.txt drugi uzytkownik po wykonaniu 
+cat wspoldzielony_plik.txt zobaczy obie wiadomosci Czesc i Nowa wiadomosc
+
+przy pomocy tail -f mozemy obserwowac zmiany w pliku w czasie rzeczywistym
+w jednym terminalu odpalamy tail -f wspoldzielony_plik.txt
+a w drugim komunikujemy sie jak w czesniej za pomoca echo "Kolejna wiadomosc" >> wspoldzielony_plik.txt
+i zmiany beda widoczne 
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 4:          |
+|=============================|
+Znalezc w swoim katalogu domowym podkatalog public_html (jesli go nie ma, to 
+utworzyc; musi sie on nazywac DOKLADNIE tak jak podano, pisane malymi literami 
+z podkresleniem zamiast spacji pomiedzy slowami). Umiescic w nim plik o nazwie 
+strona.html o nastepujacej zawartosci:
+<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>
+Sprawdzic, jakie sa minimalne uprawnienia dostepu, ktore trzeba przydzielić do:
+katalogu domowego;
+katalogu public_html;
+pliku strona.html, aby zawartosc pliku była widoczna w przegladarce internetowej 
+pod adresem http://szuflandia.pjwstk.edu.pl/~twój_login/strona.html
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+chmod 001 ~  						--> minimalne uprawnienia do katalogu domowego, prawo do wejscia dla innych uzytkownikow
+chmod 001 public_html  				--> minimalne uprawnienia do katalogu public_html, prawo do wejscia dla innych uzytkownikow
+chmod 004 public_html/strona.html  	--> minimalne uprawnienia do pliku, prawo do odczytu dla innych uzytkownikow
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE "Zadanie":  |
+|=============================|
+W opisie bash-a (man) przeczytac opis polecenia wewnetrznego umask i wyprobowac 
+jego dzialanie sprawdzajac, a nastepnie zmieniajac swoja maske trybu pliku 
+i tworzac za kazdym razem nowe pliki (przy uzyciu polecenia touch plik), 
+a pozniej sprawdzajac uzyskane uprawnienia dostepu do nich (polecenie ls -l). 
+Jaka operacja logiczna na bitach domyslnych uprawnien dostepu oraz maski jest wykonywana ? 
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Operacja logiczna na bitach domyslnych uprawnien dostepu oraz maski trybu pliku 
+jest operacja bitowego AND (iloczyn logiczny). W skrocie, dla kazdego bitu 
+w zestawie domyslnych uprawnien i masce, wynikowy bit jest ustawiany na 1 (true), 
+jesli oba odpowiadajace bity w domyslnych uprawnieniach i masce są ustawione na 1 (true). 
+W przeciwnym razie wynikowy bit jest ustawiany na 0 (false).
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+s30576@szuflandia22:~$ umask
+0022
+s30576@szuflandia22:~$ umask 077
+s30576@szuflandia22:~$ umask
+0077
+s30576@szuflandia22:~$ touch plik1
+s30576@szuflandia22:~$ ls -l plik1
+-rw------- 1 s30576 domain users 0 11-29 01:20 plik1
+s30576@szuflandia22:~$ umask 022
+s30576@szuflandia22:~$ touch plik2
+s30576@szuflandia22:~$ ls -l plik2
+-rw-r--r-- 1 s30576 domain users 0 11-29 01:20 plik2
+s30576@szuflandia22:~$
+
+--------------------------------------------------------------------------------

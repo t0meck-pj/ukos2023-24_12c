@@ -1,0 +1,26 @@
+1.W opisie bash-a (man) przeczytac opis polecenia wewnetrznego umask i wyprobowac jego dzialanie sprawdzajac, a nastepnie
+zmieniajac swoja maske trybu pliku i tworzac za kazdym razem nowe pliki (przy uzyciu polecenia touch plik), a pozniej
+sprawdzajac uzyskane uprawnienia dostepu do nich (polecenie ls -l). Jaka operacja logiczna na bitach domyslnych uprawnien
+dostepu oraz maski jest wykonywana?
+
+*s30899@szuflandia22:~$ umask --help
+*s30899@szuflandia22:~$ umask
+0022
+Domyslna maska trybu pliku.
+*s30899@szuflandia22:~$ mkdir dom
+*s30899@szuflandia22:~$ ls- l
+drwxr-xr-x 2 s30899 domain users 4096 10-27 13:49 dom
+Przydzilone domyslnie uprawnienia dostepu.
+*s30899@szuflandia22:~$ umask 0044
+*s30899@szuflandia22:~$ umask
+0044
+Zmieniona maska trybu pliku.
+*s30899@szuflandia22:~$ mkdir test
+*s30899@szuflandia22:~$ ls -l
+drwx-wx-wx 2 s30899 domain users 4096 2023-10-27  test
+Przydzielona uprawnienia dostepu po zmianie maski trybu pliku.
+
+Operacja logiczna na bitach domyslnych uprawnien dostepu oraz masce trybu pliku polega na wykonaniu operacji bitowej (od tego momentu
+doinformowalem sie szukajc w internecie) AND pomiedzy domyslnymi uprawnieniami dostepu i odwrocona maska trybu pliku, czyli
+ujmujac to prostymi slowami to maska trybu pliku zostaje odjeta od domyslnych uprawnien dostepu (dla pliku - 666, a dla katalogu - 777).Nastepnie podczas tworzenia nowego pliku lub katalogu zostaja nadane uzyskane uprawnienia dostepu z operacji bitowej AND.
+

@@ -1,0 +1,820 @@
+# Copyright 2015 Tomasz Idzikowski
+# Przedmiot: UKOS
+# Skrypt: Wprowadzenie do podstaw PowerShell-a
+#
+# Żeby uruchomić jakikolwiek skrypt w PowerShell-u to domyślnie musi on być podpisany przez Microsoft
+# Ale można to przełączyć i w rzeczywistości praktycznie każdy tak robi bo inaczej nie da się używać PowerShell-a
+# Także, jak będziesz miał problem z uruchomieniem tego skryptu to uruchom powłokę PowerShell-a z uprawnieniami Admina
+# W pisz poniższe polecenie a następnie je zatwierdź (będzie dodatkowe pytanie o przełączenie)
+#
+# Poniższa linijka została już na stacjach w laboratorium wykonana. Nie należy jej uruchamiać w laboratorium.
+# Bo wymaga to uprawnień administratora.
+#
+# PS C:\Users\user> Set-ExecutionPolicy Bypass
+# Odpowiedz "T" lub "Y" (nie wiem jak to będzie wyglądać na polskim windowsie)
+#
+# Wtedy jak to będzie już przełączone to jako zwykły użytkownik będziesz mógł sobie uruchamiać swoje skrypty
+#
+# Zanim zaczniesz czytać i wykonywać dalej instrukcje, które zawarłem poniżej zwróć uwagę na to jak to jest napisane
+# Wszystko to co możesz bez problemu uruchomić ma przed sobą sam znak "#" a po nim NIE MA spacji. Jeśli jest spacja
+# to jest to komentarz tak jak ten tu. W linii 25 masz coś co można uruchomić.
+#
+#
+#
+# Gdybyś potrzebował pomocy z dowolnym poleceniem by zobaczyć jaką ma składnię to pomoc używa się tak:
+#Get-Help Get-ExecutionPolicy
+#
+# A żeby zobaczyć przykłady użycia:
+#Get-Help Get-ExecutionPolicy -Examples
+#
+# Komendy w PS (powershellu) mają pewną stałą konwencję nazewniczą. Jest to: Czasownik-NaCzymMaOperować
+# Np. Get-ExecutionPolicy, Set-ExecutionPolicy, Find-Module, Add-User, Create-Item itd...
+# Nazwa zawsze jest zbudowana w ten sam sposób.
+# Także aby zobaczyć jaki masz "ExecutionPolicy" robisz "Get-ExecutionPolicy" i dostaniesz informację
+#
+# PS ma wiele modułów, które są domyślnie zainstalowane ale nie uruchomione i trzeba je na żądanie ładować.
+# Ale najpierw trzeba wiedzieć co można załadować
+#
+# Poniższa linia zwróci Tobie wszystkie dostepne w danej chwili moduły. Może się chwilę wykonywać bo najpierw musi zebrać listę.
+#Get-Module -ListAvailable
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Get-Module -ListAvailable
+
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     1.0.1      Microsoft.PowerShell.Operation.V... {Get-OperationValidation, Invoke-OperationValidation}
+Binary     1.0.0.1    PackageManagement                   {Find-Package, Get-Package, Get-PackageProvider, Get-Packa...
+Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+Script     1.0.0.1    PowerShellGet                       {Install-Module, Find-Module, Save-Module, Update-Module...}
+Script     2.0.0      PSReadLine                          {Get-PSReadLineKeyHandler, Set-PSReadLineKeyHandler, Remov...
+
+
+    Directory: C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Manifest   1.0.0.0    AppBackgroundTask                   {Disable-AppBackgroundTaskDiagnosticLog, Enable-AppBackgro...
+Manifest   2.0.0.0    AppLocker                           {Get-AppLockerFileInformation, Get-AppLockerPolicy, New-Ap...
+Manifest   1.0.0.0    AppvClient                          {Add-AppvClientConnectionGroup, Add-AppvClientPackage, Add...
+Manifest   2.0.1.0    Appx                                {Add-AppxPackage, Get-AppxPackage, Get-AppxPackageAutoUpda...
+Script     1.0.0.0    AssignedAccess                      {Clear-AssignedAccess, Get-AssignedAccess, Set-AssignedAcc...
+Manifest   1.0.0.0    BitLocker                           {Unlock-BitLocker, Suspend-BitLocker, Resume-BitLocker, Re...
+Script     2.0.0.0    BitsTransfer                        {Add-BitsFile, Complete-BitsTransfer, Get-BitsTransfer, Re...
+Manifest   1.0.0.0    BranchCache                         {Add-BCDataCacheExtension, Clear-BCCache, Disable-BC, Disa...
+Manifest   1.0.0.0    CimCmdlets                          {Get-CimAssociatedInstance, Get-CimClass, Get-CimInstance,...
+Manifest   1.0        ConfigCI                            {Get-SystemDriver, New-CIPolicyRule, New-CIPolicy, Get-CIP...
+Manifest   1.0        ConfigDefender                      {Get-MpPreference, Set-MpPreference, Add-MpPreference, Rem...
+Manifest   1.0        ConfigDefenderPerformance           {New-MpPerformanceRecording, Get-MpPerformanceReport}
+Manifest   1.0        Defender                            {Get-MpPreference, Set-MpPreference, Add-MpPreference, Rem...
+Manifest   1.0        DefenderPerformance                 {New-MpPerformanceRecording, Get-MpPerformanceReport}
+Manifest   1.0.3.0    DeliveryOptimization                {Get-DeliveryOptimizationLog, Get-DeliveryOptimizationLogA...
+Manifest   1.0.0.0    DirectAccessClientComponents        {Disable-DAManualEntryPointSelection, Enable-DAManualEntry...
+Script     3.0        Dism                                {Add-AppProvisionedSharedPackageContainer, Add-AppxProvisi...
+Manifest   1.0.0.0    DnsClient                           {Resolve-DnsName, Clear-DnsClientCache, Get-DnsClient, Get...
+Manifest   1.0.0.0    EventTracingManagement              {Start-EtwTraceSession, New-EtwTraceSession, Get-EtwTraceS...
+Script     2022.3.... Get-NetView                         Get-NetView
+Manifest   2.1.0.0    International                       {Copy-UserInternationalSettingsToSystem, Get-WinDefaultInp...
+Manifest   1.0.0.0    iSCSI                               {Get-IscsiTargetPortal, New-IscsiTargetPortal, Remove-Iscs...
+Script     1.0.0.0    ISE                                 {New-IseSnippet, Import-IseSnippet, Get-IseSnippet}
+Manifest   1.0.0.0    Kds                                 {Add-KdsRootKey, Get-KdsRootKey, Test-KdsRootKey, Set-KdsC...
+Manifest   1.0        LanguagePackManagement              {Install-Language, Uninstall-Language, Get-InstalledLangua...
+Script     1.0.0.0    LAPS                                {Find-LapsADExtendedRights, Get-LapsADPassword, Invoke-Lap...
+Manifest   1.0.1.0    Microsoft.PowerShell.Archive        {Compress-Archive, Expand-Archive}
+Manifest   3.0.0.0    Microsoft.PowerShell.Diagnostics    {Get-WinEvent, Get-Counter, Import-Counter, Export-Counter...
+Manifest   3.0.0.0    Microsoft.PowerShell.Host           {Start-Transcript, Stop-Transcript}
+Manifest   1.0.0.0    Microsoft.PowerShell.LocalAccounts  {Add-LocalGroupMember, Disable-LocalUser, Enable-LocalUser...
+Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Content, Clear-Content, Clear-ItemProperty, Join-Path...
+Script     1.0        Microsoft.PowerShell.ODataUtils     Export-ODataEndpointProxy
+Manifest   3.0.0.0    Microsoft.PowerShell.Security       {Get-Acl, Set-Acl, Get-PfxCertificate, Get-Credential...}
+Manifest   3.1.0.0    Microsoft.PowerShell.Utility        {Format-List, Format-Custom, Format-Table, Format-Wide...}
+Manifest   1.0.0      Microsoft.Windows.Bcd.Cmdlets       {Copy-BcdEntry, Disable-BcdElementBootDebug, Disable-BcdEl...
+Manifest   3.0.0.0    Microsoft.WSMan.Management          {Disable-WSManCredSSP, Enable-WSManCredSSP, Get-WSManCredS...
+Manifest   1.0        MMAgent                             {Disable-MMAgent, Enable-MMAgent, Set-MMAgent, Get-MMAgent...
+Manifest   1.0.0.0    MsDtc                               {New-DtcDiagnosticTransaction, Complete-DtcDiagnosticTrans...
+Manifest   2.0.0.0    NetAdapter                          {Disable-NetAdapter, Disable-NetAdapterBinding, Disable-Ne...
+Manifest   2.0.0.0    NetConnection                       {Get-NetConnectionProfile, Set-NetConnectionProfile}
+Manifest   1.0.0.0    NetEventPacketCapture               {New-NetEventSession, Remove-NetEventSession, Get-NetEvent...
+Manifest   2.0.0.0    NetLbfo                             {Add-NetLbfoTeamMember, Add-NetLbfoTeamNic, Get-NetLbfoTea...
+Manifest   1.0.0.0    NetNat                              {Get-NetNat, Get-NetNatExternalAddress, Get-NetNatStaticMa...
+Manifest   2.0.0.0    NetQos                              {Get-NetQosPolicy, Set-NetQosPolicy, Remove-NetQosPolicy, ...
+Manifest   2.0.0.0    NetSecurity                         {Get-DAPolicyChange, New-NetIPsecAuthProposal, New-NetIPse...
+Manifest   1.0.0.0    NetSwitchTeam                       {New-NetSwitchTeam, Remove-NetSwitchTeam, Get-NetSwitchTea...
+Manifest   1.0.0.0    NetTCPIP                            {Get-NetIPAddress, Get-NetIPInterface, Get-NetIPv4Protocol...
+Manifest   1.0.0.0    NetworkConnectivityStatus           {Get-DAConnectionStatus, Get-NCSIPolicyConfiguration, Rese...
+Manifest   1.0.0.0    NetworkSwitchManager                {Disable-NetworkSwitchEthernetPort, Enable-NetworkSwitchEt...
+Manifest   1.0.0.0    NetworkTransition                   {Add-NetIPHttpsCertBinding, Disable-NetDnsTransitionConfig...
+Manifest   1.0.0.0    PcsvDevice                          {Get-PcsvDevice, Start-PcsvDevice, Stop-PcsvDevice, Restar...
+Binary     1.0.0.0    PersistentMemory                    {Get-PmemDisk, Get-PmemPhysicalDevice, Get-PmemUnusedRegio...
+Manifest   1.0.0.0    PKI                                 {Add-CertificateEnrollmentPolicyServer, Export-Certificate...
+Manifest   1.0.0.0    PnpDevice                           {Get-PnpDevice, Get-PnpDeviceProperty, Enable-PnpDevice, D...
+Manifest   1.1        PrintManagement                     {Add-Printer, Add-PrinterDriver, Add-PrinterPort, Get-Prin...
+Binary     1.0.12     ProcessMitigations                  {Get-ProcessMitigation, Set-ProcessMitigation, ConvertTo-P...
+Script     3.0        Provisioning                        {Install-ProvisioningPackage, Export-ProvisioningPackage, ...
+Manifest   1.1        PSDesiredStateConfiguration         {Set-DscLocalConfigurationManager, Start-DscConfiguration,...
+Script     1.0.0.0    PSDiagnostics                       {Disable-PSTrace, Disable-PSWSManCombinedTrace, Disable-WS...
+Binary     1.1.0.0    PSScheduledJob                      {New-JobTrigger, Add-JobTrigger, Remove-JobTrigger, Get-Jo...
+Manifest   2.0.0.0    PSWorkflow                          {New-PSWorkflowExecutionOption, New-PSWorkflowSession, nwsn}
+Manifest   1.0.0.0    PSWorkflowUtility                   Invoke-AsWorkflow
+Manifest   1.0.0.0    ScheduledTasks                      {Get-ScheduledTask, Set-ScheduledTask, Register-ScheduledT...
+Manifest   2.0.0.0    SecureBoot                          {Confirm-SecureBootUEFI, Set-SecureBootUEFI, Get-SecureBoo...
+Manifest   2.0.0.0    SmbShare                            {Get-SmbShare, Remove-SmbShare, Set-SmbShare, Block-SmbSha...
+Manifest   2.0.0.0    SmbWitness                          {Get-SmbWitnessClient, Move-SmbWitnessClient, gsmbw, msmbw...
+Manifest   1.0.0.1    StartLayout                         {Export-StartLayout, Import-StartLayout, Export-StartLayou...
+Manifest   2.0.0.0    Storage                             {Add-InitiatorIdToMaskingSet, Add-PartitionAccessPath, Add...
+Manifest   1.0.0.0    StorageBusCache                     {Clear-StorageBusDisk, Disable-StorageBusCache, Disable-St...
+Manifest   2.0.0.0    TLS                                 {New-TlsSessionTicketKey, Enable-TlsSessionTicketKey, Disa...
+Manifest   1.0.0.0    TroubleshootingPack                 {Get-TroubleshootingPack, Invoke-TroubleshootingPack}
+Manifest   2.0.0.0    TrustedPlatformModule               {Get-Tpm, Initialize-Tpm, Clear-Tpm, Unblock-Tpm...}
+Binary     2.1.639.0  UEV                                 {Clear-UevConfiguration, Clear-UevAppxPackage, Restore-Uev...
+Script     1.0.0.0    VMDirectStorage                     {Get-VMDirectVirtualDisk, Add-VMDirectVirtualDisk, Remove-...
+Manifest   2.0.0.0    VpnClient                           {Add-VpnConnection, Set-VpnConnection, Remove-VpnConnectio...
+Manifest   1.0.0.0    Wdac                                {Get-OdbcDriver, Set-OdbcDriver, Get-OdbcDsn, Add-OdbcDsn...}
+Manifest   2.0.0.0    Whea                                {Get-WheaMemoryPolicy, Set-WheaMemoryPolicy}
+Manifest   1.0.0.0    WindowsDeveloperLicense             {Get-WindowsDeveloperLicense, Unregister-WindowsDeveloperL...
+Script     1.0        WindowsErrorReporting               {Enable-WindowsErrorReporting, Disable-WindowsErrorReporti...
+Manifest   1.0.0.0    WindowsSearch                       {Get-WindowsSearchSetting, Set-WindowsSearchSetting}
+Manifest   1.0.0.0    WindowsUpdate                       Get-WindowsUpdateLog
+Script     1.0.0.0    WinHttpProxy                        {Get-WinhttpProxy, Export-WinhttpProxy, Reset-WinhttpProxy...
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+#
+#
+# INFO: Poniższa sekcja została przygotowana na Windows 10. Na Win 7 niektóre dane są niedostępne.
+#
+# To co zwróci powyższe polecenie to lista/kolekcja, którą można przetworzyć.
+# Powiedzmy, że chcemy wyszukać tylko te moduły, których wersja jest większa lub równa 2.0 a wszystkie inne nie.
+# Wtedy korzysta się z "Where-Object" lub jego skrótu "?"
+#
+# Znak "|" to potok (pipeline), który uruchamia kolejne polecenie na danych wyjściowych z poprzedniego polecenia
+# Jeśli podaje się kolekcję/listę/tablicę to poszczególne elementy tej kolecji po znaku | są widoczne jako "$_"
+# To taka specjalna zmienna, która jest automatycznie tworzona przez powershell'a kiedy się operuje na kolekcjach.
+#
+# Poniższa linia zwróci tylko te moduły, których wersja jest >= 2.0.0.0
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+
+
+    Directory: C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Manifest   2.0.0.0    AppLocker                           {Get-AppLockerFileInformation, Get-AppLockerPolicy, New-AppLockerPolicy, Set-AppLockerPolicy...}
+Manifest   2.0.1.0    Appx                                {Add-AppxPackage, Get-AppxPackage, Get-AppxPackageAutoUpdateSettings, Get-AppxPackageManifest...}
+Script     2.0.0.0    BitsTransfer                        {Add-BitsFile, Complete-BitsTransfer, Get-BitsTransfer, Remove-BitsTransfer...}
+Script     3.0        Dism                                {Add-AppProvisionedSharedPackageContainer, Add-AppxProvisionedPackage, Add-WindowsDriver, Add-WindowsCapability...}
+Script     2022.3.... Get-NetView                         Get-NetView
+Manifest   2.1.0.0    International                       {Copy-UserInternationalSettingsToSystem, Get-WinDefaultInputMethodOverride, Set-WinDefaultInputMethodOverride, Get-WinHomeLocation...}
+Manifest   3.0.0.0    Microsoft.PowerShell.Diagnostics    {Get-WinEvent, Get-Counter, Import-Counter, Export-Counter...}
+Manifest   3.0.0.0    Microsoft.PowerShell.Host           {Start-Transcript, Stop-Transcript}
+Manifest   3.1.0.0    Microsoft.PowerShell.Management     {Add-Content, Clear-Content, Clear-ItemProperty, Join-Path...}
+Manifest   3.0.0.0    Microsoft.PowerShell.Security       {Get-Acl, Set-Acl, Get-PfxCertificate, Get-Credential...}
+Manifest   3.1.0.0    Microsoft.PowerShell.Utility        {Format-List, Format-Custom, Format-Table, Format-Wide...}
+Manifest   3.0.0.0    Microsoft.WSMan.Management          {Disable-WSManCredSSP, Enable-WSManCredSSP, Get-WSManCredSSP, Set-WSManQuickConfig...}
+Manifest   2.0.0.0    NetAdapter                          {Disable-NetAdapter, Disable-NetAdapterBinding, Disable-NetAdapterChecksumOffload, Disable-NetAdapterEncapsulatedPacketTaskOffload...}
+Manifest   2.0.0.0    NetConnection                       {Get-NetConnectionProfile, Set-NetConnectionProfile}
+Manifest   2.0.0.0    NetLbfo                             {Add-NetLbfoTeamMember, Add-NetLbfoTeamNic, Get-NetLbfoTeam, Get-NetLbfoTeamMember...}
+Manifest   2.0.0.0    NetQos                              {Get-NetQosPolicy, Set-NetQosPolicy, Remove-NetQosPolicy, New-NetQosPolicy}
+Manifest   2.0.0.0    NetSecurity                         {Get-DAPolicyChange, New-NetIPsecAuthProposal, New-NetIPsecMainModeCryptoProposal, New-NetIPsecQuickModeCryptoProposal...}
+Script     3.0        Provisioning                        {Install-ProvisioningPackage, Export-ProvisioningPackage, Install-TrustedProvisioningCertificate, Export-Trace...}
+Manifest   2.0.0.0    PSWorkflow                          {New-PSWorkflowExecutionOption, New-PSWorkflowSession, nwsn}
+Manifest   2.0.0.0    SecureBoot                          {Confirm-SecureBootUEFI, Set-SecureBootUEFI, Get-SecureBootUEFI, Format-SecureBootUEFI...}
+Manifest   2.0.0.0    SmbShare                            {Get-SmbShare, Remove-SmbShare, Set-SmbShare, Block-SmbShareAccess...}
+Manifest   2.0.0.0    SmbWitness                          {Get-SmbWitnessClient, Move-SmbWitnessClient, gsmbw, msmbw...}
+Manifest   2.0.0.0    Storage                             {Add-InitiatorIdToMaskingSet, Add-PartitionAccessPath, Add-PhysicalDisk, Add-StorageFaultDomain...}
+Manifest   2.0.0.0    TLS                                 {New-TlsSessionTicketKey, Enable-TlsSessionTicketKey, Disable-TlsSessionTicketKey, Export-TlsSessionTicketKey...}
+Manifest   2.0.0.0    TrustedPlatformModule               {Get-Tpm, Initialize-Tpm, Clear-Tpm, Unblock-Tpm...}
+Binary     2.1.639.0  UEV                                 {Clear-UevConfiguration, Clear-UevAppxPackage, Restore-UevBackup, Set-UevTemplateProfile...}
+Manifest   2.0.0.0    VpnClient                           {Add-VpnConnection, Set-VpnConnection, Remove-VpnConnection, Get-VpnConnection...}
+Manifest   2.0.0.0    Whea                                {Get-WheaMemoryPolicy, Set-WheaMemoryPolicy}
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# Moduły mogą mieć wiele poleceń (to co jest w kolumnie ExportedCommands wyświetlone po przecinku)
+# A my byśmy chcieli mieć listę wszystkich poleceń w tych modułach po przefiltrowaniu wersji powyżej.
+#
+# Tak jak "?" jest skrótem na Where-Object, tak "%" jest skrótem na While-Object czyli pętlę
+# Poniższa linia wyświetli wszystkie polecenia (cmdlet - "Komandlety") w dostępnych modułach, których wersja >= 2.0.0.0
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+PS C:\Users\natan\podstawy_powershella> Get-Module -ListAvailable | ? {$_.Version -ge "3.4.0"} | % {Get-Command -Module $_.Name}
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        AfterAll                                           3.4.0      Pester
+Function        AfterEach                                          3.4.0      Pester
+Function        Assert-MockCalled                                  3.4.0      Pester
+Function        Assert-VerifiableMocks                             3.4.0      Pester
+Function        BeforeAll                                          3.4.0      Pester
+Function        BeforeEach                                         3.4.0      Pester
+Function        Context                                            3.4.0      Pester
+Function        Describe                                           3.4.0      Pester
+Function        Get-MockDynamicParameters                          3.4.0      Pester
+Function        Get-TestDriveItem                                  3.4.0      Pester
+Function        In                                                 3.4.0      Pester
+Function        InModuleScope                                      3.4.0      Pester
+Function        Invoke-Mock                                        3.4.0      Pester
+Function        Invoke-Pester                                      3.4.0      Pester
+Function        It                                                 3.4.0      Pester
+Function        Mock                                               3.4.0      Pester
+Function        New-Fixture                                        3.4.0      Pester
+Function        New-PesterOption                                   3.4.0      Pester
+Function        SafeGetCommand                                     3.4.0      Pester
+Function        Set-DynamicParameterVariables                      3.4.0      Pester
+Function        Set-TestInconclusive                               3.4.0      Pester
+Function        Setup                                              3.4.0      Pester
+Function        Should                                             3.4.0      Pester
+Function        Get-NetView                                        2022.3.... Get-NetView
+
+
+PS C:\Users\natan\podstawy_powershella>
+zmieniłem na 3.4.0 poniewz było ich bardzo duzo (nie chcialem tak duzego outputu tutaj wklejac)
+#
+# Teraz byśmy chcieli jeszcze wyświetlić wszystkie te, które mają w nazwie "Add-" lub "Get-"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+PS C:\Users\natan\podstawy_powershella> Get-Module -ListAvailable | ? {$_.Version -ge "3.2.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Get-MockDynamicParameters                          3.4.0      Pester
+Function        Get-TestDriveItem                                  3.4.0      Pester
+Function        Get-NetView                                        2022.3.... Get-NetView
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# A teraz byśmy chcieli je wypisać w postaci tabelki graficznej otworzonej w nowym okienku
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+bardzo fajne, ładnie przejrzyscie widac
+#
+# albo do pliku
+#$nazwaPliku = "mojaNazwaPliku.txt"
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> $nazwaPliku = "mojaNazwaPliku.txt"
+PS C:\Users\natan\podstawy_powershella> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+PS C:\Users\natan\podstawy_powershella> Write-Host $env:TEMP
+C:\Users\natan\AppData\Local\Temp
+PS C:\Users\natan\podstawy_powershella> ls C:\Users\natan\AppData\Local\Temp
+
+
+    Directory: C:\Users\natan\AppData\Local\Temp
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        16.01.2024     00:09         115934 mojaNazwaPliku.txt
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# albo nic z tym nie robić tylko by się przetworzyło ale nie wypisywało
+#Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+PS C:\Users\natan\podstawy_powershella>
+mozna i tak :D
+#
+#
+#
+#
+#
+#
+#
+# Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle)
+#Import-Module BitsTransfer
+#
+# można też użyć aliasu na Import-Module w formie:
+#ipmo BitsTransfer
+#
+# Wylistujmy wszystkie komendy w tym module
+#Get-Command -Module BitsTransfer
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Import-Module BitsTransfer
+PS C:\Users\natan\podstawy_powershella> Get-Command -Module BitsTransfer
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Cmdlet          Add-BitsFile                                       2.0.0.0    BitsTransfer
+Cmdlet          Complete-BitsTransfer                              2.0.0.0    BitsTransfer
+Cmdlet          Get-BitsTransfer                                   2.0.0.0    BitsTransfer
+Cmdlet          Remove-BitsTransfer                                2.0.0.0    BitsTransfer
+Cmdlet          Resume-BitsTransfer                                2.0.0.0    BitsTransfer
+Cmdlet          Set-BitsTransfer                                   2.0.0.0    BitsTransfer
+Cmdlet          Start-BitsTransfer                                 2.0.0.0    BitsTransfer
+Cmdlet          Suspend-BitsTransfer                               2.0.0.0    BitsTransfer
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# Ok. To teraz postarajmy się użyć tego cuda do pobrania jakiegoś dużego pliku by było widać proces ściągania.
+# Ściągnijmy obraz maszyny wirtualnej do javy.
+# UWAGA: Sprawdz na poczatku przez normalna przegladarke czy ponizsze adresy dzialaja.
+# UWAGA: Jesli przez przegladarke ten adres nie dziala to prosze znalesc jakis inny duzy plik w Internecie.
+# UWAGA: Alternatywnie prowadzacy moze udostepnic jakis serwer www uruchomiony na czas zajec.
+# INFO: Obrazy używane na zajęciach są dostępne po zalogowaniu pod adresem:
+# INFO: http://szuflandia.pjwstk.edu.pl/pub/
+# INFO: Logowanie przez login i hasło do konta studenckiego
+#
+#
+# UKOS: 18 grudnia 2022
+# INFO: Uzyjemy serwera ktory uruchomie na zajeciach
+# INFO: Login = student    haslo = ukos    (te dane podac ponizej do okna dialogowego Get-Credential zamiast swojego loginu i hasla studenckiego)
+# INFO: Adres: http://IP_KOMPUTERA_PROWADZACEGO:8080/index.html (lub inny plik ktory wskaze)
+# INFO: Prosze ustawic parametr: -Authentication Basic
+#
+# Zapisz sobie swoje dane logowania (w bezpieczny sposób) do zmiennej by nie wpisywać ich za każdym razem
+# INFO: Do następnego zadania proszę wpisać username w formacie: sXXXXX@pjwstk.edu.pl
+#$cred = Get-Credential
+#
+# INFO: Ustaw parametr Destination na lokalizacje gdzie mozna zapisywac tymczasowo duze pliki.
+# INFO: Czyli na dysk 3-4 Users lub analogiczny.
+# Teraz rozpocznij przesyłać plik
+# Takie przesyłanie pliku może trwać długo.
+#Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Start-BitsTransfer -Source https://releases.ubuntu.com/focal/ubuntu-20.04.6-desktop-amd64.iso -Destination C:\Users\natan\Downloads
+pojawilo sie pole z paskiem pobierania pliku, konsola była zablokowana
+#
+# Jeśli chcesz to uczynić w sposób asynchroniczny (czyli taki, który nie blokuje konsoli) to można to zrobić tak
+#$job = Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination D:\ -Credential $cred -Authentication Negotiate -Asynchronous -DisplayName "Moj Bits Transfer"
+#
+# By zobaczyć jaki jest stan transferu można użyć takiej komendy.
+#Get-BitsTransfer
+#
+# Zwrócić uwagę należy na stan w kolumnie JobState. Jeśli będzie tam Transferred to aby ukończyć całość i dostać pobierany plik
+# trzeba jeszcze zakończyć job transferu. Robi się to tak
+#Complete-BitsTransfer -BitsJob $job
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> $job = Start-BitsTransfer -Source https://releases.ubuntu.com/focal/ubuntu-20.04.6-desktop-amd64.iso -Destination C:\Users\natan\Downloads -Asynchronous -DisplayName "Moj Bits Transfer"
+PS C:\Users\natan\podstawy_powershella> Get-BitsTransfer
+
+JobId                                DisplayName       TransferType JobState     OwnerAccount
+-----                                -----------       ------------ --------     ------------
+3f04574c-da21-4318-85a1-19b7e4615969 Moj Bits Transfer Download     Transferring DESKTOP-OP762KV\natan
+
+
+PS C:\Users\natan\podstawy_powershella> Complete-BitsTransfer -BitsJob $job
+PS C:\Users\natan\podstawy_powershella> Get-BitsTransfer
+PS C:\Users\natan\podstawy_powershella>
+#
+# Teraz plik jest już dostępny w katalogu docelowym
+#
+#
+#
+# Skoro wiemy, że niektóre komendy wykonują się długo, to może byśmy chcieli zmierzyć czas wykonania polecenia.
+# Czasem może się to okazać potrzebne.
+#
+# Do mierzenia czasu służy Measure-Command
+#Measure-Command {Get-ChildItem -Path C:\Windows}
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Measure-Command {Get-ChildItem -Path C:\Windows}
+
+
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 7
+Ticks             : 73487
+TotalDays         : 8,50543981481481E-08
+TotalHours        : 2,04130555555556E-06
+TotalMinutes      : 0,000122478333333333
+TotalSeconds      : 0,0073487
+TotalMilliseconds : 7,3487
+
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# I tu też widzisz jak się listuje zawartość katalogu. Ale jest to nie wygodne. Może jest na to alias?
+#Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           dir -> Get-ChildItem
+Alias           gci -> Get-ChildItem
+Alias           ls -> Get-ChildItem
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# i co? Widać znajome skróty? Szczególnie w systemach *nix-owych ;-)
+# No to wylistujmy sobie wszystkie pliki i katalogi z katalogu głównego ale z odstępem czasowym.
+#ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+
+
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07.05.2022     07:24                PerfLogs
+d-r---        11.12.2023     22:14                Program Files
+d-r---        06.11.2023     21:06                Program Files (x86)
+d-r---        03.10.2023     08:02                Users
+d-----        16.01.2024     00:18                Windows
+-a----        12.05.2023     04:28         112080 appverifUI.dll
+-a----        12.05.2023     04:29          66160 vfcompat.dll
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# Wyobraź sobie, że teraz ze skryptu PS uruchamiasz wyzwalacz na aparacie po określonym czasie, który
+# z kolei jest dynamicznie wyliczany na postawie np. pobranej z internetu wartości naświetlenia
+# z jakiegoś serwisu www. Odfiltrowana i używana jako wartość. Abstrakcja ale zapewne da się coś takiego zrobić
+#
+#
+#
+#
+#
+#
+#
+# No dobra. Ale PS to nie tylko język do pisania skryptów. To przede wszystkim konsola więc można z niej
+# uruchamiać inne programy. Do tego służy operator wołania "call", który ma postać znaku "&"
+#& C:\Windows\notepad.exe
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> & C:\Windows\notepad.exe
+uruchowił mi notatnik :)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# Ok. Było listowanie modułów i komend. A teraz wylistujmy zainstalowane aplikacje/programy.
+# Można się do tego dobrać na 2 sposoby.
+# 1. W rejestrze poszukać
+# 2. Odpytać WMI (Windows Management Instrumentation)
+#
+# 1. Rejestr
+# Informacje o zainstalowanych aplikacjach są przechowywane w:
+# HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+# PS potrafi "wejść" do rejestru jak na dysk.
+# Ale skoro o tym mowa to sprawdźmy jakie "dyski" są dostępne w PowerShell-u.
+#Get-PSDrive
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> Get-PSDrive
+
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                                                        CurrentLocation
+----           ---------     --------- --------      ----                                                                                                                                        ---------------
+Alias                                  Alias
+C                  60,29        188,99 FileSystem    C:\                                                                                                                        Users\natan\podstawy_powershella
+Cert                                   Certificate   \
+D                   5,00          0,00 FileSystem    D:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+
+PS C:\Users\natan\podstawy_powershella>
+#
+# Widać, że jest ich trochę oraz kilka takich nietypowych. Dwa z nich są odpowiedzialne za rejestr.
+# Resztę na razie pominiemy. Zatem by wejść do rejestru można zrobić tak:
+#
+#cd hklm:\
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS C:\Users\natan\podstawy_powershella> cd hklm:\
+PS HKLM:\>
+#
+# i przeglądać sobie rejestr jak zwykły system plików
+#
+#cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#
+# Wylistować sobie jego zawartość przez ls
+#ls
+#
+# ale to spowoduje wyświetlenie sporej ilości tekstu w brzydkiej postaci. Można to trochę zmienić
+#cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | Format-Table -AutoSize
+
+PS HKLM:\> cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls | %{
+>>     Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+>> } | Format-Table -AutoSize
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+DisplayName                                                    InstallDate UninstallString
+-----------                                                    ----------- ---------------
+
+Git                                                            20231003    "C:\Program Files\Git\unins000.exe"
+Mozilla Firefox (x64 pl)                                                   "C:\Program Files\Mozilla Firefox\uninstall\helper.exe"
+Mozilla Maintenance Service                                                "C:\Program Files (x86)\Mozilla Maintenance Service\uninstall.exe"
+                                                                           "C:\Windows\System32\mstsc.exe" /uninstall
+Sublime Text                                                   20231003    "C:\Program Files\Sublime Text\unins000.exe"
+
+Microsoft Visual C++ 2022 X64 Additional Runtime - 14.36.32532 20231025    MsiExec.exe /I{0025DD72-A959-45B5-A0A3-7EFEB15A8050}
+Python 3.9.13 Documentation (64-bit)                           20231025    MsiExec.exe /I{1FB094A5-7604-4C0F-A1FB-EAB7ED730DE2}
+vs_communityx64msi                                             20231025    MsiExec.exe /I{25142701-E789-4B30-BE5D-1ABBC6A73C58}
+vs_minshellinteropx64msi                                       20231025    MsiExec.exe /I{2F52726C-4CCD-499D-A4F7-D5DBDF18D413}
+Windows App Certification Kit Native Components                20231025    MsiExec.exe /I{3C39ADF8-779F-9BBA-A032-EBCB2E618D88}
+Python 3.9.13 Executables (64-bit symbols)                     20231025    MsiExec.exe /I{3D1C9D81-340E-45DD-8752-88593113B332}
+Windows Subsystem for Linux                                    20231128    MsiExec.exe /X{408A5C50-34F2-4025-968E-A21D6A515D48}
+Python 3.9.13 Tcl/Tk Support (64-bit symbols)                  20231025    MsiExec.exe /I{408D42FD-EC5F-47EC-929B-5BE3B9EFEDCD}
+Microsoft Visual C++ 2022 X64 Debug Runtime - 14.36.32532      20231025    MsiExec.exe /I{44B8E53D-68C7-4FCD-A0D7-753CA2C2EF94}
+Python 3.9.13 Core Interpreter (64-bit symbols)                20231025    MsiExec.exe /I{44BCBD6F-228D-456F-8F26-52EF9B205A4D}
+vs_Graphics_Singletonx64                                       20231025    MsiExec.exe /I{4F12BBE1-044E-4512-8726-BA8AE304E877}
+Universal CRT Tools x64                                        20231025    MsiExec.exe /I{56745E0F-0674-D1D9-03CC-ABBC176F265B}
+Microsoft System CLR Types for SQL Server 2019                 20231025    MsiExec.exe /I{5BC7E9EB-13E8-45DB-8A60-F2481FEB4595}
+Python 3.9.13 Utility Scripts (64-bit)                         20231025    MsiExec.exe /I{618E9DD0-9212-486C-AB4A-023ACAB7CD36}
+VMware Tools                                                   20231003    MsiExec.exe /I{65A35679-0C08-4C9A-9AC3-46417F198653}
+Microsoft Visual Studio Installer                              20231025    "C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe" /uninstall
+Python 3.9.13 pip Bootstrap (64-bit)                           20231025    MsiExec.exe /I{72964D30-1BFE-459F-B218-D267EBE0D5B2}
+Python 3.9.13 Test Suite (64-bit)                              20231025    MsiExec.exe /I{7491B488-F171-4A97-935A-9098E7CE2A26}
+Python 3.9.13 Standard Library (64-bit)                        20231025    MsiExec.exe /I{90A30DAB-6FD8-4CF8-BB8B-C0DB21C69F20}
+Python 3.9.13 Development Libraries (64-bit)                   20231025    MsiExec.exe /I{A621340A-3F22-40D3-9CCD-50B048EBB48E}
+Application Verifier x64 External Package (DesktopEditions)    20231025    MsiExec.exe /I{BA9EBE5B-CA3F-21B4-486D-A9B00754150A}
+VS JIT Debugger                                                20231025    MsiExec.exe /I{C17B72FB-7790-44C0-B897-9BEE0BAD5BA0}
+icecap_collection_x64                                          20231025    MsiExec.exe /I{C473D717-C41F-4DB5-86DA-4AC02801E6C4}
+Application Verifier x64 External Package (OnecoreUAP)         20231025    MsiExec.exe /I{C6C99077-7B71-0E55-3B00-2F2A4E3F85E4}
+Microsoft Update Health Tools                                  20231127    MsiExec.exe /X{C6FD611E-7EFE-488C-A0E0-974C09EF6473}
+vs_minshellx64msi                                              20231025    MsiExec.exe /I{CC6B3835-25A7-401A-88B2-F6766E04DE67}
+Python 3.9.13 Executables (64-bit)                             20231025    MsiExec.exe /I{D497CDAE-43AC-4397-A1C6-B66A7A8F8010}
+VS Script Debugging Common                                     20231025    MsiExec.exe /I{D56DC014-C4C1-4330-B32B-D9785DAE7BCB}
+Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.36.32532    20231025    MsiExec.exe /I{D5D19E2F-7189-42FE-8103-92CD1FA457C2}
+Python 3.9.13 Core Interpreter (64-bit)                        20231025    MsiExec.exe /I{D7536B55-7339-436F-A2B3-8B8C0240DF32}
+Python 3.9.13 Test Suite (64-bit symbols)                      20231025    MsiExec.exe /I{D99D5931-E427-4388-9D0F-B11EF72C9D66}
+PuTTY release 0.79 (64-bit)                                    20231003    MsiExec.exe /X{E07417FF-E888-4648-878C-73E25D64D50D}
+Python 3.9.13 Standard Library (64-bit symbols)                20231025    MsiExec.exe /I{E40CC2FD-4435-4AEB-95DC-47B017999C90}
+Python 3.9.13 Tcl/Tk Support (64-bit)                          20231025    MsiExec.exe /I{E7233E87-1712-40E0-8207-17C8D0157FCC}
+Windows SDK DirectX x64 Remote                                 20231025    MsiExec.exe /I{E900C16E-16BC-3334-C580-C397ADF00392}
+vs_devenx64vmsi                                                20231025    MsiExec.exe /I{FEC0DB40-683B-4DA9-9835-536BA563875F}
+DiagnosticsHub_CollectionService                               20231025    MsiExec.exe /I{FECAFEB5-8D0E-4AE4-8FA0-745BAA835C35}
+
+
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall>
+#
+# Zamiast listować na ekran, można by odinstalować korzystając z operatora wołania "&" tak jak wyżej z notatnikiem
+# tylko tutaj będzie to wyglądało tak:
+#(nie uruchamiaj jeśli nie chcesz mieć odinstalowanych wszystkich aplikacji!
+#cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | %{& $_.UninstallString}
+#
+#
+#
+#
+#
+#
+#
+#
+# 2. WMI
+# WMI służy do zarządzania systemem i można z niego wiele ciekawych rzeczy wyciągnąć.
+#Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+
+IdentifyingNumber                      Name                                                           Vendor                     Version         Caption
+-----------------                      ----                                                           ------                     -------         -------
+{72964D30-1BFE-459F-B218-D267EBE0D5B2} Python 3.9.13 pip Bootstrap (64-bit)                           Python Software Foundation 3.9.13150.0     Python 3.9.13 pip Bootstrap (64-bit)
+{B9068540-804E-5916-3AC5-6B8C8A4A29C2} Windows SDK for Windows Store Apps                             Microsoft Corporation      10.1.22621.1778 Windows SDK for Windows Store Apps
+......
+#
+# Te numery z przodu są brzydkie, bardzo podobne i zajmują dużo miejsca a nie wnoszą nic ciekawego teraz.
+# Wyeliminujmy je:
+#Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+
+Name                                                           Vendor
+----                                                           ------
+Python 3.9.13 pip Bootstrap (64-bit)                           Python Software Foundation
+Windows SDK for Windows Store Apps                             Microsoft Corporation
+.....
+zdecydowanie lepiej
+#
+# a jakbyśmy chcieli znaleźć wszystkie pakiety od Microsoftu ?
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+
+Name                                                           Vendor
+----                                                           ------
+Windows SDK for Windows Store Apps                             Microsoft Corporation
+vs_devenx64vmsi                                                Microsoft Corporation
+Windows Subsystem for Linux                                    Microsoft Corporation
+#
+# a teraz je odinstalować? (odinstalowywanie zostało osobno dodatkowo zakomentowane)
+#
+### Początek bloku do odkomentowania
+#Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+#	$wmiProduct = $_
+#    $answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+#    $answer = $answer.ToLower()
+#    switch($answer) {
+#        "y" {
+#            Write-Host -NoNewline -ForegroundColor Red "Removing: "
+#            Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+#            # odkomentowanie poniższej lini spowoduje błąd braku uprawnień dla Twojego konta
+#            #$wmiProduct.Uninstall() # ta linia uruchamia deinstalację. Odkomentuj jeśli chcesz odinstalować wszystkie pakiety od Microsoftu. (nie polecam)
+#        }
+#        "n" {Write-Host "Ok. Skipping."}
+#        default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+#    }
+#}
+### Koniec bloku do odkomentowania
+#
+#
+#
+#
+#
+#
+#
+#
+# Dyski w PS
+# Wspomniałem, że PowerShell ma wiele dysków. Możemy je sobie wylistować poniższą komendą:
+#Get-PSDrive
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> Get-PSDrive
+
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                                                        CurrentLocation
+----           ---------     --------- --------      ----                                                                                                                                        ---------------
+Alias                                  Alias
+C                  60,51        188,77 FileSystem    C:\                                                                                                                        Users\natan\podstawy_powershella
+Cert                                   Certificate   \
+D                   5,00          0,00 FileSystem    D:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE                                                                                      SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+Variable                               Variable
+WSMan                                  WSMan
+
+
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall>
+#
+# Mamy tu dyski z pojedynczymi literkami. To normalne dyski w windowsie.
+# Dyski HKML i HKCU to dyski dające dostęp do rejestru.
+# Poza tym są jeszcze:
+# - Alias - lista wszystkich zdefiniowanych aliasów w bierzącej sesji. Tam są m.in. ls, dir, ?, %
+# - Cert - magazyn certyfikatów TLS/SSL stosowanych do szyfrowania danych. Głównie połączeń sieciowych ale też i emaili czy podpisywania danych by można było sprawdzić czy treść np. dokumentu nie została zmodyfikowana. Swoją drogą skrypty PowerShell-owe też można podpisać cyfrowo
+# - Env - zmienne środowiskowe w bierzącej sesji.
+# - Function - tu są wszystkie zdefiniowane w bierzącej sesji funkcje, które można uruchomić. Podziałamy na funkcjach za chwilkę.
+# - Variable - zmienne utworzone i dostępne w bierzącej sesji. NIE SĄ to zmienne środowiskowe tylko takie zmienne lokalne.
+# - WSMan - dostęp do całego systemu WMI. Czyli to co powyżej było robione poprzez Get-WmiObject można by było spróbować pobrać z tego dysku
+#
+# Poza tymi dyskami są jeszcze inne, które można sobie dodać/dograć np:
+# - GH - GitHub - tak, można po githubie "chodzić" w PowerShell-u
+# - AD - ActiveDirectory - dodaje dysk dający dostęp do ActiveDirectory
+		Dla tych co wiedzą co to jest to otwiera nowe możliwości.
+		Dla tych co nie wiedzą jest kolejnym dyskiem.
+# Takie dyski dodaje się przez załadowanie specjalnych modułów, które takie dyski udostępniają.
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# A teraz notyfikacje :-D
+# Część przykładu pobrałem z tej strony:
+# http://www.powertheshell.com/balloontip/
+#
+# Trzeba załadować odpowiednią bibliotekę żeby można było skorzystać z tego cuda
+### Początek bloku do odkomentowania
+#[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+#
+#$icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+#
+#$myNotification = New-Object System.Windows.Forms.NotifyIcon
+#$myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+#$myNotification.BalloonTipIcon = 'Error'
+#$myNotification.BalloonTipText = "Your cat has meowed!" 
+#$myNotification.BalloonTipTitle = "Cat Error"
+#$myNotification.Visible = $True 
+#$myNotification.ShowBalloonTip(10000)
+### Koniec bloku do odkomentowania
+#
+#
+#
+# Ponieważ powyższe wydaje się być trochę mozolne by za każdym razem podawać te same wartości itd...
+# To można zrobić sobie własną funkcję. Uruchomienie jej znajduje się poniżej więc nie trzeba jej komentować
+# bo jak się jej nie wywoła to nic nie zrobi
+#
+function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+#
+# I teraz można to łatwo wywołać w ten sposób
+#
+#GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+#
+# Albo wielokrotnie:
+#For($i = 1; $i -le 10; $i++) {
+#    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+#}
+powiadomienia o wykonaniu funkcji
+#
+# Można też wiele wierszy pokazać ale max 4
+#GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+przy wywoływaniu z petli dostawałem powiadomienia o wykonaniu
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# I co? Fajne co nie? :-D
+fajne, podobało mi sie :D

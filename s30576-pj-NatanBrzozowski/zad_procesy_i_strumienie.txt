@@ -1,0 +1,243 @@
+|=============================|
+|         ZADANIE 0:          |
+|=============================|
+komenda ls -a wypisała trzy rzeczy (plik i katalogi)
+komenda ls -a | grep N wypisała katalog w ktorym znajduje sie "N"
+komenda ls -a | grep N > lista_plikow_z_literka_n.txt znalazła katalog z "N" 
+i zapisała go do pliku
+komenda ls -a | grep N | tee lista_plikow_z_literka_n_2.txt wyswietliła nam 
+znaleziony katalog i zapisała go do pliku
+> przekierowuje dane tylko do pliku a tee umozliwia jednoczesne przekazywanie 
+danych na standardowe wyjscie i do pliku
+
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ls -l
+total 12
+-rw-r--r-- 1 natan 197121 3264 Oct  4 22:22 README.md
+drwxr-xr-x 1 natan 197121    0 Oct 24 23:03 s30576-pj-NatanBrzozowski/
+drwxr-xr-x 1 natan 197121    0 Oct  4 22:24 t0meck-pj-TomaszIdzikowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ls -l | grep N
+drwxr-xr-x 1 natan 197121    0 Oct 24 23:03 s30576-pj-NatanBrzozowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ls -a | grep N > lista_plikow_z_literka_n.txt
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ls -l
+total 13
+-rw-r--r-- 1 natan 197121 3264 Oct  4 22:22 README.md
+-rw-r--r-- 1 natan 197121   27 Nov  6 22:48 lista_plikow_z_literka_n.txt
+drwxr-xr-x 1 natan 197121    0 Oct 24 23:03 s30576-pj-NatanBrzozowski/
+drwxr-xr-x 1 natan 197121    0 Oct  4 22:24 t0meck-pj-TomaszIdzikowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cat lista_plikow_z_literka_n.txt
+s30576-pj-NatanBrzozowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ls -a | grep N | tee lista_plikow_z_literka_n_2.txt
+s30576-pj-NatanBrzozowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ ls -l
+total 14
+-rw-r--r-- 1 natan 197121 3264 Oct  4 22:22 README.md
+-rw-r--r-- 1 natan 197121   27 Nov  6 22:48 lista_plikow_z_literka_n.txt
+-rw-r--r-- 1 natan 197121   27 Nov  6 22:49 lista_plikow_z_literka_n_2.txt
+drwxr-xr-x 1 natan 197121    0 Oct 24 23:03 s30576-pj-NatanBrzozowski/
+drwxr-xr-x 1 natan 197121    0 Oct  4 22:24 t0meck-pj-TomaszIdzikowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cat lista_plikow_z_literka_n_2.txt
+s30576-pj-NatanBrzozowski/
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         ZADANIE 1:          |
+|=============================|
+znak zapytania oznacza ze system nie jest w stanie określić wlasciciela procesu 
+dla danego wpisu
+wszystkie procesy bash wyswietle za pomoca: ps aux | grep bash
+wszystkie procesy należące do użytkownika root wyswietle za pomoca: ps -u root
+
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@natan-virtual-machine:~$ ps
+    PID TTY          TIME CMD
+   2562 pts/0    00:00:00 bash
+   2570 pts/0    00:00:00 ps
+natan@natan-virtual-machine:~$ ps -a
+    PID TTY          TIME CMD
+   1854 tty2     00:00:00 gnome-session-b
+   2622 pts/0    00:00:00 ps
+natan@natan-virtual-machine:~$ ps x
+    PID TTY          TIME CMD
+   1854 tty2     00:00:00 gnome-session-b
+   2622 pts/0    00:00:00 ps
+natan@natan-virtual-machine:~$ ps aux
+    PID TTY          TIME CMD
+   1854 tty2     00:00:00 gnome-session-b
+   2622 pts/0    00:00:00 ps
+
+
+--------------------------------------------------------------------------------
+|=============================|
+|         ZADANIE 2:          |
+|=============================|
+otworzylem gedit
+a nastepnie w drugim oknie terminala wyszukałem komenda ps aux | grep gedit
+i zamknalem go wykonujac kill 4454 - zamknal sie :D
+komenda killall bash wyslalem sygnal zakonczenia do wszystkich procesow 
+o nazwie "bash"
+
+
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@natan-virtual-machine:~$ ps aux | grep gedit
+natan       4454  4.5  0.3 559444 56580 pts/0    Sl+  23:49   0:00 gedit
+natan       4485  0.0  0.0  11740  2688 pts/1    S+   23:49   0:00 grep --color=auto gedit
+natan@natan-virtual-machine:~$ kill 4454
+natan@natan-virtual-machine:~$ 
+
+--------------------------------------------------------------------------------
+|=============================|
+|         ZADANIE 3:          |
+|=============================|
+W terminalu jest kilka przydatnych skrótów klawiszowych. Jednym z nich jest 
+CTRL+C lub jak to jest często podawane C-c lub ^C. Niektórzy z Państwa już go 
+mieli okazję przetestować. Jest to sposób na wyłączenie aktywnego programu 
+w terminalu. Proszę go przetestować w taki sposób, że:
+Uruchom komendę cat be parametrów
+Wciśnij CTRL+C i zobacz co się stanie
+Kolejnym fajnym (zależy dla kogo :) ) skrótem klawiszowym jest CTRL+D. Służy on 
+do zakończenia strumienia wejściowego. Działa to trochę inaczej niż poprzednie 
+rozwiązanie, mimo że na pierwszy rzut oknawygląda tak samo. Tym razem nie wysyła 
+sygnału zakończenia, a jedynia zamyka strumień wejściowy. Jest to bardzo przydatne, 
+jeśli chcemy zakończyć działanie jakiegoś programu korzystającego ze standardowego 
+wejścia (stdin), ale w sposób możliwie bezpieczny.
+Zobacz co się stanie:
+Wydaj komendę cat > wynik3_1.txt
+Wpisz tekst witaj bez wciskania klawisza Enter
+Wciśnij CTRL+C
+Zobacz co się znalazło w pliku wynik3_1.txt
+Wydaj komendę cat > wynik3_2.txt
+Wpisz tekst witaj bez wciskania klawisza Enter
+Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+Zobacz co się znalazło w pliku wynik3_2.txt
+W opisie rozwiązania zadania umieść:
+jak rozumiesz co się stało?
+czym oba te przykłady się różnią?
+DLACZEGO się różnią?
+
+rozumiem to tak ze w pierwszym przykladnie po wpisaniu witaj gdzy kliknalem 
+ctrl c skrot klawiszowy przerwał biezacy proces i nie zapisał tego co 
+wpisałem (witaj)
+a w drugim przykladnie gdzi wpisalem witaj i uzylem skrutu ctrl d biezacy proces
+zostal 
+poinformowany ze jest to koniec strumienia danych
+
+Ctrl+C:
+skrot klawiszowy ctrl c jest uzywany do przerwania lub zatrzymania biezacego 
+procesu w terminalu
+sluzy do natychmiastowego zakonczenia dzialania procesu
+
+Ctrl+D:
+skrot klawiszowy ctrl d jest uzywany do oznaczenia konca danych wejsciowych 
+moze sygnalizowac koniec wprowadzania danych lub sluzy do zakonczenia sesji 
+terminala
+
+ctrl c przerywa proces a ctrl d sygnalizuje koniec danych wejsciowych lub sesji
+
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cat > wynik3_1.txt
+witaj
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cat wynik3_1.txt
+
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cat > wynik3_2.txt
+witaj
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$ cat wynik3_2.txt
+witaj
+natan@DESKTOP-OP762KV MINGW64 ~/repo/s30576-NatanBrzozowski (master)
+$
+
+--------------------------------------------------------------------------------
+|=============================|
+|         ZADANIE 4:          |
+|=============================|
+odpalilem gedit
+w terminalu w ktorym to uruchomiłem wcisnalem ctrl z i dostałem:
+natan@natan-virtual-machine:~$ gedit
+^Z
+[1]+  Stopped                 gedit
+natan@natan-virtual-machine:~$ 
+
+probowalem cos wyklikac ale bez zezultatu
+
+otworzyłem inne okno i przesunalem je tak by czesciowo nachodzilo na okno gedita
+i potem je odsunalem by odsłonić w pełni okno gedita, dostalem komuniakt 
+w ktorym było napisane:
+"Text Editor" is not responding.
+You may choose to wait a short while for it to continue or force the application 
+to quit entrely.
+
+ctrl z jest uzywane do wstrzymania biezacego procesu i przeniesienia go do tla
+po wstrzymaniu procesu jest on zawieszony i przestaje byc aktywny co oznacza 
+ze nie mozna wykonywac w nim operacji
+proces jest przesunięty do tła co pozwala uzytkownikowi kontynuowac korzystanie 
+z terminala lub uruchamianie innych procesów
+
+po wpisaniu komendy bg moglem spowrotem korzystac z programu :D
+
+po wykonaniu gedit & moglem dalej korzystac z terminala a gedit sie odpalil
+
+wlaczylem gedita (gedit &) nastepnie uzylem polecenia jobs ktory wyswietlil mi 
+zadania dzialajace w tle a nastepnie przywrocilem program gedit "na pierwszy plan"
+za pomoca fg %1 (1 bo taki miał numer przy zadaniach dzialajacych w tle)
+
+
+|-----------------------------|
+|  FRAGMENT KODU Z TERMINALA: |
+|-----------------------------|
+natan@natan-virtual-machine:~$ gedit
+^Z
+[1]+  Stopped                 gedit
+natan@natan-virtual-machine:~$ bg
+[1]+ gedit &
+natan@natan-virtual-machine:~$ 
+
+
+atan@natan-virtual-machine:~$ gedit &
+[1] 5561
+natan@natan-virtual-machine:~$ 
+
+
+natan@natan-virtual-machine:~$ gedit &
+[1] 5689
+natan@natan-virtual-machine:~$ jobs
+[1]+  Running                 gedit &
+natan@natan-virtual-machine:~$ fg %1
+gedit
+^C
+natan@natan-virtual-machine:~$ 

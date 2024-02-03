@@ -1,0 +1,38 @@
+Zadanie
+W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając, a następnie zmieniając swoją maskę trybu pliku i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik), a później sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l). Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski jest wykonywana ? 
+
+s30404@szuflandia22:~$ man umask
+
+s30404@szuflandia22:~$ touch test.txt
+s30404@szuflandia22:~$ ls -l
+-rw-r--r-- 1 s30404 domain users    0 11-27 21:57  test.txt
+
+s30404@szuflandia22:~$ umask 077
+s30404@szuflandia22:~$ touch test2.txt
+s30404@szuflandia22:~$ ls -l
+-rw------- 1 s30404 domain users    0 11-27 21:59  test2.txt
+
+s30404@szuflandia22:~$ touch test3.txt
+s30404@szuflandia22:~$ ls -l test3.txt
+---------- 1 s30404 domain users 0 11-27 22:02 test3.txt
+
+s30404@szuflandia22:~$ umask -S
+u=,g=,o=
+
+s30404@szuflandia22:~$ umask 000
+s30404@szuflandia22:~$ umask -S
+u=rwx,g=rwx,o=rwx
+
+s30404@szuflandia22:~$ touch test4.txt
+s30404@szuflandia22:~$ ls -l test4.txt
+-rw-rw-rw- 1 s30404 domain users 0 11-27 22:04 test4.txt
+
+s30404@szuflandia22:~$ umask 222
+s30404@szuflandia22:~$ umask -S
+u=rx,g=rx,o=rx
+s30404@szuflandia22:~$ touch test5.txt
+s30404@szuflandia22:~$ ls -l test5.txt
+-r--r--r-- 1 s30404 domain users 0 11-27 22:06 test5.txt
+
+umask ustawia domyślne uprawnienia dla każdego nowo powstałego pliku pisząc umask 222 odejmujemy drugiego bita odpowiedzialnego za możliwość
+zapisu pliku dla wszystkich użytkowników w wypadku umask 444 odbieramy możliwość odczytu dla każdego nowo powstałego pliku dla wszytkich użytkowników

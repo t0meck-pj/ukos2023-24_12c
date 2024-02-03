@@ -1,0 +1,80 @@
+A:Zobacz co sie stanie jesli wpiszemy w terminalu:
+
+1.ps
+
+2.ps -a
+
+3.ps x
+
+4.ps axu
+INFO: tu kolejnosc parametrow a, x, u nie ma znaczenie a jedynie fakt, ze sa podane. Dowolna kolejnosc powinna dac ten sam wynik.
+
+Jak myslisz, co oznacza znak zapytania w kolumnie 2?
+Nie wiesz? A gdzie moze byc wyjasnienie?
+
+*s30899@szuflandia22:~$ ps
+    PID TTY          TIME CMD
+2632248 pts/8    00:00:00 bash
+2632358 pts/8    00:00:00 ps
+Zostaly wyswietlone procesy zwiazane z biezaca sesja terminala.
+
+*s30899@szuflandia22:~$ ps -a
+    PID TTY          TIME CMD
+2632359 pts/8    00:00:00 ps
+Zostaly wyswietlone wszystkie procesy poza biezaca sesja i procesami nie powiazanymi z terminalem.
+
+*s30899@szuflandia22:~$ ps x
+    PID TTY      STAT   TIME COMMAND
+2629014 ?        Ss     0:00 /lib/systemd/systemd --user
+2629015 ?        S      0:00 (sd-pam)
+2629635 ?        S      0:00 sshd: s30899@pts/19
+2632247 ?        S      0:00 sshd: s30899@pts/8
+2632248 pts/8    Ss     0:00 -bash
+2632360 pts/8    R+     0:00 ps x
+Zostaly wyswietlone wszystkie procesy zwiazane z biezaca sesja terminala oraz te, ktore nie sa zwiazne z konkretnym terminalem.
+
+*s30899@szuflandia22:~$ ps axu
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8624 ?        Ss   lut22   9:27 /lib/systemd/systemd --system --deserialize 23
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H-events_highpri]
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq]
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_rude_]
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_trace]
+root          11  0.0  0.0      0     0 ?        S    lut22   4:08 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    lut22  11:18 [rcu_sched]
+...
+Zostaly wyswietlone wszystkie procesy na systemie w formacie BSD.
+
+Znak zapytania w kolumnie 2 oznacza, ze dany proces nie ma nadanego terminala.
+
+B:Jak wykonasz ponizsze 2 zadania?
+
+1.Wyswietl wszystkie procesy bash
+
+2.Wyswietl wszystkie procesy nalezace do uzytkownika root
+
+*s30899@szuflandia22:~$ ps aux | grep bash | grep -v grep
+s30899   2633284  0.0  0.1   8544  5320 pts/8    Ss   20:46   0:00 -bash
+Polecenie uzywa 'ps' do wyswietlenia wszystkich procesow, a nastepnie przekierowuje wynik do 'grep bash', aby przefiltrowac 
+tylko te, ktore zawieraja slowo "bash". Natomiast 'grep -v grep' wyklucza wyniki, ktore zawieraja sama komende 'grep bash'.
+
+*s30899@szuflandia22:~$ ps u -u root -U root
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 167872  8596 ?        Ss   lut22   9:27 /lib/systemd/systemd --system --deserialize 23
+root           2  0.0  0.0      0     0 ?        S    lut22   0:04 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   lut22   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   lut22   0:00 [kworker/0:0H-events_highpri]
+root           8  0.0  0.0      0     0 ?        I<   lut22   0:00 [mm_percpu_wq]
+root           9  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_rude_]
+root          10  0.0  0.0      0     0 ?        S    lut22   0:00 [rcu_tasks_trace]
+root          11  0.0  0.0      0     0 ?        S    lut22   4:08 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    lut22  11:18 [rcu_sched]
+root          13  0.0  0.0      0     0 ?        S    lut22   0:40 [migration/0]
+...
+Polecenie 'ps u -u root' wyswietla procesy uzytkownika "root" w formacie BSD, a dalsza czesc polecenia '-U root' wyklucza procesy,
+ktore sa uruchomione przez uzytkownika "root", ale nie naleza do niego.
+

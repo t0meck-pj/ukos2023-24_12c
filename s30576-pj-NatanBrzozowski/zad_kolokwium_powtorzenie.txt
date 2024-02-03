@@ -1,0 +1,205 @@
+|=============================|
+|         PYTANIE 0:          |
+|=============================|
+Przypuscmy, ze nie mozesz utworzyc zadnego pliku na swoim koncie uczelnianym 
+np. na szuflandii.
+Co sie moglo stac? (wymien co najmniej 3 opcje)
+Zakladamy, ze mozesz zalogowac sie w konsoli i nie masz zaleglosci w oplatach.
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+- brak miejsca na dysku
+- brak uprawnien
+- uszkodzony dysk
+- brak miejsca na dysku dla nas (przydzial miejsca na dysku)
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 1:          |
+|=============================|
+Jest dane takie drzewo katalogow:
+.
+├── ala
+│   ├── i
+│   │   └── as
+│   └── ma
+│       └── kota
+└── kot
+    └── ma
+        └── ale
+
+Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
+Jak przejsc do katalogu ala ale za pomoca:
+sciezki wzglednej (relatywnej)
+sciezki bezwzglednej (absolutnej)
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+sciezka wzgledna (relatywna): 
+    cd ../../
+
+sciezka bezwzgledna (absolutna):
+    cd /tmp/ukos/ala
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 2:          |
+|=============================|
+Masz taki uklad katalogow, jak wyzej i ciagle jestes w katalogu kota. Jak 
+utworzyc poddrzewo katalogow jan/kowalski w katalogu ale za pomoca jednej komendy?
+Podaj rozwiazania uzywajac sciezek absolutnych i relatywnych.
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Utworzenie poddrzewa katalogow z wykorzystaniem sciezki wzglednej (relatywnej):
+    mkdir -p ../../../kot/ma/ale/jan/kowalski
+
+Utworzenie poddrzewa katalogow z wykorzystaniem sciezki bezwzglednej (absolutnej):
+    mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 3:          |
+|=============================|
+Masz taki uklad katalogow, jak wyzej i ciagle jestes w katalogu kota. Jak 
+przeniesc katalog ale do katalogu i uzywając:
+zrodlo (sciezka wzgledna), miejsce docelowe (sciezka absolutna)
+zrodlo (sciezka absolutna), miejsce docelowe (sciezka wzgledna)
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Przenoszenie z uzyciem sciezki wzglednej (relatywnej):
+    mv ../../../kot/ma/ale ../../i
+
+Przenoszenie z uzyciem sciezki bezwzglednej (absolutnej):
+    mv /tmp/ukos/kot/ma/ale /tmp/ukos/ala/i
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 4:          |
+|=============================|
+Jak zamknac program, ktory nie reaguje na ctrl+c ?
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Uzyc kombinacji klawiszy Ctrl+Z, która zatrzymuje biezacy proces. Nastepnie uzyc 
+komendy kill, aby zakończyć proces.
+
+ps aux | grep nazwa_programu
+kill -9 PID
+
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 5:          |
+|=============================|
+Jak wypisac wszystkie pliki w biezacym katalogu, ktorych nazwa zaczyna się od al?
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+ls -l al* | grep -v /
+ls -l | grep '^-' | grep 'al'
+find . -type f -name al*
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 6a:         |
+|=============================|
+Nadaj uprawnienia do katalogu ala tak aby:
+kazdy mogl do niego wejsc
+tylko grupa mogla wyswietlic co w nim jest
+wlasciciel ma pelne uprawnienia
+HINT: Jakie sa uprawnienia poczatkowe?
+Podpowiedz: powyzsze 3 punkty opisu to jedno zadanie. Nie 3 osobne.
+Przygotuj 3 wariacje rozwiazania tego zadania uzywajac roznych notacji: 
+oktalnej/osemkowej/cyfrowej
+literowej ze znakiem rownosci
+literowej z plusami i minusami
+Wszystkie wersje powinny byc zapisane w jednym poleceniu (bez uzywania && czy | )
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+uprawnienia dla katalogu ala to 755 (rwxr-xr-x)
+
+Notacja osemkowa (oktalna):
+    chmod 751 /tmp/ukos/ala
+
+Notacja literowa ze znakiem rownosci:
+    chmod u=rwx,g=rx,o=x /tmp/ukos/ala
+
+Notacja literowa z plusami i minusami:
+    chmod ugo+x,ug+r,u+w,go-w,o-r /tmp/ukos/ala
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 6b:         |
+|=============================|
+Jak korzystajac z notacji ze znakiem rownosci odebrac wszystkie uprawnienia 
+do danego zasobu?
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+chmod u=,g=,o= nazwa_pliku_katalogu
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 7:          |
+|=============================|
+Jak utworzyc plik z lista plikow w biezacym katalogu?
+Podaj rozwiazania uzywajace rozne techniki. Np nie uzywajac dedykowanego polecenia 
+do listowania zawartosci katalogow.
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+ls > plik.txt
+ls | dd of=plik.txt
+ls | tee plik.txt
+ls -p | grep -v / | tee plik.txt
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 8:          |
+|=============================|
+Jak przyspieszyc wpisywanie komend w terminalu? Jaki klawisz pozwala 
+na uzupełnianie komend?
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+klawisz Tab
+
+--------------------------------------------------------------------------------
+
+|=============================|
+|         PYTANIE 9:          |
+|=============================|
+Jak uruchomic program by nie blokowal terminala. Sa 2 sposoby. Jakie?
+
+|-----------------------------|
+|      ODPOWIEDZ/KOMENTARZ:   |
+|-----------------------------|
+Uzycie operatora &:
+    nazwa_programu &
+
+Uzycie polecenia nohup:
+    nohup nazwa_programu &
+
+--------------------------------------------------------------------------------

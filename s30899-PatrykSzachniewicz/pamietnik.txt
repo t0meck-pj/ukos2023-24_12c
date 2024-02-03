@@ -1,0 +1,97 @@
+2023.09.30
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*jak zalicze UKOS
+*jak bedzie wygladac wspolna praca
+*logowania do szuflandii za pomoca windowsa i putty (zrozumialem)
+*jakie katalogi znajduja sie w systemie linuxowym (ciemnoniebieskie katalogi a jasnoniebieskie skrót do innego miejsca na dysku)
+(opis poszczegolnych katalogow bede musial jeszcze raz przerobic)
+*dlaczego na komupterze liczymy od 0 (wiedziałem)
+*jak poruszac sie po terminalu (intuicyjne)
+*uzyskiwanie pomocy w terminalu (bardzo przydatne a poruszanie sie po stronie pomocy do opanowania)
+*pisać polecenia w systemach linuxowych (zrozumialem)
+*jakie sa sciezki do katalogow (nie zrozumialem, musze poglebic temat)
+*jak poruszac po katalogach (zrozumiale)
+*jak wykonywac zadania
+*jak zalozyc konto na githubie (bardzo proste)
+
+2023.10.14
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*czym roznia sie prawa a uprawnienia (terminologia Windows)
+*dlaczego Linux jest lepszy w pracy niz Windows (fajnie wiedziec)
+*jak zmieniac uprawnienia (wyjasnione bardzo zrozumiale)
+*jak korzystac z cyfr oktalnych i przeliczac sytem binarny na osemkowy (po czesci wiedzialem jak to robic, ale po zajecia juz
+opanowalem to)
+*jak sprawdzic uprawnienia w linuxie (bylo na poprzednich cwiczeniach, ale dobrze jest sobie przypomniec)
+*polecenie 'man' to nasz dobry kumpel ktory zawsze nam pomoze
+*jak odczytywac uprawnienia dostepu (musialem w domu przypomniec sobie)
+*ustawianie uprawnien dostepu dla wszystkich to zly pomysl (logiczne)
+*wielkosc liter w nazwach katalogow ma znaczenie
+*jak zmiana uprawnien dostepu wplywa na przemieszanie sie po strukturze katalogow (zrozumiale)
+*na czym polega rekurencja (logiczne ale na poczatku nie zrozumialem)
+
+2023.10.28
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*sa 3 strumienie: wejscia- klawiatura, wyjscia- ekran, wyjscia bledow- ekran (zrozumiale i logiczne)
+*jak poprawnie robic pull requesta (na szczescie juz wczesniej nauczylem sie tego)
+*najpierw zawsze korzystamy z manuala, zeby dowiedziec sie co robi nowe polecenie (logiczne)
+*filtrowanie wierszy pasujacych do wzorca (na poczatku nie zorientowalem sie, ze sa to nie tylko
+te, ktore zaczynaja sie od podanego wzorca, tylko te ktore zawieraja w sobie podany wzorzec)
+*przekierowanie do pliku (proste)
+*jak wyswietlac liste procesow (troche nie zrozumialem na poczatku)
+*jak szybciej wyszukiwac w manualu (przydatne)
+*przewaznie uzywamy notacji UNIX (zakodowane w glowie)
+*szerokie wyjscie do 'ps', ktore moze byc przydatne (zrozumiale)
+*zestaw 2 zadan nie trzeba robic w terminalu graficznym
+*joby a procesy to nie to samo, kazdy job jest procesem, ale nie kazdy proces 
+jest jobem (do zapamietania)
+*'kill' sluzy do wysylania sygnalu (zakodowane w glowie)
+*jak korzystac z kombinacji klawiszy do przerywania programu, nie zawsze dziala, ale przewaznie tak
+*roznica pomiedzy 'CTRL+C' a 'CTRL+D' (proste)
+*na nastepne cwiczenia przygotowac pytania, na temat niezrozumialych przez nas zagadnien
+
+2023.11.18
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*jakie moga byc powody braku mozliwosci utworzenia pliku na swoim koncie uczelnianym (logiczne)
+*quota, czyli przydzial przestrzeni dyskowej na danego uzytkownika (zakodowane w glowie)
+*w odpowiedziach na zadania trzeba uwazac na literowki bo moga uniewaznic odpowiedz
+*podczas tworzenia zagniezdzonych katalogow trzeba pamietac o parametrze, ktory umozliwi nam to
+*czesto uzywane parametru niektorych polecen trzeba znac na pamiec (zakodowane w glowie)
+*jak przeniesc katalog (do zapamietania)
+*zamykanie programu (przydatne)
+*jak wypisac pliki pasujace do podanego wzorca (trzeba przecwiczyc)
+*wyrazenia regularne (malo zrozumiale)
+*nadawanie uprawnien, jezeli uzywamy wielu uprawnien na raz w jednym poleceniu nie dajemy spacji przed i po przecinku, 
+a literki mozemy ze soba laczyc, pamietamy takze o uprawnieniach poczatkowych, jezli nie ma podanych, a korzystamy
+z plusow i minusow to trzeba jeszcze odjac nie pasujace (dobre przypomnienie)
+*nie mozna ustawic uprawnien przy pomocy samych bitow (warto wiedziec)
+*tworzenie pliku z lista plikow w biezacym katalogu (do przecwiczenia)
+*jak przyspieszyc wpisywanie komend w terminalu (proste)
+*uruchomienie programu aby nie blokowal terminalu (przydatne)
+
+2023.12.02
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*kolokwiumm to nie taka straszna rzecz, jezeli odpowiednio przygotujesz sie
+*jezeli czegos nie umiesz zrobic, pytaj
+*jak konwertowac kodowanie znakow w plikach (przydatne)
+
+2023.12.16
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*PowerShell jest o wiele potezniejszy od Basha
+*jaki jest podzial PowerShella (warto wiedziec)
+*co to jest .NET (trzeba poszerzyc wiedze w tym temacie)
+*mozliwosc wykorzystania .NET w PowerShell
+*jak uruchomic PowerShell (dobre przypomnienie)
+*PowerShell posiada aliasy (przydatne po nauce Basha)
+*programowanie obiektowe (calkiem logiczne)
+*jak korzystac ze zmiennej (przydatne)
+*w jezykach skryptowych operujemy na roznego rodzaju listach
+
+2024.01.20
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+*jak wywolywac latwo metody przez zmienna (zdecydowanie usprawnia)
+*wywolujac metody na koncu dodajemy () (logiczne)
+*w Powershellu mozna korzystac z dopelnien przy pomocy TAB (wiedzialem)
+*Ctrl+Spacja tekstowo-graficzne menu do wyboru opcji (bardzo przydatne)
+*metode mozna wywloac na obiekcie nie uzywajac zmiennej (ciekawe)
+*kiedy logujemy sie na szuflandie i pojawi sie komunikat o zmianie fingerprinta, nalezy skontaktowac sie z BSS (trzeba zapamietac)
+
