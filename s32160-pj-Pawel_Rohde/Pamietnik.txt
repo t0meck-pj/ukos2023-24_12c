@@ -1,0 +1,64 @@
+Dziś na zajęciach nauczyłem się wielu rzeczy:
+
+- Pracowałem niemal do rana i teraz kończę na uczelni.
+- Zalogowałem się do szuflandii za pomocą Windowsa i Putty.
+- Dowiedziałem się, jakie katalogi znajdują się w systemie Linux.
+- Nauczyłem się poruszać po terminalu i uzyskiwać pomoc.
+- Zrozumiałem, jak pisać polecenia w systemach Linux.
+- Muszę jeszcze pogłębić temat ścieżek do katalogów.
+- Zrozumiałem, jak poruszać się po katalogach oraz jak wykonywać zadania.
+- Bardzo prosto założyłem konto na GitHubie.
+- Poznałem różnicę między prawami a uprawnieniami w terminologii Windows.
+- Dowiedziałem się, dlaczego Linux jest lepszy w pracy niż Windows.
+- Wyjaśniono mi, jak zmieniać uprawnienia bardzo zrozumiale.
+- Nauczyłem się korzystać z cyfr oktalnych i przeliczać system binarny na ósemkowy.
+- Sprawdzałem uprawnienia w Linuxie, co już było na poprzednich zajęciach, ale dobrze jest sobie przypomnieć.
+- Dowiedziałem się, że polecenie 'man' to nasz dobry kumpel, który zawsze pomoże.
+- Odczytywanie uprawnień dostępu musiałem przypomnieć sobie w domu.
+- Zrozumiałem, że ustawianie uprawnień dostępu dla wszystkich to zły pomysł.
+- Nauczyłem się, że wielkość liter w nazwach katalogów ma znaczenie.
+- Poznałem, jak zmiana uprawnień dostępu wpływa na poruszanie się po strukturze katalogów.
+- Zrozumiałem, na czym polega rekurencja, chociaż na początku nie do końca.
+- Przydatne było poznanie 3 strumieni: wejścia, wyjścia oraz wyjścia błędów.
+- Poprawnie robiłem pull requesty, co już wcześniej nauczyłem się.
+- Nauczyłem się też, że najpierw zawsze korzystamy z manuala, aby dowiedzieć się, co robi nowe polecenie.
+- Nauczyłem się filtrować wiersze pasujące do wzorca.
+- Jak przekierować do pliku było dość proste.
+- Nauczyłem się wyświetlać listę procesów, chociaż na początku trochę nie zrozumiałem.
+- Sposób szybszego wyszukiwania w manualu był przydatny.
+- Wielokrotnie używaliśmy notacji UNIX, co mam już zakodowane w głowie.
+- Szerokie wyjście do 'ps' okazało się zrozumiałe.
+- Zestaw drugi zadań nie trzeba było robić w terminalu graficznym.
+- Dowiedziałem się, że joby a procesy to nie to samo.
+- 'Kill' służy do wysyłania sygnału, co też mam już zakodowane w głowie.
+- Nauczyłem się korzystać z kombinacji klawiszy do przerywania programu.
+- Różnica między 'CTRL+C' a 'CTRL+D' była prosta.
+- Na kolejne zajęcia trzeba będzie przygotować pytania dotyczące niezrozumiałych zagadnień.
+- Poznałem możliwe powody braku możliwości utworzenia pliku na swoim koncie uczelnianym.
+- Quota, czyli przydział przestrzeni dyskowej na danego użytkownika, już mam w głowie.
+- W odpowiedziach na zadania musimy uważać na literówki, bo mogą unieważnić odpowiedź.
+- Podczas tworzenia zagnieżdżonych katalogów trzeba pamiętać o parametrze.
+- Często używane parametry niektórych poleceń trzeba znać na pamięć.
+- Nauczyłem się, jak przenosić katalog.
+- Zamykanie programu było przydatne.
+- Jak wypisać pliki pasujące do podanego wzorca trzeba jeszcze przecwiczyć.
+- Wyrażenia regularne były dla mnie mało zrozumiałe.
+- Nadawanie uprawnień, jeżeli używamy wielu uprawnień na raz w jednym poleceniu, wymaga zachowania odpowiedniej składni.
+- Nie można ustawić uprawnień przy pomocy samych bitów.
+- Tworzenie pliku z listą plików w bieżącym katalogu to kolejne do przecwiczenia.
+- Sposób przyspieszenia wpisywania komend w terminalu był prosty.
+- Uruchomienie programu, aby nie blokował terminalu, było przydatne.
+- Kolokwium nie jest tak straszne, jeśli odpowiednio się przygotujesz.
+- Jeśli czegoś nie umiesz zrobić, pytaj.
+- Jak konwertować kodowanie znaków w plikach było przydatne.
+- PowerShell jest o wiele potężniejszy od Basha.
+- Dowiedziałem się, jaki jest podział PowerShella.
+- Co to jest .NET, to trzeba poszerzyć wiedzę w tym temacie.
+- Możliwość wykorzystania .NET w PowerShell już wiem.
+- Jak uruchomić PowerShell, to dobre przypomnienie.
+- PowerShell posiada aliasy, co jest przydatne po nauce Basha.
+- Programowanie obiektowe było całkiem logiczne.
+- Jak korzystać ze zmiennej, to też było przydatne.
+- W językach skryptowych operujemy na różnego rodzaju listach.
+
+

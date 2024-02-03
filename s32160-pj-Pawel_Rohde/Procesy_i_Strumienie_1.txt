@@ -1,0 +1,77 @@
+A:Zobacz co sie stanie jesli wpiszemy w terminalu:
+
+1.ps
+
+2.ps -a
+
+3.ps x
+
+4.ps axu
+INFO: tu kolejnosc parametrow a, x, u nie ma znaczenie a jedynie fakt, ze sa podane. Dowolna kolejnosc powinna dac ten sam wynik.
+
+Jak myslisz, co oznacza znak zapytania w kolumnie 2?
+Nie wiesz? A gdzie moze byc wyjasnienie?
+
+*s32160@szuflandia22:~$ ps
+    PID TTY          TIME CMD
+1033390 pts/0    00:00:00 bash
+1033468 pts/0    00:00:00 ps
+
+Zostaly wyswietlone procesy zwiazane z biezaca sesja terminala.
+
+*s32160@szuflandia22:~$ ps -a
+    PID TTY          TIME CMD
+1033469 pts/0    00:00:00 ps
+Zostaly wyswietlone wszystkie procesy poza biezaca sesja i procesami nie powiazanymi z terminalem.
+
+*s32160@szuflandia22:~$ ps x
+    PID TTY      STAT   TIME COMMAND
+1033370 ?        Ss     0:00 /lib/systemd/systemd --user
+1033371 ?        S      0:00 (sd-pam)
+1033389 ?        S      0:00 sshd: s32160@pts/0
+1033390 pts/0    Ss     0:00 -bash
+1033475 pts/0    R+     0:00 ps x
+
+Zostaly wyswietlone wszystkie procesy zwiazane z biezaca sesja terminala oraz te, ktore nie sa zwiazne z konkretnym terminalem.
+
+*s32160@szuflandia22:~$ ps axu
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 166604 10464 ?        Ss   sty03   1:31 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    sty03   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   sty03   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   sty03   0:00 [rcu_par_gp]
+...
+Zostaly wyswietlone wszystkie procesy na systemie w formacie BSD.
+
+Znak zapytania w kolumnie 2 oznacza, ze dany proces nie ma nadanego terminala.
+
+B:Jak wykonasz ponizsze 2 zadania?
+
+1.Wyswietl wszystkie procesy bash
+
+2.Wyswietl wszystkie procesy nalezace do uzytkownika root
+
+*ss32160@szuflandia22:~$ ps aux | grep bash | grep -v grep
+s32160   1033390  0.0  0.1   8412  5156 pts/0    Ss   02:56   0:00 -bash
+Polecenie uzywa 'ps' do wyswietlenia wszystkich procesow, a nastepnie przekierowuje wynik do 'grep bash', aby przefiltrowac 
+tylko te, ktore zawieraja slowo "bash". Natomiast 'grep -v grep' wyklucza wyniki, ktore zawieraja sama komende 'grep bash'.
+
+*s32160@szuflandia22:~$ ps u -u root -U root
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 166604 10464 ?        Ss   sty03   1:31 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    sty03   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   sty03   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   sty03   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   sty03   0:00 [kworker/0:0H
+root           8  0.0  0.0      0     0 ?        I<   sty03   0:00 [mm_percpu_wq
+root           9  0.0  0.0      0     0 ?        S    sty03   0:00 [rcu_tasks_ru
+root          10  0.0  0.0      0     0 ?        S    sty03   0:00 [rcu_tasks_tr
+root          11  0.0  0.0      0     0 ?        S    sty03   0:12 [ksoftirqd/0]
+root          12  0.0  0.0      0     0 ?        I    sty03   2:41 [rcu_sched]
+root          13  0.0  0.0      0     0 ?        S    sty03   0:03 [migration/0]
+root          15  0.0  0.0      0     0 ?        S    sty03   0:00 [cpuhp/0]
+
+...
+Polecenie 'ps u -u root' wyswietla procesy uzytkownika "root" w formacie BSD, a dalsza czesc polecenia '-U root' wyklucza procesy,
+ktore sa uruchomione przez uzytkownika "root", ale nie naleza do niego.
+
