@@ -1,0 +1,111 @@
+1
+Jest dane takie drzewo katalogów:
+.
+├── ala
+│   ├── i
+│   │   └── as
+│   └── ma
+│       └── kota
+└── kot
+    └── ma
+        └── ale
+
+Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
+Jak przejść do katalogu ala za pomocą:
+
+ścieżki względnej (relatywnej)
+KUBA
+cd ../../
+
+ścieżki bezwzględnej (absolutnej)
+KUBA
+cd /tmp/ukos/ala
+
+2
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak utworzyć poddrzewo katalogów jan/kowalski w katalogu ale za pomocą jednej komendy?
+
+Podaj rozwiązania używając ścieżek absolutnych i relatywnych.
+KUBA
+mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski (absolutna)
+mkdir -p ../../../kot/ma/ale/jan/kowalski (relatywna)
+
+3
+Masz taki układ katalogów, jak wyżej i ciągle jesteś w katalogu kota. Jak przenieść katalog ale do katalogu i używając:
+
+źródło (ścieżka względna), miejsce docelowe (ścieżka absolutna)
+KUBA
+mv ../../../kot/ma/ale /tmp/ukos/ala/i
+
+źródło (ścieżka absolutna), miejsce docelowe (ścieżka względna)
+KUBA
+mv /tmp/ukos/kot/ma/ale ../../i
+
+4
+Jak zamknąć program, który nie reaguje na ctrl+c ?
+KUBA
+Należy użyć polecenia kill -9
+
+5
+Jak wypisać wszystkie pliki (i tylko pliki bez katalogów) w bieżącym katalogu, których nazwa zaczyna się od al?
+Tu będzie trochę opisu ode mnie na temat wyrażeń regularnych.
+Materiały:
+http://www.robelle.com/smugbook/regexpr.html
+https://www.regular-expressions.info/
+
+Narzędzia do testowania wyrażeń regularnych w przyzwoity sposób:
+https://regex101.com/
+https://regexr.com/
+
+6a
+Nadaj uprawnienia do katalogu ala tak aby:
+
+każdy mógł do niego wejść
+
+tylko grupa mogła wyświetlić co w nim jest
+
+właściciel ma pełne uprawnienia
+
+HINT: Jakie są uprawnienia początkowe?
+
+Podpowiedź: powyższe 3 punkty opisu to jedno zadanie. Nie 3 osobne.
+Przygotuj 3 wariacje rozwiązania tego zadania używając różnych notacji: 
+
+oktalnej/ósemkowej/cyfrowej
+KUBA
+chmod 751 /tmp/ukos/ala
+
+literowej ze znakiem równości
+KUBA
+chmod u=rwx,g=rx,o=x /tmp/ukos/ala
+
+literowej z plusami i minusami
+KUBA
+chmod ugo+x,ug+r,u+w,go-w,o-r /tmp/ukos/ala
+
+
+6b
+Jak korzystając z notacji ze znakiem równości odebrać wszystkie uprawnienia dla danego zasobu?
+KUBA
+chmod u=,g=,o= zasob
+
+7
+Jak utworzyć plik z listą plików w bieżącym katalogu?
+
+Podaj rozwiązania używające różne techniki.
+Np. nie używając dedykowanego polecenia do listowania zawartości katalogów.
+Tu trzeba będzie się trochę zastanowić jak to uzyskać a możliwości jest sporo.
+KUBA
+ls | tee plik.txt
+ls > plik.txt
+echo * > plik.txt
+
+8
+Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na uzupełnianie komend?
+KUBA
+Można to zrobić używając tabulatora
+
+9
+Jak uruchomić program by nie blokował terminala. Są 2 sposoby. Jakie?
+KUBa
+Można użyć ctrl + z i wpisać polecenie bg albo na końcu polecenia rozpoczynającego
+program dodać znak "&", który automatycznie uruchomi program w tle
