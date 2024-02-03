@@ -1,22 +1,13 @@
 1
 Jest dane takie drzewo katalogów:
-
 .
-
 ├── ala
-
 │   ├── i
-
 │   │   └── as
-
 │   └── ma
-
 │       └── kota
-
 └── kot
-
     └── ma
-
         └── ale
 
 Znajdujesz się w katalogu kota. Katalog ala, jest w katalogu /tmp/ukos.
@@ -106,6 +97,7 @@ Tu trzeba będzie się trochę zastanowić jak to uzyskać a możliwości jest s
 KUBA
 ls | tee plik.txt
 ls > plik.txt
+echo * > plik.txt
 
 8
 Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na uzupełnianie komend?

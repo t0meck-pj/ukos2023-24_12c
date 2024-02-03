@@ -1,13 +1,9 @@
 1.Korzystając z komend cd oraz mkdir stwórz następujące drzewo katalogów w swoim katalogu domowym (w dowolnym podkatalogu, albo bezpośrednio w ~):
 
 ukos
-
  |\ katalog
-
  |   |\ katalog2
-
  |    \ katalog3
-
   \ klamka
 
 TERMINAL
@@ -41,7 +37,7 @@ jtstuden@ukos1:~$ rm -r ukos/katalog/katalog2
 KUBA
 Tutaj użyłem mocy man ("man rm") ponieważ na początku nie użyłem parametru
 "-r", który powoduje rekruencyjne użycie polecenia, w tym przypadku
-usunie wszystkie pliki z katalogu a następnie kataloh.
+usunie wszystkie pliki z katalogu a następnie katalog.
 
 7.Usuń cały katalog klamka za pomocą jednego polecenia
 TERMINAL
