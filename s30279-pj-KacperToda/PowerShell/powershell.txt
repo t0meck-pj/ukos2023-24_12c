@@ -1,0 +1,416 @@
+1.Gdybys potrzebowal pomocy z dowolnym poleceniem by zobaczyc jaka ma skladnie to pomoc uzywa sie tak.
+PS C:\Windows\system32> Get-Help Get-ExecutionPolicy
+
+NAME
+    Get-ExecutionPolicy
+
+SYNOPSIS
+    Gets the execution policies for the current session.
+
+
+SYNTAX
+    Get-ExecutionPolicy [[-Scope] {CurrentUser | LocalMachine | MachinePolicy | Process | UserPolicy}] [-List] [<CommonParameters>]
+...
+
+Otrzymałem okno pomocy do polecenia Get-ExecutionPolicy.
+
+2.A zeby zobaczyc przyklady uzycia.
+PS C:\Windows\system32> Get-Help Get-ExecutionPolicy -Examples
+
+NAME
+    Get-ExecutionPolicy
+
+SYNOPSIS
+    Gets the execution policies for the current session.
+------------ Example 1: Get all execution policies ------------
+
+    Get-ExecutionPolicy -List
+    ...
+Konsola zwrocila strone pomocy, ale z opisem przykladow uzycia polecenia Get-ExecutionPolicy.
+
+3.Ponizsza linia zwroci Tobie wszystkie dostepne w danej chwili moduly.
+PS C:\Windows\system32> Get-Module -ListAvailable
+
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     1.0.1      Microsoft.PowerShell.Operation.V... {Get-OperationValidation, Invoke-OperationValidation}
+Binary     1.0.0.1    PackageManagement                   {Find-Package, Get-Package, Get-PackageProvider, Get-Packa...
+Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+Script     1.0.0.1    PowerShellGet                       {Install-Module, Find-Module, Save-Module, Update-Module...}
+Script     2.0.0      PSReadline                          {Get-PSReadLineKeyHandler, Set-PSReadLineKeyHandler, Remov..
+...
+
+Po uzyciu polecenia otrzymalem liste dostepnych w tej chwili modulow.
+
+4.Ponizsza linia zwroci tylko te moduly, ktorych wersja jest >= 2.0.0.0.
+PS C:\Windows\system32> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+
+
+    Directory: C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Manifest   2.0.1.0    Appx                                {Add-AppxPackage, Get-AppxPackage, Get-AppxPackageManifest, Remove-AppxPackage...}
+Manifest   2.0.0.0    BitsTransfer                        {Add-BitsFile, Complete-BitsTransfer, Get-BitsTransfer, Remove-BitsTransfer...}
+Script     3.0        Dism                                {Add-AppxProvisionedPackage, Add-WindowsDriver, Add-WindowsCapability, Add-WindowsImage...}
+...
+
+Zostaly wypisane tylko i wylacznie moduly, posiadajace wersje wieksza lub rowna 2.0.0.0.
+
+5.Ponizsza linia wyswietli wszystkie polecenia (cmdlet - "Komandlety") w dostepnych modulach, ktorych wersja >= 2.0.0.0.
+PS C:\Windows\system32> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        AfterAll                                           3.4.0      Pester
+Function        AfterEach                                          3.4.0      Pester
+Function        Assert-MockCalled                                  3.4.0      Pester
+Function        Assert-VerifiableMocks                             3.4.0      Pester
+Function        BeforeAll                                          3.4.0      Pester
+Function        BeforeEach                                         3.4.0      Pester
+Function        Context                                            3.4.0      Pester
+Function        Describe                                           3.4.0      Pester
+...
+
+Otrzymalem pelna liste wszytkich polecen w dostepnych modulach, ktorych wersja jest wieksza lub rowna 2.0.0.0.
+
+6.Teraz bysmy chcieli jeszcze wyswietlic wszystkie te, ktore maja w nazwie "Add-" lub "Get-".
+PS C:\Windows\system32> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Get-MockDynamicParameters                          3.4.0      Pester
+Function        Get-TestDriveItem                                  3.4.0      Pester
+Alias           Add-AppPackage                                     2.0.1.0    Appx
+Alias           Add-AppPackageVolume                               2.0.1.0    Appx
+Alias           Get-AppPackage                                     2.0.1.0    Appx
+W tym wypadku otrzymalem to samo co poprzednio, lecz tylko te polecenia zaczynajace sie od "Add-" lub "Get-".
+
+7.A teraz bysmy chcieli je wypisac w postaci tabelki graficznej otworzonej w nowym okienku.
+PS C:\Windows\system32> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+Otworzylo sie okno z graficzna tabelka.
+Nowe okno posiada ta sama liste polecen, ktora wyswietlil wiersz polecen w poprzednim zadaniu.
+
+8.A teraz bysmy chcieli je wypisac do pliku.
+PS C:\Windows\system32> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\CommandList
+PS C:\Windows\system32> Write-Host $env:TEMP\CommandList
+C:\Users\Kacper\AppData\Local\Temp\CommandList
+
+Wszystkie przefiltrowane polecenia w modulach zostaly zapisane do pliku, co potwierdza wyswietlenie nowej linjki wiersza polecen.
+W celu upewnienia sie, skorzystalem z komendy Write-Host z parametrem uzytym w poleceniu, w ktorym stworzylem ten plik. 
+Komenda zwrocila nam sciezke do tego pliku, co oznacza, ze ten plik zostal stworzony. Mozemy go takze otworzyc w notatniku
+przy pomocy polecenia:
+*notepad $env:TEMP\Listapolecen
+
+9.A teraz bysmy chcieli nic z tym nie robic tylko by sie przetworzylo ale nie wypisywalo.
+PS C:\Windows\system32> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+PS C:\Windows\system32>
+Polecenie wykonalo sie, czyli zostaly przefiltrowane polecenie modulow wedlug zadanych parametrow, ale nic nie zostalo wyswietlone ani zapisane, tylko i wylacznie dane zostaly przetworzone.
+
+10.Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle).
+PS C:\Windows\system32> Import-Module BitsTransfer
+
+Zaladowany zostal modul do zarzadzania przesylaniem danych w tle.
+
+11.Wylistujmy wszystkie komendy w tym module.
+PS C:\Windows\system32> Get-Command -Module BitsTranfser
+PS C:\Windows\system32>
+Komenda nic nie wyswietla
+
+12.To teraz postarajmy sie uzyc tego cuda do pobrania jakiegos duzego pliku by bylo widac proces sciagania.
+*PS C:\Users\asus-pro> Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/30-Lx-Lt/5.8/64bit.7z/download -Destination C:Pobrane
+
+Pojawilo sie pole BITS Transfer, z paskiem pobierania pliku. Konsola zostala zablokowana.
+
+13.Jesli chcesz to uczynic w sposob asynchroniczny (czyli taki, ktory nie blokuje konsoli) to mozna to zrobic tak.
+PS C:\Windows\system32> $job = Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/30-Lx-Lt/5.8/64bit.7z/download -Destination C:Pobrane -Asynchronous -DisplayName "Moj Bits Transfer"
+PS C:\Windows\system32>
+
+W ten sposob zostalo uruchomione pobieranie w sposob asynchroniczny, czyli nie blokujacy konsoli. Moge korzystac dalej z konsoli, a
+plik pobiera sie w tle.
+
+14.By zobaczyc jaki jest stan transferu mozna uzyc takiej komendy.
+PS C:\Windows\system32> Get-BitsTransfer
+
+JobId                                DisplayName       TransferType JobState     OwnerAccount
+-----                                -----------       ------------ --------     ------------
+fae97d6f-713a-4ead-ac7c-0920273fa5d7 Moj Bits Transfer Download     Transferring DESKTOP-IJ24LR0\Kacper
+
+Zostala wyswietlona list pobieranych plikow, gdzie znajduje sie plik, ktory zaczalem pobierac.
+
+15.Zwrocic uwage nalezy na stan w kolumnie JobState. Jesli bedzie tam Transferred to aby ukonczyc calosc i dostac pobierany 
+plik trzeba jeszcze zakonczyc job transferu. Robi sie to tak.
+
+PS C:\Windows\system32> Complete-BitsTransfer -BitsJob $job
+PS C:\Windows\system32>
+
+Transfer zostal zakonczony, a plik pojawil sie w podanym w poleceniu miejscu docelowym.
+
+16.Do mierzenia czasu sluzy Measure-Command.
+PS C:\Windows\system32> Measure-Command {Get-ChildItem -Path C:\Windows}
+
+
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 9
+Ticks             : 98767
+TotalDays         : 1,14313657407407E-07
+TotalHours        : 2,74352777777778E-06
+TotalMinutes      : 0,000164611666666667
+TotalSeconds      : 0,0098767
+TotalMilliseconds : 9,8767
+
+Polecenie zwrocilo obliczony czas dla wykonania komendy wylistowania kadalogu Windows.
+
+17.I tu tez widzisz jak sie listuje zawartosc katalogu. Ale jest to nie wygodne. Moze jest na to alias?
+PS C:\Windows\system32> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           dir -> Get-ChildItem
+Alias           gci -> Get-ChildItem
+Alias           ls -> Get-ChildItem
+
+Aliasami do Get-ChildItem są 'ls', ktore zostalo zaczerpniete z systemow nix-owych oraz 'gci'.
+
+18.No to wylistujmy sobie wszystkie pliki i katalogi z katalogu glownego ale z odstepem czasowym.
+PS C:\Windows\system32> ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+
+
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22.05.2023     23:01                AMD
+d-----        23.07.2023     16:38                Games
+d-----        07.12.2019     10:14                PerfLogs
+d-r---        12.12.2023     18:05                Program Files
+d-r---        27.01.2024     21:18                Program Files (x86)
+d-----        15.07.2023     21:31                Riot Games
+d-----        22.05.2023     22:54                temp
+d-r---        22.05.2023     22:48                Users
+d-----        27.01.2024     21:18                Windows
+d-----        12.09.2023     17:10                XboxGames
+-a----        12.05.2023     05:28         112080 appverifUI.dll
+-a----        12.05.2023     05:29          66160 vfcompat.dll
+
+Zostaly wylistowane wszystkie pliki i katalogi z katalogu domowego, ale kazdy z nich pojawial sie po zadanym odstepie czasowym.
+
+19.No dobra. Ale PS to nie tylko jezyk do pisania skryptow. To przede wszystkim konsola wiec mozna z niej
+uruchamiac inne programy. Do tego sluzy operator wolania "call", ktory ma postac znaku "&"
+PS C:\Windows\system32>  & C:\Windows\notepad.exe
+Uruchomil sie notatnik zgodnie z poleceniem.
+
+20.Wylistujmy zainstalowane aplikacje/programy.
+Mozna sie do tego dobrac na 2 sposoby.
+1. W rejestrze poszukac
+2. Odpytac WMI (Windows Management Instrumentation)
+
+	1.Rejestr
+	1.1Sprawdzmy jakie "dyski" sa dostepne w PowerShell-u
+	PS C:\Windows\system32> Get-PSDrive
+
+	Name           Used (GB)     Free (GB) Provider      Root                                                             CurrentLocation
+	----           ---------     --------- --------      ----                                                             ---------------
+	Alias                                  Alias
+	C                 386,46         78,67 FileSystem    C:\                                                             Windows\system32
+	Cert                                   Certificate   \
+	D                 205,93        725,58 FileSystem    D:\
+	E                   6,57          0,00 FileSystem    E:\
+	Env                                    Environment
+	Function                               Function
+	HKCU                                   Registry      HKEY_CURRENT_USER
+	HKLM                                   Registry      HKEY_LOCAL_MACHINE
+	Variable                               Variable
+	WSMan                                  WSMan
+
+	Wyswietlona zostala lista dyskow, z czego dwa sa odpowiedzialne za rejestr HKCU i HKLM.
+
+	1.2.Zatem by wejsc do rejestru mozna zrobic tak.
+	PS C:\Windows\system32> cd hklm:\
+	PS HKLM:\>
+	Zostalo wykonane wejscie do rejestru, niczym na dysk.
+
+	1.3.I przegladac sobie rejestr jak zwykly system plikow.
+	PS HKLM:\> cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+	PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall>
+	Mozna go przegladac jak zwykly sytem plikow, wiec mozna przejsc sobie do potrzebnej lokalizacji.
+
+	1.4.Wylistowac sobie jego zawartosc przez ls
+	PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls
+
+
+    Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+
+	Name                           Property
+	----                           --------
+	AddressBook
+	Connection Manager             SystemComponent : 1
+	DirectDrawEx
+	DXM_Runtime
+	
+	Wylistowana zostala cala zawrtosc w danej lokalizacji w malo przejrzystej formie.
+
+	1.5.Mozna to troche zmienic.
+	PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | Format-Table -AutoSize
+
+	DisplayName                                                    InstallDate UninstallString
+	-----------                                                    ----------- ---------------
+
+	Git                                                            20231130    "C:\Program Files\Git\unins000.exe"
+	                                                                           "C:\Windows\System32\mspaint.exe" /uninstall
+	                                                                           "C:\Windows\System32\mstsc.exe" /uninstall
+	                                                                           "C:\Windows\System32\SnippingTool.exe" /uninstall
+	Cyberpunk 2077                                                             "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Grand Theft Auto IV: The Complete Edition                                  "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Kroniki Myrtany: Archolos                                                  "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	The Witcher: Enhanced Edition                                              "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	The Elder Scrolls IV: Oblivion                                             "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Europa Universalis IV                                                      "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Assassin's Creed II                                                        "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	DARK SOULS™ II: Scholar of the First Sin                                   "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Trine                                                                      "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Kingdom Come: Deliverance                                                  "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Fallout                                                                    "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Gothic 3                                                                   "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Stronghold Crusader HD                                                     "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Dead Rising                                                                "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Wallpaper Engine                                                           "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Holdfast: Nations At War                                                   "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Counter-Strike 2                                                           "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+	Yakuza Kiwami 2                                                            "C:\Program Files (x86)\Steam\steam.exe" steam://uninst...
+
+	Wylistowane zostala zawartosc w danej lokalizacji w przejrzysty sposob z najwazniejszymi danymi.
+
+	1.6.Zamiast listowac na ekran, mozna by odinstalowac korzystajac z operatora wolania "&" tak jak wyzej
+	z notatnikiem tylko tutaj bedzie to wygladalo tak.
+	*ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | %{& $_.UninstallString}
+	Nie uzylem tego polecenia, aby nie odinstalowac wszystkich aplikacji.
+
+	2.WMI
+	2.1.WMI sluzy do zarzadzania systemem i mozna z niego wiele ciekawych rzeczy wyciagnac.
+	PS C:\Windows\system32> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+
+	IdentifyingNumber                      Name                                                           Vendor
+	-----------------                      ----                                                           ------
+	{A7AB73A3-CB10-4AA5-9D38-6AEFFBDE4C91} Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+	{A171D320-C42C-4F3B-A2D8-C6A09F6788CC} AMD Ryzen Balanced Driver                                      Advanced Micro...
+	{B9068540-804E-5916-3AC5-6B8C8A4A29C2} Windows SDK for Windows Store Apps                             Microsoft Corp...
+	{FEC0DB40-683B-4DA9-9835-536BA563875F} vs_devenx64vmsi                                                Microsoft Corp...
+	{CE8DF750-A582-4D59-A610-478A752481B1} Microsoft .NET Host - 7.0.5 (x64)                              Microsoft Corp...
+	{A29C2470-79D9-5644-B949-05F9593D09D5} Universal CRT Headers Libraries and Sources                    Microsoft Corp...
+	...
+	Wylistowana zostala lista zainstalowanych aplikacji/programow za pomoca WMI. Troche czasu to trwalo.
+
+	2.2.Te numery z przodu sa brzydkie, bardzo podobne i zajmuja duzo miejsca a nie wnosza nic ciekawego teraz.
+	Wyeliminujmy je.
+	PS C:\Windows\system32> Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+
+	Name                                                           Vendor
+	----                                                           ------
+	Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+	AMD Ryzen Balanced Driver                                      Advanced Micro Devices, Inc.
+	Windows SDK for Windows Store Apps                             Microsoft Corporation
+	vs_devenx64vmsi                                                Microsoft Corporation
+	Microsoft .NET Host - 7.0.5 (x64)                              Microsoft Corporation
+	Universal CRT Headers Libraries and Sources                    Microsoft Corporation
+	...
+	Wylistowane zostaly same nazwy zainstalowanych aplikacji/programow bez zbednego numeru identyfikacji.
+
+	2.3.A jakbysmy chcieli znalezc wszystkie pakiety od Microsoftu.
+	PS C:\Windows\system32> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+
+	Name                                                           Vendor
+	----                                                           ------
+	Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+	Windows SDK for Windows Store Apps                             Microsoft Corporation
+	vs_devenx64vmsi                                                Microsoft Corporation
+	Microsoft .NET Host - 7.0.5 (x64)                              Microsoft Corporation
+	...
+	W tym przypadku natomiast zostaly wylistowane tylko te, ktore dostarcza Microsoft.
+
+	2.4.A teraz je odinstalowac.
+	*Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+		$wmiProduct = $_
+	$answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+    	$answer = $answer.ToLower()
+    	switch($answer) {
+        	"y" {
+            	Write-Host -NoNewline -ForegroundColor Red "Removing: "
+            	Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+            	$wmiProduct.Uninstall()
+        	}
+        	"n" {Write-Host "Ok. Skipping."}
+        	default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+		}
+	}
+	Nie uruchomie tego polecenia, aby nie odinstalowac wszystkich pakietow od Microsoftu.
+
+21.Dyski w PS. Mozemy je sobie wylistowac ponizsza komenda.
+PS C:\Windows\system32> Get-PSDrive
+
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                                                                                                                      CurrentLocation
+----           ---------     --------- --------      ----                                                                                                                                                                                                      ---------------
+Alias                                  Alias
+C                 386,47         78,65 FileSystem    C:\                                                                                                                                                                                                      Windows\system32
+Cert                                   Certificate   \
+D                 205,93        725,58 FileSystem    D:\
+E                   6,57          0,00 FileSystem    E:\
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+Wylistowane zostaly wszystkie dyski.
+
+27.Notyfikacje.
+*function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+Stworzona funkcja do notyfikacji.
+*GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+Wywolane zostalo powiadomienie o zadanej tresci. Fajna i ciekawa sprawa do zabawy.
+*For($i = 1; $i -le 10; $i++) {
+    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+}
+Przy pomocy petli powiadomienie pojawia sie wielokrotnie.
+*GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+Do powiadomienie mozemy dodac kolejne wiersze, ale maks 4.
