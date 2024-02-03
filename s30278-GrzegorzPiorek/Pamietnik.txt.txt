@@ -1,0 +1,56 @@
+2023-09-30
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Jak wygląda zaliczenie przedmiotu.
+Poruszania się oraz podstawowych komend w terminalu.
+Korzystania z szuflandii.
+Czym jest oraz jak korzystać z githuba i repozytorium
+Podstawowych komend linuksowych
+-----------------------------------------------
+2023-10-14
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Czym są i jak działają uprawnienia dostępu.
+Jak używać i zmieniać uprawnienia za pomocą chmod.
+Dlaczego nie powinienem używać komendy chmod 777.
+Nauczyłem się czym jest i jak przeliczać system oktalny/binarny/ósemkowy w konstekscie uprawnien.
+-----------------------------------------------
+2023-10-28
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Czym są strumienie (wejściowy, wyjściowy, błędów)
+Jak przekierowywać strumienie.
+Czym jest i jak używać komend kill, killall -9
+Filtrowania wierszy(których jest dużo i bardzo to pomaga)
+Różnicę między job'em a procesem
+Skrótów klawiszowych przydatnych w konsoli(ctrl+z,c,d)
+Pobierania plików z internetu z poziomu terminala.
+-----------------------------------------------
+2023-11-18
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Jakie mogą być powody braku możliwości utworzenia plików na dysku uczelnianym (np szuflandii)
+Poruszania się po drzewie katalogów
+Ingerowania w drzewo katalogów (przemieszczanie folderów  oraz plików, tworzenie folderów oraz plików, usuwanie folderów oraz plików)
+Tworzenia drzewa katalogów ścieżką względną, ścieżką bezwzględną
+Jak uruchomić program by nie blokował terminala
+Jak utworzyć plik, który będzie zawierał w sobie listę plików z bieżącego katalogu
+---------------------------------------------
+2023-12-02
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Jak wygląda kolokwium
+Jakie jest ono proste
+--------------------------------------------
+2023-12-16
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Czym jest powershell
+Jak się z niego korzysta
+Jakie komendy działają zarówno w linuxowym terminalu oraz powershellowym
+Jak uzyskac pomoc do polecenia
+--------------------------------------------
+2024-01-20
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Jak korzystać z skryptów
+W jaki sposób one działają
+Jak korzystać ze wszystkich (nie tylko microsoftowych) skryptów
+--------------------------------------------
+2024-02-03
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem/lam sie:
+Jak ukos był przyjemnym do nauki przedmiotem
+Jak wykorzystywać większy potencjał gita
