@@ -1,9 +1,56 @@
-Drogi pamiętniczku dziś jestem w Warszawie na konferencji czyli w końcu mam
-chwilę zająć się ukosem i zrobić zadania.
-Dzięki nim nauczyłem się:
-- Tworzyć, usuwać katalogi i pliki,
-- Tworzyć maszynę wirtualną,
-- Przełączać się pomiędzy środowiskiem graficznym i tesktowym,
-- Wyświetlać zawartość katalogów,
-- Przemieszczać się pomiędzy katalogami za pomocą ścieżki względnej i
-bezwzględnej.
+30 września 2023:
+
+Dzisiaj nauczyłem/am się:
+
+Procesu zaliczenia przedmiotu.
+Poruszania się po terminalu oraz podstawowych komend.
+Korzystania z "szuflandii".
+Używania i zarządzania GitHubem oraz repozytoriami.
+Podstawowych komend w systemie Linux.
+14 października 2023:
+
+Dzisiaj nauczyłem/am się:
+
+Istoty i funkcjonowania uprawnień dostępu.
+Używania i zmiany uprawnień za pomocą chmod.
+Dlaczego należy unikać komendy chmod 777.
+Przeliczania systemu oktalnego/binarnego/ósemkowego w kontekście uprawnień.
+28 października 2023:
+
+Dzisiaj nauczyłem/am się:
+
+Różnych rodzajów strumieni (wejściowego, wyjściowego, błędów).
+Przekierowywania strumieni.
+Korzystania z komend kill, killall -9.
+Filtrowania wierszy oraz różnicy między jobem a procesem.
+Skrótów klawiszowych w konsoli (ctrl+z, c, d).
+Pobierania plików z internetu z poziomu terminala.
+18 listopada 2023:
+
+Dzisiaj nauczyłem/am się:
+
+Możliwych przyczyn braku możliwości tworzenia plików na dysku uczelnianym.
+Nawigacji po drzewie katalogów.
+Manipulowania drzewem katalogów (przenoszenie, tworzenie, usuwanie plików i folderów).
+Tworzenia drzewa katalogów przy użyciu ścieżek względnych i bezwzględnych.
+Uruchamiania programu tak, aby nie blokował terminala.
+Tworzenia pliku zawierającego listę plików z bieżącego katalogu.
+2 grudnia 2023:
+
+Dzisiaj nauczyłem/am się:
+
+Struktury kolokwium oraz jego stopnia trudności.
+16 grudnia 2023:
+
+Dzisiaj nauczyłem/am się:
+
+Istoty powershell.
+Korzystania z powershella.
+Komend działających zarówno w terminalu Linuksa, jak i w powershellu.
+Uzyskiwania pomocy dotyczącej poleceń.
+20 stycznia 2024:
+
+Dzisiaj nauczyłem/am się:
+
+Korzystania ze skryptów oraz ich działania.
+Korzystania ze wszystkich rodzajów skryptów, nie tylko tych od Microsoftu.

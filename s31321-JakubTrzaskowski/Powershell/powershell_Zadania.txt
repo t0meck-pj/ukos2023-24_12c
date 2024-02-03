@@ -1,0 +1,280 @@
+1.Gdybys potrzebowal pomocy z dowolnym poleceniem by zobaczyc jaka ma skladnie to pomoc uzywa sie tak.
+*PS C:\Users\Lenovo Yofa> Get-Help Get-ExecutionPolicy
+NAME
+    Get-ExecutionPolicy
+SYNTAX
+    Get-ExecutionPolicy [[-Scope] {Process | CurrentUser | LocalMachine | UserPolicy | MachinePolicy}] [-List]  [<Commo
+    nParameters>]
+ALIASES
+    None
+REMARKS
+    Get-Help cannot find the Help files for this cmdlet on this computer. It is displaying only partial help.
+        -- To download and install Help files for the module that includes this cmdlet, use Update-Help.
+        -- To view the Help topic for this cmdlet online, type: "Get-Help Get-ExecutionPolicy -Online" or
+           go to https://go.microsoft.com/fwlink/?LinkID=113315.
+Otrzymałem okno pomocy do polecenia Get-ExecutionPolicy.
+2.A zeby zobaczyc przyklady uzycia.
+*PS NAME
+    Get-ExecutionPolicy
+ALIASES
+    None
+REMARKS
+    Get-Help cannot find the Help files for this cmdlet on this computer. It is displaying only partial help.
+        -- To download and install Help files for the module that includes this cmdlet, use Update-Help.
+        -- To view the Help topic for this cmdlet online, type: "Get-Help Get-ExecutionPolicy -Online" or
+           go to https://go.microsoft.com/fwlink/?LinkID=113315.
+    ...
+3.Ponizsza linia zwroci Tobie wszystkie dostepne w danej chwili moduly.
+*PS Directory: C:\Program Files\WindowsPowerShell\Modules
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     1.0.1      Microsoft.PowerShell.Operation.V... {Get-OperationValidation, Invoke-OperationValidation}...
+Po uzyciu polecenia otrzymalem wylistowane dostepne moduly.
+4.Ponizsza linia zwroci tylko te moduly, ktorych wersja jest >= 2.0.0.0.
+*PS PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+    Directory: C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Manifest   2.0.1.0    Appx                                {Add-AppxPackage, Get-AppxPackage, Get-AppxPackageManifest, Remove-AppxPackage...}
+5.Ponizsza linia wyswietli wszystkie polecenia (cmdlet - "Komandlety") w dostepnych modulach, ktorych wersja >= 2.0.0.0.
+PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        AfterAll                                           3.4.0      Pester
+Function        AfterEach                                          3.4.0      Pester
+...
+6.Teraz bysmy chcieli jeszcze wyswietlic wszystkie te, ktore maja w nazwie "Add-" lub "Get-".
+*PS PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Get-MockDynamicParameters                          3.4.0      Pester
+Function        Get-TestDriveItem                                  3.4.0      Pester
+Alias           Add-AppPackage                                     2.0.1.0    Appx
+...
+7.A teraz bysmy chcieli je wypisac w postaci tabelki graficznej otworzonej w nowym okienku.
+*PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+Otworzylo sie okno z ta sama lista polecen
+8.A teraz bysmy chcieli je wypisac do pliku.
+*PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\Listapolecen
+*PS C:\Users\Lenovo Yofa> Write-Host $env:TEMP\ListaPolecen
+C:\Users\Lenovo Yofa\AppData\Local\Temp\ListaPolecen
+Wynik zostal zapisany w pliku.
+9.A teraz bysmy chcieli nic z tym nie robic tylko by sie przetworzylo ale nie wypisywalo.
+*PS C:\Users\Lenovo Yofa> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+Polecenie wykonalo sie, czyli zostaly przefiltrowane polecenie modulow wedlug zadanych parametrow, ale nic nie zostalo wyswietlone ani zapisane, tylko i wylacznie dane zostaly przetworzone.
+10.Dobrze, to listy już mamy opanowane. To teraz w końcu byśmy chcieli załadować jakiś moduł np. BitsTransfer (do zarządzania przesyłaniem danych w tle).
+*PS C:\Users\Lenovo Yofa>  Import-Module BitsTransfer
+lub przy pomocy aliasu
+*PS C:\Users\Lenovo Yofa> impo BitsTransfer
+Zaladowany zostal modul do zarzadzania przesylaniem danych w tle.
+11.Wylistujmy wszystkie komendy w tym module.
+PS C:\Users\Lenovo Yofa> Get-Command -Module BitsTransfer
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Cmdlet          Add-BitsFile                                       2.0.0.0    BitsTransfer
+Cmdlet          Complete-BitsTransfer                              2.0.0.0    BitsTransfer
+Cmdlet          Get-BitsTransfer                                   2.0.0.0    BitsTransfer                               2.0.0.0    BitsTransfer
+...
+Wylistowane zostale wszystkie komendy w module BitsTransfer.
+12.To teraz postarajmy sie uzyc tego cuda do pobrania jakiegos duzego pliku by bylo widac proces sciagania.
+*PS C:\Users\Lenovo Yofa> Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/30-Lx-Lt/5.8/64bit.7z/download -Destination C:Pobrane
+Pojawilo sie pole BITS Transfer, z paskiem pobierania pliku. Konsola zostala zablokowana.
+13.Jesli chcesz to uczynic w sposob asynchroniczny (czyli taki, ktory nie blokuje konsoli) to mozna to zrobic tak.
+W ten sposob zostalo uruchomione pobieranie w sposob asynchroniczny, czyli nie blokujacy konsoli. Moge korzystac dalej z konsoli,
+PS C:\Users\Lenovo Yofa>  $job = Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/30-Lx-Lt/5.8/64bit.7z/download -Destination C:Pobrane -Asynchronous -DisplayName "Moj Bits Transfer"
+plik pobiera sie w tle.
+14.By zobaczyc jaki jest stan transferu mozna uzyc takiej komendy.
+PS C:\Users\Lenovo Yofa> Get-BitsTransfer
+JobId                                DisplayName       TransferType JobState     OwnerAccount
+-----                                -----------       ------------ --------     ------------
+4a62447a-02ca-4571-ac7c-5910590310c9 Moj Bits Transfer Download     Transferring DESKTOP-B705VF8\Lenovo Yofa
+Zostala wyswietlona list pobieranych plikow, gdzie znajduje sie plik, ktory zaczalem pobierac.
+15.Zwrocic uwage nalezy na stan w kolumnie JobState. Jesli bedzie tam Transferred to aby ukonczyc calosc i dostac pobierany 
+plik trzeba jeszcze zakonczyc job transferu. Robi sie to tak.
+*PS C:\Users\Lenovo Yofa> Complete-BitsTransfer -BitsJob $job
+Transfer zostal zakonczony, a plik pojawil sie w podanym w poleceniu miejscu docelowym.
+16.Do mierzenia czasu sluzy Measure-Command.
+PS C:\Users\Lenovo Yofa> Measure-Command {Get-ChildItem -Path C:\Windows}
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 124
+Ticks             : 10334565
+TotalDays         : 1,1972234552407407E-06
+TotalHours        : 2,865465277777778E-05
+TotalMinutes      : 0,0076572401166666667
+TotalSeconds      : 0,104375407
+TotalMilliseconds : 123,7407
+17.I tu tez widzisz jak sie listuje zawartosc katalogu. Ale jest to nie wygodne. Moze jest na to alias?
+*PS C:\Users\Lenovo Yofa> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           dir -> Get-ChildItem
+Alias           gci -> Get-ChildItem
+Alias           ls -> Get-ChildItem
+18.No to wylistujmy sobie wszystkie pliki i katalogi z katalogu glownego ale z odstepem czasowym.
+PS C:\Users\Lenovo Yofa> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           dir -> Get-ChildItem
+Alias           gci -> Get-ChildItem
+Alias           ls -> Get-ChildItem
+...
+Zostaly wylistowane wszystkie pliki i katalogi z katalogu domowego, ale kazdy z nich pojawial sie po zadanym odstepie czasowym.
+19. PS to nie tylko jezyk do pisania skryptow. To przede wszystkim konsola wiec mozna z niej
+uruchamiac inne programy. Do tego sluzy operator wolania "call", ktory ma postac znaku "&"
+*PS C:\Users\Lenovo Yofa> & C:\Windows\notepad.exe
+Uruchomil sie notatnik zgodnie z poleceniem.
+20.Wylistujmy zainstalowane aplikacje/programy.
+Mozna sie do tego dobrac na 2 sposoby.
+1. W rejestrze poszukac
+2. Odpytac WMI (Windows Management Instrumentation)
+	1.Rejestr
+	1.1Sprawdzmy jakie "dyski" sa dostepne w PowerShell-u
+	PS C:\Users\Lenovo Yofa> Get-PSDrive
+Name           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation
+----           ---------     --------- --------      ----                                               ---------------
+Alias                                  Alias
+C                  84,45         306,68 FileSystem    C:\                                                    Users\Lenovo Yofa
+Cert                                   Certificate   \
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+	
+	1.2.Zatem by wejsc do rejestru mozna zrobic tak.
+	PS C:\Users\Lenovo Yofa> cd hklm:\
+	PS HKLM:\>
+	Zostalo wykonane wejscie do rejestru, niczym na dysk.
+	1.3.I przegladac sobie rejestr jak zwykly system plikow.
+	*PS HKLM:\> cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+	PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall>
+	Mozna go przegladac jak zwykly sytem plikow, wiec mozna przejsc sobie do potrzebnej lokalizacji.
+	1.4.Wylistowac sobie jego zawartosc przez ls
+	*PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls
+	Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+	Name                           Property
+	----                           --------
+	AddressBook
+	Connection Manager             SystemComponent : 1
+	CPUID HWMonitor_is1            Inno Setup: Setup Version    : 5.6.1 (a)
+	...
+	1.5.Mozna to troche zmienic.
+	*PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | Format-Table -AutoSize
+	DisplayName                                                         InstallDate UninstallString
+	-----------                                                         ----------- ---------------
+	CPUID HWMonitor 1.52                                                20201011    "C:\Program Files\...
+	Git                                                                 20230201    "C:\Program Files\...
+	Microsoft Azure Compute Emulator - v2.9.7                           18.04.2023  msiexec /x{04ca054...
+	Microsoft Visual Studio 2010 Tools for Office Runtime (x64)                     "C:\Program Files\...
+	...
+	1.6.Zamiast listowac na ekran, mozna by odinstalowac korzystajac z operatora wolania "&" tak jak wyzej
+	z notatnikiem tylko tutaj bedzie to wygladalo tak.
+	*ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | %{& $_.UninstallString}
+	2.WMI
+	2.1.WMI sluzy do zarzadzania systemem i mozna z niego wiele ciekawych rzeczy wyciagnac.
+	PS C:\Users\Lenovo Yofa> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+	IdentifyingNumber                      Name                                                           Vendor
+	-----------------                      ----                                                           ------
+	{A7AB73A3-CB10-4AA5-9D38-6AEFFBDE4C91} Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+	{FD8B3CEE-530D-4E86-BA16-E3A78A315147} e-mikrofirma                                                   Aplikacje Kryt...
+	{90160000-008C-0000-1000-0000000FF1CE} Office 16 Click-to-Run Extensibility Component                 Microsoft Corp...
+	{90160000-008C-0415-1000-0000000FF1CE} Office 16 Click-to-Run Localization Component                  Microsoft Corp...
+	...
+	Wylistowana zostala lista zainstalowanych aplikacji za pomoca WMI. Troche czasu to trwalo.
+	2.2.Te numery z przodu sa brzydkie, bardzo podobne i zajmuja duzo miejsca a nie wnosza nic ciekawego teraz.
+	Wyeliminujmy je.
+	PS C:\Users\Lenovo Yofa> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+	IdentifyingNumber                      Name                                                           Vendor
+	-----------------                      ----                                                           ------
+	{A7AB73A3-CB10-4AA5-9D38-6AEFFBDE4C91} Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+	{FD8B3CEE-530D-4E86-BA16-E3A78A315147} e-mikrofirma                                                   Aplikacje Kryt...
+	{90160000-008C-0000-1000-0000000FF1CE} Office 16 Click-to-Run Extensibility Component                 Microsoft Corp...
+	{90160000-008C-0415-1000-0000000FF1CE} Office 16 Click-to-Run Localization Component                  Microsoft Corp...
+	{90160000-007E-0000-1000-0000000FF1CE} Office 16 Click-to-Run Licensing Component                     Microsoft Corp...
+	{B9068540-804E-5916-3AC5-6B8C8A4A29C2} Windows SDK for Windows Store Apps                             Microsoft Corp...
+	{FEC0DB40-683B-4DA9-9835-536BA563875F} vs_devenx64vmsi                                                Microsoft Corp...
+	...
+	Wylistowane zostaly same nazwy zainstalowanych aplikacji.
+	2.3.A jakbysmy chcieli znalezc wszystkie pakiety od Microsoftu.
+	PS C:\Users\Lenovo Yofa> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+	Name                                                           Vendor
+	----                                                           ------
+	Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+	Office 16 Click-to-Run Extensibility Component                 Microsoft Corporation
+	Office 16 Click-to-Run Localization Component                  Microsoft Corporation
+	Office 16 Click-to-Run Licensing Component                     Microsoft Corporation
+	Windows SDK for Windows Store Apps                             Microsoft Corporation
+	...
+	W tym przypadku natomiast zostaly wylistowane tylko te, ktore dostarcza Microsoft.
+	2.4.A teraz je odinstalowac.
+	*Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+		$wmiProduct = $_
+	$answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+    	$answer = $answer.ToLower()
+    	switch($answer) {
+        	"y" {
+            	Write-Host -NoNewline -ForegroundColor Red "Removing: "
+            	Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+            	$wmiProduct.Uninstall()
+        	}
+        	"n" {Write-Host "Ok. Skipping."}
+        	default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+		}
+	}
+21.Dyski w PS. Mozemy je sobie wylistowac ponizsza komenda.
+PS C:\Users\Lenovo Yofa> Get-PSDrive
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                                                                                    CurrentLocation
+----           ---------     --------- --------      ----                                                                                                                                                                    ---------------
+Alias                                  Alias
+C                  84,45         306,68 FileSystem
+Cert                                   Certificate   
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+
+27.Notyfikacje.
+*function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+
+        [Parameter(Mandatory=$true)]
+        $Title,
+
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+Stworzona funkcja do notyfikacji.
+*GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+Wywolane zostalo powiadomienie o zadanej tresci. Fajna i ciekawa sprawa do zabawy.
+*For($i = 1; $i -le 10; $i++) {
+    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+}
+Przy pomocy petli powiadomienie pojawia sie wielokrotnie.
+*GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+Do powiadomienie mozemy dodac kolejne wiersze/

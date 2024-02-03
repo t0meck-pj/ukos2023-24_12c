@@ -95,4 +95,26 @@ katalogu domowego;
 katalogu public_html;
 
 pliku strona.html, aby zawartość pliku była widoczna w przeglądarce internetowej pod adresem http://szuflandia.pjwstk.edu.pl/~twój_login/strona.html
+s31321@szuflandia22:~$ mkdir public_html
+s31321@szuflandia22:~$ cd public_html/
+s31321@szuflandia22:~/public_html$ touch strona.html
+s31321@szuflandia22:~/public_html$ ls
+strona.html
+s31321@szuflandia22:~/public_html$ echo "<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>"
+<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>
+s31321@szuflandia22:~/public_html$ echo "<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>" > strona.html
 
+na katalog ustawilem chmod 701
+na plik chmod 004
