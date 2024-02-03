@@ -24,7 +24,7 @@ Jaka jest jego treść?
 Co znaczy | oraz co znaczy > ?
 KUBA
 Utworzył się plik o nazwie "lista_plikow_z_literka_d.txt", w którym zapisane
-są wszystkie nazwy plików, które zawierają literkę D (oczytałem plik
+są wszystkie nazwy plików, które zawierają literkę D (odczytałem plik
 za pomocą polecenia "cat").
 Znak "|" to potok, służy do łączenia poleceń.
 Znak ">" służy do przekierowania wyniku polecenia.
