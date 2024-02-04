@@ -1,0 +1,4 @@
+A. Wpisuje komendę gimp i uruchamia się gimp, wciskam ctrl z i gimp przestaje odpowiadać, gdy najechałem innym programem na gimp, cały program gimp sie zbugował i zniknął obraz w nim.
+B. Komenda bg ożywiła gimpa a komenda fg wznowiła go na pierwszym planie. 
+C. gimp & uruchamia gimpa w tle
+D: Jobs, fg %1

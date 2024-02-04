@@ -1,0 +1,19 @@
+zad 3.3 
+1. Cat - oczekiwanie na dane z klawiatury
+2. ctrl + c zakańcza cat
+
+1. cat > wynik3_1.txt - Otwiera cat 
+2. witaj
+3. ctrl + c 
+4. cat wynik3_1.txt -  nie pokazuje mi "witaj" 
+
+1. cat > wynik3_2.txt
+2. Wpisz tekst witaj bez wciskania klawisza Enter
+3. Ctrl+d
+4. w pliku znajduje sie witaj
+
+- ctrl + c zamyka natychmiastowo plik bez zapisania 
+ctrl + d bezpiecznie zamyka i zapisuje plik
+- różnią sie wynikami w jednym ctrl+c nie mamy zapisanego "witaj" a przy użyciu ctrl+d sie zapisuje
+- tak jak wspomniałem w 1 odpowiedzi ctrl + d zapisuje plik
+
