@@ -1,0 +1,109 @@
+1.Uruchom terminal.
+Zostal uruchomiony terminal.
+
+2.Wyswietl zawartosc aktualnego katalogu.
+* ls
+ 2022/
+ 2023/
+ DCT/
+'Nowy folder'/
+'PAWEŁ ROHDE DESIGN Ewidencja sprzedaży towarów i usług.pdf'
+'Paweł - Chrome.lnk'*
+ Zad3.cpp
+ Zdjęcia/
+'Zdjęcia bez obrobki'/
+ desktop.ini
+ e-mikrofirma.lnk*
+ jpk/
+ umowa/
+ zad1.cpp
+ zad2.cpp
+
+3.Sprawdz gdzie aktualnie sie znajdujesz.
+* pwd
+/d/Ukos
+
+
+4.Przejdz do katalogu Pulpit za pomoca sciezki wzglednej.
+* cd Desktop
+5.Sprawdz gdzie jestes.
+* pwd
+/c/Users/pawel/Desktop
+
+6.Wyswietl zawartos biezacego katalogu.
+* ls
+ 2022/
+ 2023/
+ DCT/
+'Nowy folder'/
+'PAWEŁ ROHDE DESIGN Ewidencja sprzedaży towarów i usług.pdf'
+'Paweł - Chrome.lnk'*
+ Zad3.cpp
+ Zdjęcia/
+'Zdjęcia bez obrobki'/
+ desktop.ini
+ e-mikrofirma.lnk*
+ jpk/
+ umowa/
+ zad1.cpp
+ zad2.cpp
+
+7.Wyswietl zawartosc swojego katalogu domowego bez przechdozenia do niego (ls z odpowiednim parametrem).
+* ls ~
+ 01-zmienne-i-warunki-s32160/
+'3D Objects'/
+ AppData/
+ Contacts/
+ Cookies@
+'Dane aplikacji'@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ IntelGraphicsProfiles/
+ Links/
+'Menu Start'@
+'Moje dokumenty'@
+ Music/
+ NTUSER.DAT
+ NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TM.blf
+ NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ OneDrive/
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+ Szablony@
+'Ustawienia lokalne'@
+ Videos/
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+ source/
+
+8.Przejdz do katalogu Obrazy (lub innego katalogu, ktory jest dostepny - podaj wprost, ze zmieniasz katalog na inny bo np. Obrazy
+nie sa u Ciebie dostepne) w twoim katalogu domowym za pomoca sciezki wzglednej.
+* cd ../Pictures
+
+9.Sprawdz gdzie jestes.
+* pwd
+/c/Users/pawel/Pictures
+
+10.Zobacz do jakiego katalogu przejdziesz za pomoca sciezki ././././././
+Nic się nie zmieniło 
+
+11.Przejdz do swojego katalogu domowego za pomoca sciezki bezwzglednej.
+* cd /home
+
+12.Zobacz co sie stanie jak wpiszesz komende 'cd/root'. Jak juz to zrobisz, zastanow sie co sie stalo. Poszukaj w Internecie.
+* cd /root
+bash: cd/root: No such file or directory
+
+13.Zobacz, co sie stanie, jesli wcisniesz kombinacje klawiszy: Ctrl+Alt+F3
+Paned Sterowniczny grafiki HD intel
+14.A teraz co sie stanie po: Alt+F1 lub ALT+F2 lub ALT+F7 (na starszych linuxach)
+Odpalił mi nowego bush 

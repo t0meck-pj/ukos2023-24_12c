@@ -1,0 +1,66 @@
+1.Przejdz do swojego katalogu domowego.
+*s32160@szuflandia22:~$ cd
+
+Przeszedłem do swojego katalogu domowego.
+
+2.Wydaj komende: ls -a
+*s32160@szuflandia22:~$ ls -a
+ 01-zmienne-i-warunki-s32160  .bash_logout  Lab01     placki.txt
+..  .bash_history                .bashrc       .lesshst  .profile
+Komenda wypisala zawartosc biezacego katalogu, wlacznie z ukrytymi plikami i katalogami.
+
+3.Zobacz ile plików wypisalo.
+Wypisalo 8 plikow.
+
+4.Teraz wydaj komende: ls -a | grep D
+HINT: Jesli nie masz zadnego pliku czy katalogu z literka D to wybierz inna literke, 
+ktora juz bedzie w nazwie jakiegos pliku czy katalogu.
+*s32160@szuflandia22:~$ ls -a | grep b
+.bash_history
+.bash_logout
+.bashrc
+Lab01
+Wypisane zostaly pliki i katalogi zawierajace litere 'b'.
+
+5.Zobacz ile teraz jest wynikow. Co sie stalo?
+HINT: Otoz program grep sluzy do wyszukiwania wierszy w pliku lub strumieniu wejsciowym, 
+ktore pasuja do wzorca. Tu podano wzorzec jako "D".
+Teraz sa tylko 2 wyniki. Komenda uzyla programu grep do filtrowania wynikow polecenia 'ls -a' i zwrocila
+te, ktora pasuja do podanego wzorca, czyli "b".
+
+6.A teraz wykonaj komende: ls -a | grep D > lista_plikow_z_literka_d.txt
+*s30899@szuflandia22:~$ ls -a | grep b > lista_plikow_z_literka_b.txt
+nic sie nie dzieje
+
+7.Zobacz czy utworzyl sie jakis plik?
+Jaka jest jego tresc?
+Co znaczy | oraz co znaczy > ?
+s32160@szuflandia22:~$ ls
+01-zmienne-i-warunki-s32160  Lab01  lista_plikow_z_literka_b.txt  placki.txt
+
+Zostal utworzy plik lista_plikow_z_literka_b.txt. Znajduje sie w nim lista plikow i katalogow zawierajacych litere 'b',
+wlacznie z tym utworzonym, poniewaz w nazwie zawiera literke 'p'.
+Operator '|' oznacza przekierowanie wyniku jednej koomendy jako wejscie do drugiej. Natomiast operator '>' sluzy
+do przekierowania standarowego wyjscia do pliku, nadpisujac istniejacy plik lub tworzac nowy.
+
+8.A teraz wykonaj komende: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+s32160@szuflandia22:~$ ls -a | grep b | tee lista_plikow_z_literka_b_2.txt
+.bash_history
+.bash_logout
+.bashrc
+Lab01
+lista_plikow_z_literka_b.txt
+Zostaly wypisane pliki i katalogi zawierajace litere 'b'.
+
+9.Zobacz czy plik sie utworzyl?
+Jaka jest tresc wzgledem poprzedniej proby bez programu tee?
+Co robi program tee?
+*s32160@szuflandia22:~$ ls
+01-zmienne-i-warunki-s32160  lista_plikow_z_literka_b_2.txt  placki.txt
+Lab01                        lista_plikow_z_literka_b.txt
+
+Utworzyl sie plik lista_plikow_z_literka_b_2.txt. Zawartosc pliku jest identyczna z poprzednim plikiem i rowniez zostal uwzgledniony 
+plik, ktory powstal podczas wykonywania komendy, poniewaz zawiera w sobie literke 'b'. 
+Program 'tee' odczytuje wyniki ze standarowego wejscia jednoczesnie przekierowuje je do wskazanego pliku i wypisuje je 
+na standardowym wyjsciu.
+

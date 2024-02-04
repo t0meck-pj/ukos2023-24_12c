@@ -1,0 +1,44 @@
+1.Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd...)
+Otworzylem dwa terminale putty.
+*s32160@szuflandia22:~$ vim test
+Uruchomilem na jednym z nich vim.
+
+2.Zobacz jaki ma on PID - przyda sie do tego komenda ps
+*s32160@szuflandia22:~$ ps aux | grep vim
+s32160   1033563  0.0  0.2  14252  8916 pts/0    T    03:11   0:00 vim test
+s32160   1033572  0.0  0.0   6256   704 pts/0    S+   03:13   0:00 grep vim
+
+Na drugim terminalu uzylem komendy do wypisania procesow zawierajacych w sobie slowo vim.
+Stad moge odczytac, ze PID dla vim to 1033563.
+
+3.Wydaj komende kill w taki sposob, aby ten edytor sie wylaczyl. Zobacz czy to dziala.
+UWAGA: Niektore programy przechwytuja sygnaly i moga je czesciowo blokowac.
+	Jesli program nie wylacza sie, to zobacz jaka jest jego reakcja.
+	Zobacz czy mozesz wyslac do niego SIGKILL (gdzie sprawdzisz jak to zrobic?)
+*s32160@szuflandia22:~$ kill 1033563.
+Po wydaniu komendy, vim w pierwszym terminalu wylaczyl sie.
+
+4.Zobacz dzialanie komendy killall bash
+*s32160@szuflandia22:~$ killall bash
+Nic sie nie stalo, poniewaz 'killall' domyslnie wysyla sygnal TERM, a 'bash' dziala w takim spodob, ze jak dostanie taki sygnal,
+a jest biezaca powloka, ktora jest uzywana to ten sygnal zostaje zignorowany.
+
+5.Zobacz czy kill zadziala dla dowolnego procesu.
+*s32160@szuflandia22:~$ sleep 300 &
+[3] 1033587
+*s32160@szuflandia22:~$ ps aux | grep sleep
+s32160   1033584  0.0  0.0   5364   500 pts/0    T    03:15   0:00 sleep 300
+s32160   1033587  0.0  0.0   5364   496 pts/0    S    03:15   0:00 sleep 300
+s32160   1033594  0.0  0.0   6256   704 pts/0    S+   03:16   0:00 grep sleep
+
+*s30899@szuflandia22:~$ kill 1033587
+-bash: kill: 1033584- nic się nie zrobiło
+*s30899@szuflandia22:~$ kill 1033587
+*s32160@szuflandia22:~$ ps aux | grep sleep
+s32160   1033584  0.0  0.0   5364   500 pts/0    T    03:15   0:00 sleep 300
+s32160   1033611  0.0  0.0   6256   644 pts/0    S+   03:18   0:00 grep sleep
+[3]   Zakończony             sleep 300
+
+Polecenie 'kill' zadziala dla dowolnego procesu, jezeli mam do niego odpowiednie uprawnienia, ale efekt zalezy takze od tego czy 
+dany proces reaguje na sygnal TERM, ktory domyslnie jest wysylany przez komende 'kill'.
+
