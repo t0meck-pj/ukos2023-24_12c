@@ -197,36 +197,3 @@ ukos
             └── nazwa
                 └── dane.txt
 (został usunięty katalog i nauczyłem się używać "-r")
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

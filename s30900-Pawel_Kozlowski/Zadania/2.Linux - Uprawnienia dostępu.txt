@@ -1,9 +1,8 @@
 1.Utworzyć we własnym katalogu domowym niedużą strukturę podkatalogów i plików tekstowych. 
-  Przydzielić różne uprawnienia dostępu, następnie spróbować wejść do katalogów domowych innych uczestników zajęć i sprawdzić,   
-  które z obiektów są tam 
-  dla nas dostępne (i w jakim sensie). Spróbować utworzyć własny plik w cudzym katalogu ("kukułcze jajko") oraz spróbować   
-  usunąć cudzy plik we własnym 
-  katalogu (co można zaobserwować ?). Wypróbować powyższe operacje:
+  Przydzielić różne uprawnienia dostępu, następnie spróbować wejść do katalogów domowych innych uczestników 
+  zajęć i sprawdzić, które z obiektów są tam dla nas dostępne (i w jakim sensie). Spróbować utworzyć własny plik 
+  w cudzym katalogu ("kukułcze jajko") oraz spróbować usunąć cudzy plik we własnym katalogu (co można zaobserwować ?). 
+  Wypróbować powyższe operacje:
 
    s30900@szuflandia22:~$ tree katalog
    katalog
@@ -65,16 +64,16 @@
    │   └── plik.txt
    └── zadania [error opening dir]
 
-3 directories, 0 files
+   3 directories, 0 files
    s30900@szuflandia22:~/katalog$ chmod u+r,u+w,u+x zadania
 
-   Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
+   Czy można bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy licencji wstępnej do ABC, ale mamy do XYZ?
 
-   gdy urzyjemy ścieżki bezwzględnej to możemy przejść do katalogu ponieważ omijamy katalog Do którego nie mamy dostępu
-   ścieżka względna by wypisała błąd ponieważ nie mamy dostępu przejść przez katalog ABC
+   Gdy używamy bezwzględnego ścieżki dostępu do katalogu głównego, pomijamy katalog, do którego nie mamy dostępu.
+   Przy użyciu ścieżki względnej, spowoduje to błąd i nie uzyskamy dostępu do katalogu ABC
 
-   Czy możemy także wrócić korzystając z polecnia cd - ?
-   możemy wrócic jedynie do XYZ, nie możemy do ABC ponieważ nie mamy uprawnień
+   Czy można również usunąć z polecenia cd -? Wróciliśmy do XYZ, nie mogliśmy przejść do ABC z 
+   powodu braku uprawnień.
 
 3. W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić login osób z zespołu) wypróbować możliwość    
    komunikacji 
@@ -106,7 +105,7 @@
    </BODY>
    </HTML>
 
-   Sprawdzić, jakie są minimalne uprawnienia dostępu, które trzeba przydzielić do katalogu domowego;
+   Które są dostępne dla dostępu, które należą do katalogu domowego;
    chmod 701 ~
 
    Minimalne uprawnienia aby wyswietlic zawartosc pliku
@@ -141,24 +140,26 @@
 
    Zadanie
    W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając, a następnie    
-   zmieniając swoją maskę 
-   trybu pliku i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik), a później sprawdzając uzyskane    
-   uprawnienia dostępu do nich 
-   (polecenie ls -l). Jaka operacja logiczna na bitach domyślnych uprawnień dostępu oraz maski jest wykonywana ?
-   (dokończyć!)
+   zmieniając swoją maskę trybu pliku i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik), a później
+   sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l). Jaka operacja logiczna na bitach domyślnych uprawnień 
+   dostępu oraz maski jest wykonywana ?
+  
+   *s30900@szuflandia22:~$ umask --help
+   *s30900@szuflandia22:~$ umask
+   0022
 
+   Domyslna maska.
+   *s30900@szuflandia22:~$ mkdir dom
+   *s30900@szuflandia22:~$ ls- l
+   drwxr-xr-x 2 s30900 domain users 4096 10-27 16:10 dom
 
+   Domyslnie uprawnienia dostepu.
+   *s30900@szuflandia22:~$ umask 0044
+   *s30900@szuflandia22:~$ umask
+   0044
+   Zmieniona maska pliku.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+   *s30900@szuflandia22:~$ mkdir test
+   *s30900@szuflandia22:~$ ls -l
+   drwx-wx-wx 2 s30899 domain users 4096 2023-10-29  test
+   Przydzielone uprawnienia dostepu po zmianie maski trybu pliku.

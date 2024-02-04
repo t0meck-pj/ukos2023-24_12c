@@ -1,9 +1,6 @@
 Zadania do wykonania przed kolokwium wykonane ze zrozumieniem
 
 1. Jest dane takie drzewo katalogów:
-
-   .
-
    ├── ala
 
    │   ├── i
@@ -47,12 +44,13 @@ Zadania do wykonania przed kolokwium wykonane ze zrozumieniem
 
 4. Jak zamknąć program, który nie reaguje na ctrl+c ?
 
-   Ctrl i + z lub kill %1
+   CTRL+Z, ^Z lub kill %1
 
 5. Jak wypisać wszystkie pliki (i tylko pliki bez katalogów) w bieżącym katalogu, których nazwa zaczyna się od al?
    Tu będzie trochę opisu ode mnie na temat wyrażeń regularnych.
 
-   -> ls al*
+   -> find . -type f -name 'al*'
+   -> ls -p | grep '^al' | grep -v /
 
 6a. Nadaj uprawnienia do katalogu ala tak aby:
    każdy mógł do niego wejść
@@ -67,7 +65,7 @@ Zadania do wykonania przed kolokwium wykonane ze zrozumieniem
    -> chmod 751 /tmp/ukos/ala
 
    literowej ze znakiem równości
-   -> chmod a=rwx,g=rx,o=x /tmp/ukos/ala
+   -> chmod u=rwx,g=rx,o=x /tmp/ukos/ala
 
    literowej z plusami i minusami
    -> chmod a-rwx,u+rwx,g+rx,o+x /tmp/ukos/ala
@@ -81,8 +79,12 @@ Zadania do wykonania przed kolokwium wykonane ze zrozumieniem
    Np. nie używając dedykowanego polecenia do listowania zawartości katalogów.
    Tu trzeba będzie się trochę zastanowić jak to uzyskać a możliwości jest sporo.
 
-   -> ls >> plik.txt
+   -> ls > plik.txt
    -> ls | tee plik.txt
+   -> ls -p | grep -v / | tee plik.txt
+   -> ls | dd of=plik.txt
+   -> echo * > lista_plikow.txt
+   -> find . -maxdepth 1 -type f ! -name ".*" -exec basename {} \; > lista_plikow.txt
 
 8. Jak przyspieszyć wpisywanie komend w terminalu? Jaki klawisz pozwala na uzupełnianie komend?
 
@@ -94,22 +96,3 @@ Zadania do wykonania przed kolokwium wykonane ze zrozumieniem
    & na końcu komendy nie blokuje terminala
 
    "nohup" na początku komendy (nie znałem tej komendy)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
