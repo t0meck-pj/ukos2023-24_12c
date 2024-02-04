@@ -1,0 +1,103 @@
+zadanie 2
+1. w trybie tekstowym: 
+mkdir Ksiegarnia
+mkdir DzialFantastyki  DzialKryminalow  
+touch Recenzje.txt Bestsellery.txt
+── Ksiegarnia
+│   ├── Bestsellery.txt
+│   ├── DzialFantastyki
+│   ├── DzialKryminalow
+│   └── Recenzje.txt
+
+s30397@szuflandia22:/home/PJWSTK/s30899/ukos/lab02$
+Mam pelne uprawnienia do katalogu lab02, dla plikow inny.txt i zadanie.txt moge tylko odczytywać, a katalog praca mam do odczytu i wykonania, ale nie do zapisu. Mogę utworzyć plik ponieważ mam uprawnienia w lab02. 
+cd
+ └── ukos
+    └── lab02
+        ├── inny.txt
+        ├── jajo
+        ├── praca
+        │   └── grupowa
+        └── zadanie.txt
+Tak samo mogę usunąć plik kolegi w moim katalogu. 
+2. W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić eksperymenty:
+
+- usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
+
+s30397@szuflandia22:~$ chmod 000 ./
+nie mogę, wchodzić do katalogu podrzędnego, moge cofnąć sie do nadrzędnego, zmieniam znów na pełne uprawnienia do katalogu. 
+
+- usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+s30397@szuflandia22:~/Ksiegarnia$ chmod a-rwx ../
+Jeśli przejde do podkatologu nie mogę wrócić do poprzedniego
+
+s30397@szuflandia22:~/Ksiegarnia$ cd DzialFantastyki
+s30397@szuflandia22:~/Ksiegarnia/DzialFantastyki$ cd Ksiegarnia
+-bash: cd: Ksiegarnia: Brak dostępu
+s30397@szuflandia22:~/Ksiegarnia/DzialFantastyki$
+
+- W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
+Tak jak wymienione wczesniej jesli odbiore uprawnienia aktualnemu Katalogowi to moge jedynie się cofnąć do poprzedniego, a jeśli odbiore nadrzędnemu to mogę iść do podkatalogów ale nie mogę z niego wyjść.
+
+- W jakich przypadkach możemy wykonać polecenie chmod ? 
+chmod mogę wykonać gdy znajduje się w katalogu, w którym mam uprawnienia. 
+
+- Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
+Możemy, jeśli mamy uprawnienia do katalogu XYZ, niezależnie od tego, czy mamy uprawnienia do katalogu ABC.
+
+- Czy możemy także wrócić korzystając z polecnia cd - ?
+Tak, możemy.
+
+3.W zespolach 2- lub 3-osobowych (w opisie zadania na githubie prosze umiescic login osob z zespolu) wyprobowac mozliwosc komunikacji przez wspoldzielony
+plik: na jednym z kont w zespole utworzyc pusty plik i przydzielic odpowiednie uprawnienia dostepu (do pliku i do katalogu domowego). Wpisywac i odczytywac komunikaty przy uzyciu polecen:
+Zadanie z 303899, kolega tworzy plik z odpowiednimi uprawnieniami 
+"*s30899@szuflandia22:~/ukos/lab02$ touch komunikacja
+*s30899@szuflandia22:~/ukos/lab02$ chmod g+w komunikacja
+*s30899@szuflandia22:~/ukos/lab02$ ls -l
+-rw-rw-r-- 1 s30899 domain users    0 10-27 02:07 komunikacja"
+Kolega używa echo, sprawdzam: 
+s30397@szuflandia22:/home/PJWSTK/s30899/ukos/lab02$ cat komunikacja
+siema
+
+s30397@szuflandia22:/home/PJWSTK/s30899/ukos/lab02$ echo jajuszko > komunikacja
+s30397@szuflandia22:/home/PJWSTK/s30899/ukos/lab02$ cat komunikacja 
+jajuszko
+
+Użycie ">>" natomiast nie nadpisuje pliku, a dodaje kolejne zapisy(?)
+Tail -f plik daje nam możliwość śledzenia zmian na żywo.
+
+4.Znalezc w swoim katalogu domowym podkatalog public_html (jesli go nie ma, to utworzyc; musi sie on nazywac DOKLADNIE tak jak
+podano, pisane malymi literami z podkresleniem zamiast spacji pomiedzy slowami). Umiescic w nim plik o nazwie strona.html o
+nastepujacej zawartosci:
+
+<HTML>
+<BODY>
+<H1>To jest moja strona domowa</H1>
+</BODY>
+</HTML>
+
+Sprawdzic, jakie sa minimalne uprawnienia dostepu, ktore trzeba przydzielic do:
+
+-katalogu domowego;
+
+-katalogu public_html;
+Katalog domowy: 701 
+
+Katalog public_html: 001 
+
+Plik strona.html: 004
+
+- Zadanie: umask 024 -> touch plik -> ls-l plik 
+
+s30397@szuflandia22:~/Ksiegarnia$ umask 024
+s30397@szuflandia22:~/Ksiegarnia$ touch plik
+s30397@szuflandia22:~/Ksiegarnia$ ls -l
+razem 8
+-rw-r--r-- 1 s30397 domain users    0 01-19 23:30 Bestsellery.txt
+drwx--xr-x 2 s30397 domain users 4096 01-19 23:29 DzialFantastyki
+drwxr-xr-x 2 s30397 domain users 4096 01-19 23:29 DzialKryminalow
+-rw-r---w- 1 s30397 domain users    0 01-20 01:36 plik
+-rw-r--r-- 1 s30397 domain users    0 01-19 23:30 Recenzje.txt
+s30397@szuflandia22:~/Ksiegarnia$
+
+Dla maski pliku 024, bity 2 i 4 będą zawsze wyzerowane dla nowo tworzonych plików i katalogow, co znaczy brak zapisu dla grupy i brak zapisu dla innych uzytkownikow

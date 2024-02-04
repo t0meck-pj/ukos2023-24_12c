@@ -1,0 +1,20 @@
+0. Brak dostępu do zapisu
+Brak miejsca na dysku
+Ograniczenia systemowe
+1. cd ../../ala
+ cd /tmp/ukos/ala
+2. mkdir /tmp/ukos/kot/ma/ale/jan/kowalski
+mkdir jan/kowalski
+3. mv ale /tmp/ukos/i 
+mv /tmp/ukos/kot/ma/ale /tmp/ukos/i
+4. kill -9 PID
+5.a ls -p | grep -E '^al[^/]*$'
+6a. chmod 711 ala
+chmod u=rx, g=wx o=rwx ala
+chmod u+rwx,g+rx ala
+6b chmod = ala
+7. ls -p | grep -v / > lista_p.txt
+ls > lista_p.txt
+8. TAB przyspiesza
+9. dodanie na końcu & i nohup
+

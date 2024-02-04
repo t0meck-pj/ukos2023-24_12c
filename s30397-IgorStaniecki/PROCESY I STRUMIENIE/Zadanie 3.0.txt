@@ -1,0 +1,30 @@
+1. cd ~
+2. ls -a
+3. .    .bash_history   .bashrc   .gitconfig   pętle      .ssh      'zad dom'
+ ..   .bash_logout    .git      Goha         .profile   .viminfo
+4.
+.gitconfig
+.profile
+.viminfo
+5.
+.gitconfig
+.profile
+.viminfo
+6. ls -a | grep f > lista_plikow_z_literka_f.txt
+7. 
+powstał plik z treścią: 
+.gitconfig
+lista_plikow_z_literka_f.txt
+.profile
+.viminfo
+">" Przekierowuje wejście 
+"|" Pozwala przekazać wynik jednego polecenia jako wejście do drugiego
+8. ls -a | grep f | tee lista_plikow_z_literka_f_2.txt
+9. 
+.gitconfig
+lista_plikow_z_literka_f_2.txt
+lista_plikow_z_literka_f.txt
+.profile
+.viminfo
+Co robi program tee? - wyświetla odrazu wynik.
+

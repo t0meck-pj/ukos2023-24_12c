@@ -1,0 +1,22 @@
+2023-09-30
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie: 
+- o różnych katalogach i do czego są wykorzystywane
+- polecenia w linuxie 
+- Dowiedziałem sie jak założyć konto na Githubie :')
+14-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+-nadawać i odbierać uprawnienia w różny sposób
+-dowiedziałem się też w jakim celu to robić
+28-10-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+- Dowiedziałem się o 3 strumieniach i ich zastosowaniach
+- nauczyłem się jak przekierować strumień na milion różnych sposobów
+- zrozumiałem nazwy stderr stdout stdin
+2023.12.16
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+- Powershell podstawy do czego służy 
+- podstawowe komendy 
+2024.01.20
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie: 
+- jak wywolywac metody
+- jak uruchomić instalator w tle, żeby nie blokować powershell 

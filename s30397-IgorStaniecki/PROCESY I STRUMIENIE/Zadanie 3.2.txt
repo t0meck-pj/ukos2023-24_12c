@@ -1,0 +1,12 @@
+- Uruchamiam gimp, sprawdzam pid ps aux | gimp gedit, używam kill -15 2556
+ osboxes  ~  1  ps aux | grep gimp
+osboxes     2556 10.1  4.8 731876 116064 ?       Sl   21:06   0:01 gimp-2.10
+osboxes     2569  1.0  0.7 190556 18256 ?        Sl   21:06   0:00 /usr/lib/gimp/2.0/plug-ins/script-fu/script-fu -gimp 10 9 -run 0
+osboxes     2573  0.0  0.0   8900   664 pts/0    S+   21:06   0:00 grep gimp
+ osboxes  ~  kill -15 2556
+- killall bash - nie zauwazyłem żeby coś się wydarzyło, ale dowiedziałem się że odpowiada za próbe wyłączenia wsztskie procesy bash. 
+osboxes  ~  1  ps aux | grep paint
+osboxes     2825  1.0  1.6 311324 39032 ?        Sl   21:13   0:00 gnome-paint
+osboxes     2831  0.0  0.0   8900   728 pts/0    S+   21:14   0:00 grep paint
+ - Zobacz czy kill zadziała dla dowolnego procesu.
+osboxes  ~  kill -15 2825
