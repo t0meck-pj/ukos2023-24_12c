@@ -41,3 +41,36 @@ Moj kochany na dzisiejszych zajeciach nauczylem sie:
 	- w domu musze zrobić zadania oraz utrwalić wiedzę
 
 --------------------------------------------------------------------------------
+
+2023.12.02
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- kolokwiumm to nie taka straszna rzecz, jezeli odpowiednio przygotujesz sie
+	- jezeli czegos nie umiesz zrobic, pytaj
+
+--------------------------------------------------------------------------------
+
+2023.12.16
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- PowerShell to potega
+	- jaki jest podzial PowerShella
+	- ze trzeba poszerzyc wiedze w temacie "co to jest .NET"
+	- jak uruchomic PowerShell
+	- w jezykach skryptowych operujemy na roznego rodzaju listach
+
+--------------------------------------------------------------------------------
+
+2024.01.20
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- jak wywolywac latwo metody przez zmienna 
+	- wywolujac metody na koncu dodajemy () 
+	- w Powershellu mozna korzystac z dopelnien przy pomocy TAB 
+	- Ctrl+Spacja tekstowo-graficzne menu do wyboru opcji 
+	- kiedy logujemy sie na szuflandie i pojawi sie komunikat o zmianie fingerprinta, nalezy skontaktowac sie z BSS (trzeba zapamietac)
+
+--------------------------------------------------------------------------------
+2024.02.03
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+	- UKOS to przydatny przedmiot
+	- w przyszlosci moze mi sie zdarzyc korzystac z Linuxa badz PowerShella/Basha
+	- przypomnialem sobie wrzucanie plikow na GIT
+	
