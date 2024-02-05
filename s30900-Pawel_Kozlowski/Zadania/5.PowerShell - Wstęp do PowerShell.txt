@@ -1,0 +1,348 @@
+1. Get-Help Get-ExecutionPolicy = pomoc z dowolnym poleceniem by zobaczyć jaką ma składnię to pomoc
+   (Wyswietliło się okno pomocy Get-ExecutionPolicy)
+
+   PS C:\Users\kkozl> Get-Help Get-ExecutionPolicy
+   NAME
+    Get-ExecutionPolicy
+   SYNTAX
+       Get-ExecutionPolicy [[-Scope] {Process | CurrentUser | LocalMachine | UserPolicy | MachinePolicy}] [-List]  [<Commo
+       nParameters>]
+   ALIASES
+       None
+   REMARKS
+       Get-Help cannot find the Help files for this cmdlet on this computer. It is displaying only partial help.
+           -- To download and install Help files for the module that includes this cmdlet, use Update-Help.
+           -- To view the Help topic for this cmdlet online, type: "Get-Help Get-ExecutionPolicy -Online" or
+              go to https://go.microsoft.com/fwlink/?LinkID=113315.
+
+2. Get-Help Get-ExecutionPolicy -Examples = A żeby zobaczyć przykłady użycia:
+
+   PS C:\Users\kkozl> Get-Help Get-ExecutionPolicy -Examples
+   NAME
+       Get-ExecutionPolicy
+   ALIASES
+       None
+   (...)
+
+   PS C:\Users\kkozl> Get-ExecutionPolicy -List
+
+        Scope ExecutionPolicy
+        ----- ---------------
+        MachinePolicy       Undefined
+        UserPolicy       Undefined
+        Process       Undefined
+        CurrentUser       Undefined
+        LocalMachine       Undefined
+   (Wypisało strone pomocy z opisem przykladów użycia polecenia Get-ExecutionPolicy)
+
+3. Get-Module -ListAvailable - zwróci wszystkie dostepne w danej chwili moduły
+
+   PS C:\Users\kkozl> Get-Module -ListAvailable
+
+    Directory: C:\Program Files\WindowsPowerShell\Modules
+
+   ModuleType Version    Name                                ExportedCommands
+   ---------- -------    ----                                ----------------
+   Script     1.0.1      Microsoft.PowerShell.Operation.V... {Get-OperationValidation, Invoke-OperationValidation}
+   Binary     1.0.0.1    PackageManagement                   {Find-Package, Get-Package, Get-PackageProvider, Get-Packa...
+   Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+
+   (...) (Polecenie wyświetliło listę dostępnych modulów)
+
+4. #Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} = zwróci tylko te moduły, których wersja jest >= 2.0.0.0
+
+   Directory: C:\Program Files\WindowsPowerShell\Modules
+   ModuleType Version    Name                                ExportedCommands
+   ---------- -------    ----                                ----------------
+   Script     3.4.0      Pester                              {Describe, Context, It, Should...}
+
+   (...)(Wyświetlone zostały moduły mające wersję wiekszą lub równą 2.0.0.0)
+
+5. Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} 
+   = wyświetli wszystkie polecenia (cmdlet - "Komandlety") w dostępnych modułach, których wersja >= 2.0.0.0
+
+   PS C:\Users\kkozl> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+   CommandType     Name                                               Version    Source
+   -----------     ----                                               -------    ------
+   Function        AfterAll                                           3.4.0      Pester
+
+   (...)(Wyświetlona została lista wszystkich poleceń w dostępnych modułach w wersjia jest wiesza lub równa 2.0.0.0)
+
+6. Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or 
+   ($_.Name -like "Get-*")}
+   = wyświetlić wszystkie te, które mają w nazwie "Add-" lub "Get-"
+
+   PS C:\Users\kkozl> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or 
+   ($_.Name -like "Get-*")}
+
+   CommandType     Name                                               Version    Source
+   -----------     ----                                               -------    ------
+   Function        Get-MockDynamicParameters                          3.4.0      Pester
+
+   (...)(Wyświelone polecenia jak w poprzednim zadaniu lecz zaczynające się od "Add-" lub "Get-")
+
+7. Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or   
+   ($_.Name -like "Get-*")} | Out-GridView
+   = wypisze w postaci tabelki graficznej otworzonej w nowym okienku
+
+   PS C:\Users\kkozl> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or   
+   ($_.Name -like "Get-*")} | Out-GridView
+
+   (...)(Wyświetlone nowe okienko z graficzną tabelka, a w okienku znajduje się ta sama lista poleceń co w poprzednim poleceniu)
+
+8. Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or 
+   ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+   = wypisze do pliku
+
+   PS C:\Users\kkozl> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or    
+   ($_.Name -like "Get-*")} | Out-File $env:TEMP\polecenia
+
+   (Polecenia zostaly zapisane do pliku co potwierdza wyświetlenie nowej linjki wiersza poleceń)
+
+9. Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or 
+   ($_.Name -like "Get-*")} | Out-Null
+   = bysmy chcieli nic z tym nie robic tylko by sie przetworzylo ale nie wypisywalo.
+
+   PS C:\Users\kkozl> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+
+   (Polecenie wykonalo sie, ale nic się nie wyswietliło ani zapisało tylko i wylacznie dane zostaly przetworzone.)
+
+10. Import-Module BitsTransfer = załadować jakiś moduł np. BitsTransfer
+
+   PS C:\Users\kkozl> Import-Module BitsTransfer
+
+   (Załadowany został moduł BitsTransfer do zarzadzania przesyłaniem danych w tle)
+
+11. Get-Command -Module BitsTransfer = Wylistujmy wszystkie komendy w tym module
+
+   PS C:\Users\kkozl> Get-Command -Module BitsTransfer
+   CommandType     Name                                               Version    Source
+   -----------     ----                                               -------    ------
+   Cmdlet          Add-BitsFile                                       2.0.0.0    BitsTransfer
+
+   (...)(Wypisało wszystkie komendy w module BitsTransfer)
+
+12. Start-BitsTransfer -Source = pobrania jakiegos duzego pliku by bylo widac proces sciagania.
+
+   PS C:\Users\kkozl> Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/63-Zr-n/17-Core/64bit.7z/download
+
+   (Zablokowało konsolę i wyświetliło się pole BITS Transfer z paskiem pobierania pliku)
+
+13. Start-BitsTransfer -Source - Jesli chcesz to uczynic w sposob asynchroniczny (czyli taki, ktory nie blokuje konsoli)
+
+   PS C:\Users\kkozl> $job = Start-BitsTransfer -Source https://sourceforge.net/projects/osboxes/files/v/vb/63-Zr-n/17-Core/64bit.7z/download -
+   Destination
+
+   (Konsola się nie zablokowała i wyświetliło się pole BITS Transfer z paskiem pobierania pliku w sposob asynchroniczny czyli mogę korzystać z konsoli podczas pobierania)
+
+14. Get-BitsTransfer = By zobaczyc jaki jest stan transferu mozna uzyc takiej komendy
+
+   PS C:\Users\kkozl> Get-BitsTransfer
+   JobId                                DisplayName       TransferType JobState     OwnerAccount
+   -----                                -----------       ------------ --------     ------------
+   1ervxdc63-2dwd-4... Moj Bits Transfer Download     Transferring DESKTOP-UMC60GQ\P...
+   
+   (Wyswietlona lista pobieranych plikow, wraz z plikiem ktory zaczalem pobierac)
+
+15. Complete-BitsTransfer -BitsJob $job = zakonczyc job transferu
+
+   PS C:\Users\kkozl> Complete-BitsTransfer -BitsJob $job
+
+   (Plik pojawil sie w miejscu docelowym a transfer zostal zakonczony)
+
+16. Measure-Command {Get-ChildItem -Path C:\Windows} = Do mierzenia czasu sluzy Measure-Command
+
+   PS C:\Users\kkozl> Measure-Command {Get-ChildItem -Path C:\Windows}
+   Days              : 0
+   Hours             : 0
+   Minutes           : 0
+   Seconds           : 0
+   Milliseconds      : 10
+   Ticks             : 108318
+   TotalDays         : 1,25368055555556E-07
+ 
+   (...)(Wypisany czas dla wykonania komendy wylistowania kadalogu Windows)
+
+17. Get-Alias | ? {$_.Definition -like "Get-ChildItem"} = jak sie listuje zawartosc katalogu - alias
+
+   PS C:\Users\kkozl> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+   CommandType     Name                                               Version    Source
+   -----------     ----                                               -------    ------
+   Alias           dir -> Get-ChildItem
+   Alias           gci -> Get-ChildItem
+   Alias           ls -> Get-ChildItem
+
+   (Wypisało Aliasy z Get-ChildItem)
+
+18. ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table = wylistujmy wszystkie pliki i katalogi z katalogu glownego ale z 
+   odstepem czasowym
+
+   PS C:\Users\kkozl> ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+       Directory: C:\
+   Mode                 LastWriteTime         Length Name
+   ----                 -------------         ------ ----
+   d-----        03.01.2024     19:32                $WINDOWS.~BT
+   d-----        04.01.2024     18:55                ESD
+
+   (...)(Wypisane wszystkie pliki i katalogi z katalogu domowego po zadanym odstepie czasowym)
+
+19. & C:\Windows\notepad.exe = PS konsola wiec mozna z niej uruchamiac inne programy. Do tego sluzy operator wolania "call", 
+   ktory ma postac znaku "&"
+
+   PS C:\Users\kkozl> & C:\Windows\notepad.exe
+
+   (Wyświetlił się notatnik)
+
+20. Wylistujmy zainstalowane aplikacje/programy.
+
+   1. W rejestrze poszukac
+
+      Rejestr
+      1.1 Get-PSDrive - Sprawdźmy jakie "dyski" są dostępne w PowerShell-u.
+   
+      PS C:\Users\kkozl> Get-PSDrive
+      Name           Used (GB)     Free (GB) Provider      Root      CurrentLocation
+      ----           ---------     --------- --------      ----      ---------------
+      Alias                                  Alias
+      C                 454,94        475,79 FileSystem    C:\
+      (...)(Wypisana zostala lista dyskow,(dwa odpowiedzialne za rejestr HKCU i HKLM))
+
+      1.2 cd hklm:\ - by wejsc do rejestru
+      PS C:\Users\kkozl> cd hklm:\
+      (Wejscie do rejestru/dysku)
+
+      1.3 I przegladac sobie rejestr jak zwykly system plikow.
+        PS HKLM:\> cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+        PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall>
+      (Mozna go przegladac i przejsc sobie do potrzebnej lokalizacji)
+  
+      1.4 Wylistowac sobie jego zawartosc przez ls
+        PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls
+	Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+	Name                           Property
+	----                           --------
+	AddressBook
+	Connection Manager             SystemComponent : 1
+	CPUID HWMonitor_is1            Inno Setup: Setup Version    : 5.6.1 (a)
+
+      (Wypisana została zawartość danej lokalizacji)
+
+     1.5 PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName,
+     InstallDate, UninstallString} | Format-Table -AutoSize
+     (Wypisana została lista danej lokalizacji w formie najważniejszych informacji (bardziej czytelnej) )
+
+     1.6 ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | %{& $_.UninstallString}
+     (Polecenie odinstalowało wszystkie aplikacje)
+
+   2.WMI
+
+     2.1 PS C:\Users\kkozl> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+
+     IdentifyingNumber                      Name                                                           Vendor
+     -----------------                      ----                                                           ------
+     {A7AB73A3-CB10-4AA5-9D38-6AEFFBDE4C91} Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+     {03DB9600-F4FE-435B-847F-EAD299AB9738} Visual C++ Library CRT Appx Resource Package                   Microsoft Corp...
+
+     (Wypisana lista zainstalowanych programów i aplikacji za pomocą wmi) Te numery z przodu są mało zrozumiałe)
+
+     2.2 Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize = Eliminacja numerów z przodu
+
+     PS C:\Users\kkozl> Get-WmiObject -Class Win32_Product | Select-Object Name, Vendor | Format-Table -AutoSize
+
+     Name                                                           Vendor
+     ----                                                           ------
+     Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+     Visual C++ Library CRT Appx Resource Package                   Microsoft Corporation
+     (Wypisana lista zainstalowanych programów i aplikacji bez zbędnych numeru identyfikacji)
+
+     2.3 Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | 
+     Format-Table -AutoSize
+     = znalezc wszystkie pakiety od Microsoftu
+
+     PS C:\Users\kkozl> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name,
+     Vendor | Format-Table -AutoSize
+
+     Name                                                           Vendor
+     ----                                                           ------
+     Microsoft Teams Meeting Add-in for Microsoft Office            Microsoft
+     Visual C++ Library CRT Appx Resource Package                   Microsoft Corporation
+ 
+     (Wypisana lista zainstalowanych programów i aplikacji ktore zawiera Microsoft)
+
+     2.4 Jak odinstalowac.
+	*Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | %{
+		$wmiProduct = $_
+	$answer = Read-Host "Uninstall '$($wmiProduct.Name)' [y/n]"
+    	$answer = $answer.ToLower()
+    	switch($answer) {
+        	"y" {
+            	Write-Host -NoNewline -ForegroundColor Red "Removing: "
+            	Write-Host -ForegroundColor White "$($wmiProduct.Name)"
+            	$wmiProduct.Uninstall()
+        	}
+        	"n" {Write-Host "Ok. Skipping."}
+        	default {Write-Host -ForegroundColor Red "Unexpected value. Skipping uninstalling it."}
+		}
+	}
+        (Uruchomienie spowodowało by usunięcie wszystkich pakietów Microsoft)
+
+21 Get-PSDrive = Dyski w PS. Mozemy je sobie wylistowac ponizsza komenda.
+
+  Możemy je sobie wylistować poniższą komendą: Get-PSDrive
+
+  PS C:\Users\kkozl> Get-PSDrive
+
+  Name           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation
+  ----           ---------     --------- --------      ----                                               ---------------
+  Alias                                  Alias
+  C                 474,18        456,55 FileSystem    C:\                                                    Users\kkozl
+  Cert                                   Certificate   \
+  D                                      FileSystem    D:\
+  Env                                    Environment
+  Function                               Function
+  HKCU                                   Registry      HKEY_CURRENT_USER
+  HKLM                                   Registry      HKEY_LOCAL_MACHINE
+  Variable                               Variable
+  WSMan                                  WSMan
+  (Wylistowane zostaly wszystkie dyski. To polecenie pobiera wszystkie dyski obsługiwane przez dostawcę systemu plików programu Windows PowerShell)
+
+22 Notyfikacje:
+
+     function GiveMePopup {
+      param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+    }
+ 
+    GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error - można to łatwo wywołać w ten sposób
+    (wyświetlone powiadomienie o wpisanej treści)
+
+    Albo wielokrotnie:
+    For($i = 1; $i -le 10; $i++) {
+    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+
+    (powiadomienie pojawia sie wielokrotnie za pomocą pętli for)
+
+    Do powiadomienie można dodać też wiele wierszy ale max 4 wiersze
+    #GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+ 

@@ -53,8 +53,8 @@ Zadanie 0
    Downloads
 
    Co znaczy | oraz co znaczy > ?
-   "|" - oznacza wykonanie jednego a zaraz po nim kolejnego polecenia(łączy polecenia)
-   ">" - służy do przekierowania do drugiego pliku nadpisując go
+   "|" - A | B Przekierowanie standardowego wyjścia (stdout) programu A na standardowe wejście (stdin) programu B
+   ">" - Przekierowanie standardowego wyjścia (stdout) do pliku (nadpisywanie)
 
 8.A teraz wykonaj komendę: ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
    (Jednocześnie dodało i wypisało pliki zaczynające się na D)
@@ -136,19 +136,25 @@ Zadanie 1
    Polecenie wyświetla informacje w jedenastu kolumnach oznaczonych USER, PID, %CPU, %MEM, VSZ, , , ,)
 
    Jak myślisz, co oznacza znak zapytania w kolumnie 2?(wiedziałem)
-   - dany proces nie ma nadanego terminala
-   - różnica z x lub bez niego jest taka że: bez niego to wyuświetla wszystkie które mają terminal
+
+   Znak zapytania w kolumnie 2 oznacza, ze dany proces nie ma nadanego terminala.
 
    B: Jak wykonasz poniższe 2 zadania?
 
    Wyświetl wszystkie procesy bash ->
-   osboxes  ~  ps axu | grep bash
-   osboxes     1999  0.0  0.0   9492  3328 ?        Ss   12:41   0:00 /bin/bash /usr/local/bin/xfce4-session
-   osboxes     3227  0.0  0.1  10628  4920 pts/0    Ss   14:24   0:00 bash
-   osboxes     3331  0.0  0.0   8900   724 pts/0    S+   14:52   0:00 grep bash
-   (Terminal wyświetlił wszystkie procesy bash)
 
-   Wyświetl wszystkei procesy należące do użytkownika root
+   osboxes  ~  ps axu | grep bash | grep -v grep
+   osboxes     2831  0.0  0.0   9492  3404 ?        Ss   01:54   0:00 /bin/bash /usr/local/bin/xfce4-session
+   osboxes     3151  0.0  0.1  10628  5052 pts/0    Ss   01:54   0:00 bash
+
+   
+   osboxes  ~  ps axu | grep [b]ash
+   osboxes     2831  0.0  0.0   9492  3404 ?        Ss   01:54   0:00 /bin/bash /usr/local/bin/xfce4-session
+   osboxes     3151  0.0  0.1  10628  4940 pts/0    Ss   01:54   0:00 bash
+
+   (Terminal w dwóch rozwiązaniach wyświetlił wszystkie procesy bash)
+
+   Wyświetl wszystkie procesy należące do użytkownika root
    (wyswietla procesy należące do roota)
 
    osboxes  ~  ps -u root u
@@ -271,7 +277,7 @@ Zadanie 4
    "CTRL+Z" służy do wstrzymania bieżącego procesu i przeniesienia go do tła.
 
 1.Wpisz komendę gimp (lub np. edytor tekstowy gedit)
-   Po wpisaniu komendy aplikacja gimp się urochomiła (zaskoczyłem się)
+   Po wpisaniu komendy aplikacja gimp się uruchamia (zaskoczyłem się)
 
 2.W terminalu w którym sie to uruchomiło wciśnij CTRL+Z(rozumiem działanie)
 
@@ -337,51 +343,3 @@ Zadanie 4
 
    Program gimp został przeniesiony z programu który działał w tle na pierwszy plan
    komenda "jobs" wyświetla procesy i ich numery
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

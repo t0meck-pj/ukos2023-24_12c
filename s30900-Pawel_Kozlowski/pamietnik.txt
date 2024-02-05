@@ -1,0 +1,322 @@
+2023.09.30 1.Linux - Wstęp do konsoli
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+Na wykładzie:
+   Spisy poleceń (na pamięć wyuczone):
+   man -h --help - pomoc               grep - filtrowanie wierszy
+   echo - wypisz tekst                 cut - filtrowanie kolumn
+   ls - wyswietlanie katalogu          cat - konkatenacja plików (drukowanie zawartosci)
+   cd - zmiana katalogu		       sed - edytor strumieniowy
+   mkdir - tworzenie katalogu	       awk - procesor przetwarzania tekstu
+   rmdir - usuwanie pustego katalogu   wc - word counter (zlicza wiersze, słowa, bajty)
+   touch - tworzenie pliku             find - wyszukuje pliki i katalogi
+   cp - kopiowanie		       head - drukuje pierwszych N wierszy
+   mv - przenoszenie i zmiena nazwy    tail - drukuje ostatnich N wierszy
+   chmod - zmiana bitów uprawnien
+   chown - zmiena wlasciciela
+   rm - usuwanie plików i katalogów
+
+   Edytory tekstowe:
+   vim - zawansowany edytor tekstowy (douczyć)
+   SED - najpotężniejszy edytor tektowy (douczyć)
+
+   git (system kontroli wersji) (douczyć)
+   Skrypty - ułatwiają życie
+
+   chmod:
+   RWX (czytaj zapisuj wykonaj)
+   Wlasciciel --x, Grupa -w- , Inni -wx
+   np. chmod 123 
+
+   Jak wyjść z vima (:q!)
+
+Na ćwiczeniach:
+   Dowiedziałem się zasad zaliczenia przedmiotu(zrozumiano)
+
+   Wstęp do konsoli:
+   Jak się zalogować do szuflandi (zrozumiano)
+   Co znaczą poszczególne katalogi ich kolory oraz co się w nich znajduje(wiem)
+   np. katalogi na niebiesko (wytłumaczone dobrze)
+
+   Podstawowe polecenia w terminalu (douczyć) oraz jak się po nim poruszać!
+
+   Przeglądarką pomocy jest program less więc ucząc się używać programu less nauczysz się także sprawnie poruszać po manie.(przydatne)
+
+   man - pomoc
+   / - Po nim można wpisać wyszukiwaną frazę i zatwierdzić ją enterem
+   n - następne dopasowanie
+   N - poprzednie dopasowanie
+   strzałka w dół lub j/ strzałka w górę lub k - przewijanie
+   q - wyjście
+   h - wyświetlenie klawiszologii pomocy
+   gg - przewiń na początek
+   GG - przewiń na koniec
+
+   Administratorem sytemu jest root (ważne)
+   Poruszanie się po katalogach (nauczone)
+
+   Zmiana katalogu:
+   cd - [c]hange [d]irectory
+
+   Wyświetlenie aktualnego katalogu:
+   pwd - [p]rint [w]orking [d]irectory
+
+   Wyświetlenie zawartości aktualnego katalogu:
+   ls - [l]ist file[s]
+
+   Wyświetlenie listy plików i katalogów:
+   tree 
+
+   W jaki sposób rozwiązywać zadania(zrozumiano)(nauczone)
+
+   Opis:(rozumiem)
+   Znaki wieloznaczne:
+   znak gwiazdki * oznacza dowolny ciąg znaków.
+   znak zapytania ? oznacza dowolny znak.
+   znak backslash \ oznacza że następny znak traktujemy specjalnie, w szczególności możemy napisać *\**.
+
+   Tworzenie i kasowanie elementów:(nauczone)
+   mkdir - tworzenie katalogu
+   rmdir - kasowanie katalogu o ile nie jest pusty
+   rm - kasowanie plików, albo katalogów (w zależności od parametrów)
+   touch - dotknięcie pliku. Jeśli plik nie istnieje, to zostanie utworzony.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.10.14 2.Linux - Uprawnienia dostępu
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+Na wykładzie:
+   Prawa vs uprawnienia:(zrozumiano)
+   "Prawo do systemu" - np. prawo zmiany daty, prawo wyłączenia systemu
+   "Uprawnienie do zasobu" - uprawnienie zapisu/odczytu/wykonania pliku
+   "ls z opcją -l" - pozwala na wyświetlenie dodatkowych informacji o plikach
+
+   Pierwszy znak określa typ pliku:(umiem)
+   "-" plik zwykły (ordinary file)
+   "d" katalog (directory)
+   "p" łącze nazwane (named pipe)
+   "l" dowiązanie symboliczne (symbolic link)
+   "b" urządzenie blokowe (block device)
+   "c" urządzenie znakowe (character device)
+   "s" gniazdo (socket)
+
+   Pozostałych 9 znaków tworzy 3 trójki o postaci: rwx rwx rwx:
+   pierwsza trójka odnosi się do "uprawnień właściciela pliku" 
+   druga - do uprawnień grupy właściciela, 
+   trzecia - do wszystkich innych użytkowników danego systemu.
+
+   Pliki uprawnienia oznaczają:(rozumiem)
+   "r" uprawnienie do odczytu (read)
+   "w" uprawnienie do zapisu (write)
+   "x" uprawnienie do wykonywania (execute)
+
+   Katalogi ich uprawnienia oznaczają:(umiem)
+   "r" uprawnienie do zapoznania się z zawartościć katalogu
+   "w" uprawnienie do zmiany zawartości katalogu
+   "x" uprawnienie do "wejścia" do danego katalogu (czyli uczynienia go swoim katalogiem bieżącym).
+
+   "chmod" - Nadaje i odbiera uprawnienia dostępu do pliku lub katalogu (change mode - zmień tryb)
+   "u" właściciel (user) 
+   "g" grupa (group) 
+   "o" inni (other) 
+   "a" wszyscy (all)
+   
+   chmod g+x plik - nadanie członkom grupy właściciela zostaje dodane uprawnienie do wykonywania programu
+   możemy dodać kilka poleceń używając - "," - kilka uprawnień 
+
+   chmod g+x,g-w <zasób_docelowy> - nadanie grupie uprawnienia wykonywania i usuniecie zapisu
+   chmod o-w plik - innym uzytkownikom zpoza grupy zostanie usuniete uprawnienie zapisu
+   chmod u=rw plik - właściciel nadał sobie uprawnienia do odczytu i zapisu do pliku bez możliwosci wykonania
+   chmod o=- plik - użytkownikowi z poza grupy odebrano wszystkie uprawnienia
+   chmod 705 plik - wlasciciel - wszytskie uprawnienia, członkom grupy - żadnych, innym z poza grupy odczutu i wykonywania
+
+   Można także sumować szybko bity:(umiem)
+   (rw-) 110 = 4+2 = 6
+   (r-x) 101 = 4+1 = 5
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.10.28 3.Linux - Procesy i Strumienie
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+Na wykładzie o:
+   Strumieniach:
+   wejście - stdin (znaki z klawiatury)
+   wyjście - stdout (terminal)
+   wyjścia błędu - stderr
+
+   Przekierowania strumieni:(umiem)
+   ">" przekierowanie (standardowego wyjścia) do pliku(nadpisywanie)
+   ">>" przekierowanie do pliku(dopisywanie)
+   "2>" przekierowanie błędu do pliku(nadpisywanie)
+   "2>>" przekierowanie błędu do pliku(dopisywanie)
+   "2>&1" przekierowanie (strumień wyjścia) błędu do strumienia wyjścia
+   "A|B" przekierowanie z wyjścia programu A do programu wejścia B
+   "A<B" Wczytanie pliku B jako standardowe wejście do programu A
+
+   Potoki:(nie znałem)
+   Przekierowanie programu na  wejscie drugiego programu = program_a | program_b
+   Przekierowanie błędu do następnego programu = program_a 2>&1 | program_b
+
+   Łowienie danych:(znam)
+   Grep - filtruje wiersz po wierszu
+   ps axu - pokazuje wielką tabelę wyjścia procesów
+   -v grep - odwraca działanie grepa - nie zawiera grep
+
+   Operatory logiczne:(umiem)
+   "<" - operator standardowego wejscia
+   "yes" - program drukujący tylko i wyłącznie znaki "y\n"
+   "less" - wygodne do przegladania dlugich wierszy (drukowanie na ekranie)
+   "-N" - doda numerację wierszy
+   "tail" - drukuje ostatnich 10 wierszy pliku
+   "-f" - follow - podążaj
+   "tee" - wyjście do pliku oraz do pliku
+   "&&" - wykonywanie dwóch programów jednocześnie bez błędu
+
+   Test - służy do testowania różnych rzeczy
+   "-e" - sprawdza czy istnieje
+   -z "${zmiennaKtoraMozeBycPusta}" ] && echo "Pusta"
+   "\" - ukośnik na końcu łączy wiersze (ciekawe)
+   "set -e" - powoduje przerwanie działania skryptu
+   "set -x" - powoduje drukowanie wszystkich zmian na stdout
+
+   Operacje w tle:(ciekawe)
+   "program &" - uruchomienie polecenia w tle
+   "jobs" - sprawdzenie ile i jakie programy dziłają w tle
+   "fg %numer" - przełączenie do pierwszego planu
+   "bg" - dzięki niemu można się przełączać między jobami
+
+Na ćwiczeniach(rozumiem):
+   Wykonywanie Zadań(zrobione i dobrze wytłumaczone)
+   CTRL + C - proces się kończy naturalnie, zabija proces
+   CTRL + D - proces się kończy naturalnie ale nie kończy procesu (koniec danych wejściowych, strumień)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.11.18 4.Linux - Kolokwium powtórzenie
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+   - Co się mogło stać? że nie możesz utworzyć żadnego pliku na swoim koncie uczelnianym (zrozumiałe)
+     = brak uprawnień, brak miejsca na dysku, błędy dysku, 
+
+   - Jak sprawdzić przydział miejsca na dysku (już wiem)
+     = quota
+
+   - Jak przejść do katalogu za pomocą: ścieżki względnej, ścieżki bezwzględnej (logiczne)
+
+   - Jak utworzyć poddrzewo katalogów za pomocą jednej komendy (umiem)
+
+   - Jak przenieść katalog do innego katalogu i używając ścieżki względnej i absolutnej (rozumiem)
+
+   - Jak zamknąć program, który nie reaguje na ctrl+c (warto wiedzieć)
+
+   - Jak wypisac pliki pasujace do podanego wzorca (logiczne)
+
+   - Jakie są narzędzia do testowania wyrażeń regularnych w przyzwoity sposób (douczyć)
+
+   - Jak nadajć uprawnienia do katalogu (dobrze wytłumaczone)
+
+   - Jak odebrać wszystkie uprawnienia dla danego zasobu (umiem)
+
+   - Jak utworzyć plik z listą plików w bieżącym katalogu (do przecwiczenia)
+
+   - Jak przyspieszyć wpisywanie komend w terminalu?(proste)
+
+   - Jak uruchomić program by nie blokował terminala (zrozumiałe)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.12.02 5.Linux - Po kolokwium
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+   - Kolokwium nie okazało się takie trudne jak zakładałem
+
+   - Dlaczego powinno być wszystko wykonywane w terminalu na linuxe(zrozumiałem)
+
+   - Jak wygląda potencjalny sposób konwersji(przydatne)
+
+   - Jak się nauczyć git branching (douczyć)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.12.16 6.PowerShell - Wstęp do PowerShell - cz1
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:   
+
+   - W PowerShell można zrobić znacznie więcej i jest potężniejszy od Basha
+   
+   - Różne wersje PowerShell jego podziały i dlaczego są (warto wiedziec)
+
+   - .NET framework co to jest = zbiór różnego rodzaju bibliotek których możemy używać (rozumiem)
+
+   - W PowerShell można robić aplikacje okienkowe (przydatne)
+
+   - Jak uruchomić PowerShell rózne sposoby (warto wiedziec)
+
+   - Jak działają i ułatwiają zmienne w PowerShell (rozumiem)
+
+   - Że działają polecenia z Linuxa
+
+   - Żeby uruchomić jakikolwiek skrypt w PowerShell-u to domyślnie musi on być podpisany przez Microsoft
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.1.20 7.PowerShell - Wstęp do PowerShell - cz2
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+   - Jak działa polecenie Get-Member = wywołuje wszystkie metody (przydatne)
+
+   - Że przycisk tab działa tak samo jak w bashu
+
+   - Komendy w PS (powershellu) mają pewną stałą konwencję nazewniczą. 
+ 
+   - Znak "|" to potok (pipeline), który uruchamia kolejne polecenie na danych wyjściowych z poprzedniego polecenia (przymnienie)
+
+   - Moduły mogą mieć wiele poleceń
+
+   - "?" jest skrótem na Where-Object
+   
+   - "%" jest skrótem na While-Object
+
+   - WMI sluzy do zarzadzania systemem i mozna z niego wiele ciekawych rzeczy wyciagnac.
+ 
+   - Dyski HKML i HKCU to dyski dające dostęp do rejestru.
+
+   - Alias - lista wszystkich zdefiniowanych aliasów w bierzącej sesji. Tam są m.in. ls, dir, ?, %
+
+   - Cert - magazyn certyfikatów TLS/SSL stosowanych do szyfrowania danych.
+
+   - Env - zmienne środowiskowe w bierzącej sesji.
+
+   - Function - tu są wszystkie zdefiniowane w bierzącej sesji funkcje, które można uruchomić.
+
+   - Variable - zmienne utworzone i dostępne w bierzącej sesji.
+
+   - WSMan - dostęp do całego systemu WMI.
+
+   - GH - GitHub - tak, można po githubie "chodzić" w PowerShell-u
+
+   - AD - ActiveDirectory - dodaje dysk dający dostęp do ActiveDirectory
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2023.1.20 8.Podsumowanie semestru i wystawienie ocen
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
+
+   - Że trzeba punktualnie wysyłać zadania 
+
+   - Trzeba mieć szacunek do sprawdzającego a nie wysyłać na ostatnią chwilę
+
+   - Co jest potrzebne żeby zaliczyć semestr
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,179 @@
+1.Utworzyć we własnym katalogu domowym niedużą strukturę podkatalogów i plików tekstowych. 
+  Przydzielić różne uprawnienia dostępu, następnie spróbować wejść do katalogów domowych innych uczestników 
+  zajęć i sprawdzić, które z obiektów są tam dla nas dostępne (i w jakim sensie). Spróbować utworzyć własny plik 
+  w cudzym katalogu ("kukułcze jajko") oraz spróbować usunąć cudzy plik we własnym katalogu (co można zaobserwować ?). 
+  Wypróbować powyższe operacje:
+
+   s30900@szuflandia22:~$ tree katalog
+   katalog
+   ├── podkatalog
+   │   └── plik.txt
+   └── zadania
+       └── odpowiedzi
+
+   w trybie tekstowym;
+
+   przy użyciu programu Midnight Commander (mc);
+
+   drwxr-xr-x 3 s30900 domain users 4096 12-02 09:04 podkatalog
+   drwxr-xr-x 3 s30900 domain users 4096 12-02 09:05 zadania
+
+   s30900@szuflandia22:~/katalog$ chmod g+w podkatalog
+   s30900@szuflandia22:~/katalog$ chmod o-x zadania
+
+   drwxrwxr-x 3 s30900 domain users 4096 12-02 09:04 podkatalog
+   drwxr-xr-- 3 s30900 domain users 4096 12-02 09:05 zadania
+
+   (nadałem grupie uprawnienia do zmiany zawartości katalogu w katalogu podkatalog 
+   i usunąłem uprawnienie innym osob poza grupą do wejścia do katalogu zadania)
+
+   s30900@szuflandia22:/home/PJWSTK/s30576$ ls
+   aldahysdbas  alsadsd  plik1  plik2  ukos
+
+   s30900@szuflandia22:/home/PJWSTK/s30576$ tree alsadsd
+   alsadsd
+
+   s30900@szuflandia22:/home/PJWSTK$ cd s30576
+   s30900@szuflandia22:/home/PJWSTK/s30576$ touch alsadsd/'kukulcze jajo'
+   touch: nie można dotknąć 'alsadsd/kukulcze jajo': Brak dostępu
+
+   (nie mam dostępu by utworzyć plik w cudzym katalogu
+   "Midnight Commander" ulatwia nawigowanie po plikach.)
+
+2.W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić eksperymenty:
+
+  ` usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
+    s30900@szuflandia22:~/katalog/podkatalog$ chmod 000 ./ (zostały usunięte wszystkie moje uprawnienia do bierzącego katalogu)
+    
+    s30900@szuflandia22:~/katalog/podkatalog$ cd pliki
+    -bash: cd: pliki: Brak dostępu                     
+    (Nie moge przejsc do katalogu podrzednego ponieważ nie mam uprawnień)
+    (Można przejść do katalogu nadrzędnego używając komendy cd .. )  
+    (Ani za pomocą sciezki wzglednej oraz sciezki bezwzglednej nie jestem wstanie przejsc do katalogu do którego odebrałem uprawnienia)  
+
+  ` usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+
+    s30900@szuflandia22:~/katalog/podkatalog$ chmod 000 ../
+    s30900@szuflandia22:~/katalog/podkatalog$ cd ..
+    -bash: cd: ..: Brak dostępu
+    s30900@szuflandia22:~/katalog/podkatalog$ cd pliki
+    s30900@szuflandia22:~/katalog/podkatalog/pliki$
+
+    Wynika z tego że (nie jesteśmy wstanie przejść do katalogu nadrzędnego z podowu braku uprawnień 
+    ale możemy do katalogu podrzędnego ponieważ mam uprawnienia dostępu, oraz mogę przejść do katalogu domowego omijając 
+    ścieżką bezwględną katalog do którego nie mam uprawnień)
+
+ `  W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
+
+    będąc w katalogu do którego nie mamy uprawnień możemy przejść do katalogu nadrzędnego oraz za pomocą ścieżki bezwzględnej przejść do katalogu domowego
+   
+ `  W jakich przypadkach możemy wykonać polecenie chmod ?
+
+   (polecenie chmod możemy użyć w katalogu gdzie mamy uprawnienia np. w katalogu domowym)
+
+ `  Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
+
+    s30900@szuflandia22:~/katalog/podkatalog/pliki$
+
+    Nie moge przeskoczyc bezposrednio do katalogu podkatalog , jesli nie mam uprawnienia wstepu do katalogu katalog, ale mam do podkatalog.
+
+ `  Czy można również usunąć z polecenia cd -? Wróciliśmy do XYZ, nie mogliśmy przejść do ABC z 
+   powodu braku uprawnień.
+
+   s30900@szuflandia22:~/katalog/podkatalog/pliki$
+
+   Przy pomocy polecenia 'cd -' moge wrocic do katalogu domowego, wczeniej znajdujac sie w katalogu podkatalog, ale nie majac uprawnien dostepu do
+   katalogu katalog.
+
+   Ale wrocic przy pomocy polecenia 'cd -' do katalogu podkatalog już nie moge (ponieważ nie mam uprawnien wstepu do katalogu katalog)
+
+3. W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić login osób z zespołu) wypróbować możliwość    
+   komunikacji 
+   przez współdzielony plik: na jednym z kont w zespole utworzyć pusty plik i przydzielić odpowiednie uprawnienia 
+   dostępu (do pliku i do katalogu domowego). Wpisywać i odczytywać komunikaty przy użyciu poleceń:
+   echo treść_komunikatu > plik
+   cat plik
+
+   s30900@szuflandia22:~$ ls -al pustyPlik
+   -rw-r--r-- 1 s30900 domain users 0 12-02 09:53 pustyPlik
+   s30900@szuflandia22:~$ chmod g+w,g+x pustyPlik
+   s30900@szuflandia22:~$ ls -al pustyPlik
+   -rw-rwxr-- 1 s30900 domain users 0 12-02 09:53 pustyPlik
+
+   Sprawdzić, jaki skutek powoduje zamiana operatora > na operator >> w poleceniu echo. Uruchom także drugi terminal i wykonaj    
+   w nim komendę tail -f plik i powtórz powyższe ćwiczenie w pierwszym terminalu (komunikacja za pomocą pliku).
+
+   '>' na operator '>>' tresc zostala dopisana do istniejącej a nadpisana (czyli usunięta i zamieniona).
+
+   tail -f plik - pozwala na sledzenie zmian w pliku na zywo
+
+4. Znaleźć w swoim katalogu domowym podkatalog public_html (jeśli go nie ma, to utworzyć; musi się on nazywać DOKŁADNIE tak   
+   jak podano, pisane małymi literami z podkreśleniem zamiast spacji pomiędzy słowami). Umieścić w nim plik o nazwie  
+   strona.html o następującej zawartości:
+
+   <HTML>
+   <BODY>
+   <H1>To jest moja strona domowa</H1>
+   </BODY>
+   </HTML>
+
+   Sprawdzić, jakie są minimalne uprawnienia dostępu, które trzeba przydzielić do katalogu domowego;
+   
+   s30900@szuflandia22:~/public_html$ chmod 701 ~ (uprawnienia do wejscia dla wszystkich)
+
+   Aby wyswietlic zawartosc pliku w przegladarce internetowej nadałem minimalne uprawnienia chmod 701 ~ aby wyswietlic zawartosc pliku 
+
+   Katalogu public_html:
+
+   s30900@szuflandia22:~$ chmod 001 public_html/
+
+   (Minimalne uprawnienia aby wyswietlic zawartosc pliku w przegladarce internetowej to tylko uprawnienia do wejscia dla wszystkich)
+
+   s30900@szuflandia22:~/public_html$ chmod 004 strona.html
+
+   (Minimalne uprawnienia dostepu (pliku strona.html) aby wyswietlic zawartosc pliku uprawnienia do odczytu dla wszystkich.
+
+
+   "i" - by wprowadzać dane do vima
+   shift + ins - by wkleić skopiowany text
+   shift + z + z - by wyjść 
+
+   s30900@szuflandia22:~$ cd public_html
+   s30900@szuflandia22:~/public_html$ vim strona.html
+   s30900@szuflandia22:~/public_html$ ls
+   strona.html
+
+   http://szuflandia.pjwstk.edu.pl/~twój_login/strona.html
+   (działa wyświetla stronę a w niej mój text)
+
+
+   Dodatkowe polecenia
+   "chgrp" - pozwala na zmianę grupy pliku
+
+   "newgrp" - pozwala na zmianę głównej grupy użytkownika
+
+   Zadanie
+   W opisie bash-a (man) przeczytać opis polecenia wewnętrznego umask i wypróbować jego działanie sprawdzając, a następnie    
+   zmieniając swoją maskę trybu pliku i tworząc za każdym razem nowe pliki (przy użyciu polecenia touch plik), a później
+   sprawdzając uzyskane uprawnienia dostępu do nich (polecenie ls -l). Jaka operacja logiczna na bitach domyślnych uprawnień 
+   dostępu oraz maski jest wykonywana ?
+  
+   *s30900@szuflandia22:~$ umask --help
+   *s30900@szuflandia22:~$ umask
+   0022
+
+   Domyslna maska.
+   *s30900@szuflandia22:~$ mkdir dom
+   *s30900@szuflandia22:~$ ls- l
+   drwxr-xr-x 2 s30900 domain users 4096 10-27 16:10 dom
+
+   Domyslnie uprawnienia dostepu.
+   *s30900@szuflandia22:~$ umask 0044
+   *s30900@szuflandia22:~$ umask
+   0044
+   Zmieniona maska pliku.
+
+   *s30900@szuflandia22:~$ mkdir test
+   *s30900@szuflandia22:~$ ls -l
+   drwx-wx-wx 2 s30899 domain users 4096 2023-10-29  test
+   Przydzielone uprawnienia dostepu po zmianie maski trybu pliku.
