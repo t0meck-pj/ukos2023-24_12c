@@ -32,3 +32,39 @@ Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
 Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
 	- dowiedziałem sie jakie i jak działaja rozne przekierowania 
 	- np. przy "ps aux" kolejnosc podawania parametrow nie ma znaczenia
+
+--------------------------------------------------------------------------------
+
+18-11-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+       - jakie moga byc powody braku mozliwosci utworzenia pliku na swoim koncie uczelnianym
+       - quota (przydzaily przestrzeni dyskowej)
+       - jak przenosic katalogi
+       - jak przyspieszyc wpisywanie komend w terminalu
+       - uruchamianie programu tak aby nie blokowal terminala
+
+--------------------------------------------------------------------------------
+
+2-12-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+       - jak wyglada kolokwium z UKOS-ow
+       - pytac, jak cos nie jasne
+
+--------------------------------------------------------------------------------
+
+16-12-2023
+Moj kochany pamietniczku na dzisiejszych zajeciach nauczylem sie:
+       - PowerShell jest duzo wiekszy od Basha
+       - podzial PowerShella
+       - jak uruchomic PowerShella
+       - aliasy w PowerShellu
+       - jak korzystac ze zmiennej
+
+--------------------------------------------------------------------------------
+
+20-01-2024
+Moj kochany pamietniczku na dzisiajszych zajeciach nauczylem sie:
+       - jak wywolac metody przez zmienna
+       - w PowerShellu mozna korzystac z tab (dopelnianie komend)
+       - ctrl+spacja tekstowo-graficzne menu
+       - metode mozna wywolac na obiekcie
