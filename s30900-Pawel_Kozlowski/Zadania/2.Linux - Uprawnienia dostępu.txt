@@ -42,38 +42,50 @@
 
 2.W utworzonej na swoim koncie strukturze podkatalogów przeprowadzić eksperymenty:
 
-   usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
-   usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
+  ` usuwając wszelkie uprawnienia dostępu do katalogu bieżącego
+    s30900@szuflandia22:~/katalog/podkatalog$ chmod 000 ./ (zostały usunięte wszystkie moje uprawnienia do bierzącego katalogu)
+    
+    s30900@szuflandia22:~/katalog/podkatalog$ cd pliki
+    -bash: cd: pliki: Brak dostępu                     
+    (Nie moge przejsc do katalogu podrzednego ponieważ nie mam uprawnień)
+    (Można przejść do katalogu nadrzędnego używając komendy cd .. )  
+    (Ani za pomocą sciezki wzglednej oraz sciezki bezwzglednej nie jestem wstanie przejsc do katalogu do którego odebrałem uprawnienia)  
 
-   drwxr-xr-- 3 s30900 domain users 4096 12-02 09:05 .
-   drwxr-xr-x 4 s30900 domain users 4096 12-02 09:05 ..
-   drwxr-xr-x 2 s30900 domain users 4096 12-02 09:05 odpowiedzi
+  ` usuwając wszelkie uprawnienia dostępu do katalogu nadrzędnego (nadkatalogu).
 
-   s30900@szuflandia22:~/katalog/zadania$ chmod 000 .
+    s30900@szuflandia22:~/katalog/podkatalog$ chmod 000 ../
+    s30900@szuflandia22:~/katalog/podkatalog$ cd ..
+    -bash: cd: ..: Brak dostępu
+    s30900@szuflandia22:~/katalog/podkatalog$ cd pliki
+    s30900@szuflandia22:~/katalog/podkatalog/pliki$
 
-   W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
+    Wynika z tego że (nie jesteśmy wstanie przejść do katalogu nadrzędnego z podowu braku uprawnień 
+    ale możemy do katalogu podrzędnego ponieważ mam uprawnienia dostępu, oraz mogę przejść do katalogu domowego omijając 
+    ścieżką bezwględną katalog do którego nie mam uprawnień)
 
-   s30900@szuflandia22:~/katalog$ cd zadania
-   -bash: cd: zadania: Brak dostępu
-   (nie mam dostępu do tego katalogu ponieważ udebrałem sobie uprawnienia)
+ `  W jakich przypadkach możemy wykonać wtedy polecenie cd ? 
 
-   W jakich przypadkach możemy wykonać polecenie chmod ? 
-   (polecenie chmod możemy użyć w katalogu wyżej tak gdzie mamy uprawnienia)
-   .
-   ├── podkatalog
-   │   └── plik.txt
-   └── zadania [error opening dir]
+    będąc w katalogu do którego nie mamy uprawnień możemy przejść do katalogu nadrzędnego oraz za pomocą ścieżki bezwzględnej przejść do katalogu domowego
+   
+ `  W jakich przypadkach możemy wykonać polecenie chmod ?
 
-   3 directories, 0 files
-   s30900@szuflandia22:~/katalog$ chmod u+r,u+w,u+x zadania
+   (polecenie chmod możemy użyć w katalogu gdzie mamy uprawnienia np. w katalogu domowym)
 
-   Czy można bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy licencji wstępnej do ABC, ale mamy do XYZ?
+ `  Czy możemy bezpośrednio przeskoczyć do katalogu ABC/XYZ, jeśli nie mamy uprawnienia wstępu do ABC, ale mamy do XYZ ?
 
-   Gdy używamy bezwzględnego ścieżki dostępu do katalogu głównego, pomijamy katalog, do którego nie mamy dostępu.
-   Przy użyciu ścieżki względnej, spowoduje to błąd i nie uzyskamy dostępu do katalogu ABC
+    s30900@szuflandia22:~/katalog/podkatalog/pliki$
 
-   Czy można również usunąć z polecenia cd -? Wróciliśmy do XYZ, nie mogliśmy przejść do ABC z 
+    Nie moge przeskoczyc bezposrednio do katalogu podkatalog , jesli nie mam uprawnienia wstepu do katalogu katalog, ale mam do podkatalog.
+
+ `  Czy można również usunąć z polecenia cd -? Wróciliśmy do XYZ, nie mogliśmy przejść do ABC z 
    powodu braku uprawnień.
+
+   s30900@szuflandia22:~/katalog/podkatalog/pliki$
+
+   Przy pomocy polecenia 'cd -' moge wrocic do katalogu domowego, wczeniej znajdujac sie w katalogu podkatalog, ale nie majac uprawnien dostepu do
+   katalogu katalog.
+
+   Ale wrocic przy pomocy polecenia 'cd -' do katalogu podkatalog już nie moge (ponieważ nie mam uprawnien wstepu do katalogu katalog)
 
 3. W zespołach 2- lub 3-osobowych (w opisie zadania na githubie proszę umieścić login osób z zespołu) wypróbować możliwość    
    komunikacji 
@@ -105,20 +117,22 @@
    </BODY>
    </HTML>
 
-   Które są dostępne dla dostępu, które należą do katalogu domowego;
-   chmod 701 ~
+   Sprawdzić, jakie są minimalne uprawnienia dostępu, które trzeba przydzielić do katalogu domowego;
+   
+   s30900@szuflandia22:~/public_html$ chmod 701 ~ (uprawnienia do wejscia dla wszystkich)
 
-   Minimalne uprawnienia aby wyswietlic zawartosc pliku
-   katalogu public_html;
+   Aby wyswietlic zawartosc pliku w przegladarce internetowej nadałem minimalne uprawnienia chmod 701 ~ aby wyswietlic zawartosc pliku 
 
-   chmod 001 public_html/
-   (Minimalne uprawnienia aby wyswietlic zawartosc pliku)
+   Katalogu public_html:
 
-   pliku strona.html, aby zawartość pliku była widoczna w przeglądarce internetowej pod adresem    
-   http://szuflandia.pjwstk.edu.pl/~twój_login/strona.html
+   s30900@szuflandia22:~$ chmod 001 public_html/
 
-   chmod 004 strona.html
-   (Minimalne uprawnienia  aby wyswietlic zawartosc pliku w przegladarce internetowej)
+   (Minimalne uprawnienia aby wyswietlic zawartosc pliku w przegladarce internetowej to tylko uprawnienia do wejscia dla wszystkich)
+
+   s30900@szuflandia22:~/public_html$ chmod 004 strona.html
+
+   (Minimalne uprawnienia dostepu (pliku strona.html) aby wyswietlic zawartosc pliku uprawnienia do odczytu dla wszystkich.
+
 
    "i" - by wprowadzać dane do vima
    shift + ins - by wkleić skopiowany text

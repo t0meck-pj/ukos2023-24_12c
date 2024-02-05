@@ -39,6 +39,9 @@ Na ćwiczeniach:
    np. katalogi na niebiesko (wytłumaczone dobrze)
 
    Podstawowe polecenia w terminalu (douczyć) oraz jak się po nim poruszać!
+
+   Przeglądarką pomocy jest program less więc ucząc się używać programu less nauczysz się także sprawnie poruszać po manie.(przydatne)
+
    man - pomoc
    / - Po nim można wpisać wyszukiwaną frazę i zatwierdzić ją enterem
    n - następne dopasowanie
@@ -187,7 +190,7 @@ Na wykładzie o:
 Na ćwiczeniach(rozumiem):
    Wykonywanie Zadań(zrobione i dobrze wytłumaczone)
    CTRL + C - proces się kończy naturalnie, zabija proces
-   CTRL + D - proces się kończy naturalnie ale nie zamyka procesu (koniec danych wejściowych, strumień)
+   CTRL + D - proces się kończy naturalnie ale nie kończy procesu (koniec danych wejściowych, strumień)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -298,7 +301,7 @@ Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-2023.2.4 8.Podsumowanie semestru i wystawienie ocen
+2023.1.20 8.Podsumowanie semestru i wystawienie ocen
 Moj kochany pamietniczku na dzisiejszych zajeciach nauczanialem/lam sie:
 
    - Że trzeba punktualnie wysyłać zadania 

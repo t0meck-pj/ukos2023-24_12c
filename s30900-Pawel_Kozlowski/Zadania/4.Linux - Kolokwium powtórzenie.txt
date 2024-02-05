@@ -49,8 +49,7 @@ Zadania do wykonania przed kolokwium wykonane ze zrozumieniem
 5. Jak wypisać wszystkie pliki (i tylko pliki bez katalogów) w bieżącym katalogu, których nazwa zaczyna się od al?
    Tu będzie trochę opisu ode mnie na temat wyrażeń regularnych.
 
-   -> find . -type f -name 'al*'
-   -> ls -p | grep '^al' | grep -v /
+   -> find . -type f -name 'al*'   lub    ->    ls -p | grep '^al' | grep -v /
 
 6a. Nadaj uprawnienia do katalogu ala tak aby:
    każdy mógł do niego wejść
